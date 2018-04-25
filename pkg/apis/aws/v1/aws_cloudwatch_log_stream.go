@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsCloudwatchLogStream describes a AwsCloudwatchLogStream resource
 type AwsCloudwatchLogStream struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,16 @@ type AwsCloudwatchLogStream struct {
 	Spec	AwsCloudwatchLogStreamSpec	`json:"spec"`
 }
 
+
+// AwsCloudwatchLogStreamSpec is the spec for a AwsCloudwatchLogStream Resource
+type AwsCloudwatchLogStreamSpec struct {
+	Name	string	`json:"name"`
+	LogGroupName	string	`json:"log_group_name"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsCloudwatchLogStreamList is a list of AwsCloudwatchLogStream resources
 type AwsCloudwatchLogStreamList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,7 +34,3 @@ type AwsCloudwatchLogStreamList struct {
 	Items	[]AwsCloudwatchLogStream	`json:"items"`
 }
 
-type AwsCloudwatchLogStreamSpec struct {
-	Name	string	`json:"name"`
-	LogGroupName	string	`json:"log_group_name"`
-}

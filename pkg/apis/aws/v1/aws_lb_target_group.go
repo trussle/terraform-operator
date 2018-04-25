@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsLbTargetGroup describes a AwsLbTargetGroup resource
 type AwsLbTargetGroup struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,21 @@ type AwsLbTargetGroup struct {
 	Spec	AwsLbTargetGroupSpec	`json:"spec"`
 }
 
+
+// AwsLbTargetGroupSpec is the spec for a AwsLbTargetGroup Resource
+type AwsLbTargetGroupSpec struct {
+	Protocol	string	`json:"protocol"`
+	VpcId	string	`json:"vpc_id"`
+	TargetType	string	`json:"target_type"`
+	NamePrefix	string	`json:"name_prefix"`
+	Port	int	`json:"port"`
+	DeregistrationDelay	int	`json:"deregistration_delay"`
+	Tags	map[string]interface{}	`json:"tags"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsLbTargetGroupList is a list of AwsLbTargetGroup resources
 type AwsLbTargetGroupList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,12 +39,3 @@ type AwsLbTargetGroupList struct {
 	Items	[]AwsLbTargetGroup	`json:"items"`
 }
 
-type AwsLbTargetGroupSpec struct {
-	VpcId	string	`json:"vpc_id"`
-	TargetType	string	`json:"target_type"`
-	Tags	map[string]interface{}	`json:"tags"`
-	NamePrefix	string	`json:"name_prefix"`
-	Port	int	`json:"port"`
-	Protocol	string	`json:"protocol"`
-	DeregistrationDelay	int	`json:"deregistration_delay"`
-}

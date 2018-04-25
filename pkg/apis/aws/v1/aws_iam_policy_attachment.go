@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsIamPolicyAttachment describes a AwsIamPolicyAttachment resource
 type AwsIamPolicyAttachment struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,19 @@ type AwsIamPolicyAttachment struct {
 	Spec	AwsIamPolicyAttachmentSpec	`json:"spec"`
 }
 
+
+// AwsIamPolicyAttachmentSpec is the spec for a AwsIamPolicyAttachment Resource
+type AwsIamPolicyAttachmentSpec struct {
+	PolicyArn	string	`json:"policy_arn"`
+	Name	string	`json:"name"`
+	Users	string	`json:"users"`
+	Roles	string	`json:"roles"`
+	Groups	string	`json:"groups"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsIamPolicyAttachmentList is a list of AwsIamPolicyAttachment resources
 type AwsIamPolicyAttachmentList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,10 +37,3 @@ type AwsIamPolicyAttachmentList struct {
 	Items	[]AwsIamPolicyAttachment	`json:"items"`
 }
 
-type AwsIamPolicyAttachmentSpec struct {
-	Name	string	`json:"name"`
-	Users	interface{}	`json:"users"`
-	Roles	interface{}	`json:"roles"`
-	Groups	interface{}	`json:"groups"`
-	PolicyArn	string	`json:"policy_arn"`
-}

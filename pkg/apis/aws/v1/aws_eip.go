@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsEip describes a AwsEip resource
 type AwsEip struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,16 @@ type AwsEip struct {
 	Spec	AwsEipSpec	`json:"spec"`
 }
 
+
+// AwsEipSpec is the spec for a AwsEip Resource
+type AwsEipSpec struct {
+	AssociateWithPrivateIp	string	`json:"associate_with_private_ip"`
+	Tags	map[string]interface{}	`json:"tags"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsEipList is a list of AwsEip resources
 type AwsEipList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,7 +34,3 @@ type AwsEipList struct {
 	Items	[]AwsEip	`json:"items"`
 }
 
-type AwsEipSpec struct {
-	Tags	map[string]interface{}	`json:"tags"`
-	AssociateWithPrivateIp	string	`json:"associate_with_private_ip"`
-}

@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsCognitoIdentityPool describes a AwsCognitoIdentityPool resource
 type AwsCognitoIdentityPool struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,21 @@ type AwsCognitoIdentityPool struct {
 	Spec	AwsCognitoIdentityPoolSpec	`json:"spec"`
 }
 
+
+// AwsCognitoIdentityPoolSpec is the spec for a AwsCognitoIdentityPool Resource
+type AwsCognitoIdentityPoolSpec struct {
+	SamlProviderArns	[]interface{}	`json:"saml_provider_arns"`
+	SupportedLoginProviders	map[string]interface{}	`json:"supported_login_providers"`
+	IdentityPoolName	string	`json:"identity_pool_name"`
+	CognitoIdentityProviders	string	`json:"cognito_identity_providers"`
+	DeveloperProviderName	string	`json:"developer_provider_name"`
+	AllowUnauthenticatedIdentities	bool	`json:"allow_unauthenticated_identities"`
+	OpenidConnectProviderArns	[]interface{}	`json:"openid_connect_provider_arns"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsCognitoIdentityPoolList is a list of AwsCognitoIdentityPool resources
 type AwsCognitoIdentityPoolList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,12 +39,3 @@ type AwsCognitoIdentityPoolList struct {
 	Items	[]AwsCognitoIdentityPool	`json:"items"`
 }
 
-type AwsCognitoIdentityPoolSpec struct {
-	DeveloperProviderName	string	`json:"developer_provider_name"`
-	AllowUnauthenticatedIdentities	bool	`json:"allow_unauthenticated_identities"`
-	OpenidConnectProviderArns	[]interface{}	`json:"openid_connect_provider_arns"`
-	SamlProviderArns	[]interface{}	`json:"saml_provider_arns"`
-	SupportedLoginProviders	map[string]interface{}	`json:"supported_login_providers"`
-	IdentityPoolName	string	`json:"identity_pool_name"`
-	CognitoIdentityProviders	interface{}	`json:"cognito_identity_providers"`
-}

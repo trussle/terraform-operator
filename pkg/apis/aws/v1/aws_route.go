@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsRoute describes a AwsRoute resource
 type AwsRoute struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,18 @@ type AwsRoute struct {
 	Spec	AwsRouteSpec	`json:"spec"`
 }
 
+
+// AwsRouteSpec is the spec for a AwsRoute Resource
+type AwsRouteSpec struct {
+	DestinationCidrBlock	string	`json:"destination_cidr_block"`
+	DestinationIpv6CidrBlock	string	`json:"destination_ipv6_cidr_block"`
+	RouteTableId	string	`json:"route_table_id"`
+	VpcPeeringConnectionId	string	`json:"vpc_peering_connection_id"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsRouteList is a list of AwsRoute resources
 type AwsRouteList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,9 +36,3 @@ type AwsRouteList struct {
 	Items	[]AwsRoute	`json:"items"`
 }
 
-type AwsRouteSpec struct {
-	DestinationCidrBlock	string	`json:"destination_cidr_block"`
-	DestinationIpv6CidrBlock	string	`json:"destination_ipv6_cidr_block"`
-	VpcPeeringConnectionId	string	`json:"vpc_peering_connection_id"`
-	RouteTableId	string	`json:"route_table_id"`
-}

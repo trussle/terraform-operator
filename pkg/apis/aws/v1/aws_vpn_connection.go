@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsVpnConnection describes a AwsVpnConnection resource
 type AwsVpnConnection struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,18 @@ type AwsVpnConnection struct {
 	Spec	AwsVpnConnectionSpec	`json:"spec"`
 }
 
+
+// AwsVpnConnectionSpec is the spec for a AwsVpnConnection Resource
+type AwsVpnConnectionSpec struct {
+	Tags	map[string]interface{}	`json:"tags"`
+	VpnGatewayId	string	`json:"vpn_gateway_id"`
+	CustomerGatewayId	string	`json:"customer_gateway_id"`
+	Type	string	`json:"type"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsVpnConnectionList is a list of AwsVpnConnection resources
 type AwsVpnConnectionList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,9 +36,3 @@ type AwsVpnConnectionList struct {
 	Items	[]AwsVpnConnection	`json:"items"`
 }
 
-type AwsVpnConnectionSpec struct {
-	Tags	map[string]interface{}	`json:"tags"`
-	CustomerGatewayId	string	`json:"customer_gateway_id"`
-	Type	string	`json:"type"`
-	VpnGatewayId	string	`json:"vpn_gateway_id"`
-}

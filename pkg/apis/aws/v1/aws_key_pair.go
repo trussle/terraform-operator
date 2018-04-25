@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsKeyPair describes a AwsKeyPair resource
 type AwsKeyPair struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,16 @@ type AwsKeyPair struct {
 	Spec	AwsKeyPairSpec	`json:"spec"`
 }
 
+
+// AwsKeyPairSpec is the spec for a AwsKeyPair Resource
+type AwsKeyPairSpec struct {
+	KeyNamePrefix	string	`json:"key_name_prefix"`
+	PublicKey	string	`json:"public_key"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsKeyPairList is a list of AwsKeyPair resources
 type AwsKeyPairList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,7 +34,3 @@ type AwsKeyPairList struct {
 	Items	[]AwsKeyPair	`json:"items"`
 }
 
-type AwsKeyPairSpec struct {
-	KeyNamePrefix	string	`json:"key_name_prefix"`
-	PublicKey	string	`json:"public_key"`
-}

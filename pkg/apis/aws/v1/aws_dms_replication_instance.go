@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsDmsReplicationInstance describes a AwsDmsReplicationInstance resource
 type AwsDmsReplicationInstance struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,18 @@ type AwsDmsReplicationInstance struct {
 	Spec	AwsDmsReplicationInstanceSpec	`json:"spec"`
 }
 
+
+// AwsDmsReplicationInstanceSpec is the spec for a AwsDmsReplicationInstance Resource
+type AwsDmsReplicationInstanceSpec struct {
+	ReplicationInstanceId	string	`json:"replication_instance_id"`
+	Tags	map[string]interface{}	`json:"tags"`
+	ApplyImmediately	bool	`json:"apply_immediately"`
+	ReplicationInstanceClass	string	`json:"replication_instance_class"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsDmsReplicationInstanceList is a list of AwsDmsReplicationInstance resources
 type AwsDmsReplicationInstanceList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,9 +36,3 @@ type AwsDmsReplicationInstanceList struct {
 	Items	[]AwsDmsReplicationInstance	`json:"items"`
 }
 
-type AwsDmsReplicationInstanceSpec struct {
-	Tags	map[string]interface{}	`json:"tags"`
-	ApplyImmediately	bool	`json:"apply_immediately"`
-	ReplicationInstanceId	string	`json:"replication_instance_id"`
-	ReplicationInstanceClass	string	`json:"replication_instance_class"`
-}

@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsSesDomainIdentityVerification describes a AwsSesDomainIdentityVerification resource
 type AwsSesDomainIdentityVerification struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,15 @@ type AwsSesDomainIdentityVerification struct {
 	Spec	AwsSesDomainIdentityVerificationSpec	`json:"spec"`
 }
 
+
+// AwsSesDomainIdentityVerificationSpec is the spec for a AwsSesDomainIdentityVerification Resource
+type AwsSesDomainIdentityVerificationSpec struct {
+	Domain	string	`json:"domain"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsSesDomainIdentityVerificationList is a list of AwsSesDomainIdentityVerification resources
 type AwsSesDomainIdentityVerificationList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,6 +33,3 @@ type AwsSesDomainIdentityVerificationList struct {
 	Items	[]AwsSesDomainIdentityVerification	`json:"items"`
 }
 
-type AwsSesDomainIdentityVerificationSpec struct {
-	Domain	string	`json:"domain"`
-}

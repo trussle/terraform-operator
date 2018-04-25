@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsNatGateway describes a AwsNatGateway resource
 type AwsNatGateway struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,17 @@ type AwsNatGateway struct {
 	Spec	AwsNatGatewaySpec	`json:"spec"`
 }
 
+
+// AwsNatGatewaySpec is the spec for a AwsNatGateway Resource
+type AwsNatGatewaySpec struct {
+	Tags	map[string]interface{}	`json:"tags"`
+	AllocationId	string	`json:"allocation_id"`
+	SubnetId	string	`json:"subnet_id"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsNatGatewayList is a list of AwsNatGateway resources
 type AwsNatGatewayList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,8 +35,3 @@ type AwsNatGatewayList struct {
 	Items	[]AwsNatGateway	`json:"items"`
 }
 
-type AwsNatGatewaySpec struct {
-	AllocationId	string	`json:"allocation_id"`
-	SubnetId	string	`json:"subnet_id"`
-	Tags	map[string]interface{}	`json:"tags"`
-}

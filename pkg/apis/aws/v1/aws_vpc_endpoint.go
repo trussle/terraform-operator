@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsVpcEndpoint describes a AwsVpcEndpoint resource
 type AwsVpcEndpoint struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,19 @@ type AwsVpcEndpoint struct {
 	Spec	AwsVpcEndpointSpec	`json:"spec"`
 }
 
+
+// AwsVpcEndpointSpec is the spec for a AwsVpcEndpoint Resource
+type AwsVpcEndpointSpec struct {
+	VpcId	string	`json:"vpc_id"`
+	ServiceName	string	`json:"service_name"`
+	VpcEndpointType	string	`json:"vpc_endpoint_type"`
+	PrivateDnsEnabled	bool	`json:"private_dns_enabled"`
+	AutoAccept	bool	`json:"auto_accept"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsVpcEndpointList is a list of AwsVpcEndpoint resources
 type AwsVpcEndpointList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,10 +37,3 @@ type AwsVpcEndpointList struct {
 	Items	[]AwsVpcEndpoint	`json:"items"`
 }
 
-type AwsVpcEndpointSpec struct {
-	ServiceName	string	`json:"service_name"`
-	AutoAccept	bool	`json:"auto_accept"`
-	VpcEndpointType	string	`json:"vpc_endpoint_type"`
-	VpcId	string	`json:"vpc_id"`
-	PrivateDnsEnabled	bool	`json:"private_dns_enabled"`
-}

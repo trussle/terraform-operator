@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsIamUserPolicy describes a AwsIamUserPolicy resource
 type AwsIamUserPolicy struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,17 @@ type AwsIamUserPolicy struct {
 	Spec	AwsIamUserPolicySpec	`json:"spec"`
 }
 
+
+// AwsIamUserPolicySpec is the spec for a AwsIamUserPolicy Resource
+type AwsIamUserPolicySpec struct {
+	User	string	`json:"user"`
+	Policy	string	`json:"policy"`
+	NamePrefix	string	`json:"name_prefix"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsIamUserPolicyList is a list of AwsIamUserPolicy resources
 type AwsIamUserPolicyList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,8 +35,3 @@ type AwsIamUserPolicyList struct {
 	Items	[]AwsIamUserPolicy	`json:"items"`
 }
 
-type AwsIamUserPolicySpec struct {
-	Policy	string	`json:"policy"`
-	NamePrefix	string	`json:"name_prefix"`
-	User	string	`json:"user"`
-}

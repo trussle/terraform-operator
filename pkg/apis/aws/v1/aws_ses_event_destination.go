@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsSesEventDestination describes a AwsSesEventDestination resource
 type AwsSesEventDestination struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,21 @@ type AwsSesEventDestination struct {
 	Spec	AwsSesEventDestinationSpec	`json:"spec"`
 }
 
+
+// AwsSesEventDestinationSpec is the spec for a AwsSesEventDestination Resource
+type AwsSesEventDestinationSpec struct {
+	Name	string	`json:"name"`
+	ConfigurationSetName	string	`json:"configuration_set_name"`
+	Enabled	bool	`json:"enabled"`
+	MatchingTypes	string	`json:"matching_types"`
+	CloudwatchDestination	string	`json:"cloudwatch_destination"`
+	KinesisDestination	string	`json:"kinesis_destination"`
+	SnsDestination	string	`json:"sns_destination"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsSesEventDestinationList is a list of AwsSesEventDestination resources
 type AwsSesEventDestinationList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,12 +39,3 @@ type AwsSesEventDestinationList struct {
 	Items	[]AwsSesEventDestination	`json:"items"`
 }
 
-type AwsSesEventDestinationSpec struct {
-	KinesisDestination	interface{}	`json:"kinesis_destination"`
-	SnsDestination	interface{}	`json:"sns_destination"`
-	Name	string	`json:"name"`
-	ConfigurationSetName	string	`json:"configuration_set_name"`
-	Enabled	bool	`json:"enabled"`
-	MatchingTypes	interface{}	`json:"matching_types"`
-	CloudwatchDestination	interface{}	`json:"cloudwatch_destination"`
-}

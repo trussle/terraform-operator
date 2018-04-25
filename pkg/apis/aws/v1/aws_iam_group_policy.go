@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsIamGroupPolicy describes a AwsIamGroupPolicy resource
 type AwsIamGroupPolicy struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,17 @@ type AwsIamGroupPolicy struct {
 	Spec	AwsIamGroupPolicySpec	`json:"spec"`
 }
 
+
+// AwsIamGroupPolicySpec is the spec for a AwsIamGroupPolicy Resource
+type AwsIamGroupPolicySpec struct {
+	Group	string	`json:"group"`
+	Policy	string	`json:"policy"`
+	NamePrefix	string	`json:"name_prefix"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsIamGroupPolicyList is a list of AwsIamGroupPolicy resources
 type AwsIamGroupPolicyList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,8 +35,3 @@ type AwsIamGroupPolicyList struct {
 	Items	[]AwsIamGroupPolicy	`json:"items"`
 }
 
-type AwsIamGroupPolicySpec struct {
-	Policy	string	`json:"policy"`
-	NamePrefix	string	`json:"name_prefix"`
-	Group	string	`json:"group"`
-}

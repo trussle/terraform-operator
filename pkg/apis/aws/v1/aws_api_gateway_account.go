@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsApiGatewayAccount describes a AwsApiGatewayAccount resource
 type AwsApiGatewayAccount struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,15 @@ type AwsApiGatewayAccount struct {
 	Spec	AwsApiGatewayAccountSpec	`json:"spec"`
 }
 
+
+// AwsApiGatewayAccountSpec is the spec for a AwsApiGatewayAccount Resource
+type AwsApiGatewayAccountSpec struct {
+	CloudwatchRoleArn	string	`json:"cloudwatch_role_arn"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsApiGatewayAccountList is a list of AwsApiGatewayAccount resources
 type AwsApiGatewayAccountList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,6 +33,3 @@ type AwsApiGatewayAccountList struct {
 	Items	[]AwsApiGatewayAccount	`json:"items"`
 }
 
-type AwsApiGatewayAccountSpec struct {
-	CloudwatchRoleArn	string	`json:"cloudwatch_role_arn"`
-}

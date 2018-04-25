@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsEcsService describes a AwsEcsService resource
 type AwsEcsService struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,26 @@ type AwsEcsService struct {
 	Spec	AwsEcsServiceSpec	`json:"spec"`
 }
 
+
+// AwsEcsServiceSpec is the spec for a AwsEcsService Resource
+type AwsEcsServiceSpec struct {
+	Name	string	`json:"name"`
+	LoadBalancer	string	`json:"load_balancer"`
+	PlacementStrategy	string	`json:"placement_strategy"`
+	PlacementConstraints	string	`json:"placement_constraints"`
+	ServiceRegistries	string	`json:"service_registries"`
+	DeploymentMaximumPercent	int	`json:"deployment_maximum_percent"`
+	DeploymentMinimumHealthyPercent	int	`json:"deployment_minimum_healthy_percent"`
+	NetworkConfiguration	[]interface{}	`json:"network_configuration"`
+	TaskDefinition	string	`json:"task_definition"`
+	HealthCheckGracePeriodSeconds	int	`json:"health_check_grace_period_seconds"`
+	DesiredCount	int	`json:"desired_count"`
+	LaunchType	string	`json:"launch_type"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsEcsServiceList is a list of AwsEcsService resources
 type AwsEcsServiceList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,17 +44,3 @@ type AwsEcsServiceList struct {
 	Items	[]AwsEcsService	`json:"items"`
 }
 
-type AwsEcsServiceSpec struct {
-	PlacementConstraints	interface{}	`json:"placement_constraints"`
-	Name	string	`json:"name"`
-	HealthCheckGracePeriodSeconds	int	`json:"health_check_grace_period_seconds"`
-	PlacementStrategy	interface{}	`json:"placement_strategy"`
-	LoadBalancer	interface{}	`json:"load_balancer"`
-	TaskDefinition	string	`json:"task_definition"`
-	DesiredCount	int	`json:"desired_count"`
-	ServiceRegistries	interface{}	`json:"service_registries"`
-	NetworkConfiguration	[]interface{}	`json:"network_configuration"`
-	LaunchType	string	`json:"launch_type"`
-	DeploymentMaximumPercent	int	`json:"deployment_maximum_percent"`
-	DeploymentMinimumHealthyPercent	int	`json:"deployment_minimum_healthy_percent"`
-}

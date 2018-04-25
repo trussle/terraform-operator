@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsEbsSnapshot describes a AwsEbsSnapshot resource
 type AwsEbsSnapshot struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,17 @@ type AwsEbsSnapshot struct {
 	Spec	AwsEbsSnapshotSpec	`json:"spec"`
 }
 
+
+// AwsEbsSnapshotSpec is the spec for a AwsEbsSnapshot Resource
+type AwsEbsSnapshotSpec struct {
+	VolumeId	string	`json:"volume_id"`
+	Tags	map[string]interface{}	`json:"tags"`
+	Description	string	`json:"description"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsEbsSnapshotList is a list of AwsEbsSnapshot resources
 type AwsEbsSnapshotList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,8 +35,3 @@ type AwsEbsSnapshotList struct {
 	Items	[]AwsEbsSnapshot	`json:"items"`
 }
 
-type AwsEbsSnapshotSpec struct {
-	Description	string	`json:"description"`
-	Tags	map[string]interface{}	`json:"tags"`
-	VolumeId	string	`json:"volume_id"`
-}

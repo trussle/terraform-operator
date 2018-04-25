@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsEmrInstanceGroup describes a AwsEmrInstanceGroup resource
 type AwsEmrInstanceGroup struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,20 @@ type AwsEmrInstanceGroup struct {
 	Spec	AwsEmrInstanceGroupSpec	`json:"spec"`
 }
 
+
+// AwsEmrInstanceGroupSpec is the spec for a AwsEmrInstanceGroup Resource
+type AwsEmrInstanceGroupSpec struct {
+	EbsOptimized	bool	`json:"ebs_optimized"`
+	EbsConfig	string	`json:"ebs_config"`
+	ClusterId	string	`json:"cluster_id"`
+	InstanceType	string	`json:"instance_type"`
+	InstanceCount	int	`json:"instance_count"`
+	Name	string	`json:"name"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsEmrInstanceGroupList is a list of AwsEmrInstanceGroup resources
 type AwsEmrInstanceGroupList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,11 +38,3 @@ type AwsEmrInstanceGroupList struct {
 	Items	[]AwsEmrInstanceGroup	`json:"items"`
 }
 
-type AwsEmrInstanceGroupSpec struct {
-	InstanceCount	int	`json:"instance_count"`
-	Name	string	`json:"name"`
-	EbsOptimized	bool	`json:"ebs_optimized"`
-	EbsConfig	interface{}	`json:"ebs_config"`
-	ClusterId	string	`json:"cluster_id"`
-	InstanceType	string	`json:"instance_type"`
-}

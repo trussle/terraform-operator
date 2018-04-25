@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsAutoscalingGroup describes a AwsAutoscalingGroup resource
 type AwsAutoscalingGroup struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,32 @@ type AwsAutoscalingGroup struct {
 	Spec	AwsAutoscalingGroupSpec	`json:"spec"`
 }
 
+
+// AwsAutoscalingGroupSpec is the spec for a AwsAutoscalingGroup Resource
+type AwsAutoscalingGroupSpec struct {
+	TerminationPolicies	[]interface{}	`json:"termination_policies"`
+	WaitForElbCapacity	int	`json:"wait_for_elb_capacity"`
+	LaunchConfiguration	string	`json:"launch_configuration"`
+	ProtectFromScaleIn	bool	`json:"protect_from_scale_in"`
+	InitialLifecycleHook	string	`json:"initial_lifecycle_hook"`
+	PlacementGroup	string	`json:"placement_group"`
+	EnabledMetrics	string	`json:"enabled_metrics"`
+	Tag	string	`json:"tag"`
+	HealthCheckGracePeriod	int	`json:"health_check_grace_period"`
+	MetricsGranularity	string	`json:"metrics_granularity"`
+	MinSize	int	`json:"min_size"`
+	SuspendedProcesses	string	`json:"suspended_processes"`
+	MaxSize	int	`json:"max_size"`
+	MinElbCapacity	int	`json:"min_elb_capacity"`
+	ForceDelete	bool	`json:"force_delete"`
+	WaitForCapacityTimeout	string	`json:"wait_for_capacity_timeout"`
+	Tags	[]interface{}	`json:"tags"`
+	NamePrefix	string	`json:"name_prefix"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsAutoscalingGroupList is a list of AwsAutoscalingGroup resources
 type AwsAutoscalingGroupList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,23 +50,3 @@ type AwsAutoscalingGroupList struct {
 	Items	[]AwsAutoscalingGroup	`json:"items"`
 }
 
-type AwsAutoscalingGroupSpec struct {
-	ForceDelete	bool	`json:"force_delete"`
-	TerminationPolicies	[]interface{}	`json:"termination_policies"`
-	WaitForElbCapacity	int	`json:"wait_for_elb_capacity"`
-	NamePrefix	string	`json:"name_prefix"`
-	Tags	[]interface{}	`json:"tags"`
-	LaunchConfiguration	string	`json:"launch_configuration"`
-	MinSize	int	`json:"min_size"`
-	SuspendedProcesses	interface{}	`json:"suspended_processes"`
-	MetricsGranularity	string	`json:"metrics_granularity"`
-	MinElbCapacity	int	`json:"min_elb_capacity"`
-	PlacementGroup	string	`json:"placement_group"`
-	WaitForCapacityTimeout	string	`json:"wait_for_capacity_timeout"`
-	Tag	interface{}	`json:"tag"`
-	MaxSize	int	`json:"max_size"`
-	ProtectFromScaleIn	bool	`json:"protect_from_scale_in"`
-	HealthCheckGracePeriod	int	`json:"health_check_grace_period"`
-	EnabledMetrics	interface{}	`json:"enabled_metrics"`
-	InitialLifecycleHook	interface{}	`json:"initial_lifecycle_hook"`
-}

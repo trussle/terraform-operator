@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsNetworkInterfaceAttachment describes a AwsNetworkInterfaceAttachment resource
 type AwsNetworkInterfaceAttachment struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,17 @@ type AwsNetworkInterfaceAttachment struct {
 	Spec	AwsNetworkInterfaceAttachmentSpec	`json:"spec"`
 }
 
+
+// AwsNetworkInterfaceAttachmentSpec is the spec for a AwsNetworkInterfaceAttachment Resource
+type AwsNetworkInterfaceAttachmentSpec struct {
+	DeviceIndex	int	`json:"device_index"`
+	InstanceId	string	`json:"instance_id"`
+	NetworkInterfaceId	string	`json:"network_interface_id"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsNetworkInterfaceAttachmentList is a list of AwsNetworkInterfaceAttachment resources
 type AwsNetworkInterfaceAttachmentList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,8 +35,3 @@ type AwsNetworkInterfaceAttachmentList struct {
 	Items	[]AwsNetworkInterfaceAttachment	`json:"items"`
 }
 
-type AwsNetworkInterfaceAttachmentSpec struct {
-	InstanceId	string	`json:"instance_id"`
-	NetworkInterfaceId	string	`json:"network_interface_id"`
-	DeviceIndex	int	`json:"device_index"`
-}

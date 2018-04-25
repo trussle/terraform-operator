@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsBatchJobDefinition describes a AwsBatchJobDefinition resource
 type AwsBatchJobDefinition struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,19 @@ type AwsBatchJobDefinition struct {
 	Spec	AwsBatchJobDefinitionSpec	`json:"spec"`
 }
 
+
+// AwsBatchJobDefinitionSpec is the spec for a AwsBatchJobDefinition Resource
+type AwsBatchJobDefinitionSpec struct {
+	RetryStrategy	[]interface{}	`json:"retry_strategy"`
+	Type	string	`json:"type"`
+	Name	string	`json:"name"`
+	ContainerProperties	string	`json:"container_properties"`
+	Parameters	map[string]interface{}	`json:"parameters"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsBatchJobDefinitionList is a list of AwsBatchJobDefinition resources
 type AwsBatchJobDefinitionList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,10 +37,3 @@ type AwsBatchJobDefinitionList struct {
 	Items	[]AwsBatchJobDefinition	`json:"items"`
 }
 
-type AwsBatchJobDefinitionSpec struct {
-	Name	string	`json:"name"`
-	ContainerProperties	string	`json:"container_properties"`
-	Parameters	map[string]interface{}	`json:"parameters"`
-	RetryStrategy	[]interface{}	`json:"retry_strategy"`
-	Type	string	`json:"type"`
-}

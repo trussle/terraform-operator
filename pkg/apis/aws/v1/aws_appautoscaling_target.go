@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsAppautoscalingTarget describes a AwsAppautoscalingTarget resource
 type AwsAppautoscalingTarget struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,19 @@ type AwsAppautoscalingTarget struct {
 	Spec	AwsAppautoscalingTargetSpec	`json:"spec"`
 }
 
+
+// AwsAppautoscalingTargetSpec is the spec for a AwsAppautoscalingTarget Resource
+type AwsAppautoscalingTargetSpec struct {
+	ResourceId	string	`json:"resource_id"`
+	ScalableDimension	string	`json:"scalable_dimension"`
+	ServiceNamespace	string	`json:"service_namespace"`
+	MaxCapacity	int	`json:"max_capacity"`
+	MinCapacity	int	`json:"min_capacity"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsAppautoscalingTargetList is a list of AwsAppautoscalingTarget resources
 type AwsAppautoscalingTargetList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,10 +37,3 @@ type AwsAppautoscalingTargetList struct {
 	Items	[]AwsAppautoscalingTarget	`json:"items"`
 }
 
-type AwsAppautoscalingTargetSpec struct {
-	ScalableDimension	string	`json:"scalable_dimension"`
-	ServiceNamespace	string	`json:"service_namespace"`
-	MaxCapacity	int	`json:"max_capacity"`
-	MinCapacity	int	`json:"min_capacity"`
-	ResourceId	string	`json:"resource_id"`
-}

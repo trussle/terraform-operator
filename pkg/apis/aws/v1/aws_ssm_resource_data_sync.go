@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsSsmResourceDataSync describes a AwsSsmResourceDataSync resource
 type AwsSsmResourceDataSync struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,16 @@ type AwsSsmResourceDataSync struct {
 	Spec	AwsSsmResourceDataSyncSpec	`json:"spec"`
 }
 
+
+// AwsSsmResourceDataSyncSpec is the spec for a AwsSsmResourceDataSync Resource
+type AwsSsmResourceDataSyncSpec struct {
+	Name	string	`json:"name"`
+	S3Destination	[]interface{}	`json:"s3_destination"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsSsmResourceDataSyncList is a list of AwsSsmResourceDataSync resources
 type AwsSsmResourceDataSyncList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,7 +34,3 @@ type AwsSsmResourceDataSyncList struct {
 	Items	[]AwsSsmResourceDataSync	`json:"items"`
 }
 
-type AwsSsmResourceDataSyncSpec struct {
-	Name	string	`json:"name"`
-	S3Destination	[]interface{}	`json:"s3_destination"`
-}

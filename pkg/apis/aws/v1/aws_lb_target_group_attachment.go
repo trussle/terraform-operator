@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsLbTargetGroupAttachment describes a AwsLbTargetGroupAttachment resource
 type AwsLbTargetGroupAttachment struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,18 @@ type AwsLbTargetGroupAttachment struct {
 	Spec	AwsLbTargetGroupAttachmentSpec	`json:"spec"`
 }
 
+
+// AwsLbTargetGroupAttachmentSpec is the spec for a AwsLbTargetGroupAttachment Resource
+type AwsLbTargetGroupAttachmentSpec struct {
+	Port	int	`json:"port"`
+	AvailabilityZone	string	`json:"availability_zone"`
+	TargetGroupArn	string	`json:"target_group_arn"`
+	TargetId	string	`json:"target_id"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsLbTargetGroupAttachmentList is a list of AwsLbTargetGroupAttachment resources
 type AwsLbTargetGroupAttachmentList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,9 +36,3 @@ type AwsLbTargetGroupAttachmentList struct {
 	Items	[]AwsLbTargetGroupAttachment	`json:"items"`
 }
 
-type AwsLbTargetGroupAttachmentSpec struct {
-	TargetId	string	`json:"target_id"`
-	Port	int	`json:"port"`
-	AvailabilityZone	string	`json:"availability_zone"`
-	TargetGroupArn	string	`json:"target_group_arn"`
-}

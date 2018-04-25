@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsApiGatewayUsagePlanKey describes a AwsApiGatewayUsagePlanKey resource
 type AwsApiGatewayUsagePlanKey struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,17 @@ type AwsApiGatewayUsagePlanKey struct {
 	Spec	AwsApiGatewayUsagePlanKeySpec	`json:"spec"`
 }
 
+
+// AwsApiGatewayUsagePlanKeySpec is the spec for a AwsApiGatewayUsagePlanKey Resource
+type AwsApiGatewayUsagePlanKeySpec struct {
+	KeyId	string	`json:"key_id"`
+	KeyType	string	`json:"key_type"`
+	UsagePlanId	string	`json:"usage_plan_id"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsApiGatewayUsagePlanKeyList is a list of AwsApiGatewayUsagePlanKey resources
 type AwsApiGatewayUsagePlanKeyList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,8 +35,3 @@ type AwsApiGatewayUsagePlanKeyList struct {
 	Items	[]AwsApiGatewayUsagePlanKey	`json:"items"`
 }
 
-type AwsApiGatewayUsagePlanKeySpec struct {
-	KeyType	string	`json:"key_type"`
-	UsagePlanId	string	`json:"usage_plan_id"`
-	KeyId	string	`json:"key_id"`
-}

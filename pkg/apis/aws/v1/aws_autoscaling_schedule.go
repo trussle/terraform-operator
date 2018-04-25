@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsAutoscalingSchedule describes a AwsAutoscalingSchedule resource
 type AwsAutoscalingSchedule struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,16 @@ type AwsAutoscalingSchedule struct {
 	Spec	AwsAutoscalingScheduleSpec	`json:"spec"`
 }
 
+
+// AwsAutoscalingScheduleSpec is the spec for a AwsAutoscalingSchedule Resource
+type AwsAutoscalingScheduleSpec struct {
+	AutoscalingGroupName	string	`json:"autoscaling_group_name"`
+	ScheduledActionName	string	`json:"scheduled_action_name"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsAutoscalingScheduleList is a list of AwsAutoscalingSchedule resources
 type AwsAutoscalingScheduleList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,7 +34,3 @@ type AwsAutoscalingScheduleList struct {
 	Items	[]AwsAutoscalingSchedule	`json:"items"`
 }
 
-type AwsAutoscalingScheduleSpec struct {
-	ScheduledActionName	string	`json:"scheduled_action_name"`
-	AutoscalingGroupName	string	`json:"autoscaling_group_name"`
-}

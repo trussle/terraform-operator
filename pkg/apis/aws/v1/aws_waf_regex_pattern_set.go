@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsWafRegexPatternSet describes a AwsWafRegexPatternSet resource
 type AwsWafRegexPatternSet struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,16 @@ type AwsWafRegexPatternSet struct {
 	Spec	AwsWafRegexPatternSetSpec	`json:"spec"`
 }
 
+
+// AwsWafRegexPatternSetSpec is the spec for a AwsWafRegexPatternSet Resource
+type AwsWafRegexPatternSetSpec struct {
+	Name	string	`json:"name"`
+	RegexPatternStrings	string	`json:"regex_pattern_strings"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsWafRegexPatternSetList is a list of AwsWafRegexPatternSet resources
 type AwsWafRegexPatternSetList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,7 +34,3 @@ type AwsWafRegexPatternSetList struct {
 	Items	[]AwsWafRegexPatternSet	`json:"items"`
 }
 
-type AwsWafRegexPatternSetSpec struct {
-	Name	string	`json:"name"`
-	RegexPatternStrings	interface{}	`json:"regex_pattern_strings"`
-}

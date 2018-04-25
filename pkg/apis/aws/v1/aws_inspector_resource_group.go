@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsInspectorResourceGroup describes a AwsInspectorResourceGroup resource
 type AwsInspectorResourceGroup struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,15 @@ type AwsInspectorResourceGroup struct {
 	Spec	AwsInspectorResourceGroupSpec	`json:"spec"`
 }
 
+
+// AwsInspectorResourceGroupSpec is the spec for a AwsInspectorResourceGroup Resource
+type AwsInspectorResourceGroupSpec struct {
+	Tags	map[string]interface{}	`json:"tags"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsInspectorResourceGroupList is a list of AwsInspectorResourceGroup resources
 type AwsInspectorResourceGroupList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,6 +33,3 @@ type AwsInspectorResourceGroupList struct {
 	Items	[]AwsInspectorResourceGroup	`json:"items"`
 }
 
-type AwsInspectorResourceGroupSpec struct {
-	Tags	map[string]interface{}	`json:"tags"`
-}

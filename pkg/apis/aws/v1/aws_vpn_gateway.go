@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsVpnGateway describes a AwsVpnGateway resource
 type AwsVpnGateway struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,16 @@ type AwsVpnGateway struct {
 	Spec	AwsVpnGatewaySpec	`json:"spec"`
 }
 
+
+// AwsVpnGatewaySpec is the spec for a AwsVpnGateway Resource
+type AwsVpnGatewaySpec struct {
+	AvailabilityZone	string	`json:"availability_zone"`
+	Tags	map[string]interface{}	`json:"tags"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsVpnGatewayList is a list of AwsVpnGateway resources
 type AwsVpnGatewayList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,7 +34,3 @@ type AwsVpnGatewayList struct {
 	Items	[]AwsVpnGateway	`json:"items"`
 }
 
-type AwsVpnGatewaySpec struct {
-	AvailabilityZone	string	`json:"availability_zone"`
-	Tags	map[string]interface{}	`json:"tags"`
-}

@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsBatchComputeEnvironment describes a AwsBatchComputeEnvironment resource
 type AwsBatchComputeEnvironment struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,19 @@ type AwsBatchComputeEnvironment struct {
 	Spec	AwsBatchComputeEnvironmentSpec	`json:"spec"`
 }
 
+
+// AwsBatchComputeEnvironmentSpec is the spec for a AwsBatchComputeEnvironment Resource
+type AwsBatchComputeEnvironmentSpec struct {
+	ComputeEnvironmentName	string	`json:"compute_environment_name"`
+	ComputeResources	[]interface{}	`json:"compute_resources"`
+	ServiceRole	string	`json:"service_role"`
+	Type	string	`json:"type"`
+	State	string	`json:"state"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsBatchComputeEnvironmentList is a list of AwsBatchComputeEnvironment resources
 type AwsBatchComputeEnvironmentList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,10 +37,3 @@ type AwsBatchComputeEnvironmentList struct {
 	Items	[]AwsBatchComputeEnvironment	`json:"items"`
 }
 
-type AwsBatchComputeEnvironmentSpec struct {
-	ComputeResources	[]interface{}	`json:"compute_resources"`
-	ServiceRole	string	`json:"service_role"`
-	Type	string	`json:"type"`
-	ComputeEnvironmentName	string	`json:"compute_environment_name"`
-	State	string	`json:"state"`
-}

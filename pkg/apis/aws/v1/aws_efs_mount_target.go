@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsEfsMountTarget describes a AwsEfsMountTarget resource
 type AwsEfsMountTarget struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,16 @@ type AwsEfsMountTarget struct {
 	Spec	AwsEfsMountTargetSpec	`json:"spec"`
 }
 
+
+// AwsEfsMountTargetSpec is the spec for a AwsEfsMountTarget Resource
+type AwsEfsMountTargetSpec struct {
+	FileSystemId	string	`json:"file_system_id"`
+	SubnetId	string	`json:"subnet_id"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsEfsMountTargetList is a list of AwsEfsMountTarget resources
 type AwsEfsMountTargetList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,7 +34,3 @@ type AwsEfsMountTargetList struct {
 	Items	[]AwsEfsMountTarget	`json:"items"`
 }
 
-type AwsEfsMountTargetSpec struct {
-	FileSystemId	string	`json:"file_system_id"`
-	SubnetId	string	`json:"subnet_id"`
-}

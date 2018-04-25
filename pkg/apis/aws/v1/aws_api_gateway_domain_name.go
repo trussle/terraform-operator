@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsApiGatewayDomainName describes a AwsApiGatewayDomainName resource
 type AwsApiGatewayDomainName struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,20 @@ type AwsApiGatewayDomainName struct {
 	Spec	AwsApiGatewayDomainNameSpec	`json:"spec"`
 }
 
+
+// AwsApiGatewayDomainNameSpec is the spec for a AwsApiGatewayDomainName Resource
+type AwsApiGatewayDomainNameSpec struct {
+	CertificateBody	string	`json:"certificate_body"`
+	CertificateName	string	`json:"certificate_name"`
+	DomainName	string	`json:"domain_name"`
+	CertificateChain	string	`json:"certificate_chain"`
+	CertificatePrivateKey	string	`json:"certificate_private_key"`
+	CertificateArn	string	`json:"certificate_arn"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsApiGatewayDomainNameList is a list of AwsApiGatewayDomainName resources
 type AwsApiGatewayDomainNameList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,11 +38,3 @@ type AwsApiGatewayDomainNameList struct {
 	Items	[]AwsApiGatewayDomainName	`json:"items"`
 }
 
-type AwsApiGatewayDomainNameSpec struct {
-	CertificateBody	string	`json:"certificate_body"`
-	DomainName	string	`json:"domain_name"`
-	CertificateArn	string	`json:"certificate_arn"`
-	CertificateChain	string	`json:"certificate_chain"`
-	CertificateName	string	`json:"certificate_name"`
-	CertificatePrivateKey	string	`json:"certificate_private_key"`
-}

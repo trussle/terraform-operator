@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsVpcDhcpOptions describes a AwsVpcDhcpOptions resource
 type AwsVpcDhcpOptions struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,13 +17,8 @@ type AwsVpcDhcpOptions struct {
 	Spec	AwsVpcDhcpOptionsSpec	`json:"spec"`
 }
 
-type AwsVpcDhcpOptionsList struct {
-	meta_v1.TypeMeta	`json:",inline"`
-	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
 
-	Items	[]AwsVpcDhcpOptions	`json:"items"`
-}
-
+// AwsVpcDhcpOptionsSpec is the spec for a AwsVpcDhcpOptions Resource
 type AwsVpcDhcpOptionsSpec struct {
 	DomainName	string	`json:"domain_name"`
 	DomainNameServers	[]interface{}	`json:"domain_name_servers"`
@@ -31,3 +27,14 @@ type AwsVpcDhcpOptionsSpec struct {
 	NetbiosNameServers	[]interface{}	`json:"netbios_name_servers"`
 	Tags	map[string]interface{}	`json:"tags"`
 }
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsVpcDhcpOptionsList is a list of AwsVpcDhcpOptions resources
+type AwsVpcDhcpOptionsList struct {
+	meta_v1.TypeMeta	`json:",inline"`
+	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
+
+	Items	[]AwsVpcDhcpOptions	`json:"items"`
+}
+

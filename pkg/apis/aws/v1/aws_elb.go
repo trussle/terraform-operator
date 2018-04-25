@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsElb describes a AwsElb resource
 type AwsElb struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,22 @@ type AwsElb struct {
 	Spec	AwsElbSpec	`json:"spec"`
 }
 
+
+// AwsElbSpec is the spec for a AwsElb Resource
+type AwsElbSpec struct {
+	Listener	string	`json:"listener"`
+	CrossZoneLoadBalancing	bool	`json:"cross_zone_load_balancing"`
+	IdleTimeout	int	`json:"idle_timeout"`
+	AccessLogs	[]interface{}	`json:"access_logs"`
+	ConnectionDrainingTimeout	int	`json:"connection_draining_timeout"`
+	Tags	map[string]interface{}	`json:"tags"`
+	NamePrefix	string	`json:"name_prefix"`
+	ConnectionDraining	bool	`json:"connection_draining"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsElbList is a list of AwsElb resources
 type AwsElbList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,13 +40,3 @@ type AwsElbList struct {
 	Items	[]AwsElb	`json:"items"`
 }
 
-type AwsElbSpec struct {
-	ConnectionDraining	bool	`json:"connection_draining"`
-	AccessLogs	[]interface{}	`json:"access_logs"`
-	Tags	map[string]interface{}	`json:"tags"`
-	IdleTimeout	int	`json:"idle_timeout"`
-	ConnectionDrainingTimeout	int	`json:"connection_draining_timeout"`
-	CrossZoneLoadBalancing	bool	`json:"cross_zone_load_balancing"`
-	Listener	interface{}	`json:"listener"`
-	NamePrefix	string	`json:"name_prefix"`
-}

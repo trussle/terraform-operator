@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsElasticacheCluster describes a AwsElasticacheCluster resource
 type AwsElasticacheCluster struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,22 @@ type AwsElasticacheCluster struct {
 	Spec	AwsElasticacheClusterSpec	`json:"spec"`
 }
 
+
+// AwsElasticacheClusterSpec is the spec for a AwsElasticacheCluster Resource
+type AwsElasticacheClusterSpec struct {
+	Port	int	`json:"port"`
+	Tags	map[string]interface{}	`json:"tags"`
+	SnapshotArns	string	`json:"snapshot_arns"`
+	SnapshotName	string	`json:"snapshot_name"`
+	SnapshotRetentionLimit	int	`json:"snapshot_retention_limit"`
+	ClusterId	string	`json:"cluster_id"`
+	NotificationTopicArn	string	`json:"notification_topic_arn"`
+	AvailabilityZones	string	`json:"availability_zones"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsElasticacheClusterList is a list of AwsElasticacheCluster resources
 type AwsElasticacheClusterList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,13 +40,3 @@ type AwsElasticacheClusterList struct {
 	Items	[]AwsElasticacheCluster	`json:"items"`
 }
 
-type AwsElasticacheClusterSpec struct {
-	AvailabilityZones	interface{}	`json:"availability_zones"`
-	SnapshotArns	interface{}	`json:"snapshot_arns"`
-	ClusterId	string	`json:"cluster_id"`
-	Port	int	`json:"port"`
-	SnapshotRetentionLimit	int	`json:"snapshot_retention_limit"`
-	Tags	map[string]interface{}	`json:"tags"`
-	SnapshotName	string	`json:"snapshot_name"`
-	NotificationTopicArn	string	`json:"notification_topic_arn"`
-}

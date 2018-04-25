@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsEcrRepositoryPolicy describes a AwsEcrRepositoryPolicy resource
 type AwsEcrRepositoryPolicy struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,16 @@ type AwsEcrRepositoryPolicy struct {
 	Spec	AwsEcrRepositoryPolicySpec	`json:"spec"`
 }
 
+
+// AwsEcrRepositoryPolicySpec is the spec for a AwsEcrRepositoryPolicy Resource
+type AwsEcrRepositoryPolicySpec struct {
+	Repository	string	`json:"repository"`
+	Policy	string	`json:"policy"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsEcrRepositoryPolicyList is a list of AwsEcrRepositoryPolicy resources
 type AwsEcrRepositoryPolicyList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,7 +34,3 @@ type AwsEcrRepositoryPolicyList struct {
 	Items	[]AwsEcrRepositoryPolicy	`json:"items"`
 }
 
-type AwsEcrRepositoryPolicySpec struct {
-	Repository	string	`json:"repository"`
-	Policy	string	`json:"policy"`
-}

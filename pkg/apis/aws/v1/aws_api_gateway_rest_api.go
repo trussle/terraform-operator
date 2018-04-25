@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsApiGatewayRestApi describes a AwsApiGatewayRestApi resource
 type AwsApiGatewayRestApi struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,19 @@ type AwsApiGatewayRestApi struct {
 	Spec	AwsApiGatewayRestApiSpec	`json:"spec"`
 }
 
+
+// AwsApiGatewayRestApiSpec is the spec for a AwsApiGatewayRestApi Resource
+type AwsApiGatewayRestApiSpec struct {
+	Body	string	`json:"body"`
+	MinimumCompressionSize	int	`json:"minimum_compression_size"`
+	Name	string	`json:"name"`
+	Description	string	`json:"description"`
+	BinaryMediaTypes	[]interface{}	`json:"binary_media_types"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsApiGatewayRestApiList is a list of AwsApiGatewayRestApi resources
 type AwsApiGatewayRestApiList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,10 +37,3 @@ type AwsApiGatewayRestApiList struct {
 	Items	[]AwsApiGatewayRestApi	`json:"items"`
 }
 
-type AwsApiGatewayRestApiSpec struct {
-	Name	string	`json:"name"`
-	Description	string	`json:"description"`
-	BinaryMediaTypes	[]interface{}	`json:"binary_media_types"`
-	Body	string	`json:"body"`
-	MinimumCompressionSize	int	`json:"minimum_compression_size"`
-}

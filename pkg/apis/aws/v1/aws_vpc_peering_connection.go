@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsVpcPeeringConnection describes a AwsVpcPeeringConnection resource
 type AwsVpcPeeringConnection struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,18 @@ type AwsVpcPeeringConnection struct {
 	Spec	AwsVpcPeeringConnectionSpec	`json:"spec"`
 }
 
+
+// AwsVpcPeeringConnectionSpec is the spec for a AwsVpcPeeringConnection Resource
+type AwsVpcPeeringConnectionSpec struct {
+	PeerVpcId	string	`json:"peer_vpc_id"`
+	VpcId	string	`json:"vpc_id"`
+	AutoAccept	bool	`json:"auto_accept"`
+	Tags	map[string]interface{}	`json:"tags"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsVpcPeeringConnectionList is a list of AwsVpcPeeringConnection resources
 type AwsVpcPeeringConnectionList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,9 +36,3 @@ type AwsVpcPeeringConnectionList struct {
 	Items	[]AwsVpcPeeringConnection	`json:"items"`
 }
 
-type AwsVpcPeeringConnectionSpec struct {
-	Tags	map[string]interface{}	`json:"tags"`
-	PeerVpcId	string	`json:"peer_vpc_id"`
-	VpcId	string	`json:"vpc_id"`
-	AutoAccept	bool	`json:"auto_accept"`
-}

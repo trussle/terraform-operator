@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsSecurityGroup describes a AwsSecurityGroup resource
 type AwsSecurityGroup struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,18 @@ type AwsSecurityGroup struct {
 	Spec	AwsSecurityGroupSpec	`json:"spec"`
 }
 
+
+// AwsSecurityGroupSpec is the spec for a AwsSecurityGroup Resource
+type AwsSecurityGroupSpec struct {
+	RevokeRulesOnDelete	bool	`json:"revoke_rules_on_delete"`
+	Tags	map[string]interface{}	`json:"tags"`
+	NamePrefix	string	`json:"name_prefix"`
+	Description	string	`json:"description"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsSecurityGroupList is a list of AwsSecurityGroup resources
 type AwsSecurityGroupList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,9 +36,3 @@ type AwsSecurityGroupList struct {
 	Items	[]AwsSecurityGroup	`json:"items"`
 }
 
-type AwsSecurityGroupSpec struct {
-	RevokeRulesOnDelete	bool	`json:"revoke_rules_on_delete"`
-	NamePrefix	string	`json:"name_prefix"`
-	Description	string	`json:"description"`
-	Tags	map[string]interface{}	`json:"tags"`
-}

@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsEgressOnlyInternetGateway describes a AwsEgressOnlyInternetGateway resource
 type AwsEgressOnlyInternetGateway struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,15 @@ type AwsEgressOnlyInternetGateway struct {
 	Spec	AwsEgressOnlyInternetGatewaySpec	`json:"spec"`
 }
 
+
+// AwsEgressOnlyInternetGatewaySpec is the spec for a AwsEgressOnlyInternetGateway Resource
+type AwsEgressOnlyInternetGatewaySpec struct {
+	VpcId	string	`json:"vpc_id"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsEgressOnlyInternetGatewayList is a list of AwsEgressOnlyInternetGateway resources
 type AwsEgressOnlyInternetGatewayList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,6 +33,3 @@ type AwsEgressOnlyInternetGatewayList struct {
 	Items	[]AwsEgressOnlyInternetGateway	`json:"items"`
 }
 
-type AwsEgressOnlyInternetGatewaySpec struct {
-	VpcId	string	`json:"vpc_id"`
-}

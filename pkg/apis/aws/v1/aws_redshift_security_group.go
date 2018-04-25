@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsRedshiftSecurityGroup describes a AwsRedshiftSecurityGroup resource
 type AwsRedshiftSecurityGroup struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,17 @@ type AwsRedshiftSecurityGroup struct {
 	Spec	AwsRedshiftSecurityGroupSpec	`json:"spec"`
 }
 
+
+// AwsRedshiftSecurityGroupSpec is the spec for a AwsRedshiftSecurityGroup Resource
+type AwsRedshiftSecurityGroupSpec struct {
+	Ingress	string	`json:"ingress"`
+	Name	string	`json:"name"`
+	Description	string	`json:"description"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsRedshiftSecurityGroupList is a list of AwsRedshiftSecurityGroup resources
 type AwsRedshiftSecurityGroupList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,8 +35,3 @@ type AwsRedshiftSecurityGroupList struct {
 	Items	[]AwsRedshiftSecurityGroup	`json:"items"`
 }
 
-type AwsRedshiftSecurityGroupSpec struct {
-	Name	string	`json:"name"`
-	Description	string	`json:"description"`
-	Ingress	interface{}	`json:"ingress"`
-}

@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsElasticacheSecurityGroup describes a AwsElasticacheSecurityGroup resource
 type AwsElasticacheSecurityGroup struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,17 @@ type AwsElasticacheSecurityGroup struct {
 	Spec	AwsElasticacheSecurityGroupSpec	`json:"spec"`
 }
 
+
+// AwsElasticacheSecurityGroupSpec is the spec for a AwsElasticacheSecurityGroup Resource
+type AwsElasticacheSecurityGroupSpec struct {
+	Description	string	`json:"description"`
+	Name	string	`json:"name"`
+	SecurityGroupNames	string	`json:"security_group_names"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsElasticacheSecurityGroupList is a list of AwsElasticacheSecurityGroup resources
 type AwsElasticacheSecurityGroupList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,8 +35,3 @@ type AwsElasticacheSecurityGroupList struct {
 	Items	[]AwsElasticacheSecurityGroup	`json:"items"`
 }
 
-type AwsElasticacheSecurityGroupSpec struct {
-	SecurityGroupNames	interface{}	`json:"security_group_names"`
-	Description	string	`json:"description"`
-	Name	string	`json:"name"`
-}

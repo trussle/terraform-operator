@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsAcmCertificateValidation describes a AwsAcmCertificateValidation resource
 type AwsAcmCertificateValidation struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,16 @@ type AwsAcmCertificateValidation struct {
 	Spec	AwsAcmCertificateValidationSpec	`json:"spec"`
 }
 
+
+// AwsAcmCertificateValidationSpec is the spec for a AwsAcmCertificateValidation Resource
+type AwsAcmCertificateValidationSpec struct {
+	CertificateArn	string	`json:"certificate_arn"`
+	ValidationRecordFqdns	string	`json:"validation_record_fqdns"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsAcmCertificateValidationList is a list of AwsAcmCertificateValidation resources
 type AwsAcmCertificateValidationList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,7 +34,3 @@ type AwsAcmCertificateValidationList struct {
 	Items	[]AwsAcmCertificateValidation	`json:"items"`
 }
 
-type AwsAcmCertificateValidationSpec struct {
-	CertificateArn	string	`json:"certificate_arn"`
-	ValidationRecordFqdns	interface{}	`json:"validation_record_fqdns"`
-}

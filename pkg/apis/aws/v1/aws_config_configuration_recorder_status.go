@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsConfigConfigurationRecorderStatus describes a AwsConfigConfigurationRecorderStatus resource
 type AwsConfigConfigurationRecorderStatus struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,16 @@ type AwsConfigConfigurationRecorderStatus struct {
 	Spec	AwsConfigConfigurationRecorderStatusSpec	`json:"spec"`
 }
 
+
+// AwsConfigConfigurationRecorderStatusSpec is the spec for a AwsConfigConfigurationRecorderStatus Resource
+type AwsConfigConfigurationRecorderStatusSpec struct {
+	Name	string	`json:"name"`
+	IsEnabled	bool	`json:"is_enabled"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsConfigConfigurationRecorderStatusList is a list of AwsConfigConfigurationRecorderStatus resources
 type AwsConfigConfigurationRecorderStatusList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,7 +34,3 @@ type AwsConfigConfigurationRecorderStatusList struct {
 	Items	[]AwsConfigConfigurationRecorderStatus	`json:"items"`
 }
 
-type AwsConfigConfigurationRecorderStatusSpec struct {
-	Name	string	`json:"name"`
-	IsEnabled	bool	`json:"is_enabled"`
-}

@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsIotPolicy describes a AwsIotPolicy resource
 type AwsIotPolicy struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,16 @@ type AwsIotPolicy struct {
 	Spec	AwsIotPolicySpec	`json:"spec"`
 }
 
+
+// AwsIotPolicySpec is the spec for a AwsIotPolicy Resource
+type AwsIotPolicySpec struct {
+	Policy	string	`json:"policy"`
+	Name	string	`json:"name"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsIotPolicyList is a list of AwsIotPolicy resources
 type AwsIotPolicyList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,7 +34,3 @@ type AwsIotPolicyList struct {
 	Items	[]AwsIotPolicy	`json:"items"`
 }
 
-type AwsIotPolicySpec struct {
-	Name	string	`json:"name"`
-	Policy	string	`json:"policy"`
-}

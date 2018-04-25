@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsCloudwatchLogResourcePolicy describes a AwsCloudwatchLogResourcePolicy resource
 type AwsCloudwatchLogResourcePolicy struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,16 @@ type AwsCloudwatchLogResourcePolicy struct {
 	Spec	AwsCloudwatchLogResourcePolicySpec	`json:"spec"`
 }
 
+
+// AwsCloudwatchLogResourcePolicySpec is the spec for a AwsCloudwatchLogResourcePolicy Resource
+type AwsCloudwatchLogResourcePolicySpec struct {
+	PolicyName	string	`json:"policy_name"`
+	PolicyDocument	string	`json:"policy_document"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsCloudwatchLogResourcePolicyList is a list of AwsCloudwatchLogResourcePolicy resources
 type AwsCloudwatchLogResourcePolicyList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,7 +34,3 @@ type AwsCloudwatchLogResourcePolicyList struct {
 	Items	[]AwsCloudwatchLogResourcePolicy	`json:"items"`
 }
 
-type AwsCloudwatchLogResourcePolicySpec struct {
-	PolicyName	string	`json:"policy_name"`
-	PolicyDocument	string	`json:"policy_document"`
-}

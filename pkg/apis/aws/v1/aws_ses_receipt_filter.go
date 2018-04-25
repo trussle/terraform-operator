@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsSesReceiptFilter describes a AwsSesReceiptFilter resource
 type AwsSesReceiptFilter struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,17 @@ type AwsSesReceiptFilter struct {
 	Spec	AwsSesReceiptFilterSpec	`json:"spec"`
 }
 
+
+// AwsSesReceiptFilterSpec is the spec for a AwsSesReceiptFilter Resource
+type AwsSesReceiptFilterSpec struct {
+	Name	string	`json:"name"`
+	Cidr	string	`json:"cidr"`
+	Policy	string	`json:"policy"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsSesReceiptFilterList is a list of AwsSesReceiptFilter resources
 type AwsSesReceiptFilterList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,8 +35,3 @@ type AwsSesReceiptFilterList struct {
 	Items	[]AwsSesReceiptFilter	`json:"items"`
 }
 
-type AwsSesReceiptFilterSpec struct {
-	Name	string	`json:"name"`
-	Cidr	string	`json:"cidr"`
-	Policy	string	`json:"policy"`
-}

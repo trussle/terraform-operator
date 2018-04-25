@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsDefaultVpcDhcpOptions describes a AwsDefaultVpcDhcpOptions resource
 type AwsDefaultVpcDhcpOptions struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,17 @@ type AwsDefaultVpcDhcpOptions struct {
 	Spec	AwsDefaultVpcDhcpOptionsSpec	`json:"spec"`
 }
 
+
+// AwsDefaultVpcDhcpOptionsSpec is the spec for a AwsDefaultVpcDhcpOptions Resource
+type AwsDefaultVpcDhcpOptionsSpec struct {
+	NetbiosNodeType	string	`json:"netbios_node_type"`
+	NetbiosNameServers	[]interface{}	`json:"netbios_name_servers"`
+	Tags	map[string]interface{}	`json:"tags"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsDefaultVpcDhcpOptionsList is a list of AwsDefaultVpcDhcpOptions resources
 type AwsDefaultVpcDhcpOptionsList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,8 +35,3 @@ type AwsDefaultVpcDhcpOptionsList struct {
 	Items	[]AwsDefaultVpcDhcpOptions	`json:"items"`
 }
 
-type AwsDefaultVpcDhcpOptionsSpec struct {
-	NetbiosNodeType	string	`json:"netbios_node_type"`
-	NetbiosNameServers	[]interface{}	`json:"netbios_name_servers"`
-	Tags	map[string]interface{}	`json:"tags"`
-}

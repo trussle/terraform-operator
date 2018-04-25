@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsCognitoUserGroup describes a AwsCognitoUserGroup resource
 type AwsCognitoUserGroup struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,19 @@ type AwsCognitoUserGroup struct {
 	Spec	AwsCognitoUserGroupSpec	`json:"spec"`
 }
 
+
+// AwsCognitoUserGroupSpec is the spec for a AwsCognitoUserGroup Resource
+type AwsCognitoUserGroupSpec struct {
+	Description	string	`json:"description"`
+	Name	string	`json:"name"`
+	Precedence	int	`json:"precedence"`
+	RoleArn	string	`json:"role_arn"`
+	UserPoolId	string	`json:"user_pool_id"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsCognitoUserGroupList is a list of AwsCognitoUserGroup resources
 type AwsCognitoUserGroupList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,10 +37,3 @@ type AwsCognitoUserGroupList struct {
 	Items	[]AwsCognitoUserGroup	`json:"items"`
 }
 
-type AwsCognitoUserGroupSpec struct {
-	Precedence	int	`json:"precedence"`
-	RoleArn	string	`json:"role_arn"`
-	UserPoolId	string	`json:"user_pool_id"`
-	Description	string	`json:"description"`
-	Name	string	`json:"name"`
-}

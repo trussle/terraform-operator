@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsCloudwatchLogMetricFilter describes a AwsCloudwatchLogMetricFilter resource
 type AwsCloudwatchLogMetricFilter struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,18 @@ type AwsCloudwatchLogMetricFilter struct {
 	Spec	AwsCloudwatchLogMetricFilterSpec	`json:"spec"`
 }
 
+
+// AwsCloudwatchLogMetricFilterSpec is the spec for a AwsCloudwatchLogMetricFilter Resource
+type AwsCloudwatchLogMetricFilterSpec struct {
+	Name	string	`json:"name"`
+	Pattern	string	`json:"pattern"`
+	LogGroupName	string	`json:"log_group_name"`
+	MetricTransformation	[]interface{}	`json:"metric_transformation"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsCloudwatchLogMetricFilterList is a list of AwsCloudwatchLogMetricFilter resources
 type AwsCloudwatchLogMetricFilterList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,9 +36,3 @@ type AwsCloudwatchLogMetricFilterList struct {
 	Items	[]AwsCloudwatchLogMetricFilter	`json:"items"`
 }
 
-type AwsCloudwatchLogMetricFilterSpec struct {
-	Name	string	`json:"name"`
-	Pattern	string	`json:"pattern"`
-	LogGroupName	string	`json:"log_group_name"`
-	MetricTransformation	[]interface{}	`json:"metric_transformation"`
-}

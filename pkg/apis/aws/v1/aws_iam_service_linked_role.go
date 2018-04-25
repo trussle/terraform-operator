@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsIamServiceLinkedRole describes a AwsIamServiceLinkedRole resource
 type AwsIamServiceLinkedRole struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,17 @@ type AwsIamServiceLinkedRole struct {
 	Spec	AwsIamServiceLinkedRoleSpec	`json:"spec"`
 }
 
+
+// AwsIamServiceLinkedRoleSpec is the spec for a AwsIamServiceLinkedRole Resource
+type AwsIamServiceLinkedRoleSpec struct {
+	CustomSuffix	string	`json:"custom_suffix"`
+	Description	string	`json:"description"`
+	AwsServiceName	string	`json:"aws_service_name"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsIamServiceLinkedRoleList is a list of AwsIamServiceLinkedRole resources
 type AwsIamServiceLinkedRoleList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,8 +35,3 @@ type AwsIamServiceLinkedRoleList struct {
 	Items	[]AwsIamServiceLinkedRole	`json:"items"`
 }
 
-type AwsIamServiceLinkedRoleSpec struct {
-	AwsServiceName	string	`json:"aws_service_name"`
-	CustomSuffix	string	`json:"custom_suffix"`
-	Description	string	`json:"description"`
-}

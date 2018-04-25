@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsWafByteMatchSet describes a AwsWafByteMatchSet resource
 type AwsWafByteMatchSet struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,16 @@ type AwsWafByteMatchSet struct {
 	Spec	AwsWafByteMatchSetSpec	`json:"spec"`
 }
 
+
+// AwsWafByteMatchSetSpec is the spec for a AwsWafByteMatchSet Resource
+type AwsWafByteMatchSetSpec struct {
+	Name	string	`json:"name"`
+	ByteMatchTuples	string	`json:"byte_match_tuples"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsWafByteMatchSetList is a list of AwsWafByteMatchSet resources
 type AwsWafByteMatchSetList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,7 +34,3 @@ type AwsWafByteMatchSetList struct {
 	Items	[]AwsWafByteMatchSet	`json:"items"`
 }
 
-type AwsWafByteMatchSetSpec struct {
-	Name	string	`json:"name"`
-	ByteMatchTuples	interface{}	`json:"byte_match_tuples"`
-}

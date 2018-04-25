@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsElastictranscoderPipeline describes a AwsElastictranscoderPipeline resource
 type AwsElastictranscoderPipeline struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,20 @@ type AwsElastictranscoderPipeline struct {
 	Spec	AwsElastictranscoderPipelineSpec	`json:"spec"`
 }
 
+
+// AwsElastictranscoderPipelineSpec is the spec for a AwsElastictranscoderPipeline Resource
+type AwsElastictranscoderPipelineSpec struct {
+	ContentConfigPermissions	string	`json:"content_config_permissions"`
+	InputBucket	string	`json:"input_bucket"`
+	Notifications	string	`json:"notifications"`
+	Role	string	`json:"role"`
+	ThumbnailConfigPermissions	string	`json:"thumbnail_config_permissions"`
+	AwsKmsKeyArn	string	`json:"aws_kms_key_arn"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsElastictranscoderPipelineList is a list of AwsElastictranscoderPipeline resources
 type AwsElastictranscoderPipelineList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,11 +38,3 @@ type AwsElastictranscoderPipelineList struct {
 	Items	[]AwsElastictranscoderPipeline	`json:"items"`
 }
 
-type AwsElastictranscoderPipelineSpec struct {
-	AwsKmsKeyArn	string	`json:"aws_kms_key_arn"`
-	Notifications	interface{}	`json:"notifications"`
-	ThumbnailConfigPermissions	interface{}	`json:"thumbnail_config_permissions"`
-	InputBucket	string	`json:"input_bucket"`
-	Role	string	`json:"role"`
-	ContentConfigPermissions	interface{}	`json:"content_config_permissions"`
-}

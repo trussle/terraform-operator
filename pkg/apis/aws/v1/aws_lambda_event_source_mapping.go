@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsLambdaEventSourceMapping describes a AwsLambdaEventSourceMapping resource
 type AwsLambdaEventSourceMapping struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,19 @@ type AwsLambdaEventSourceMapping struct {
 	Spec	AwsLambdaEventSourceMappingSpec	`json:"spec"`
 }
 
+
+// AwsLambdaEventSourceMappingSpec is the spec for a AwsLambdaEventSourceMapping Resource
+type AwsLambdaEventSourceMappingSpec struct {
+	FunctionName	string	`json:"function_name"`
+	Enabled	bool	`json:"enabled"`
+	EventSourceArn	string	`json:"event_source_arn"`
+	StartingPosition	string	`json:"starting_position"`
+	BatchSize	int	`json:"batch_size"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsLambdaEventSourceMappingList is a list of AwsLambdaEventSourceMapping resources
 type AwsLambdaEventSourceMappingList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,10 +37,3 @@ type AwsLambdaEventSourceMappingList struct {
 	Items	[]AwsLambdaEventSourceMapping	`json:"items"`
 }
 
-type AwsLambdaEventSourceMappingSpec struct {
-	EventSourceArn	string	`json:"event_source_arn"`
-	FunctionName	string	`json:"function_name"`
-	StartingPosition	string	`json:"starting_position"`
-	BatchSize	int	`json:"batch_size"`
-	Enabled	bool	`json:"enabled"`
-}

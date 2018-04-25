@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsSesIdentityNotificationTopic describes a AwsSesIdentityNotificationTopic resource
 type AwsSesIdentityNotificationTopic struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,17 @@ type AwsSesIdentityNotificationTopic struct {
 	Spec	AwsSesIdentityNotificationTopicSpec	`json:"spec"`
 }
 
+
+// AwsSesIdentityNotificationTopicSpec is the spec for a AwsSesIdentityNotificationTopic Resource
+type AwsSesIdentityNotificationTopicSpec struct {
+	TopicArn	string	`json:"topic_arn"`
+	NotificationType	string	`json:"notification_type"`
+	Identity	string	`json:"identity"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsSesIdentityNotificationTopicList is a list of AwsSesIdentityNotificationTopic resources
 type AwsSesIdentityNotificationTopicList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,8 +35,3 @@ type AwsSesIdentityNotificationTopicList struct {
 	Items	[]AwsSesIdentityNotificationTopic	`json:"items"`
 }
 
-type AwsSesIdentityNotificationTopicSpec struct {
-	TopicArn	string	`json:"topic_arn"`
-	NotificationType	string	`json:"notification_type"`
-	Identity	string	`json:"identity"`
-}

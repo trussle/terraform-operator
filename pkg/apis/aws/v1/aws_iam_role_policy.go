@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsIamRolePolicy describes a AwsIamRolePolicy resource
 type AwsIamRolePolicy struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,17 @@ type AwsIamRolePolicy struct {
 	Spec	AwsIamRolePolicySpec	`json:"spec"`
 }
 
+
+// AwsIamRolePolicySpec is the spec for a AwsIamRolePolicy Resource
+type AwsIamRolePolicySpec struct {
+	NamePrefix	string	`json:"name_prefix"`
+	Role	string	`json:"role"`
+	Policy	string	`json:"policy"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsIamRolePolicyList is a list of AwsIamRolePolicy resources
 type AwsIamRolePolicyList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,8 +35,3 @@ type AwsIamRolePolicyList struct {
 	Items	[]AwsIamRolePolicy	`json:"items"`
 }
 
-type AwsIamRolePolicySpec struct {
-	Role	string	`json:"role"`
-	Policy	string	`json:"policy"`
-	NamePrefix	string	`json:"name_prefix"`
-}

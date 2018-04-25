@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsSesReceiptRule describes a AwsSesReceiptRule resource
 type AwsSesReceiptRule struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,25 @@ type AwsSesReceiptRule struct {
 	Spec	AwsSesReceiptRuleSpec	`json:"spec"`
 }
 
+
+// AwsSesReceiptRuleSpec is the spec for a AwsSesReceiptRule Resource
+type AwsSesReceiptRuleSpec struct {
+	After	string	`json:"after"`
+	RuleSetName	string	`json:"rule_set_name"`
+	S3Action	string	`json:"s3_action"`
+	SnsAction	string	`json:"sns_action"`
+	StopAction	string	`json:"stop_action"`
+	BounceAction	string	`json:"bounce_action"`
+	LambdaAction	string	`json:"lambda_action"`
+	WorkmailAction	string	`json:"workmail_action"`
+	Name	string	`json:"name"`
+	Recipients	string	`json:"recipients"`
+	AddHeaderAction	string	`json:"add_header_action"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsSesReceiptRuleList is a list of AwsSesReceiptRule resources
 type AwsSesReceiptRuleList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,16 +43,3 @@ type AwsSesReceiptRuleList struct {
 	Items	[]AwsSesReceiptRule	`json:"items"`
 }
 
-type AwsSesReceiptRuleSpec struct {
-	Name	string	`json:"name"`
-	BounceAction	interface{}	`json:"bounce_action"`
-	RuleSetName	string	`json:"rule_set_name"`
-	LambdaAction	interface{}	`json:"lambda_action"`
-	StopAction	interface{}	`json:"stop_action"`
-	SnsAction	interface{}	`json:"sns_action"`
-	After	string	`json:"after"`
-	Recipients	interface{}	`json:"recipients"`
-	AddHeaderAction	interface{}	`json:"add_header_action"`
-	S3Action	interface{}	`json:"s3_action"`
-	WorkmailAction	interface{}	`json:"workmail_action"`
-}

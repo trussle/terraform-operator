@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsIotThingType describes a AwsIotThingType resource
 type AwsIotThingType struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,17 @@ type AwsIotThingType struct {
 	Spec	AwsIotThingTypeSpec	`json:"spec"`
 }
 
+
+// AwsIotThingTypeSpec is the spec for a AwsIotThingType Resource
+type AwsIotThingTypeSpec struct {
+	Name	string	`json:"name"`
+	Properties	[]interface{}	`json:"properties"`
+	Deprecated	bool	`json:"deprecated"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsIotThingTypeList is a list of AwsIotThingType resources
 type AwsIotThingTypeList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,8 +35,3 @@ type AwsIotThingTypeList struct {
 	Items	[]AwsIotThingType	`json:"items"`
 }
 
-type AwsIotThingTypeSpec struct {
-	Name	string	`json:"name"`
-	Properties	[]interface{}	`json:"properties"`
-	Deprecated	bool	`json:"deprecated"`
-}

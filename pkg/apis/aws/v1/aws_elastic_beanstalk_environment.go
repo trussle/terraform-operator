@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsElasticBeanstalkEnvironment describes a AwsElasticBeanstalkEnvironment resource
 type AwsElasticBeanstalkEnvironment struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,23 @@ type AwsElasticBeanstalkEnvironment struct {
 	Spec	AwsElasticBeanstalkEnvironmentSpec	`json:"spec"`
 }
 
+
+// AwsElasticBeanstalkEnvironmentSpec is the spec for a AwsElasticBeanstalkEnvironment Resource
+type AwsElasticBeanstalkEnvironmentSpec struct {
+	Application	string	`json:"application"`
+	Description	string	`json:"description"`
+	Setting	string	`json:"setting"`
+	Tags	map[string]interface{}	`json:"tags"`
+	Name	string	`json:"name"`
+	PollInterval	string	`json:"poll_interval"`
+	Tier	string	`json:"tier"`
+	TemplateName	string	`json:"template_name"`
+	WaitForReadyTimeout	string	`json:"wait_for_ready_timeout"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsElasticBeanstalkEnvironmentList is a list of AwsElasticBeanstalkEnvironment resources
 type AwsElasticBeanstalkEnvironmentList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,14 +41,3 @@ type AwsElasticBeanstalkEnvironmentList struct {
 	Items	[]AwsElasticBeanstalkEnvironment	`json:"items"`
 }
 
-type AwsElasticBeanstalkEnvironmentSpec struct {
-	Setting	interface{}	`json:"setting"`
-	Tags	map[string]interface{}	`json:"tags"`
-	Application	string	`json:"application"`
-	Tier	string	`json:"tier"`
-	PollInterval	string	`json:"poll_interval"`
-	Name	string	`json:"name"`
-	Description	string	`json:"description"`
-	WaitForReadyTimeout	string	`json:"wait_for_ready_timeout"`
-	TemplateName	string	`json:"template_name"`
-}

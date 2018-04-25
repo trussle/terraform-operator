@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsServicecatalogPortfolio describes a AwsServicecatalogPortfolio resource
 type AwsServicecatalogPortfolio struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,17 @@ type AwsServicecatalogPortfolio struct {
 	Spec	AwsServicecatalogPortfolioSpec	`json:"spec"`
 }
 
+
+// AwsServicecatalogPortfolioSpec is the spec for a AwsServicecatalogPortfolio Resource
+type AwsServicecatalogPortfolioSpec struct {
+	Name	string	`json:"name"`
+	ProviderName	string	`json:"provider_name"`
+	Tags	map[string]interface{}	`json:"tags"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsServicecatalogPortfolioList is a list of AwsServicecatalogPortfolio resources
 type AwsServicecatalogPortfolioList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,8 +35,3 @@ type AwsServicecatalogPortfolioList struct {
 	Items	[]AwsServicecatalogPortfolio	`json:"items"`
 }
 
-type AwsServicecatalogPortfolioSpec struct {
-	Name	string	`json:"name"`
-	ProviderName	string	`json:"provider_name"`
-	Tags	map[string]interface{}	`json:"tags"`
-}

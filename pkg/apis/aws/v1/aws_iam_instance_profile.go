@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsIamInstanceProfile describes a AwsIamInstanceProfile resource
 type AwsIamInstanceProfile struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,16 @@ type AwsIamInstanceProfile struct {
 	Spec	AwsIamInstanceProfileSpec	`json:"spec"`
 }
 
+
+// AwsIamInstanceProfileSpec is the spec for a AwsIamInstanceProfile Resource
+type AwsIamInstanceProfileSpec struct {
+	NamePrefix	string	`json:"name_prefix"`
+	Path	string	`json:"path"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsIamInstanceProfileList is a list of AwsIamInstanceProfile resources
 type AwsIamInstanceProfileList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,7 +34,3 @@ type AwsIamInstanceProfileList struct {
 	Items	[]AwsIamInstanceProfile	`json:"items"`
 }
 
-type AwsIamInstanceProfileSpec struct {
-	NamePrefix	string	`json:"name_prefix"`
-	Path	string	`json:"path"`
-}

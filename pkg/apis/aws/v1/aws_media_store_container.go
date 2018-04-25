@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsMediaStoreContainer describes a AwsMediaStoreContainer resource
 type AwsMediaStoreContainer struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,15 @@ type AwsMediaStoreContainer struct {
 	Spec	AwsMediaStoreContainerSpec	`json:"spec"`
 }
 
+
+// AwsMediaStoreContainerSpec is the spec for a AwsMediaStoreContainer Resource
+type AwsMediaStoreContainerSpec struct {
+	Name	string	`json:"name"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsMediaStoreContainerList is a list of AwsMediaStoreContainer resources
 type AwsMediaStoreContainerList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,6 +33,3 @@ type AwsMediaStoreContainerList struct {
 	Items	[]AwsMediaStoreContainer	`json:"items"`
 }
 
-type AwsMediaStoreContainerSpec struct {
-	Name	string	`json:"name"`
-}

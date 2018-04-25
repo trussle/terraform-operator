@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsElasticacheSubnetGroup describes a AwsElasticacheSubnetGroup resource
 type AwsElasticacheSubnetGroup struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,17 @@ type AwsElasticacheSubnetGroup struct {
 	Spec	AwsElasticacheSubnetGroupSpec	`json:"spec"`
 }
 
+
+// AwsElasticacheSubnetGroupSpec is the spec for a AwsElasticacheSubnetGroup Resource
+type AwsElasticacheSubnetGroupSpec struct {
+	Description	string	`json:"description"`
+	Name	string	`json:"name"`
+	SubnetIds	string	`json:"subnet_ids"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsElasticacheSubnetGroupList is a list of AwsElasticacheSubnetGroup resources
 type AwsElasticacheSubnetGroupList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,8 +35,3 @@ type AwsElasticacheSubnetGroupList struct {
 	Items	[]AwsElasticacheSubnetGroup	`json:"items"`
 }
 
-type AwsElasticacheSubnetGroupSpec struct {
-	Description	string	`json:"description"`
-	Name	string	`json:"name"`
-	SubnetIds	interface{}	`json:"subnet_ids"`
-}

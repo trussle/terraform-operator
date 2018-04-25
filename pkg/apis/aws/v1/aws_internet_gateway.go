@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsInternetGateway describes a AwsInternetGateway resource
 type AwsInternetGateway struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,16 @@ type AwsInternetGateway struct {
 	Spec	AwsInternetGatewaySpec	`json:"spec"`
 }
 
+
+// AwsInternetGatewaySpec is the spec for a AwsInternetGateway Resource
+type AwsInternetGatewaySpec struct {
+	VpcId	string	`json:"vpc_id"`
+	Tags	map[string]interface{}	`json:"tags"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsInternetGatewayList is a list of AwsInternetGateway resources
 type AwsInternetGatewayList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,7 +34,3 @@ type AwsInternetGatewayList struct {
 	Items	[]AwsInternetGateway	`json:"items"`
 }
 
-type AwsInternetGatewaySpec struct {
-	VpcId	string	`json:"vpc_id"`
-	Tags	map[string]interface{}	`json:"tags"`
-}

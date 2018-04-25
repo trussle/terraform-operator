@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsElasticacheReplicationGroup describes a AwsElasticacheReplicationGroup resource
 type AwsElasticacheReplicationGroup struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,29 @@ type AwsElasticacheReplicationGroup struct {
 	Spec	AwsElasticacheReplicationGroupSpec	`json:"spec"`
 }
 
+
+// AwsElasticacheReplicationGroupSpec is the spec for a AwsElasticacheReplicationGroup Resource
+type AwsElasticacheReplicationGroupSpec struct {
+	ReplicationGroupDescription	string	`json:"replication_group_description"`
+	Engine	string	`json:"engine"`
+	SnapshotName	string	`json:"snapshot_name"`
+	TransitEncryptionEnabled	bool	`json:"transit_encryption_enabled"`
+	AvailabilityZones	string	`json:"availability_zones"`
+	AuthToken	string	`json:"auth_token"`
+	SnapshotArns	string	`json:"snapshot_arns"`
+	AutomaticFailoverEnabled	bool	`json:"automatic_failover_enabled"`
+	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
+	Port	int	`json:"port"`
+	AtRestEncryptionEnabled	bool	`json:"at_rest_encryption_enabled"`
+	SnapshotRetentionLimit	int	`json:"snapshot_retention_limit"`
+	Tags	map[string]interface{}	`json:"tags"`
+	NotificationTopicArn	string	`json:"notification_topic_arn"`
+	ReplicationGroupId	string	`json:"replication_group_id"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsElasticacheReplicationGroupList is a list of AwsElasticacheReplicationGroup resources
 type AwsElasticacheReplicationGroupList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,20 +47,3 @@ type AwsElasticacheReplicationGroupList struct {
 	Items	[]AwsElasticacheReplicationGroup	`json:"items"`
 }
 
-type AwsElasticacheReplicationGroupSpec struct {
-	Tags	map[string]interface{}	`json:"tags"`
-	AtRestEncryptionEnabled	bool	`json:"at_rest_encryption_enabled"`
-	ReplicationGroupId	string	`json:"replication_group_id"`
-	TransitEncryptionEnabled	bool	`json:"transit_encryption_enabled"`
-	Engine	string	`json:"engine"`
-	SnapshotRetentionLimit	int	`json:"snapshot_retention_limit"`
-	SnapshotArns	interface{}	`json:"snapshot_arns"`
-	NotificationTopicArn	string	`json:"notification_topic_arn"`
-	AutomaticFailoverEnabled	bool	`json:"automatic_failover_enabled"`
-	AuthToken	string	`json:"auth_token"`
-	SnapshotName	string	`json:"snapshot_name"`
-	Port	int	`json:"port"`
-	AvailabilityZones	interface{}	`json:"availability_zones"`
-	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
-	ReplicationGroupDescription	string	`json:"replication_group_description"`
-}

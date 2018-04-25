@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsApiGatewayApiKey describes a AwsApiGatewayApiKey resource
 type AwsApiGatewayApiKey struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,18 @@ type AwsApiGatewayApiKey struct {
 	Spec	AwsApiGatewayApiKeySpec	`json:"spec"`
 }
 
+
+// AwsApiGatewayApiKeySpec is the spec for a AwsApiGatewayApiKey Resource
+type AwsApiGatewayApiKeySpec struct {
+	Name	string	`json:"name"`
+	Description	string	`json:"description"`
+	Enabled	bool	`json:"enabled"`
+	StageKey	string	`json:"stage_key"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsApiGatewayApiKeyList is a list of AwsApiGatewayApiKey resources
 type AwsApiGatewayApiKeyList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,9 +36,3 @@ type AwsApiGatewayApiKeyList struct {
 	Items	[]AwsApiGatewayApiKey	`json:"items"`
 }
 
-type AwsApiGatewayApiKeySpec struct {
-	Name	string	`json:"name"`
-	Description	string	`json:"description"`
-	Enabled	bool	`json:"enabled"`
-	StageKey	interface{}	`json:"stage_key"`
-}

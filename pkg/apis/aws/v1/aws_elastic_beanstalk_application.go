@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsElasticBeanstalkApplication describes a AwsElasticBeanstalkApplication resource
 type AwsElasticBeanstalkApplication struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,16 @@ type AwsElasticBeanstalkApplication struct {
 	Spec	AwsElasticBeanstalkApplicationSpec	`json:"spec"`
 }
 
+
+// AwsElasticBeanstalkApplicationSpec is the spec for a AwsElasticBeanstalkApplication Resource
+type AwsElasticBeanstalkApplicationSpec struct {
+	Name	string	`json:"name"`
+	Description	string	`json:"description"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsElasticBeanstalkApplicationList is a list of AwsElasticBeanstalkApplication resources
 type AwsElasticBeanstalkApplicationList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,7 +34,3 @@ type AwsElasticBeanstalkApplicationList struct {
 	Items	[]AwsElasticBeanstalkApplication	`json:"items"`
 }
 
-type AwsElasticBeanstalkApplicationSpec struct {
-	Name	string	`json:"name"`
-	Description	string	`json:"description"`
-}

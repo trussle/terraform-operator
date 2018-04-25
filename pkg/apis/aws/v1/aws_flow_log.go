@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsFlowLog describes a AwsFlowLog resource
 type AwsFlowLog struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,20 @@ type AwsFlowLog struct {
 	Spec	AwsFlowLogSpec	`json:"spec"`
 }
 
+
+// AwsFlowLogSpec is the spec for a AwsFlowLog Resource
+type AwsFlowLogSpec struct {
+	VpcId	string	`json:"vpc_id"`
+	SubnetId	string	`json:"subnet_id"`
+	EniId	string	`json:"eni_id"`
+	TrafficType	string	`json:"traffic_type"`
+	IamRoleArn	string	`json:"iam_role_arn"`
+	LogGroupName	string	`json:"log_group_name"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsFlowLogList is a list of AwsFlowLog resources
 type AwsFlowLogList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,11 +38,3 @@ type AwsFlowLogList struct {
 	Items	[]AwsFlowLog	`json:"items"`
 }
 
-type AwsFlowLogSpec struct {
-	LogGroupName	string	`json:"log_group_name"`
-	VpcId	string	`json:"vpc_id"`
-	SubnetId	string	`json:"subnet_id"`
-	EniId	string	`json:"eni_id"`
-	TrafficType	string	`json:"traffic_type"`
-	IamRoleArn	string	`json:"iam_role_arn"`
-}

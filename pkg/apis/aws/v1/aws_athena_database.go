@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsAthenaDatabase describes a AwsAthenaDatabase resource
 type AwsAthenaDatabase struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,17 @@ type AwsAthenaDatabase struct {
 	Spec	AwsAthenaDatabaseSpec	`json:"spec"`
 }
 
+
+// AwsAthenaDatabaseSpec is the spec for a AwsAthenaDatabase Resource
+type AwsAthenaDatabaseSpec struct {
+	Name	string	`json:"name"`
+	Bucket	string	`json:"bucket"`
+	ForceDestroy	bool	`json:"force_destroy"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsAthenaDatabaseList is a list of AwsAthenaDatabase resources
 type AwsAthenaDatabaseList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,8 +35,3 @@ type AwsAthenaDatabaseList struct {
 	Items	[]AwsAthenaDatabase	`json:"items"`
 }
 
-type AwsAthenaDatabaseSpec struct {
-	ForceDestroy	bool	`json:"force_destroy"`
-	Name	string	`json:"name"`
-	Bucket	string	`json:"bucket"`
-}

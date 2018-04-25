@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsAmiFromInstance describes a AwsAmiFromInstance resource
 type AwsAmiFromInstance struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,19 @@ type AwsAmiFromInstance struct {
 	Spec	AwsAmiFromInstanceSpec	`json:"spec"`
 }
 
+
+// AwsAmiFromInstanceSpec is the spec for a AwsAmiFromInstance Resource
+type AwsAmiFromInstanceSpec struct {
+	SnapshotWithoutReboot	bool	`json:"snapshot_without_reboot"`
+	Description	string	`json:"description"`
+	SourceInstanceId	string	`json:"source_instance_id"`
+	Name	string	`json:"name"`
+	Tags	map[string]interface{}	`json:"tags"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsAmiFromInstanceList is a list of AwsAmiFromInstance resources
 type AwsAmiFromInstanceList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,10 +37,3 @@ type AwsAmiFromInstanceList struct {
 	Items	[]AwsAmiFromInstance	`json:"items"`
 }
 
-type AwsAmiFromInstanceSpec struct {
-	SnapshotWithoutReboot	bool	`json:"snapshot_without_reboot"`
-	Description	string	`json:"description"`
-	Name	string	`json:"name"`
-	SourceInstanceId	string	`json:"source_instance_id"`
-	Tags	map[string]interface{}	`json:"tags"`
-}

@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsIamServerCertificate describes a AwsIamServerCertificate resource
 type AwsIamServerCertificate struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,13 +17,8 @@ type AwsIamServerCertificate struct {
 	Spec	AwsIamServerCertificateSpec	`json:"spec"`
 }
 
-type AwsIamServerCertificateList struct {
-	meta_v1.TypeMeta	`json:",inline"`
-	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
 
-	Items	[]AwsIamServerCertificate	`json:"items"`
-}
-
+// AwsIamServerCertificateSpec is the spec for a AwsIamServerCertificate Resource
 type AwsIamServerCertificateSpec struct {
 	CertificateBody	string	`json:"certificate_body"`
 	CertificateChain	string	`json:"certificate_chain"`
@@ -30,3 +26,14 @@ type AwsIamServerCertificateSpec struct {
 	PrivateKey	string	`json:"private_key"`
 	NamePrefix	string	`json:"name_prefix"`
 }
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsIamServerCertificateList is a list of AwsIamServerCertificate resources
+type AwsIamServerCertificateList struct {
+	meta_v1.TypeMeta	`json:",inline"`
+	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
+
+	Items	[]AwsIamServerCertificate	`json:"items"`
+}
+

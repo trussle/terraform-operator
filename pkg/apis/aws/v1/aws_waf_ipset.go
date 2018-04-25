@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsWafIpset describes a AwsWafIpset resource
 type AwsWafIpset struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,16 @@ type AwsWafIpset struct {
 	Spec	AwsWafIpsetSpec	`json:"spec"`
 }
 
+
+// AwsWafIpsetSpec is the spec for a AwsWafIpset Resource
+type AwsWafIpsetSpec struct {
+	Name	string	`json:"name"`
+	IpSetDescriptors	string	`json:"ip_set_descriptors"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsWafIpsetList is a list of AwsWafIpset resources
 type AwsWafIpsetList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,7 +34,3 @@ type AwsWafIpsetList struct {
 	Items	[]AwsWafIpset	`json:"items"`
 }
 
-type AwsWafIpsetSpec struct {
-	IpSetDescriptors	interface{}	`json:"ip_set_descriptors"`
-	Name	string	`json:"name"`
-}

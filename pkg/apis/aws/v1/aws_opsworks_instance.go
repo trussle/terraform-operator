@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsOpsworksInstance describes a AwsOpsworksInstance resource
 type AwsOpsworksInstance struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,25 @@ type AwsOpsworksInstance struct {
 	Spec	AwsOpsworksInstanceSpec	`json:"spec"`
 }
 
+
+// AwsOpsworksInstanceSpec is the spec for a AwsOpsworksInstance Resource
+type AwsOpsworksInstanceSpec struct {
+	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
+	State	string	`json:"state"`
+	AgentVersion	string	`json:"agent_version"`
+	Architecture	string	`json:"architecture"`
+	DeleteEip	bool	`json:"delete_eip"`
+	LayerIds	[]interface{}	`json:"layer_ids"`
+	AutoScalingType	string	`json:"auto_scaling_type"`
+	EbsOptimized	bool	`json:"ebs_optimized"`
+	InstanceType	string	`json:"instance_type"`
+	StackId	string	`json:"stack_id"`
+	DeleteEbs	bool	`json:"delete_ebs"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsOpsworksInstanceList is a list of AwsOpsworksInstance resources
 type AwsOpsworksInstanceList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,16 +43,3 @@ type AwsOpsworksInstanceList struct {
 	Items	[]AwsOpsworksInstance	`json:"items"`
 }
 
-type AwsOpsworksInstanceSpec struct {
-	LayerIds	[]interface{}	`json:"layer_ids"`
-	State	string	`json:"state"`
-	StackId	string	`json:"stack_id"`
-	Architecture	string	`json:"architecture"`
-	AgentVersion	string	`json:"agent_version"`
-	DeleteEbs	bool	`json:"delete_ebs"`
-	EbsOptimized	bool	`json:"ebs_optimized"`
-	AutoScalingType	string	`json:"auto_scaling_type"`
-	DeleteEip	bool	`json:"delete_eip"`
-	InstanceType	string	`json:"instance_type"`
-	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
-}

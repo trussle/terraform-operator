@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsElasticsearchDomainPolicy describes a AwsElasticsearchDomainPolicy resource
 type AwsElasticsearchDomainPolicy struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,16 @@ type AwsElasticsearchDomainPolicy struct {
 	Spec	AwsElasticsearchDomainPolicySpec	`json:"spec"`
 }
 
+
+// AwsElasticsearchDomainPolicySpec is the spec for a AwsElasticsearchDomainPolicy Resource
+type AwsElasticsearchDomainPolicySpec struct {
+	AccessPolicies	string	`json:"access_policies"`
+	DomainName	string	`json:"domain_name"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsElasticsearchDomainPolicyList is a list of AwsElasticsearchDomainPolicy resources
 type AwsElasticsearchDomainPolicyList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,7 +34,3 @@ type AwsElasticsearchDomainPolicyList struct {
 	Items	[]AwsElasticsearchDomainPolicy	`json:"items"`
 }
 
-type AwsElasticsearchDomainPolicySpec struct {
-	DomainName	string	`json:"domain_name"`
-	AccessPolicies	string	`json:"access_policies"`
-}

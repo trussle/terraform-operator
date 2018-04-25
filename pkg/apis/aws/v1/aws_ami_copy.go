@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsAmiCopy describes a AwsAmiCopy resource
 type AwsAmiCopy struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,20 @@ type AwsAmiCopy struct {
 	Spec	AwsAmiCopySpec	`json:"spec"`
 }
 
+
+// AwsAmiCopySpec is the spec for a AwsAmiCopy Resource
+type AwsAmiCopySpec struct {
+	Tags	map[string]interface{}	`json:"tags"`
+	SourceAmiId	string	`json:"source_ami_id"`
+	SourceAmiRegion	string	`json:"source_ami_region"`
+	Description	string	`json:"description"`
+	Encrypted	bool	`json:"encrypted"`
+	Name	string	`json:"name"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsAmiCopyList is a list of AwsAmiCopy resources
 type AwsAmiCopyList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,11 +38,3 @@ type AwsAmiCopyList struct {
 	Items	[]AwsAmiCopy	`json:"items"`
 }
 
-type AwsAmiCopySpec struct {
-	Tags	map[string]interface{}	`json:"tags"`
-	Name	string	`json:"name"`
-	SourceAmiRegion	string	`json:"source_ami_region"`
-	Description	string	`json:"description"`
-	SourceAmiId	string	`json:"source_ami_id"`
-	Encrypted	bool	`json:"encrypted"`
-}

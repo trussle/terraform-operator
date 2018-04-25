@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsWafXssMatchSet describes a AwsWafXssMatchSet resource
 type AwsWafXssMatchSet struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,16 @@ type AwsWafXssMatchSet struct {
 	Spec	AwsWafXssMatchSetSpec	`json:"spec"`
 }
 
+
+// AwsWafXssMatchSetSpec is the spec for a AwsWafXssMatchSet Resource
+type AwsWafXssMatchSetSpec struct {
+	XssMatchTuples	string	`json:"xss_match_tuples"`
+	Name	string	`json:"name"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsWafXssMatchSetList is a list of AwsWafXssMatchSet resources
 type AwsWafXssMatchSetList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,7 +34,3 @@ type AwsWafXssMatchSetList struct {
 	Items	[]AwsWafXssMatchSet	`json:"items"`
 }
 
-type AwsWafXssMatchSetSpec struct {
-	Name	string	`json:"name"`
-	XssMatchTuples	interface{}	`json:"xss_match_tuples"`
-}

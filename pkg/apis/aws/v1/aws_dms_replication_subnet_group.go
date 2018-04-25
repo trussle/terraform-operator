@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsDmsReplicationSubnetGroup describes a AwsDmsReplicationSubnetGroup resource
 type AwsDmsReplicationSubnetGroup struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,18 @@ type AwsDmsReplicationSubnetGroup struct {
 	Spec	AwsDmsReplicationSubnetGroupSpec	`json:"spec"`
 }
 
+
+// AwsDmsReplicationSubnetGroupSpec is the spec for a AwsDmsReplicationSubnetGroup Resource
+type AwsDmsReplicationSubnetGroupSpec struct {
+	Tags	map[string]interface{}	`json:"tags"`
+	ReplicationSubnetGroupDescription	string	`json:"replication_subnet_group_description"`
+	ReplicationSubnetGroupId	string	`json:"replication_subnet_group_id"`
+	SubnetIds	string	`json:"subnet_ids"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsDmsReplicationSubnetGroupList is a list of AwsDmsReplicationSubnetGroup resources
 type AwsDmsReplicationSubnetGroupList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,9 +36,3 @@ type AwsDmsReplicationSubnetGroupList struct {
 	Items	[]AwsDmsReplicationSubnetGroup	`json:"items"`
 }
 
-type AwsDmsReplicationSubnetGroupSpec struct {
-	ReplicationSubnetGroupDescription	string	`json:"replication_subnet_group_description"`
-	ReplicationSubnetGroupId	string	`json:"replication_subnet_group_id"`
-	SubnetIds	interface{}	`json:"subnet_ids"`
-	Tags	map[string]interface{}	`json:"tags"`
-}

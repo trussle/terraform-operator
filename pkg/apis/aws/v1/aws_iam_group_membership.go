@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsIamGroupMembership describes a AwsIamGroupMembership resource
 type AwsIamGroupMembership struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,17 @@ type AwsIamGroupMembership struct {
 	Spec	AwsIamGroupMembershipSpec	`json:"spec"`
 }
 
+
+// AwsIamGroupMembershipSpec is the spec for a AwsIamGroupMembership Resource
+type AwsIamGroupMembershipSpec struct {
+	Name	string	`json:"name"`
+	Users	string	`json:"users"`
+	Group	string	`json:"group"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsIamGroupMembershipList is a list of AwsIamGroupMembership resources
 type AwsIamGroupMembershipList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,8 +35,3 @@ type AwsIamGroupMembershipList struct {
 	Items	[]AwsIamGroupMembership	`json:"items"`
 }
 
-type AwsIamGroupMembershipSpec struct {
-	Group	string	`json:"group"`
-	Name	string	`json:"name"`
-	Users	interface{}	`json:"users"`
-}

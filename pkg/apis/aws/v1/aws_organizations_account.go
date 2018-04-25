@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsOrganizationsAccount describes a AwsOrganizationsAccount resource
 type AwsOrganizationsAccount struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,18 @@ type AwsOrganizationsAccount struct {
 	Spec	AwsOrganizationsAccountSpec	`json:"spec"`
 }
 
+
+// AwsOrganizationsAccountSpec is the spec for a AwsOrganizationsAccount Resource
+type AwsOrganizationsAccountSpec struct {
+	Name	string	`json:"name"`
+	Email	string	`json:"email"`
+	IamUserAccessToBilling	string	`json:"iam_user_access_to_billing"`
+	RoleName	string	`json:"role_name"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsOrganizationsAccountList is a list of AwsOrganizationsAccount resources
 type AwsOrganizationsAccountList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,9 +36,3 @@ type AwsOrganizationsAccountList struct {
 	Items	[]AwsOrganizationsAccount	`json:"items"`
 }
 
-type AwsOrganizationsAccountSpec struct {
-	Name	string	`json:"name"`
-	Email	string	`json:"email"`
-	IamUserAccessToBilling	string	`json:"iam_user_access_to_billing"`
-	RoleName	string	`json:"role_name"`
-}

@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsEcrRepository describes a AwsEcrRepository resource
 type AwsEcrRepository struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,15 @@ type AwsEcrRepository struct {
 	Spec	AwsEcrRepositorySpec	`json:"spec"`
 }
 
+
+// AwsEcrRepositorySpec is the spec for a AwsEcrRepository Resource
+type AwsEcrRepositorySpec struct {
+	Name	string	`json:"name"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsEcrRepositoryList is a list of AwsEcrRepository resources
 type AwsEcrRepositoryList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,6 +33,3 @@ type AwsEcrRepositoryList struct {
 	Items	[]AwsEcrRepository	`json:"items"`
 }
 
-type AwsEcrRepositorySpec struct {
-	Name	string	`json:"name"`
-}

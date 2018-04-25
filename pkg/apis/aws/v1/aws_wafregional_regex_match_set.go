@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsWafregionalRegexMatchSet describes a AwsWafregionalRegexMatchSet resource
 type AwsWafregionalRegexMatchSet struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,16 @@ type AwsWafregionalRegexMatchSet struct {
 	Spec	AwsWafregionalRegexMatchSetSpec	`json:"spec"`
 }
 
+
+// AwsWafregionalRegexMatchSetSpec is the spec for a AwsWafregionalRegexMatchSet Resource
+type AwsWafregionalRegexMatchSetSpec struct {
+	Name	string	`json:"name"`
+	RegexMatchTuple	string	`json:"regex_match_tuple"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsWafregionalRegexMatchSetList is a list of AwsWafregionalRegexMatchSet resources
 type AwsWafregionalRegexMatchSetList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,7 +34,3 @@ type AwsWafregionalRegexMatchSetList struct {
 	Items	[]AwsWafregionalRegexMatchSet	`json:"items"`
 }
 
-type AwsWafregionalRegexMatchSetSpec struct {
-	Name	string	`json:"name"`
-	RegexMatchTuple	interface{}	`json:"regex_match_tuple"`
-}

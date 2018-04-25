@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsLoadBalancerBackendServerPolicy describes a AwsLoadBalancerBackendServerPolicy resource
 type AwsLoadBalancerBackendServerPolicy struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,17 @@ type AwsLoadBalancerBackendServerPolicy struct {
 	Spec	AwsLoadBalancerBackendServerPolicySpec	`json:"spec"`
 }
 
+
+// AwsLoadBalancerBackendServerPolicySpec is the spec for a AwsLoadBalancerBackendServerPolicy Resource
+type AwsLoadBalancerBackendServerPolicySpec struct {
+	LoadBalancerName	string	`json:"load_balancer_name"`
+	PolicyNames	string	`json:"policy_names"`
+	InstancePort	int	`json:"instance_port"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsLoadBalancerBackendServerPolicyList is a list of AwsLoadBalancerBackendServerPolicy resources
 type AwsLoadBalancerBackendServerPolicyList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,8 +35,3 @@ type AwsLoadBalancerBackendServerPolicyList struct {
 	Items	[]AwsLoadBalancerBackendServerPolicy	`json:"items"`
 }
 
-type AwsLoadBalancerBackendServerPolicySpec struct {
-	PolicyNames	interface{}	`json:"policy_names"`
-	InstancePort	int	`json:"instance_port"`
-	LoadBalancerName	string	`json:"load_balancer_name"`
-}

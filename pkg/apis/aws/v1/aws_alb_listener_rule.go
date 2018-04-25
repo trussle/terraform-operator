@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsAlbListenerRule describes a AwsAlbListenerRule resource
 type AwsAlbListenerRule struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,17 @@ type AwsAlbListenerRule struct {
 	Spec	AwsAlbListenerRuleSpec	`json:"spec"`
 }
 
+
+// AwsAlbListenerRuleSpec is the spec for a AwsAlbListenerRule Resource
+type AwsAlbListenerRuleSpec struct {
+	ListenerArn	string	`json:"listener_arn"`
+	Action	[]interface{}	`json:"action"`
+	Condition	string	`json:"condition"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsAlbListenerRuleList is a list of AwsAlbListenerRule resources
 type AwsAlbListenerRuleList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,8 +35,3 @@ type AwsAlbListenerRuleList struct {
 	Items	[]AwsAlbListenerRule	`json:"items"`
 }
 
-type AwsAlbListenerRuleSpec struct {
-	Action	[]interface{}	`json:"action"`
-	Condition	interface{}	`json:"condition"`
-	ListenerArn	string	`json:"listener_arn"`
-}

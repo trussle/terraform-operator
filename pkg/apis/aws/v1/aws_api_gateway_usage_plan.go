@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsApiGatewayUsagePlan describes a AwsApiGatewayUsagePlan resource
 type AwsApiGatewayUsagePlan struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,20 @@ type AwsApiGatewayUsagePlan struct {
 	Spec	AwsApiGatewayUsagePlanSpec	`json:"spec"`
 }
 
+
+// AwsApiGatewayUsagePlanSpec is the spec for a AwsApiGatewayUsagePlan Resource
+type AwsApiGatewayUsagePlanSpec struct {
+	ApiStages	[]interface{}	`json:"api_stages"`
+	QuotaSettings	string	`json:"quota_settings"`
+	ThrottleSettings	string	`json:"throttle_settings"`
+	ProductCode	string	`json:"product_code"`
+	Name	string	`json:"name"`
+	Description	string	`json:"description"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsApiGatewayUsagePlanList is a list of AwsApiGatewayUsagePlan resources
 type AwsApiGatewayUsagePlanList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,11 +38,3 @@ type AwsApiGatewayUsagePlanList struct {
 	Items	[]AwsApiGatewayUsagePlan	`json:"items"`
 }
 
-type AwsApiGatewayUsagePlanSpec struct {
-	QuotaSettings	interface{}	`json:"quota_settings"`
-	ThrottleSettings	interface{}	`json:"throttle_settings"`
-	ProductCode	string	`json:"product_code"`
-	Name	string	`json:"name"`
-	Description	string	`json:"description"`
-	ApiStages	[]interface{}	`json:"api_stages"`
-}

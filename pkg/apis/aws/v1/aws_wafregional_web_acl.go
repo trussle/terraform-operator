@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsWafregionalWebAcl describes a AwsWafregionalWebAcl resource
 type AwsWafregionalWebAcl struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,18 @@ type AwsWafregionalWebAcl struct {
 	Spec	AwsWafregionalWebAclSpec	`json:"spec"`
 }
 
+
+// AwsWafregionalWebAclSpec is the spec for a AwsWafregionalWebAcl Resource
+type AwsWafregionalWebAclSpec struct {
+	Rule	string	`json:"rule"`
+	Name	string	`json:"name"`
+	DefaultAction	[]interface{}	`json:"default_action"`
+	MetricName	string	`json:"metric_name"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsWafregionalWebAclList is a list of AwsWafregionalWebAcl resources
 type AwsWafregionalWebAclList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,9 +36,3 @@ type AwsWafregionalWebAclList struct {
 	Items	[]AwsWafregionalWebAcl	`json:"items"`
 }
 
-type AwsWafregionalWebAclSpec struct {
-	DefaultAction	[]interface{}	`json:"default_action"`
-	MetricName	string	`json:"metric_name"`
-	Rule	interface{}	`json:"rule"`
-	Name	string	`json:"name"`
-}

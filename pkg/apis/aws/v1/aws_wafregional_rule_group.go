@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsWafregionalRuleGroup describes a AwsWafregionalRuleGroup resource
 type AwsWafregionalRuleGroup struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,17 @@ type AwsWafregionalRuleGroup struct {
 	Spec	AwsWafregionalRuleGroupSpec	`json:"spec"`
 }
 
+
+// AwsWafregionalRuleGroupSpec is the spec for a AwsWafregionalRuleGroup Resource
+type AwsWafregionalRuleGroupSpec struct {
+	Name	string	`json:"name"`
+	MetricName	string	`json:"metric_name"`
+	ActivatedRule	string	`json:"activated_rule"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsWafregionalRuleGroupList is a list of AwsWafregionalRuleGroup resources
 type AwsWafregionalRuleGroupList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,8 +35,3 @@ type AwsWafregionalRuleGroupList struct {
 	Items	[]AwsWafregionalRuleGroup	`json:"items"`
 }
 
-type AwsWafregionalRuleGroupSpec struct {
-	Name	string	`json:"name"`
-	MetricName	string	`json:"metric_name"`
-	ActivatedRule	interface{}	`json:"activated_rule"`
-}

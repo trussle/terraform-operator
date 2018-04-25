@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsDxLag describes a AwsDxLag resource
 type AwsDxLag struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,13 +17,8 @@ type AwsDxLag struct {
 	Spec	AwsDxLagSpec	`json:"spec"`
 }
 
-type AwsDxLagList struct {
-	meta_v1.TypeMeta	`json:",inline"`
-	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
 
-	Items	[]AwsDxLag	`json:"items"`
-}
-
+// AwsDxLagSpec is the spec for a AwsDxLag Resource
 type AwsDxLagSpec struct {
 	Name	string	`json:"name"`
 	ConnectionsBandwidth	string	`json:"connections_bandwidth"`
@@ -30,3 +26,14 @@ type AwsDxLagSpec struct {
 	ForceDestroy	bool	`json:"force_destroy"`
 	Tags	map[string]interface{}	`json:"tags"`
 }
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsDxLagList is a list of AwsDxLag resources
+type AwsDxLagList struct {
+	meta_v1.TypeMeta	`json:",inline"`
+	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
+
+	Items	[]AwsDxLag	`json:"items"`
+}
+

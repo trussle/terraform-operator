@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsCloudfrontDistribution describes a AwsCloudfrontDistribution resource
 type AwsCloudfrontDistribution struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,32 @@ type AwsCloudfrontDistribution struct {
 	Spec	AwsCloudfrontDistributionSpec	`json:"spec"`
 }
 
+
+// AwsCloudfrontDistributionSpec is the spec for a AwsCloudfrontDistribution Resource
+type AwsCloudfrontDistributionSpec struct {
+	IsIpv6Enabled	bool	`json:"is_ipv6_enabled"`
+	Tags	map[string]interface{}	`json:"tags"`
+	DefaultCacheBehavior	string	`json:"default_cache_behavior"`
+	LoggingConfig	string	`json:"logging_config"`
+	DefaultRootObject	string	`json:"default_root_object"`
+	HttpVersion	string	`json:"http_version"`
+	PriceClass	string	`json:"price_class"`
+	ViewerCertificate	string	`json:"viewer_certificate"`
+	RetainOnDelete	bool	`json:"retain_on_delete"`
+	Aliases	string	`json:"aliases"`
+	CacheBehavior	string	`json:"cache_behavior"`
+	Comment	string	`json:"comment"`
+	CustomErrorResponse	string	`json:"custom_error_response"`
+	Enabled	bool	`json:"enabled"`
+	Restrictions	string	`json:"restrictions"`
+	Origin	string	`json:"origin"`
+	OrderedCacheBehavior	[]interface{}	`json:"ordered_cache_behavior"`
+	WebAclId	string	`json:"web_acl_id"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsCloudfrontDistributionList is a list of AwsCloudfrontDistribution resources
 type AwsCloudfrontDistributionList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,23 +50,3 @@ type AwsCloudfrontDistributionList struct {
 	Items	[]AwsCloudfrontDistribution	`json:"items"`
 }
 
-type AwsCloudfrontDistributionSpec struct {
-	DefaultCacheBehavior	interface{}	`json:"default_cache_behavior"`
-	LoggingConfig	interface{}	`json:"logging_config"`
-	WebAclId	string	`json:"web_acl_id"`
-	CustomErrorResponse	interface{}	`json:"custom_error_response"`
-	IsIpv6Enabled	bool	`json:"is_ipv6_enabled"`
-	CacheBehavior	interface{}	`json:"cache_behavior"`
-	Enabled	bool	`json:"enabled"`
-	Origin	interface{}	`json:"origin"`
-	PriceClass	string	`json:"price_class"`
-	Restrictions	interface{}	`json:"restrictions"`
-	Aliases	interface{}	`json:"aliases"`
-	RetainOnDelete	bool	`json:"retain_on_delete"`
-	DefaultRootObject	string	`json:"default_root_object"`
-	Tags	map[string]interface{}	`json:"tags"`
-	OrderedCacheBehavior	[]interface{}	`json:"ordered_cache_behavior"`
-	Comment	string	`json:"comment"`
-	HttpVersion	string	`json:"http_version"`
-	ViewerCertificate	interface{}	`json:"viewer_certificate"`
-}

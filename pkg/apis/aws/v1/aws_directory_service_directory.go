@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsDirectoryServiceDirectory describes a AwsDirectoryServiceDirectory resource
 type AwsDirectoryServiceDirectory struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,22 @@ type AwsDirectoryServiceDirectory struct {
 	Spec	AwsDirectoryServiceDirectorySpec	`json:"spec"`
 }
 
+
+// AwsDirectoryServiceDirectorySpec is the spec for a AwsDirectoryServiceDirectory Resource
+type AwsDirectoryServiceDirectorySpec struct {
+	Name	string	`json:"name"`
+	Password	string	`json:"password"`
+	VpcSettings	[]interface{}	`json:"vpc_settings"`
+	Description	string	`json:"description"`
+	ConnectSettings	[]interface{}	`json:"connect_settings"`
+	EnableSso	bool	`json:"enable_sso"`
+	Type	string	`json:"type"`
+	Tags	map[string]interface{}	`json:"tags"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsDirectoryServiceDirectoryList is a list of AwsDirectoryServiceDirectory resources
 type AwsDirectoryServiceDirectoryList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,13 +40,3 @@ type AwsDirectoryServiceDirectoryList struct {
 	Items	[]AwsDirectoryServiceDirectory	`json:"items"`
 }
 
-type AwsDirectoryServiceDirectorySpec struct {
-	Type	string	`json:"type"`
-	EnableSso	bool	`json:"enable_sso"`
-	VpcSettings	[]interface{}	`json:"vpc_settings"`
-	ConnectSettings	[]interface{}	`json:"connect_settings"`
-	Name	string	`json:"name"`
-	Description	string	`json:"description"`
-	Tags	map[string]interface{}	`json:"tags"`
-	Password	string	`json:"password"`
-}

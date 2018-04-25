@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsEfsFileSystem describes a AwsEfsFileSystem resource
 type AwsEfsFileSystem struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,15 @@ type AwsEfsFileSystem struct {
 	Spec	AwsEfsFileSystemSpec	`json:"spec"`
 }
 
+
+// AwsEfsFileSystemSpec is the spec for a AwsEfsFileSystem Resource
+type AwsEfsFileSystemSpec struct {
+	Tags	map[string]interface{}	`json:"tags"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsEfsFileSystemList is a list of AwsEfsFileSystem resources
 type AwsEfsFileSystemList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,6 +33,3 @@ type AwsEfsFileSystemList struct {
 	Items	[]AwsEfsFileSystem	`json:"items"`
 }
 
-type AwsEfsFileSystemSpec struct {
-	Tags	map[string]interface{}	`json:"tags"`
-}

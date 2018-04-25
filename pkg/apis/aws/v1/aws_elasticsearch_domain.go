@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsElasticsearchDomain describes a AwsElasticsearchDomain resource
 type AwsElasticsearchDomain struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,20 @@ type AwsElasticsearchDomain struct {
 	Spec	AwsElasticsearchDomainSpec	`json:"spec"`
 }
 
+
+// AwsElasticsearchDomainSpec is the spec for a AwsElasticsearchDomain Resource
+type AwsElasticsearchDomainSpec struct {
+	Tags	map[string]interface{}	`json:"tags"`
+	SnapshotOptions	[]interface{}	`json:"snapshot_options"`
+	LogPublishingOptions	string	`json:"log_publishing_options"`
+	DomainName	string	`json:"domain_name"`
+	VpcOptions	[]interface{}	`json:"vpc_options"`
+	ElasticsearchVersion	string	`json:"elasticsearch_version"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsElasticsearchDomainList is a list of AwsElasticsearchDomain resources
 type AwsElasticsearchDomainList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,11 +38,3 @@ type AwsElasticsearchDomainList struct {
 	Items	[]AwsElasticsearchDomain	`json:"items"`
 }
 
-type AwsElasticsearchDomainSpec struct {
-	SnapshotOptions	[]interface{}	`json:"snapshot_options"`
-	Tags	map[string]interface{}	`json:"tags"`
-	DomainName	string	`json:"domain_name"`
-	VpcOptions	[]interface{}	`json:"vpc_options"`
-	LogPublishingOptions	interface{}	`json:"log_publishing_options"`
-	ElasticsearchVersion	string	`json:"elasticsearch_version"`
-}

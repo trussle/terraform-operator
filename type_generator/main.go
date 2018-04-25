@@ -45,7 +45,8 @@ import (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 %s
 %s
-`, apiVersion, generateTypeStructString(name), generateSpecStructString(name, m))
+%s
+`, apiVersion, generateTypeStructString(name), generateSpecStructString(name, m), generateTypeStructStringList(name))
 	w.Flush()
 	err := ioutil.WriteFile(path, bb.Bytes(), 0755)
 	if err != nil {
@@ -55,22 +56,30 @@ import (
 	return nil
 }
 
-func generateTypeStructString(n string) string {
-	t := fmt.Sprintf(`
-type %s struct {
-%s
-
-%s
-}`, n, buildMetaObjects(), buildTypeStructBody(n))
-
+func generateTypeStructStringList(n string) string {
 	tlist := fmt.Sprintf(`
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// %sList is a list of %s resources
 type %sList struct {
 %s
 
 %s
-}`, n, buildMetaObjects(), buildTypeStructBodyList(n))
+}`, n, n, n, buildMetaObjects(), buildTypeStructBodyList(n))
 
-	return fmt.Sprintf("%s\n%s", t, tlist)
+	return fmt.Sprintf("%s\n", tlist)
+}
+
+func generateTypeStructString(n string) string {
+	t := fmt.Sprintf(`
+// %s describes a %s resource
+type %s struct {
+%s
+
+%s
+}`, n, n, n, buildMetaObjects(), buildTypeStructBody(n))
+
+	return fmt.Sprintf("%s\n", t)
 }
 
 func buildMetaObjects() string {
@@ -89,8 +98,9 @@ func buildTypeStructBodyList(n string) string {
 
 func generateSpecStructString(n string, m map[string]*schema.Schema) string {
 	spec := fmt.Sprintf(`
+// %sSpec is the spec for a %s Resource
 type %sSpec struct {
-`, n)
+`, n, n, n)
 	for k, v := range m {
 		l := generateFieldString(k, v)
 		if l != "" {
@@ -132,7 +142,8 @@ func typeAsString(t schema.ValueType) string {
 		return "map[string]interface{}"
 	}
 
-	return "interface{}"
+	return "string"
+	//return "interface{}"
 }
 
 func generateRegisterFile(path string, m map[string]*schema.Resource) error {
@@ -189,9 +200,9 @@ func generateKnownTypesString(m map[string]*schema.Resource) string {
 
 func generateAddKnownTypesCallString(m map[string]*schema.Resource) string {
 	o := "schema.AddKnownTypes(\n\t\t\tSchemeGroupVersion,"
-	for k, _ := range m {
-		o = o + fmt.Sprintf("\n\t\t\t&%s{}", titleStr(k))
-		o = o + fmt.Sprintf("\n\t\t\t&%sList{}", titleStr(k))
+	for k := range m {
+		o = o + fmt.Sprintf("\n\t\t\t&%s{},", titleStr(k))
+		o = o + fmt.Sprintf("\n\t\t\t&%sList{},", titleStr(k))
 	}
 	o = o + "\n)"
 	return o

@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsInspectorAssessmentTarget describes a AwsInspectorAssessmentTarget resource
 type AwsInspectorAssessmentTarget struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,16 @@ type AwsInspectorAssessmentTarget struct {
 	Spec	AwsInspectorAssessmentTargetSpec	`json:"spec"`
 }
 
+
+// AwsInspectorAssessmentTargetSpec is the spec for a AwsInspectorAssessmentTarget Resource
+type AwsInspectorAssessmentTargetSpec struct {
+	Name	string	`json:"name"`
+	ResourceGroupArn	string	`json:"resource_group_arn"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsInspectorAssessmentTargetList is a list of AwsInspectorAssessmentTarget resources
 type AwsInspectorAssessmentTargetList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,7 +34,3 @@ type AwsInspectorAssessmentTargetList struct {
 	Items	[]AwsInspectorAssessmentTarget	`json:"items"`
 }
 
-type AwsInspectorAssessmentTargetSpec struct {
-	Name	string	`json:"name"`
-	ResourceGroupArn	string	`json:"resource_group_arn"`
-}

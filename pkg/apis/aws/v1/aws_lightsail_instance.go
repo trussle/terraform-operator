@@ -9,6 +9,7 @@ import (
 // +genclient:noStatus
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
+// AwsLightsailInstance describes a AwsLightsailInstance resource
 type AwsLightsailInstance struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -16,6 +17,20 @@ type AwsLightsailInstance struct {
 	Spec	AwsLightsailInstanceSpec	`json:"spec"`
 }
 
+
+// AwsLightsailInstanceSpec is the spec for a AwsLightsailInstance Resource
+type AwsLightsailInstanceSpec struct {
+	Name	string	`json:"name"`
+	AvailabilityZone	string	`json:"availability_zone"`
+	KeyPairName	string	`json:"key_pair_name"`
+	BundleId	string	`json:"bundle_id"`
+	BlueprintId	string	`json:"blueprint_id"`
+	UserData	string	`json:"user_data"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsLightsailInstanceList is a list of AwsLightsailInstance resources
 type AwsLightsailInstanceList struct {
 	meta_v1.TypeMeta	`json:",inline"`
 	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
@@ -23,11 +38,3 @@ type AwsLightsailInstanceList struct {
 	Items	[]AwsLightsailInstance	`json:"items"`
 }
 
-type AwsLightsailInstanceSpec struct {
-	BlueprintId	string	`json:"blueprint_id"`
-	KeyPairName	string	`json:"key_pair_name"`
-	UserData	string	`json:"user_data"`
-	AvailabilityZone	string	`json:"availability_zone"`
-	BundleId	string	`json:"bundle_id"`
-	Name	string	`json:"name"`
-}
