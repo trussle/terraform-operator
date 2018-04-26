@@ -21,7 +21,7 @@ type AwsRouteTable struct {
 // AwsRouteTableSpec is the spec for a AwsRouteTable Resource
 type AwsRouteTableSpec struct {
 	VpcId	string	`json:"vpc_id"`
-	Tags	map[string]interface{}	`json:"tags"`
+	Tags	map[string]Generic	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

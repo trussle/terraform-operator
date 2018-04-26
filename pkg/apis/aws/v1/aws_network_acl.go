@@ -20,9 +20,9 @@ type AwsNetworkAcl struct {
 
 // AwsNetworkAclSpec is the spec for a AwsNetworkAcl Resource
 type AwsNetworkAclSpec struct {
-	Tags	map[string]interface{}	`json:"tags"`
-	VpcId	string	`json:"vpc_id"`
 	SubnetId	string	`json:"subnet_id"`
+	Tags	map[string]Generic	`json:"tags"`
+	VpcId	string	`json:"vpc_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

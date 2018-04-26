@@ -21,7 +21,7 @@ type AwsWafregionalXssMatchSet struct {
 // AwsWafregionalXssMatchSetSpec is the spec for a AwsWafregionalXssMatchSet Resource
 type AwsWafregionalXssMatchSetSpec struct {
 	Name	string	`json:"name"`
-	XssMatchTuple	string	`json:"xss_match_tuple"`
+	XssMatchTuple	Generic	`json:"xss_match_tuple"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

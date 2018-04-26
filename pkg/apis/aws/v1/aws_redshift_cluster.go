@@ -20,25 +20,25 @@ type AwsRedshiftCluster struct {
 
 // AwsRedshiftClusterSpec is the spec for a AwsRedshiftCluster Resource
 type AwsRedshiftClusterSpec struct {
-	MasterPassword	string	`json:"master_password"`
-	NumberOfNodes	int	`json:"number_of_nodes"`
-	PubliclyAccessible	bool	`json:"publicly_accessible"`
-	SnapshotIdentifier	string	`json:"snapshot_identifier"`
-	NodeType	string	`json:"node_type"`
-	OwnerAccount	string	`json:"owner_account"`
-	SnapshotClusterIdentifier	string	`json:"snapshot_cluster_identifier"`
-	Tags	map[string]interface{}	`json:"tags"`
 	AutomatedSnapshotRetentionPeriod	int	`json:"automated_snapshot_retention_period"`
-	AllowVersionUpgrade	bool	`json:"allow_version_upgrade"`
+	NodeType	string	`json:"node_type"`
+	MasterPassword	string	`json:"master_password"`
 	FinalSnapshotIdentifier	string	`json:"final_snapshot_identifier"`
-	Port	int	`json:"port"`
-	SnapshotCopy	[]interface{}	`json:"snapshot_copy"`
+	Logging	[]Generic	`json:"logging"`
+	Tags	map[string]Generic	`json:"tags"`
+	PubliclyAccessible	bool	`json:"publicly_accessible"`
+	ElasticIp	string	`json:"elastic_ip"`
+	SnapshotIdentifier	string	`json:"snapshot_identifier"`
 	MasterUsername	string	`json:"master_username"`
 	ClusterVersion	string	`json:"cluster_version"`
-	ElasticIp	string	`json:"elastic_ip"`
-	SkipFinalSnapshot	bool	`json:"skip_final_snapshot"`
-	Logging	[]interface{}	`json:"logging"`
 	ClusterIdentifier	string	`json:"cluster_identifier"`
+	NumberOfNodes	int	`json:"number_of_nodes"`
+	SkipFinalSnapshot	bool	`json:"skip_final_snapshot"`
+	SnapshotCopy	[]Generic	`json:"snapshot_copy"`
+	SnapshotClusterIdentifier	string	`json:"snapshot_cluster_identifier"`
+	Port	int	`json:"port"`
+	OwnerAccount	string	`json:"owner_account"`
+	AllowVersionUpgrade	bool	`json:"allow_version_upgrade"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

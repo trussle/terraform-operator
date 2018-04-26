@@ -23,7 +23,7 @@ type AwsApiGatewayApiKeySpec struct {
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
 	Enabled	bool	`json:"enabled"`
-	StageKey	string	`json:"stage_key"`
+	StageKey	Generic	`json:"stage_key"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

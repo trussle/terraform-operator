@@ -20,10 +20,10 @@ type AwsDmsReplicationSubnetGroup struct {
 
 // AwsDmsReplicationSubnetGroupSpec is the spec for a AwsDmsReplicationSubnetGroup Resource
 type AwsDmsReplicationSubnetGroupSpec struct {
-	Tags	map[string]interface{}	`json:"tags"`
 	ReplicationSubnetGroupDescription	string	`json:"replication_subnet_group_description"`
 	ReplicationSubnetGroupId	string	`json:"replication_subnet_group_id"`
-	SubnetIds	string	`json:"subnet_ids"`
+	SubnetIds	Generic	`json:"subnet_ids"`
+	Tags	map[string]Generic	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

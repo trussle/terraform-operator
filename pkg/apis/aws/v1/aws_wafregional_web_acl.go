@@ -20,10 +20,10 @@ type AwsWafregionalWebAcl struct {
 
 // AwsWafregionalWebAclSpec is the spec for a AwsWafregionalWebAcl Resource
 type AwsWafregionalWebAclSpec struct {
-	Rule	string	`json:"rule"`
-	Name	string	`json:"name"`
-	DefaultAction	[]interface{}	`json:"default_action"`
 	MetricName	string	`json:"metric_name"`
+	Rule	Generic	`json:"rule"`
+	Name	string	`json:"name"`
+	DefaultAction	[]Generic	`json:"default_action"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

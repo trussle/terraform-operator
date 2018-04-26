@@ -21,7 +21,7 @@ type AwsCodedeployDeploymentConfig struct {
 // AwsCodedeployDeploymentConfigSpec is the spec for a AwsCodedeployDeploymentConfig Resource
 type AwsCodedeployDeploymentConfigSpec struct {
 	DeploymentConfigName	string	`json:"deployment_config_name"`
-	MinimumHealthyHosts	[]interface{}	`json:"minimum_healthy_hosts"`
+	MinimumHealthyHosts	[]Generic	`json:"minimum_healthy_hosts"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

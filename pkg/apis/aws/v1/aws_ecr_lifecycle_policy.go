@@ -20,8 +20,8 @@ type AwsEcrLifecyclePolicy struct {
 
 // AwsEcrLifecyclePolicySpec is the spec for a AwsEcrLifecyclePolicy Resource
 type AwsEcrLifecyclePolicySpec struct {
-	Repository	string	`json:"repository"`
 	Policy	string	`json:"policy"`
+	Repository	string	`json:"repository"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

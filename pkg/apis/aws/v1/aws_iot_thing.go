@@ -20,9 +20,9 @@ type AwsIotThing struct {
 
 // AwsIotThingSpec is the spec for a AwsIotThing Resource
 type AwsIotThingSpec struct {
-	ThingTypeName	string	`json:"thing_type_name"`
 	Name	string	`json:"name"`
-	Attributes	map[string]interface{}	`json:"attributes"`
+	Attributes	map[string]Generic	`json:"attributes"`
+	ThingTypeName	string	`json:"thing_type_name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

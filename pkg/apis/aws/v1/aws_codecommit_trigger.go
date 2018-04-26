@@ -21,7 +21,7 @@ type AwsCodecommitTrigger struct {
 // AwsCodecommitTriggerSpec is the spec for a AwsCodecommitTrigger Resource
 type AwsCodecommitTriggerSpec struct {
 	RepositoryName	string	`json:"repository_name"`
-	Trigger	string	`json:"trigger"`
+	Trigger	Generic	`json:"trigger"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -20,18 +20,18 @@ type AwsSpotFleetRequest struct {
 
 // AwsSpotFleetRequestSpec is the spec for a AwsSpotFleetRequest Resource
 type AwsSpotFleetRequestSpec struct {
+	LaunchSpecification	Generic	`json:"launch_specification"`
+	TargetCapacity	int	`json:"target_capacity"`
 	SpotPrice	string	`json:"spot_price"`
-	TerminateInstancesWithExpiration	bool	`json:"terminate_instances_with_expiration"`
+	ValidFrom	string	`json:"valid_from"`
 	ValidUntil	string	`json:"valid_until"`
 	WaitForFulfillment	bool	`json:"wait_for_fulfillment"`
-	AllocationStrategy	string	`json:"allocation_strategy"`
 	ExcessCapacityTerminationPolicy	string	`json:"excess_capacity_termination_policy"`
-	InstanceInterruptionBehaviour	string	`json:"instance_interruption_behaviour"`
-	ValidFrom	string	`json:"valid_from"`
 	IamFleetRole	string	`json:"iam_fleet_role"`
 	ReplaceUnhealthyInstances	bool	`json:"replace_unhealthy_instances"`
-	LaunchSpecification	string	`json:"launch_specification"`
-	TargetCapacity	int	`json:"target_capacity"`
+	InstanceInterruptionBehaviour	string	`json:"instance_interruption_behaviour"`
+	TerminateInstancesWithExpiration	bool	`json:"terminate_instances_with_expiration"`
+	AllocationStrategy	string	`json:"allocation_strategy"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

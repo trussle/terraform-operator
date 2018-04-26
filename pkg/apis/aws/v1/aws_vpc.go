@@ -20,9 +20,9 @@ type AwsVpc struct {
 
 // AwsVpcSpec is the spec for a AwsVpc Resource
 type AwsVpcSpec struct {
-	Tags	map[string]interface{}	`json:"tags"`
-	AssignGeneratedIpv6CidrBlock	bool	`json:"assign_generated_ipv6_cidr_block"`
 	CidrBlock	string	`json:"cidr_block"`
+	Tags	map[string]Generic	`json:"tags"`
+	AssignGeneratedIpv6CidrBlock	bool	`json:"assign_generated_ipv6_cidr_block"`
 	EnableDnsSupport	bool	`json:"enable_dns_support"`
 }
 

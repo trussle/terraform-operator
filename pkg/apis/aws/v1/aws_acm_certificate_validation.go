@@ -21,7 +21,7 @@ type AwsAcmCertificateValidation struct {
 // AwsAcmCertificateValidationSpec is the spec for a AwsAcmCertificateValidation Resource
 type AwsAcmCertificateValidationSpec struct {
 	CertificateArn	string	`json:"certificate_arn"`
-	ValidationRecordFqdns	string	`json:"validation_record_fqdns"`
+	ValidationRecordFqdns	Generic	`json:"validation_record_fqdns"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -20,8 +20,8 @@ type AwsServiceDiscoveryPublicDnsNamespace struct {
 
 // AwsServiceDiscoveryPublicDnsNamespaceSpec is the spec for a AwsServiceDiscoveryPublicDnsNamespace Resource
 type AwsServiceDiscoveryPublicDnsNamespaceSpec struct {
-	Name	string	`json:"name"`
 	Description	string	`json:"description"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

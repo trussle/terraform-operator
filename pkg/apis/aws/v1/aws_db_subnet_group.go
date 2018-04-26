@@ -20,9 +20,9 @@ type AwsDbSubnetGroup struct {
 
 // AwsDbSubnetGroupSpec is the spec for a AwsDbSubnetGroup Resource
 type AwsDbSubnetGroupSpec struct {
-	Tags	map[string]interface{}	`json:"tags"`
 	Description	string	`json:"description"`
-	SubnetIds	string	`json:"subnet_ids"`
+	SubnetIds	Generic	`json:"subnet_ids"`
+	Tags	map[string]Generic	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

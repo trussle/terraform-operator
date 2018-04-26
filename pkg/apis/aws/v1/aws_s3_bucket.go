@@ -20,17 +20,17 @@ type AwsS3Bucket struct {
 
 // AwsS3BucketSpec is the spec for a AwsS3Bucket Resource
 type AwsS3BucketSpec struct {
-	Policy	string	`json:"policy"`
-	Website	[]interface{}	`json:"website"`
-	ReplicationConfiguration	[]interface{}	`json:"replication_configuration"`
 	Acl	string	`json:"acl"`
 	ForceDestroy	bool	`json:"force_destroy"`
-	ServerSideEncryptionConfiguration	[]interface{}	`json:"server_side_encryption_configuration"`
-	Tags	map[string]interface{}	`json:"tags"`
+	CorsRule	[]Generic	`json:"cors_rule"`
+	Website	[]Generic	`json:"website"`
 	BucketPrefix	string	`json:"bucket_prefix"`
-	CorsRule	[]interface{}	`json:"cors_rule"`
-	LifecycleRule	[]interface{}	`json:"lifecycle_rule"`
-	Logging	string	`json:"logging"`
+	Policy	string	`json:"policy"`
+	Logging	Generic	`json:"logging"`
+	LifecycleRule	[]Generic	`json:"lifecycle_rule"`
+	ReplicationConfiguration	[]Generic	`json:"replication_configuration"`
+	ServerSideEncryptionConfiguration	[]Generic	`json:"server_side_encryption_configuration"`
+	Tags	map[string]Generic	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

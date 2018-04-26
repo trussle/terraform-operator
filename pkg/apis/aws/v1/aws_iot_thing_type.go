@@ -21,7 +21,7 @@ type AwsIotThingType struct {
 // AwsIotThingTypeSpec is the spec for a AwsIotThingType Resource
 type AwsIotThingTypeSpec struct {
 	Name	string	`json:"name"`
-	Properties	[]interface{}	`json:"properties"`
+	Properties	[]Generic	`json:"properties"`
 	Deprecated	bool	`json:"deprecated"`
 }
 

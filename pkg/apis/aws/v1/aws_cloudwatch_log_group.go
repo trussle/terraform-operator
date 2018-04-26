@@ -22,7 +22,7 @@ type AwsCloudwatchLogGroup struct {
 type AwsCloudwatchLogGroupSpec struct {
 	RetentionInDays	int	`json:"retention_in_days"`
 	KmsKeyId	string	`json:"kms_key_id"`
-	Tags	map[string]interface{}	`json:"tags"`
+	Tags	map[string]Generic	`json:"tags"`
 	NamePrefix	string	`json:"name_prefix"`
 }
 

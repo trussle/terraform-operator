@@ -21,7 +21,7 @@ type AwsVpcPeeringConnectionAccepter struct {
 // AwsVpcPeeringConnectionAccepterSpec is the spec for a AwsVpcPeeringConnectionAccepter Resource
 type AwsVpcPeeringConnectionAccepterSpec struct {
 	VpcPeeringConnectionId	string	`json:"vpc_peering_connection_id"`
-	Tags	map[string]interface{}	`json:"tags"`
+	Tags	map[string]Generic	`json:"tags"`
 	AutoAccept	bool	`json:"auto_accept"`
 }
 

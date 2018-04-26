@@ -20,8 +20,8 @@ type AwsEmrSecurityConfiguration struct {
 
 // AwsEmrSecurityConfigurationSpec is the spec for a AwsEmrSecurityConfiguration Resource
 type AwsEmrSecurityConfigurationSpec struct {
-	NamePrefix	string	`json:"name_prefix"`
 	Configuration	string	`json:"configuration"`
+	NamePrefix	string	`json:"name_prefix"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

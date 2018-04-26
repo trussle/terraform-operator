@@ -20,18 +20,18 @@ type AwsRdsCluster struct {
 
 // AwsRdsClusterSpec is the spec for a AwsRdsCluster Resource
 type AwsRdsClusterSpec struct {
-	IamDatabaseAuthenticationEnabled	bool	`json:"iam_database_authentication_enabled"`
-	FinalSnapshotIdentifier	string	`json:"final_snapshot_identifier"`
-	MasterPassword	string	`json:"master_password"`
 	StorageEncrypted	bool	`json:"storage_encrypted"`
 	BackupRetentionPeriod	int	`json:"backup_retention_period"`
-	SourceRegion	string	`json:"source_region"`
-	SnapshotIdentifier	string	`json:"snapshot_identifier"`
-	SkipFinalSnapshot	bool	`json:"skip_final_snapshot"`
+	Tags	map[string]Generic	`json:"tags"`
 	ReplicationSourceIdentifier	string	`json:"replication_source_identifier"`
+	IamDatabaseAuthenticationEnabled	bool	`json:"iam_database_authentication_enabled"`
 	Engine	string	`json:"engine"`
-	IamRoles	string	`json:"iam_roles"`
-	Tags	map[string]interface{}	`json:"tags"`
+	SkipFinalSnapshot	bool	`json:"skip_final_snapshot"`
+	IamRoles	Generic	`json:"iam_roles"`
+	SourceRegion	string	`json:"source_region"`
+	MasterPassword	string	`json:"master_password"`
+	SnapshotIdentifier	string	`json:"snapshot_identifier"`
+	FinalSnapshotIdentifier	string	`json:"final_snapshot_identifier"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

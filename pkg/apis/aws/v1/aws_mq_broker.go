@@ -20,16 +20,16 @@ type AwsMqBroker struct {
 
 // AwsMqBrokerSpec is the spec for a AwsMqBroker Resource
 type AwsMqBrokerSpec struct {
-	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
-	PubliclyAccessible	bool	`json:"publicly_accessible"`
+	SecurityGroups	Generic	`json:"security_groups"`
 	ApplyImmediately	bool	`json:"apply_immediately"`
+	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
 	EngineType	string	`json:"engine_type"`
-	BrokerName	string	`json:"broker_name"`
 	HostInstanceType	string	`json:"host_instance_type"`
-	User	string	`json:"user"`
+	BrokerName	string	`json:"broker_name"`
 	DeploymentMode	string	`json:"deployment_mode"`
+	PubliclyAccessible	bool	`json:"publicly_accessible"`
 	EngineVersion	string	`json:"engine_version"`
-	SecurityGroups	string	`json:"security_groups"`
+	User	Generic	`json:"user"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

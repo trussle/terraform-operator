@@ -20,12 +20,12 @@ type AwsGlueConnection struct {
 
 // AwsGlueConnectionSpec is the spec for a AwsGlueConnection Resource
 type AwsGlueConnectionSpec struct {
-	MatchCriteria	[]interface{}	`json:"match_criteria"`
-	Name	string	`json:"name"`
-	PhysicalConnectionRequirements	[]interface{}	`json:"physical_connection_requirements"`
-	ConnectionProperties	map[string]interface{}	`json:"connection_properties"`
+	ConnectionProperties	map[string]Generic	`json:"connection_properties"`
 	ConnectionType	string	`json:"connection_type"`
 	Description	string	`json:"description"`
+	MatchCriteria	[]Generic	`json:"match_criteria"`
+	Name	string	`json:"name"`
+	PhysicalConnectionRequirements	[]Generic	`json:"physical_connection_requirements"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -20,14 +20,14 @@ type AwsElastictranscoderPreset struct {
 
 // AwsElastictranscoderPresetSpec is the spec for a AwsElastictranscoderPreset Resource
 type AwsElastictranscoderPresetSpec struct {
-	Video	string	`json:"video"`
-	VideoWatermarks	string	`json:"video_watermarks"`
-	Audio	string	`json:"audio"`
-	AudioCodecOptions	string	`json:"audio_codec_options"`
 	Description	string	`json:"description"`
-	Thumbnails	string	`json:"thumbnails"`
-	VideoCodecOptions	map[string]interface{}	`json:"video_codec_options"`
+	Thumbnails	Generic	`json:"thumbnails"`
+	Video	Generic	`json:"video"`
+	VideoCodecOptions	map[string]Generic	`json:"video_codec_options"`
 	Container	string	`json:"container"`
+	Audio	Generic	`json:"audio"`
+	AudioCodecOptions	Generic	`json:"audio_codec_options"`
+	VideoWatermarks	Generic	`json:"video_watermarks"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

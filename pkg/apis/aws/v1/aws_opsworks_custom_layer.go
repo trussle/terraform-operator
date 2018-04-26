@@ -20,27 +20,27 @@ type AwsOpsworksCustomLayer struct {
 
 // AwsOpsworksCustomLayerSpec is the spec for a AwsOpsworksCustomLayer Resource
 type AwsOpsworksCustomLayerSpec struct {
-	CustomSetupRecipes	[]interface{}	`json:"custom_setup_recipes"`
-	CustomConfigureRecipes	[]interface{}	`json:"custom_configure_recipes"`
-	CustomSecurityGroupIds	string	`json:"custom_security_group_ids"`
-	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
-	Name	string	`json:"name"`
 	AutoAssignPublicIps	bool	`json:"auto_assign_public_ips"`
-	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
-	CustomDeployRecipes	[]interface{}	`json:"custom_deploy_recipes"`
-	CustomShutdownRecipes	[]interface{}	`json:"custom_shutdown_recipes"`
+	CustomConfigureRecipes	[]Generic	`json:"custom_configure_recipes"`
+	CustomUndeployRecipes	[]Generic	`json:"custom_undeploy_recipes"`
+	CustomShutdownRecipes	[]Generic	`json:"custom_shutdown_recipes"`
 	AutoHealing	bool	`json:"auto_healing"`
-	StackId	string	`json:"stack_id"`
+	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
+	ShortName	string	`json:"short_name"`
+	CustomDeployRecipes	[]Generic	`json:"custom_deploy_recipes"`
+	Name	string	`json:"name"`
 	AutoAssignElasticIps	bool	`json:"auto_assign_elastic_ips"`
 	ElasticLoadBalancer	string	`json:"elastic_load_balancer"`
-	CustomJson	string	`json:"custom_json"`
-	DrainElbOnShutdown	bool	`json:"drain_elb_on_shutdown"`
-	SystemPackages	string	`json:"system_packages"`
-	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
-	CustomUndeployRecipes	[]interface{}	`json:"custom_undeploy_recipes"`
+	CustomSetupRecipes	[]Generic	`json:"custom_setup_recipes"`
+	CustomSecurityGroupIds	Generic	`json:"custom_security_group_ids"`
 	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
-	EbsVolume	string	`json:"ebs_volume"`
-	ShortName	string	`json:"short_name"`
+	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
+	DrainElbOnShutdown	bool	`json:"drain_elb_on_shutdown"`
+	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
+	CustomJson	string	`json:"custom_json"`
+	SystemPackages	Generic	`json:"system_packages"`
+	StackId	string	`json:"stack_id"`
+	EbsVolume	Generic	`json:"ebs_volume"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

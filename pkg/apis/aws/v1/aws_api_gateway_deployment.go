@@ -24,7 +24,7 @@ type AwsApiGatewayDeploymentSpec struct {
 	StageName	string	`json:"stage_name"`
 	Description	string	`json:"description"`
 	StageDescription	string	`json:"stage_description"`
-	Variables	map[string]interface{}	`json:"variables"`
+	Variables	map[string]Generic	`json:"variables"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

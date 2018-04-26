@@ -21,7 +21,7 @@ type AwsLoadBalancerBackendServerPolicy struct {
 // AwsLoadBalancerBackendServerPolicySpec is the spec for a AwsLoadBalancerBackendServerPolicy Resource
 type AwsLoadBalancerBackendServerPolicySpec struct {
 	LoadBalancerName	string	`json:"load_balancer_name"`
-	PolicyNames	string	`json:"policy_names"`
+	PolicyNames	Generic	`json:"policy_names"`
 	InstancePort	int	`json:"instance_port"`
 }
 

@@ -20,7 +20,7 @@ type AwsDefaultVpc struct {
 
 // AwsDefaultVpcSpec is the spec for a AwsDefaultVpc Resource
 type AwsDefaultVpcSpec struct {
-	Tags	map[string]interface{}	`json:"tags"`
+	Tags	map[string]Generic	`json:"tags"`
 	EnableDnsSupport	bool	`json:"enable_dns_support"`
 }
 

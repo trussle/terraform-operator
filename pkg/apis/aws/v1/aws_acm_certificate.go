@@ -20,10 +20,10 @@ type AwsAcmCertificate struct {
 
 // AwsAcmCertificateSpec is the spec for a AwsAcmCertificate Resource
 type AwsAcmCertificateSpec struct {
-	Tags	map[string]interface{}	`json:"tags"`
 	DomainName	string	`json:"domain_name"`
-	SubjectAlternativeNames	[]interface{}	`json:"subject_alternative_names"`
+	SubjectAlternativeNames	[]Generic	`json:"subject_alternative_names"`
 	ValidationMethod	string	`json:"validation_method"`
+	Tags	map[string]Generic	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

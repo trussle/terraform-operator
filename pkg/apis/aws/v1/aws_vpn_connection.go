@@ -20,7 +20,7 @@ type AwsVpnConnection struct {
 
 // AwsVpnConnectionSpec is the spec for a AwsVpnConnection Resource
 type AwsVpnConnectionSpec struct {
-	Tags	map[string]interface{}	`json:"tags"`
+	Tags	map[string]Generic	`json:"tags"`
 	VpnGatewayId	string	`json:"vpn_gateway_id"`
 	CustomerGatewayId	string	`json:"customer_gateway_id"`
 	Type	string	`json:"type"`

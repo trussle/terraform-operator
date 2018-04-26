@@ -20,22 +20,22 @@ type AwsIotTopicRule struct {
 
 // AwsIotTopicRuleSpec is the spec for a AwsIotTopicRule Resource
 type AwsIotTopicRuleSpec struct {
-	Sql	string	`json:"sql"`
-	Firehose	string	`json:"firehose"`
-	Name	string	`json:"name"`
 	SqlVersion	string	`json:"sql_version"`
-	CloudwatchAlarm	string	`json:"cloudwatch_alarm"`
-	Sns	string	`json:"sns"`
-	Enabled	bool	`json:"enabled"`
-	CloudwatchMetric	string	`json:"cloudwatch_metric"`
-	Dynamodb	string	`json:"dynamodb"`
-	Elasticsearch	string	`json:"elasticsearch"`
-	Lambda	string	`json:"lambda"`
-	S3	string	`json:"s3"`
-	Sqs	string	`json:"sqs"`
+	CloudwatchAlarm	Generic	`json:"cloudwatch_alarm"`
+	Elasticsearch	Generic	`json:"elasticsearch"`
+	Lambda	Generic	`json:"lambda"`
+	Sqs	Generic	`json:"sqs"`
+	Name	string	`json:"name"`
 	Description	string	`json:"description"`
-	Kinesis	string	`json:"kinesis"`
-	Republish	string	`json:"republish"`
+	Republish	Generic	`json:"republish"`
+	S3	Generic	`json:"s3"`
+	Sns	Generic	`json:"sns"`
+	Enabled	bool	`json:"enabled"`
+	Sql	string	`json:"sql"`
+	Kinesis	Generic	`json:"kinesis"`
+	Firehose	Generic	`json:"firehose"`
+	CloudwatchMetric	Generic	`json:"cloudwatch_metric"`
+	Dynamodb	Generic	`json:"dynamodb"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

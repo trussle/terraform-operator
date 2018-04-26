@@ -20,22 +20,22 @@ type AwsRoute53Record struct {
 
 // AwsRoute53RecordSpec is the spec for a AwsRoute53Record Resource
 type AwsRoute53RecordSpec struct {
-	AllowOverwrite	bool	`json:"allow_overwrite"`
-	Alias	string	`json:"alias"`
-	Failover	string	`json:"failover"`
-	LatencyRoutingPolicy	[]interface{}	`json:"latency_routing_policy"`
-	WeightedRoutingPolicy	[]interface{}	`json:"weighted_routing_policy"`
-	HealthCheckId	string	`json:"health_check_id"`
-	Name	string	`json:"name"`
-	Type	string	`json:"type"`
-	Weight	int	`json:"weight"`
-	GeolocationRoutingPolicy	[]interface{}	`json:"geolocation_routing_policy"`
-	Records	string	`json:"records"`
 	SetIdentifier	string	`json:"set_identifier"`
-	MultivalueAnswerRoutingPolicy	bool	`json:"multivalue_answer_routing_policy"`
-	ZoneId	string	`json:"zone_id"`
+	LatencyRoutingPolicy	[]Generic	`json:"latency_routing_policy"`
+	HealthCheckId	string	`json:"health_check_id"`
+	AllowOverwrite	bool	`json:"allow_overwrite"`
+	Name	string	`json:"name"`
+	FailoverRoutingPolicy	[]Generic	`json:"failover_routing_policy"`
+	GeolocationRoutingPolicy	[]Generic	`json:"geolocation_routing_policy"`
+	Failover	string	`json:"failover"`
+	Type	string	`json:"type"`
 	Ttl	int	`json:"ttl"`
-	FailoverRoutingPolicy	[]interface{}	`json:"failover_routing_policy"`
+	Weight	int	`json:"weight"`
+	MultivalueAnswerRoutingPolicy	bool	`json:"multivalue_answer_routing_policy"`
+	Records	Generic	`json:"records"`
+	ZoneId	string	`json:"zone_id"`
+	Alias	Generic	`json:"alias"`
+	WeightedRoutingPolicy	[]Generic	`json:"weighted_routing_policy"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

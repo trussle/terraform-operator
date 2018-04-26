@@ -20,11 +20,11 @@ type AwsDefaultNetworkAcl struct {
 
 // AwsDefaultNetworkAclSpec is the spec for a AwsDefaultNetworkAcl Resource
 type AwsDefaultNetworkAclSpec struct {
+	Ingress	Generic	`json:"ingress"`
+	Egress	Generic	`json:"egress"`
+	Tags	map[string]Generic	`json:"tags"`
 	DefaultNetworkAclId	string	`json:"default_network_acl_id"`
-	SubnetIds	string	`json:"subnet_ids"`
-	Ingress	string	`json:"ingress"`
-	Egress	string	`json:"egress"`
-	Tags	map[string]interface{}	`json:"tags"`
+	SubnetIds	Generic	`json:"subnet_ids"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

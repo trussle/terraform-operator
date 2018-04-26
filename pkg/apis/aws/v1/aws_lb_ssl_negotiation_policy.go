@@ -20,7 +20,7 @@ type AwsLbSslNegotiationPolicy struct {
 
 // AwsLbSslNegotiationPolicySpec is the spec for a AwsLbSslNegotiationPolicy Resource
 type AwsLbSslNegotiationPolicySpec struct {
-	Attribute	string	`json:"attribute"`
+	Attribute	Generic	`json:"attribute"`
 	Name	string	`json:"name"`
 	LoadBalancer	string	`json:"load_balancer"`
 	LbPort	int	`json:"lb_port"`

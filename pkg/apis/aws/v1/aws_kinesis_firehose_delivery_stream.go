@@ -20,14 +20,14 @@ type AwsKinesisFirehoseDeliveryStream struct {
 
 // AwsKinesisFirehoseDeliveryStreamSpec is the spec for a AwsKinesisFirehoseDeliveryStream Resource
 type AwsKinesisFirehoseDeliveryStreamSpec struct {
-	KinesisSourceConfiguration	[]interface{}	`json:"kinesis_source_configuration"`
-	S3Configuration	[]interface{}	`json:"s3_configuration"`
-	ExtendedS3Configuration	[]interface{}	`json:"extended_s3_configuration"`
 	Name	string	`json:"name"`
+	S3Configuration	[]Generic	`json:"s3_configuration"`
+	ElasticsearchConfiguration	[]Generic	`json:"elasticsearch_configuration"`
+	SplunkConfiguration	[]Generic	`json:"splunk_configuration"`
+	KinesisSourceConfiguration	[]Generic	`json:"kinesis_source_configuration"`
 	Destination	string	`json:"destination"`
-	RedshiftConfiguration	[]interface{}	`json:"redshift_configuration"`
-	ElasticsearchConfiguration	[]interface{}	`json:"elasticsearch_configuration"`
-	SplunkConfiguration	[]interface{}	`json:"splunk_configuration"`
+	ExtendedS3Configuration	[]Generic	`json:"extended_s3_configuration"`
+	RedshiftConfiguration	[]Generic	`json:"redshift_configuration"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

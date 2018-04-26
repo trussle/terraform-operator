@@ -20,10 +20,10 @@ type AwsDbParameterGroup struct {
 
 // AwsDbParameterGroupSpec is the spec for a AwsDbParameterGroup Resource
 type AwsDbParameterGroupSpec struct {
+	Tags	map[string]Generic	`json:"tags"`
 	Family	string	`json:"family"`
 	Description	string	`json:"description"`
-	Parameter	string	`json:"parameter"`
-	Tags	map[string]interface{}	`json:"tags"`
+	Parameter	Generic	`json:"parameter"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -20,19 +20,19 @@ type AwsLaunchConfiguration struct {
 
 // AwsLaunchConfigurationSpec is the spec for a AwsLaunchConfiguration Resource
 type AwsLaunchConfigurationSpec struct {
-	VpcClassicLinkSecurityGroups	string	`json:"vpc_classic_link_security_groups"`
-	SpotPrice	string	`json:"spot_price"`
-	EphemeralBlockDevice	string	`json:"ephemeral_block_device"`
-	NamePrefix	string	`json:"name_prefix"`
+	InstanceType	string	`json:"instance_type"`
 	PlacementTenancy	string	`json:"placement_tenancy"`
 	EnableMonitoring	bool	`json:"enable_monitoring"`
-	ImageId	string	`json:"image_id"`
-	SecurityGroups	string	`json:"security_groups"`
-	IamInstanceProfile	string	`json:"iam_instance_profile"`
-	InstanceType	string	`json:"instance_type"`
-	AssociatePublicIpAddress	bool	`json:"associate_public_ip_address"`
-	UserData	string	`json:"user_data"`
+	EphemeralBlockDevice	Generic	`json:"ephemeral_block_device"`
+	NamePrefix	string	`json:"name_prefix"`
 	VpcClassicLinkId	string	`json:"vpc_classic_link_id"`
+	SpotPrice	string	`json:"spot_price"`
+	AssociatePublicIpAddress	bool	`json:"associate_public_ip_address"`
+	ImageId	string	`json:"image_id"`
+	IamInstanceProfile	string	`json:"iam_instance_profile"`
+	UserData	string	`json:"user_data"`
+	SecurityGroups	Generic	`json:"security_groups"`
+	VpcClassicLinkSecurityGroups	Generic	`json:"vpc_classic_link_security_groups"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -20,16 +20,16 @@ type AwsSsmMaintenanceWindowTask struct {
 
 // AwsSsmMaintenanceWindowTaskSpec is the spec for a AwsSsmMaintenanceWindowTask Resource
 type AwsSsmMaintenanceWindowTaskSpec struct {
-	Priority	int	`json:"priority"`
+	TaskParameters	[]Generic	`json:"task_parameters"`
 	WindowId	string	`json:"window_id"`
 	MaxConcurrency	string	`json:"max_concurrency"`
+	Targets	[]Generic	`json:"targets"`
+	ServiceRoleArn	string	`json:"service_role_arn"`
+	Priority	int	`json:"priority"`
+	LoggingInfo	[]Generic	`json:"logging_info"`
 	MaxErrors	string	`json:"max_errors"`
 	TaskType	string	`json:"task_type"`
-	ServiceRoleArn	string	`json:"service_role_arn"`
-	Targets	[]interface{}	`json:"targets"`
 	TaskArn	string	`json:"task_arn"`
-	LoggingInfo	[]interface{}	`json:"logging_info"`
-	TaskParameters	[]interface{}	`json:"task_parameters"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

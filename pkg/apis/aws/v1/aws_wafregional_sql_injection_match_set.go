@@ -21,7 +21,7 @@ type AwsWafregionalSqlInjectionMatchSet struct {
 // AwsWafregionalSqlInjectionMatchSetSpec is the spec for a AwsWafregionalSqlInjectionMatchSet Resource
 type AwsWafregionalSqlInjectionMatchSetSpec struct {
 	Name	string	`json:"name"`
-	SqlInjectionMatchTuple	string	`json:"sql_injection_match_tuple"`
+	SqlInjectionMatchTuple	Generic	`json:"sql_injection_match_tuple"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

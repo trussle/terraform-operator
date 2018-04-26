@@ -23,7 +23,7 @@ type AwsVpcEndpointConnectionNotificationSpec struct {
 	VpcEndpointServiceId	string	`json:"vpc_endpoint_service_id"`
 	VpcEndpointId	string	`json:"vpc_endpoint_id"`
 	ConnectionNotificationArn	string	`json:"connection_notification_arn"`
-	ConnectionEvents	string	`json:"connection_events"`
+	ConnectionEvents	Generic	`json:"connection_events"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

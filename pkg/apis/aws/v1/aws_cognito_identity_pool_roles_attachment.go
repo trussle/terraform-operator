@@ -20,9 +20,9 @@ type AwsCognitoIdentityPoolRolesAttachment struct {
 
 // AwsCognitoIdentityPoolRolesAttachmentSpec is the spec for a AwsCognitoIdentityPoolRolesAttachment Resource
 type AwsCognitoIdentityPoolRolesAttachmentSpec struct {
+	Roles	map[string]Generic	`json:"roles"`
 	IdentityPoolId	string	`json:"identity_pool_id"`
-	RoleMapping	string	`json:"role_mapping"`
-	Roles	map[string]interface{}	`json:"roles"`
+	RoleMapping	Generic	`json:"role_mapping"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

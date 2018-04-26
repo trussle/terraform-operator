@@ -20,7 +20,7 @@ type AwsInspectorResourceGroup struct {
 
 // AwsInspectorResourceGroupSpec is the spec for a AwsInspectorResourceGroup Resource
 type AwsInspectorResourceGroupSpec struct {
-	Tags	map[string]interface{}	`json:"tags"`
+	Tags	map[string]Generic	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

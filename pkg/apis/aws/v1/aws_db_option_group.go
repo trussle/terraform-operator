@@ -20,11 +20,11 @@ type AwsDbOptionGroup struct {
 
 // AwsDbOptionGroupSpec is the spec for a AwsDbOptionGroup Resource
 type AwsDbOptionGroupSpec struct {
+	Tags	map[string]Generic	`json:"tags"`
 	EngineName	string	`json:"engine_name"`
 	MajorEngineVersion	string	`json:"major_engine_version"`
 	OptionGroupDescription	string	`json:"option_group_description"`
-	Option	string	`json:"option"`
-	Tags	map[string]interface{}	`json:"tags"`
+	Option	Generic	`json:"option"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

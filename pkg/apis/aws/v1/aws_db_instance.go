@@ -20,23 +20,23 @@ type AwsDbInstance struct {
 
 // AwsDbInstanceSpec is the spec for a AwsDbInstance Resource
 type AwsDbInstanceSpec struct {
-	Tags	map[string]interface{}	`json:"tags"`
-	Password	string	`json:"password"`
-	SecurityGroupNames	string	`json:"security_group_names"`
-	SkipFinalSnapshot	bool	`json:"skip_final_snapshot"`
-	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
-	MonitoringInterval	int	`json:"monitoring_interval"`
-	CopyTagsToSnapshot	bool	`json:"copy_tags_to_snapshot"`
-	EnabledCloudwatchLogsExports	[]interface{}	`json:"enabled_cloudwatch_logs_exports"`
-	ReplicateSourceDb	string	`json:"replicate_source_db"`
-	SnapshotIdentifier	string	`json:"snapshot_identifier"`
-	AllowMajorVersionUpgrade	bool	`json:"allow_major_version_upgrade"`
-	InstanceClass	string	`json:"instance_class"`
 	Iops	int	`json:"iops"`
+	ReplicateSourceDb	string	`json:"replicate_source_db"`
+	AllowMajorVersionUpgrade	bool	`json:"allow_major_version_upgrade"`
+	EnabledCloudwatchLogsExports	[]Generic	`json:"enabled_cloudwatch_logs_exports"`
 	PubliclyAccessible	bool	`json:"publicly_accessible"`
+	SecurityGroupNames	Generic	`json:"security_group_names"`
 	FinalSnapshotIdentifier	string	`json:"final_snapshot_identifier"`
-	IamDatabaseAuthenticationEnabled	bool	`json:"iam_database_authentication_enabled"`
+	SnapshotIdentifier	string	`json:"snapshot_identifier"`
+	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
 	StorageEncrypted	bool	`json:"storage_encrypted"`
+	Tags	map[string]Generic	`json:"tags"`
+	InstanceClass	string	`json:"instance_class"`
+	CopyTagsToSnapshot	bool	`json:"copy_tags_to_snapshot"`
+	IamDatabaseAuthenticationEnabled	bool	`json:"iam_database_authentication_enabled"`
+	Password	string	`json:"password"`
+	SkipFinalSnapshot	bool	`json:"skip_final_snapshot"`
+	MonitoringInterval	int	`json:"monitoring_interval"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

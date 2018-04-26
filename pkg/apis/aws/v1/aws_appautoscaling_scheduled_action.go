@@ -20,14 +20,14 @@ type AwsAppautoscalingScheduledAction struct {
 
 // AwsAppautoscalingScheduledActionSpec is the spec for a AwsAppautoscalingScheduledAction Resource
 type AwsAppautoscalingScheduledActionSpec struct {
-	ServiceNamespace	string	`json:"service_namespace"`
 	ScalableDimension	string	`json:"scalable_dimension"`
-	StartTime	string	`json:"start_time"`
-	Name	string	`json:"name"`
-	ScalableTargetAction	[]interface{}	`json:"scalable_target_action"`
 	Schedule	string	`json:"schedule"`
-	EndTime	string	`json:"end_time"`
+	Name	string	`json:"name"`
+	ServiceNamespace	string	`json:"service_namespace"`
 	ResourceId	string	`json:"resource_id"`
+	ScalableTargetAction	[]Generic	`json:"scalable_target_action"`
+	StartTime	string	`json:"start_time"`
+	EndTime	string	`json:"end_time"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

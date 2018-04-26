@@ -20,9 +20,9 @@ type AwsIamGroupMembership struct {
 
 // AwsIamGroupMembershipSpec is the spec for a AwsIamGroupMembership Resource
 type AwsIamGroupMembershipSpec struct {
-	Name	string	`json:"name"`
-	Users	string	`json:"users"`
+	Users	Generic	`json:"users"`
 	Group	string	`json:"group"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

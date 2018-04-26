@@ -20,9 +20,9 @@ type AwsCodecommitRepository struct {
 
 // AwsCodecommitRepositorySpec is the spec for a AwsCodecommitRepository Resource
 type AwsCodecommitRepositorySpec struct {
-	DefaultBranch	string	`json:"default_branch"`
 	RepositoryName	string	`json:"repository_name"`
 	Description	string	`json:"description"`
+	DefaultBranch	string	`json:"default_branch"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

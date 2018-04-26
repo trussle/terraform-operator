@@ -20,15 +20,15 @@ type AwsCloudformationStack struct {
 
 // AwsCloudformationStackSpec is the spec for a AwsCloudformationStack Resource
 type AwsCloudformationStackSpec struct {
-	Name	string	`json:"name"`
-	Capabilities	string	`json:"capabilities"`
-	NotificationArns	string	`json:"notification_arns"`
-	Tags	map[string]interface{}	`json:"tags"`
-	PolicyUrl	string	`json:"policy_url"`
-	DisableRollback	bool	`json:"disable_rollback"`
+	Tags	map[string]Generic	`json:"tags"`
 	OnFailure	string	`json:"on_failure"`
+	Capabilities	Generic	`json:"capabilities"`
+	DisableRollback	bool	`json:"disable_rollback"`
 	TimeoutInMinutes	int	`json:"timeout_in_minutes"`
+	Name	string	`json:"name"`
 	TemplateUrl	string	`json:"template_url"`
+	NotificationArns	Generic	`json:"notification_arns"`
+	PolicyUrl	string	`json:"policy_url"`
 	IamRoleArn	string	`json:"iam_role_arn"`
 }
 

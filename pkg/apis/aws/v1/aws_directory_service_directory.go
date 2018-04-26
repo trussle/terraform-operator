@@ -20,14 +20,14 @@ type AwsDirectoryServiceDirectory struct {
 
 // AwsDirectoryServiceDirectorySpec is the spec for a AwsDirectoryServiceDirectory Resource
 type AwsDirectoryServiceDirectorySpec struct {
+	ConnectSettings	[]Generic	`json:"connect_settings"`
+	Description	string	`json:"description"`
+	VpcSettings	[]Generic	`json:"vpc_settings"`
+	EnableSso	bool	`json:"enable_sso"`
+	Tags	map[string]Generic	`json:"tags"`
+	Type	string	`json:"type"`
 	Name	string	`json:"name"`
 	Password	string	`json:"password"`
-	VpcSettings	[]interface{}	`json:"vpc_settings"`
-	Description	string	`json:"description"`
-	ConnectSettings	[]interface{}	`json:"connect_settings"`
-	EnableSso	bool	`json:"enable_sso"`
-	Type	string	`json:"type"`
-	Tags	map[string]interface{}	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

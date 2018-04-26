@@ -20,24 +20,24 @@ type AwsCloudfrontDistribution struct {
 
 // AwsCloudfrontDistributionSpec is the spec for a AwsCloudfrontDistribution Resource
 type AwsCloudfrontDistributionSpec struct {
-	IsIpv6Enabled	bool	`json:"is_ipv6_enabled"`
-	Tags	map[string]interface{}	`json:"tags"`
-	DefaultCacheBehavior	string	`json:"default_cache_behavior"`
-	LoggingConfig	string	`json:"logging_config"`
-	DefaultRootObject	string	`json:"default_root_object"`
-	HttpVersion	string	`json:"http_version"`
-	PriceClass	string	`json:"price_class"`
-	ViewerCertificate	string	`json:"viewer_certificate"`
-	RetainOnDelete	bool	`json:"retain_on_delete"`
-	Aliases	string	`json:"aliases"`
-	CacheBehavior	string	`json:"cache_behavior"`
-	Comment	string	`json:"comment"`
-	CustomErrorResponse	string	`json:"custom_error_response"`
+	Tags	map[string]Generic	`json:"tags"`
+	ViewerCertificate	Generic	`json:"viewer_certificate"`
 	Enabled	bool	`json:"enabled"`
-	Restrictions	string	`json:"restrictions"`
-	Origin	string	`json:"origin"`
-	OrderedCacheBehavior	[]interface{}	`json:"ordered_cache_behavior"`
+	IsIpv6Enabled	bool	`json:"is_ipv6_enabled"`
+	Comment	string	`json:"comment"`
 	WebAclId	string	`json:"web_acl_id"`
+	Restrictions	Generic	`json:"restrictions"`
+	RetainOnDelete	bool	`json:"retain_on_delete"`
+	Aliases	Generic	`json:"aliases"`
+	DefaultRootObject	string	`json:"default_root_object"`
+	PriceClass	string	`json:"price_class"`
+	OrderedCacheBehavior	[]Generic	`json:"ordered_cache_behavior"`
+	DefaultCacheBehavior	Generic	`json:"default_cache_behavior"`
+	HttpVersion	string	`json:"http_version"`
+	Origin	Generic	`json:"origin"`
+	CacheBehavior	Generic	`json:"cache_behavior"`
+	CustomErrorResponse	Generic	`json:"custom_error_response"`
+	LoggingConfig	Generic	`json:"logging_config"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

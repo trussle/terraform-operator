@@ -20,11 +20,11 @@ type AwsBatchJobDefinition struct {
 
 // AwsBatchJobDefinitionSpec is the spec for a AwsBatchJobDefinition Resource
 type AwsBatchJobDefinitionSpec struct {
-	RetryStrategy	[]interface{}	`json:"retry_strategy"`
 	Type	string	`json:"type"`
 	Name	string	`json:"name"`
 	ContainerProperties	string	`json:"container_properties"`
-	Parameters	map[string]interface{}	`json:"parameters"`
+	Parameters	map[string]Generic	`json:"parameters"`
+	RetryStrategy	[]Generic	`json:"retry_strategy"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

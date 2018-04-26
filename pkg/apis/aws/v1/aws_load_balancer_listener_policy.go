@@ -21,7 +21,7 @@ type AwsLoadBalancerListenerPolicy struct {
 // AwsLoadBalancerListenerPolicySpec is the spec for a AwsLoadBalancerListenerPolicy Resource
 type AwsLoadBalancerListenerPolicySpec struct {
 	LoadBalancerName	string	`json:"load_balancer_name"`
-	PolicyNames	string	`json:"policy_names"`
+	PolicyNames	Generic	`json:"policy_names"`
 	LoadBalancerPort	int	`json:"load_balancer_port"`
 }
 

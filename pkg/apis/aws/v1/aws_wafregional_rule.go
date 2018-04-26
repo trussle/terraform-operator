@@ -22,7 +22,7 @@ type AwsWafregionalRule struct {
 type AwsWafregionalRuleSpec struct {
 	Name	string	`json:"name"`
 	MetricName	string	`json:"metric_name"`
-	Predicate	string	`json:"predicate"`
+	Predicate	Generic	`json:"predicate"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

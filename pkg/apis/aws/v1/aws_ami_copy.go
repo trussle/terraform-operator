@@ -20,12 +20,12 @@ type AwsAmiCopy struct {
 
 // AwsAmiCopySpec is the spec for a AwsAmiCopy Resource
 type AwsAmiCopySpec struct {
-	Tags	map[string]interface{}	`json:"tags"`
 	SourceAmiId	string	`json:"source_ami_id"`
-	SourceAmiRegion	string	`json:"source_ami_region"`
-	Description	string	`json:"description"`
 	Encrypted	bool	`json:"encrypted"`
 	Name	string	`json:"name"`
+	Tags	map[string]Generic	`json:"tags"`
+	SourceAmiRegion	string	`json:"source_ami_region"`
+	Description	string	`json:"description"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

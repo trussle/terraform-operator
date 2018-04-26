@@ -23,7 +23,7 @@ type AwsCustomerGatewaySpec struct {
 	BgpAsn	int	`json:"bgp_asn"`
 	IpAddress	string	`json:"ip_address"`
 	Type	string	`json:"type"`
-	Tags	map[string]interface{}	`json:"tags"`
+	Tags	map[string]Generic	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

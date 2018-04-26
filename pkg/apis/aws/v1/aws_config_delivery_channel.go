@@ -20,11 +20,11 @@ type AwsConfigDeliveryChannel struct {
 
 // AwsConfigDeliveryChannelSpec is the spec for a AwsConfigDeliveryChannel Resource
 type AwsConfigDeliveryChannelSpec struct {
-	SnapshotDeliveryProperties	[]interface{}	`json:"snapshot_delivery_properties"`
-	Name	string	`json:"name"`
-	S3BucketName	string	`json:"s3_bucket_name"`
 	S3KeyPrefix	string	`json:"s3_key_prefix"`
 	SnsTopicArn	string	`json:"sns_topic_arn"`
+	SnapshotDeliveryProperties	[]Generic	`json:"snapshot_delivery_properties"`
+	Name	string	`json:"name"`
+	S3BucketName	string	`json:"s3_bucket_name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

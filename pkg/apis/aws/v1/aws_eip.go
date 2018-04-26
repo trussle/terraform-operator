@@ -20,8 +20,8 @@ type AwsEip struct {
 
 // AwsEipSpec is the spec for a AwsEip Resource
 type AwsEipSpec struct {
+	Tags	map[string]Generic	`json:"tags"`
 	AssociateWithPrivateIp	string	`json:"associate_with_private_ip"`
-	Tags	map[string]interface{}	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

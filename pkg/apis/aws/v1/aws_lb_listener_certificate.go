@@ -20,8 +20,8 @@ type AwsLbListenerCertificate struct {
 
 // AwsLbListenerCertificateSpec is the spec for a AwsLbListenerCertificate Resource
 type AwsLbListenerCertificateSpec struct {
-	ListenerArn	string	`json:"listener_arn"`
 	CertificateArn	string	`json:"certificate_arn"`
+	ListenerArn	string	`json:"listener_arn"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

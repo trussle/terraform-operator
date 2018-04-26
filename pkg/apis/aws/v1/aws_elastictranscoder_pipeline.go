@@ -20,12 +20,12 @@ type AwsElastictranscoderPipeline struct {
 
 // AwsElastictranscoderPipelineSpec is the spec for a AwsElastictranscoderPipeline Resource
 type AwsElastictranscoderPipelineSpec struct {
-	ContentConfigPermissions	string	`json:"content_config_permissions"`
-	InputBucket	string	`json:"input_bucket"`
-	Notifications	string	`json:"notifications"`
-	Role	string	`json:"role"`
-	ThumbnailConfigPermissions	string	`json:"thumbnail_config_permissions"`
 	AwsKmsKeyArn	string	`json:"aws_kms_key_arn"`
+	InputBucket	string	`json:"input_bucket"`
+	Role	string	`json:"role"`
+	ThumbnailConfigPermissions	Generic	`json:"thumbnail_config_permissions"`
+	ContentConfigPermissions	Generic	`json:"content_config_permissions"`
+	Notifications	Generic	`json:"notifications"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

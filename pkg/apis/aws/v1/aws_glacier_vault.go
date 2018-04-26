@@ -22,8 +22,8 @@ type AwsGlacierVault struct {
 type AwsGlacierVaultSpec struct {
 	Name	string	`json:"name"`
 	AccessPolicy	string	`json:"access_policy"`
-	Notification	[]interface{}	`json:"notification"`
-	Tags	map[string]interface{}	`json:"tags"`
+	Notification	[]Generic	`json:"notification"`
+	Tags	map[string]Generic	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

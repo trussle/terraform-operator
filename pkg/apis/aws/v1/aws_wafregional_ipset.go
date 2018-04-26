@@ -20,8 +20,8 @@ type AwsWafregionalIpset struct {
 
 // AwsWafregionalIpsetSpec is the spec for a AwsWafregionalIpset Resource
 type AwsWafregionalIpsetSpec struct {
-	IpSetDescriptor	string	`json:"ip_set_descriptor"`
 	Name	string	`json:"name"`
+	IpSetDescriptor	Generic	`json:"ip_set_descriptor"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

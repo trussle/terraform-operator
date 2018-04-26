@@ -20,10 +20,10 @@ type AwsSecurityGroup struct {
 
 // AwsSecurityGroupSpec is the spec for a AwsSecurityGroup Resource
 type AwsSecurityGroupSpec struct {
-	RevokeRulesOnDelete	bool	`json:"revoke_rules_on_delete"`
-	Tags	map[string]interface{}	`json:"tags"`
-	NamePrefix	string	`json:"name_prefix"`
 	Description	string	`json:"description"`
+	Tags	map[string]Generic	`json:"tags"`
+	RevokeRulesOnDelete	bool	`json:"revoke_rules_on_delete"`
+	NamePrefix	string	`json:"name_prefix"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

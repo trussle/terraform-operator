@@ -20,9 +20,9 @@ type AwsWafregionalRuleGroup struct {
 
 // AwsWafregionalRuleGroupSpec is the spec for a AwsWafregionalRuleGroup Resource
 type AwsWafregionalRuleGroupSpec struct {
-	Name	string	`json:"name"`
 	MetricName	string	`json:"metric_name"`
-	ActivatedRule	string	`json:"activated_rule"`
+	ActivatedRule	Generic	`json:"activated_rule"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

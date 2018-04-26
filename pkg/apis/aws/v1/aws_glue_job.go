@@ -20,14 +20,14 @@ type AwsGlueJob struct {
 
 // AwsGlueJobSpec is the spec for a AwsGlueJob Resource
 type AwsGlueJobSpec struct {
-	Description	string	`json:"description"`
-	Name	string	`json:"name"`
 	AllocatedCapacity	int	`json:"allocated_capacity"`
-	Command	[]interface{}	`json:"command"`
-	Connections	[]interface{}	`json:"connections"`
-	DefaultArguments	map[string]interface{}	`json:"default_arguments"`
+	Command	[]Generic	`json:"command"`
+	Description	string	`json:"description"`
 	MaxRetries	int	`json:"max_retries"`
+	Name	string	`json:"name"`
 	RoleArn	string	`json:"role_arn"`
+	Connections	[]Generic	`json:"connections"`
+	DefaultArguments	map[string]Generic	`json:"default_arguments"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

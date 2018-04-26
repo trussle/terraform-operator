@@ -20,12 +20,12 @@ type AwsElasticsearchDomain struct {
 
 // AwsElasticsearchDomainSpec is the spec for a AwsElasticsearchDomain Resource
 type AwsElasticsearchDomainSpec struct {
-	Tags	map[string]interface{}	`json:"tags"`
-	SnapshotOptions	[]interface{}	`json:"snapshot_options"`
-	LogPublishingOptions	string	`json:"log_publishing_options"`
-	DomainName	string	`json:"domain_name"`
-	VpcOptions	[]interface{}	`json:"vpc_options"`
 	ElasticsearchVersion	string	`json:"elasticsearch_version"`
+	LogPublishingOptions	Generic	`json:"log_publishing_options"`
+	Tags	map[string]Generic	`json:"tags"`
+	DomainName	string	`json:"domain_name"`
+	SnapshotOptions	[]Generic	`json:"snapshot_options"`
+	VpcOptions	[]Generic	`json:"vpc_options"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

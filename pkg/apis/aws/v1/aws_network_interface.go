@@ -20,10 +20,10 @@ type AwsNetworkInterface struct {
 
 // AwsNetworkInterfaceSpec is the spec for a AwsNetworkInterface Resource
 type AwsNetworkInterfaceSpec struct {
+	Description	string	`json:"description"`
 	SubnetId	string	`json:"subnet_id"`
 	SourceDestCheck	bool	`json:"source_dest_check"`
-	Description	string	`json:"description"`
-	Tags	map[string]interface{}	`json:"tags"`
+	Tags	map[string]Generic	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

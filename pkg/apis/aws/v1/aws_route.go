@@ -21,8 +21,8 @@ type AwsRoute struct {
 // AwsRouteSpec is the spec for a AwsRoute Resource
 type AwsRouteSpec struct {
 	DestinationCidrBlock	string	`json:"destination_cidr_block"`
-	DestinationIpv6CidrBlock	string	`json:"destination_ipv6_cidr_block"`
 	RouteTableId	string	`json:"route_table_id"`
+	DestinationIpv6CidrBlock	string	`json:"destination_ipv6_cidr_block"`
 	VpcPeeringConnectionId	string	`json:"vpc_peering_connection_id"`
 }
 

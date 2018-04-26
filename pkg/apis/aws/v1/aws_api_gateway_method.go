@@ -21,13 +21,13 @@ type AwsApiGatewayMethod struct {
 // AwsApiGatewayMethodSpec is the spec for a AwsApiGatewayMethod Resource
 type AwsApiGatewayMethodSpec struct {
 	RestApiId	string	`json:"rest_api_id"`
-	Authorization	string	`json:"authorization"`
-	AuthorizerId	string	`json:"authorizer_id"`
-	ApiKeyRequired	bool	`json:"api_key_required"`
-	RequestModels	map[string]interface{}	`json:"request_models"`
 	ResourceId	string	`json:"resource_id"`
 	HttpMethod	string	`json:"http_method"`
-	RequestParameters	map[string]interface{}	`json:"request_parameters"`
+	AuthorizerId	string	`json:"authorizer_id"`
+	RequestModels	map[string]Generic	`json:"request_models"`
+	Authorization	string	`json:"authorization"`
+	ApiKeyRequired	bool	`json:"api_key_required"`
+	RequestParameters	map[string]Generic	`json:"request_parameters"`
 	RequestParametersInJson	string	`json:"request_parameters_in_json"`
 	RequestValidatorId	string	`json:"request_validator_id"`
 }

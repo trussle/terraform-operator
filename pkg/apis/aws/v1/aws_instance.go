@@ -20,19 +20,19 @@ type AwsInstance struct {
 
 // AwsInstanceSpec is the spec for a AwsInstance Resource
 type AwsInstanceSpec struct {
-	EbsOptimized	bool	`json:"ebs_optimized"`
-	DisableApiTermination	bool	`json:"disable_api_termination"`
-	IamInstanceProfile	string	`json:"iam_instance_profile"`
-	InstanceType	string	`json:"instance_type"`
-	UserData	string	`json:"user_data"`
-	InstanceInitiatedShutdownBehavior	string	`json:"instance_initiated_shutdown_behavior"`
-	Monitoring	bool	`json:"monitoring"`
-	Tags	map[string]interface{}	`json:"tags"`
-	GetPasswordData	bool	`json:"get_password_data"`
-	BlockDevice	map[string]interface{}	`json:"block_device"`
 	SourceDestCheck	bool	`json:"source_dest_check"`
+	UserData	string	`json:"user_data"`
+	IamInstanceProfile	string	`json:"iam_instance_profile"`
 	Ami	string	`json:"ami"`
+	GetPasswordData	bool	`json:"get_password_data"`
+	Monitoring	bool	`json:"monitoring"`
+	InstanceType	string	`json:"instance_type"`
+	EbsOptimized	bool	`json:"ebs_optimized"`
+	BlockDevice	map[string]Generic	`json:"block_device"`
 	UserDataBase64	string	`json:"user_data_base64"`
+	DisableApiTermination	bool	`json:"disable_api_termination"`
+	InstanceInitiatedShutdownBehavior	string	`json:"instance_initiated_shutdown_behavior"`
+	Tags	map[string]Generic	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

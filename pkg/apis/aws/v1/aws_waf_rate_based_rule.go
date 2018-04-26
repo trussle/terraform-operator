@@ -20,11 +20,11 @@ type AwsWafRateBasedRule struct {
 
 // AwsWafRateBasedRuleSpec is the spec for a AwsWafRateBasedRule Resource
 type AwsWafRateBasedRuleSpec struct {
-	RateKey	string	`json:"rate_key"`
-	RateLimit	int	`json:"rate_limit"`
 	Name	string	`json:"name"`
 	MetricName	string	`json:"metric_name"`
-	Predicates	string	`json:"predicates"`
+	Predicates	Generic	`json:"predicates"`
+	RateKey	string	`json:"rate_key"`
+	RateLimit	int	`json:"rate_limit"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

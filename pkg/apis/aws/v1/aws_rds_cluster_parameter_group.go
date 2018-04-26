@@ -22,8 +22,8 @@ type AwsRdsClusterParameterGroup struct {
 type AwsRdsClusterParameterGroupSpec struct {
 	Family	string	`json:"family"`
 	Description	string	`json:"description"`
-	Parameter	string	`json:"parameter"`
-	Tags	map[string]interface{}	`json:"tags"`
+	Parameter	Generic	`json:"parameter"`
+	Tags	map[string]Generic	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -20,9 +20,9 @@ type AwsIamUserSshKey struct {
 
 // AwsIamUserSshKeySpec is the spec for a AwsIamUserSshKey Resource
 type AwsIamUserSshKeySpec struct {
-	Encoding	string	`json:"encoding"`
 	Username	string	`json:"username"`
 	PublicKey	string	`json:"public_key"`
+	Encoding	string	`json:"encoding"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

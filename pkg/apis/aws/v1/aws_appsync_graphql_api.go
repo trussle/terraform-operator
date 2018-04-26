@@ -22,7 +22,7 @@ type AwsAppsyncGraphqlApi struct {
 type AwsAppsyncGraphqlApiSpec struct {
 	AuthenticationType	string	`json:"authentication_type"`
 	Name	string	`json:"name"`
-	UserPoolConfig	[]interface{}	`json:"user_pool_config"`
+	UserPoolConfig	[]Generic	`json:"user_pool_config"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

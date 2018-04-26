@@ -20,12 +20,12 @@ type AwsEmrInstanceGroup struct {
 
 // AwsEmrInstanceGroupSpec is the spec for a AwsEmrInstanceGroup Resource
 type AwsEmrInstanceGroupSpec struct {
-	EbsOptimized	bool	`json:"ebs_optimized"`
-	EbsConfig	string	`json:"ebs_config"`
-	ClusterId	string	`json:"cluster_id"`
-	InstanceType	string	`json:"instance_type"`
 	InstanceCount	int	`json:"instance_count"`
 	Name	string	`json:"name"`
+	EbsOptimized	bool	`json:"ebs_optimized"`
+	EbsConfig	Generic	`json:"ebs_config"`
+	ClusterId	string	`json:"cluster_id"`
+	InstanceType	string	`json:"instance_type"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

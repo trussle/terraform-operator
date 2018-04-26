@@ -20,9 +20,9 @@ type AwsRedshiftSecurityGroup struct {
 
 // AwsRedshiftSecurityGroupSpec is the spec for a AwsRedshiftSecurityGroup Resource
 type AwsRedshiftSecurityGroupSpec struct {
-	Ingress	string	`json:"ingress"`
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
+	Ingress	Generic	`json:"ingress"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

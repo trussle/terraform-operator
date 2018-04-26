@@ -20,26 +20,26 @@ type AwsOpsworksPhpAppLayer struct {
 
 // AwsOpsworksPhpAppLayerSpec is the spec for a AwsOpsworksPhpAppLayer Resource
 type AwsOpsworksPhpAppLayerSpec struct {
-	StackId	string	`json:"stack_id"`
-	AutoAssignElasticIps	bool	`json:"auto_assign_elastic_ips"`
-	CustomDeployRecipes	[]interface{}	`json:"custom_deploy_recipes"`
-	CustomUndeployRecipes	[]interface{}	`json:"custom_undeploy_recipes"`
-	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
-	EbsVolume	string	`json:"ebs_volume"`
-	CustomConfigureRecipes	[]interface{}	`json:"custom_configure_recipes"`
-	CustomShutdownRecipes	[]interface{}	`json:"custom_shutdown_recipes"`
-	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
+	CustomSetupRecipes	[]Generic	`json:"custom_setup_recipes"`
+	CustomConfigureRecipes	[]Generic	`json:"custom_configure_recipes"`
+	CustomDeployRecipes	[]Generic	`json:"custom_deploy_recipes"`
+	CustomShutdownRecipes	[]Generic	`json:"custom_shutdown_recipes"`
 	AutoHealing	bool	`json:"auto_healing"`
-	SystemPackages	string	`json:"system_packages"`
-	Name	string	`json:"name"`
-	AutoAssignPublicIps	bool	`json:"auto_assign_public_ips"`
-	CustomSecurityGroupIds	string	`json:"custom_security_group_ids"`
-	CustomJson	string	`json:"custom_json"`
-	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
+	StackId	string	`json:"stack_id"`
+	EbsVolume	Generic	`json:"ebs_volume"`
+	AutoAssignElasticIps	bool	`json:"auto_assign_elastic_ips"`
 	DrainElbOnShutdown	bool	`json:"drain_elb_on_shutdown"`
-	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
+	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
+	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
 	ElasticLoadBalancer	string	`json:"elastic_load_balancer"`
-	CustomSetupRecipes	[]interface{}	`json:"custom_setup_recipes"`
+	CustomSecurityGroupIds	Generic	`json:"custom_security_group_ids"`
+	CustomJson	string	`json:"custom_json"`
+	SystemPackages	Generic	`json:"system_packages"`
+	Name	string	`json:"name"`
+	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
+	CustomUndeployRecipes	[]Generic	`json:"custom_undeploy_recipes"`
+	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
+	AutoAssignPublicIps	bool	`json:"auto_assign_public_ips"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

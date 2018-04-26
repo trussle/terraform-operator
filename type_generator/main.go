@@ -20,6 +20,7 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
+
 	}
 
 	err := generateRegisterFile("../pkg/apis/aws/v1/register.go", prov.ResourcesMap)
@@ -137,13 +138,15 @@ func typeAsString(t schema.ValueType) string {
 	case schema.TypeInt:
 		return "int"
 	case schema.TypeList:
-		return "[]interface{}"
+		return "[]Generic"
+		//		return "[]Generic{}"
 	case schema.TypeMap:
-		return "map[string]interface{}"
+		return "map[string]Generic"
+		//		return "map[string]Generic{}"
 	}
 
-	return "string"
-	//return "interface{}"
+	return "Generic"
+	//return "string{}"
 }
 
 func generateRegisterFile(path string, m map[string]*schema.Resource) error {

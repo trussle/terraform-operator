@@ -22,15 +22,15 @@ type AwsOpsworksInstance struct {
 type AwsOpsworksInstanceSpec struct {
 	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
 	State	string	`json:"state"`
-	AgentVersion	string	`json:"agent_version"`
-	Architecture	string	`json:"architecture"`
-	DeleteEip	bool	`json:"delete_eip"`
-	LayerIds	[]interface{}	`json:"layer_ids"`
-	AutoScalingType	string	`json:"auto_scaling_type"`
+	LayerIds	[]Generic	`json:"layer_ids"`
+	DeleteEbs	bool	`json:"delete_ebs"`
 	EbsOptimized	bool	`json:"ebs_optimized"`
+	AutoScalingType	string	`json:"auto_scaling_type"`
+	DeleteEip	bool	`json:"delete_eip"`
+	Architecture	string	`json:"architecture"`
+	AgentVersion	string	`json:"agent_version"`
 	InstanceType	string	`json:"instance_type"`
 	StackId	string	`json:"stack_id"`
-	DeleteEbs	bool	`json:"delete_ebs"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

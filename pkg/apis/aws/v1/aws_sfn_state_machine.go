@@ -20,9 +20,9 @@ type AwsSfnStateMachine struct {
 
 // AwsSfnStateMachineSpec is the spec for a AwsSfnStateMachine Resource
 type AwsSfnStateMachineSpec struct {
-	RoleArn	string	`json:"role_arn"`
 	Definition	string	`json:"definition"`
 	Name	string	`json:"name"`
+	RoleArn	string	`json:"role_arn"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

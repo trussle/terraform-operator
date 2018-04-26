@@ -20,19 +20,19 @@ type AwsAppautoscalingPolicy struct {
 
 // AwsAppautoscalingPolicySpec is the spec for a AwsAppautoscalingPolicy Resource
 type AwsAppautoscalingPolicySpec struct {
-	ScalableDimension	string	`json:"scalable_dimension"`
-	StepScalingPolicyConfiguration	[]interface{}	`json:"step_scaling_policy_configuration"`
-	Cooldown	int	`json:"cooldown"`
-	Name	string	`json:"name"`
 	PolicyType	string	`json:"policy_type"`
+	ResourceId	string	`json:"resource_id"`
+	ScalableDimension	string	`json:"scalable_dimension"`
+	StepScalingPolicyConfiguration	[]Generic	`json:"step_scaling_policy_configuration"`
+	Alarms	[]Generic	`json:"alarms"`
+	MinAdjustmentMagnitude	int	`json:"min_adjustment_magnitude"`
 	MetricAggregationType	string	`json:"metric_aggregation_type"`
-	StepAdjustment	string	`json:"step_adjustment"`
+	TargetTrackingScalingPolicyConfiguration	[]Generic	`json:"target_tracking_scaling_policy_configuration"`
+	Name	string	`json:"name"`
 	ServiceNamespace	string	`json:"service_namespace"`
 	AdjustmentType	string	`json:"adjustment_type"`
-	Alarms	[]interface{}	`json:"alarms"`
-	MinAdjustmentMagnitude	int	`json:"min_adjustment_magnitude"`
-	TargetTrackingScalingPolicyConfiguration	[]interface{}	`json:"target_tracking_scaling_policy_configuration"`
-	ResourceId	string	`json:"resource_id"`
+	Cooldown	int	`json:"cooldown"`
+	StepAdjustment	Generic	`json:"step_adjustment"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -20,17 +20,17 @@ type AwsAutoscalingPolicy struct {
 
 // AwsAutoscalingPolicySpec is the spec for a AwsAutoscalingPolicy Resource
 type AwsAutoscalingPolicySpec struct {
-	EstimatedInstanceWarmup	int	`json:"estimated_instance_warmup"`
-	MinAdjustmentMagnitude	int	`json:"min_adjustment_magnitude"`
 	MinAdjustmentStep	int	`json:"min_adjustment_step"`
-	ScalingAdjustment	int	`json:"scaling_adjustment"`
-	AdjustmentType	string	`json:"adjustment_type"`
-	Name	string	`json:"name"`
+	StepAdjustment	Generic	`json:"step_adjustment"`
+	TargetTrackingConfiguration	[]Generic	`json:"target_tracking_configuration"`
 	AutoscalingGroupName	string	`json:"autoscaling_group_name"`
-	PolicyType	string	`json:"policy_type"`
 	Cooldown	int	`json:"cooldown"`
-	StepAdjustment	string	`json:"step_adjustment"`
-	TargetTrackingConfiguration	[]interface{}	`json:"target_tracking_configuration"`
+	MinAdjustmentMagnitude	int	`json:"min_adjustment_magnitude"`
+	PolicyType	string	`json:"policy_type"`
+	EstimatedInstanceWarmup	int	`json:"estimated_instance_warmup"`
+	ScalingAdjustment	int	`json:"scaling_adjustment"`
+	Name	string	`json:"name"`
+	AdjustmentType	string	`json:"adjustment_type"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

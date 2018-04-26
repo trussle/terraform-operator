@@ -20,28 +20,28 @@ type AwsOpsworksMysqlLayer struct {
 
 // AwsOpsworksMysqlLayerSpec is the spec for a AwsOpsworksMysqlLayer Resource
 type AwsOpsworksMysqlLayerSpec struct {
-	RootPassword	string	`json:"root_password"`
-	CustomUndeployRecipes	[]interface{}	`json:"custom_undeploy_recipes"`
-	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
-	AutoAssignPublicIps	bool	`json:"auto_assign_public_ips"`
-	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
-	ElasticLoadBalancer	string	`json:"elastic_load_balancer"`
-	CustomSetupRecipes	[]interface{}	`json:"custom_setup_recipes"`
-	CustomDeployRecipes	[]interface{}	`json:"custom_deploy_recipes"`
-	RootPasswordOnAllInstances	bool	`json:"root_password_on_all_instances"`
-	AutoAssignElasticIps	bool	`json:"auto_assign_elastic_ips"`
-	CustomSecurityGroupIds	string	`json:"custom_security_group_ids"`
-	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
-	DrainElbOnShutdown	bool	`json:"drain_elb_on_shutdown"`
-	Name	string	`json:"name"`
-	SystemPackages	string	`json:"system_packages"`
+	CustomDeployRecipes	[]Generic	`json:"custom_deploy_recipes"`
 	StackId	string	`json:"stack_id"`
-	EbsVolume	string	`json:"ebs_volume"`
-	CustomConfigureRecipes	[]interface{}	`json:"custom_configure_recipes"`
-	CustomShutdownRecipes	[]interface{}	`json:"custom_shutdown_recipes"`
+	RootPasswordOnAllInstances	bool	`json:"root_password_on_all_instances"`
+	EbsVolume	Generic	`json:"ebs_volume"`
+	Name	string	`json:"name"`
+	AutoAssignElasticIps	bool	`json:"auto_assign_elastic_ips"`
+	CustomSetupRecipes	[]Generic	`json:"custom_setup_recipes"`
+	CustomUndeployRecipes	[]Generic	`json:"custom_undeploy_recipes"`
 	CustomJson	string	`json:"custom_json"`
-	AutoHealing	bool	`json:"auto_healing"`
+	DrainElbOnShutdown	bool	`json:"drain_elb_on_shutdown"`
+	SystemPackages	Generic	`json:"system_packages"`
+	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
+	CustomConfigureRecipes	[]Generic	`json:"custom_configure_recipes"`
+	CustomShutdownRecipes	[]Generic	`json:"custom_shutdown_recipes"`
+	CustomSecurityGroupIds	Generic	`json:"custom_security_group_ids"`
 	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
+	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
+	AutoAssignPublicIps	bool	`json:"auto_assign_public_ips"`
+	ElasticLoadBalancer	string	`json:"elastic_load_balancer"`
+	AutoHealing	bool	`json:"auto_healing"`
+	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
+	RootPassword	string	`json:"root_password"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

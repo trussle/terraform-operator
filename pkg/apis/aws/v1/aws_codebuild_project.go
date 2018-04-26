@@ -20,15 +20,15 @@ type AwsCodebuildProject struct {
 
 // AwsCodebuildProjectSpec is the spec for a AwsCodebuildProject Resource
 type AwsCodebuildProjectSpec struct {
-	Name	string	`json:"name"`
-	Source	string	`json:"source"`
+	Source	Generic	`json:"source"`
 	Timeout	int	`json:"timeout"`
-	VpcConfig	[]interface{}	`json:"vpc_config"`
-	Artifacts	string	`json:"artifacts"`
-	Environment	string	`json:"environment"`
 	BuildTimeout	int	`json:"build_timeout"`
-	Tags	map[string]interface{}	`json:"tags"`
-	Cache	[]interface{}	`json:"cache"`
+	Artifacts	Generic	`json:"artifacts"`
+	Cache	[]Generic	`json:"cache"`
+	Environment	Generic	`json:"environment"`
+	Name	string	`json:"name"`
+	Tags	map[string]Generic	`json:"tags"`
+	VpcConfig	[]Generic	`json:"vpc_config"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

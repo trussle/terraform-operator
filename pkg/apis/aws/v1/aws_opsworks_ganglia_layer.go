@@ -20,29 +20,29 @@ type AwsOpsworksGangliaLayer struct {
 
 // AwsOpsworksGangliaLayerSpec is the spec for a AwsOpsworksGangliaLayer Resource
 type AwsOpsworksGangliaLayerSpec struct {
-	AutoHealing	bool	`json:"auto_healing"`
-	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
-	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
 	Password	string	`json:"password"`
-	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
-	CustomConfigureRecipes	[]interface{}	`json:"custom_configure_recipes"`
-	CustomShutdownRecipes	[]interface{}	`json:"custom_shutdown_recipes"`
-	Url	string	`json:"url"`
-	AutoAssignPublicIps	bool	`json:"auto_assign_public_ips"`
-	EbsVolume	string	`json:"ebs_volume"`
-	Name	string	`json:"name"`
-	Username	string	`json:"username"`
-	CustomSetupRecipes	[]interface{}	`json:"custom_setup_recipes"`
-	CustomDeployRecipes	[]interface{}	`json:"custom_deploy_recipes"`
-	CustomSecurityGroupIds	string	`json:"custom_security_group_ids"`
+	ElasticLoadBalancer	string	`json:"elastic_load_balancer"`
+	CustomShutdownRecipes	[]Generic	`json:"custom_shutdown_recipes"`
 	CustomJson	string	`json:"custom_json"`
+	AutoHealing	bool	`json:"auto_healing"`
+	Name	string	`json:"name"`
+	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
+	CustomSecurityGroupIds	Generic	`json:"custom_security_group_ids"`
+	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
+	EbsVolume	Generic	`json:"ebs_volume"`
+	Url	string	`json:"url"`
+	AutoAssignElasticIps	bool	`json:"auto_assign_elastic_ips"`
+	CustomConfigureRecipes	[]Generic	`json:"custom_configure_recipes"`
+	CustomDeployRecipes	[]Generic	`json:"custom_deploy_recipes"`
+	CustomUndeployRecipes	[]Generic	`json:"custom_undeploy_recipes"`
+	StackId	string	`json:"stack_id"`
+	SystemPackages	Generic	`json:"system_packages"`
+	Username	string	`json:"username"`
+	AutoAssignPublicIps	bool	`json:"auto_assign_public_ips"`
+	CustomSetupRecipes	[]Generic	`json:"custom_setup_recipes"`
+	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
 	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
 	DrainElbOnShutdown	bool	`json:"drain_elb_on_shutdown"`
-	SystemPackages	string	`json:"system_packages"`
-	StackId	string	`json:"stack_id"`
-	AutoAssignElasticIps	bool	`json:"auto_assign_elastic_ips"`
-	ElasticLoadBalancer	string	`json:"elastic_load_balancer"`
-	CustomUndeployRecipes	[]interface{}	`json:"custom_undeploy_recipes"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

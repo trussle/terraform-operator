@@ -22,13 +22,13 @@ type AwsApiGatewayIntegrationResponse struct {
 type AwsApiGatewayIntegrationResponseSpec struct {
 	HttpMethod	string	`json:"http_method"`
 	StatusCode	string	`json:"status_code"`
-	SelectionPattern	string	`json:"selection_pattern"`
+	ResponseParameters	map[string]Generic	`json:"response_parameters"`
+	ContentHandling	string	`json:"content_handling"`
 	ResponseParametersInJson	string	`json:"response_parameters_in_json"`
 	RestApiId	string	`json:"rest_api_id"`
 	ResourceId	string	`json:"resource_id"`
-	ResponseTemplates	map[string]interface{}	`json:"response_templates"`
-	ResponseParameters	map[string]interface{}	`json:"response_parameters"`
-	ContentHandling	string	`json:"content_handling"`
+	SelectionPattern	string	`json:"selection_pattern"`
+	ResponseTemplates	map[string]Generic	`json:"response_templates"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

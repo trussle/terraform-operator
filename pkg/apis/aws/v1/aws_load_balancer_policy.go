@@ -20,10 +20,10 @@ type AwsLoadBalancerPolicy struct {
 
 // AwsLoadBalancerPolicySpec is the spec for a AwsLoadBalancerPolicy Resource
 type AwsLoadBalancerPolicySpec struct {
-	PolicyAttribute	string	`json:"policy_attribute"`
+	PolicyTypeName	string	`json:"policy_type_name"`
+	PolicyAttribute	Generic	`json:"policy_attribute"`
 	LoadBalancerName	string	`json:"load_balancer_name"`
 	PolicyName	string	`json:"policy_name"`
-	PolicyTypeName	string	`json:"policy_type_name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

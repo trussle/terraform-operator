@@ -22,7 +22,7 @@ type AwsWafRuleGroup struct {
 type AwsWafRuleGroupSpec struct {
 	Name	string	`json:"name"`
 	MetricName	string	`json:"metric_name"`
-	ActivatedRule	string	`json:"activated_rule"`
+	ActivatedRule	Generic	`json:"activated_rule"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -20,7 +20,7 @@ type AwsBatchJobQueue struct {
 
 // AwsBatchJobQueueSpec is the spec for a AwsBatchJobQueue Resource
 type AwsBatchJobQueueSpec struct {
-	ComputeEnvironments	[]interface{}	`json:"compute_environments"`
+	ComputeEnvironments	[]Generic	`json:"compute_environments"`
 	Name	string	`json:"name"`
 	Priority	int	`json:"priority"`
 	State	string	`json:"state"`

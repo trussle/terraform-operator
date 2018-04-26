@@ -20,21 +20,21 @@ type AwsOpsworksApplication struct {
 
 // AwsOpsworksApplicationSpec is the spec for a AwsOpsworksApplication Resource
 type AwsOpsworksApplicationSpec struct {
-	DataSourceArn	string	`json:"data_source_arn"`
-	SslConfiguration	[]interface{}	`json:"ssl_configuration"`
-	Name	string	`json:"name"`
-	Type	string	`json:"type"`
 	Description	string	`json:"description"`
 	EnableSsl	bool	`json:"enable_ssl"`
-	StackId	string	`json:"stack_id"`
+	DocumentRoot	string	`json:"document_root"`
+	DataSourceType	string	`json:"data_source_type"`
+	DataSourceDatabaseName	string	`json:"data_source_database_name"`
+	Domains	[]Generic	`json:"domains"`
+	Environment	Generic	`json:"environment"`
+	SslConfiguration	[]Generic	`json:"ssl_configuration"`
+	Name	string	`json:"name"`
 	RailsEnv	string	`json:"rails_env"`
 	AutoBundleOnDeploy	string	`json:"auto_bundle_on_deploy"`
-	DataSourceType	string	`json:"data_source_type"`
-	Domains	[]interface{}	`json:"domains"`
-	DocumentRoot	string	`json:"document_root"`
 	AwsFlowRubySettings	string	`json:"aws_flow_ruby_settings"`
-	DataSourceDatabaseName	string	`json:"data_source_database_name"`
-	Environment	string	`json:"environment"`
+	DataSourceArn	string	`json:"data_source_arn"`
+	Type	string	`json:"type"`
+	StackId	string	`json:"stack_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

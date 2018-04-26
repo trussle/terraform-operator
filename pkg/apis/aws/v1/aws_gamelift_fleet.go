@@ -22,12 +22,12 @@ type AwsGameliftFleet struct {
 type AwsGameliftFleetSpec struct {
 	Ec2InstanceType	string	`json:"ec2_instance_type"`
 	Name	string	`json:"name"`
-	NewGameSessionProtectionPolicy	string	`json:"new_game_session_protection_policy"`
-	ResourceCreationLimitPolicy	[]interface{}	`json:"resource_creation_limit_policy"`
+	ResourceCreationLimitPolicy	[]Generic	`json:"resource_creation_limit_policy"`
+	RuntimeConfiguration	[]Generic	`json:"runtime_configuration"`
 	BuildId	string	`json:"build_id"`
-	RuntimeConfiguration	[]interface{}	`json:"runtime_configuration"`
 	Description	string	`json:"description"`
-	Ec2InboundPermission	[]interface{}	`json:"ec2_inbound_permission"`
+	Ec2InboundPermission	[]Generic	`json:"ec2_inbound_permission"`
+	NewGameSessionProtectionPolicy	string	`json:"new_game_session_protection_policy"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

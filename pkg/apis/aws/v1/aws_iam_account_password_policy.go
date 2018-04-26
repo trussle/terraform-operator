@@ -20,8 +20,8 @@ type AwsIamAccountPasswordPolicy struct {
 
 // AwsIamAccountPasswordPolicySpec is the spec for a AwsIamAccountPasswordPolicy Resource
 type AwsIamAccountPasswordPolicySpec struct {
-	MinimumPasswordLength	int	`json:"minimum_password_length"`
 	AllowUsersToChangePassword	bool	`json:"allow_users_to_change_password"`
+	MinimumPasswordLength	int	`json:"minimum_password_length"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

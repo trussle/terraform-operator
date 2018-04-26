@@ -20,7 +20,7 @@ type AwsEbsVolume struct {
 
 // AwsEbsVolumeSpec is the spec for a AwsEbsVolume Resource
 type AwsEbsVolumeSpec struct {
-	Tags	map[string]interface{}	`json:"tags"`
+	Tags	map[string]Generic	`json:"tags"`
 	AvailabilityZone	string	`json:"availability_zone"`
 }
 

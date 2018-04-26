@@ -20,13 +20,13 @@ type AwsLbTargetGroup struct {
 
 // AwsLbTargetGroupSpec is the spec for a AwsLbTargetGroup Resource
 type AwsLbTargetGroupSpec struct {
-	Protocol	string	`json:"protocol"`
-	VpcId	string	`json:"vpc_id"`
-	TargetType	string	`json:"target_type"`
 	NamePrefix	string	`json:"name_prefix"`
 	Port	int	`json:"port"`
+	Tags	map[string]Generic	`json:"tags"`
+	TargetType	string	`json:"target_type"`
+	Protocol	string	`json:"protocol"`
+	VpcId	string	`json:"vpc_id"`
 	DeregistrationDelay	int	`json:"deregistration_delay"`
-	Tags	map[string]interface{}	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -21,7 +21,7 @@ type AwsApiGatewayMethodSettings struct {
 // AwsApiGatewayMethodSettingsSpec is the spec for a AwsApiGatewayMethodSettings Resource
 type AwsApiGatewayMethodSettingsSpec struct {
 	MethodPath	string	`json:"method_path"`
-	Settings	[]interface{}	`json:"settings"`
+	Settings	[]Generic	`json:"settings"`
 	RestApiId	string	`json:"rest_api_id"`
 	StageName	string	`json:"stage_name"`
 }

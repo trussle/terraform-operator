@@ -20,14 +20,14 @@ type AwsAppsyncDatasource struct {
 
 // AwsAppsyncDatasourceSpec is the spec for a AwsAppsyncDatasource Resource
 type AwsAppsyncDatasourceSpec struct {
-	ServiceRoleArn	string	`json:"service_role_arn"`
-	Type	string	`json:"type"`
-	DynamodbConfig	[]interface{}	`json:"dynamodb_config"`
-	LambdaConfig	[]interface{}	`json:"lambda_config"`
-	ElasticsearchConfig	[]interface{}	`json:"elasticsearch_config"`
-	ApiId	string	`json:"api_id"`
 	Name	string	`json:"name"`
+	Type	string	`json:"type"`
 	Description	string	`json:"description"`
+	LambdaConfig	[]Generic	`json:"lambda_config"`
+	ServiceRoleArn	string	`json:"service_role_arn"`
+	ApiId	string	`json:"api_id"`
+	DynamodbConfig	[]Generic	`json:"dynamodb_config"`
+	ElasticsearchConfig	[]Generic	`json:"elasticsearch_config"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

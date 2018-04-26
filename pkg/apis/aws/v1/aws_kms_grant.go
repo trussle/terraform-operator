@@ -20,13 +20,13 @@ type AwsKmsGrant struct {
 
 // AwsKmsGrantSpec is the spec for a AwsKmsGrant Resource
 type AwsKmsGrantSpec struct {
-	Name	string	`json:"name"`
 	KeyId	string	`json:"key_id"`
-	Operations	string	`json:"operations"`
-	Constraints	string	`json:"constraints"`
-	GrantCreationTokens	string	`json:"grant_creation_tokens"`
+	GrantCreationTokens	Generic	`json:"grant_creation_tokens"`
 	RetireOnDelete	bool	`json:"retire_on_delete"`
+	Name	string	`json:"name"`
 	GranteePrincipal	string	`json:"grantee_principal"`
+	Operations	Generic	`json:"operations"`
+	Constraints	Generic	`json:"constraints"`
 	RetiringPrincipal	string	`json:"retiring_principal"`
 }
 

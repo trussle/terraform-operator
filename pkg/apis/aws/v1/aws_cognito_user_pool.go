@@ -20,18 +20,18 @@ type AwsCognitoUserPool struct {
 
 // AwsCognitoUserPoolSpec is the spec for a AwsCognitoUserPool Resource
 type AwsCognitoUserPoolSpec struct {
-	UsernameAttributes	[]interface{}	`json:"username_attributes"`
-	AliasAttributes	string	`json:"alias_attributes"`
-	Schema	string	`json:"schema"`
-	SmsVerificationMessage	string	`json:"sms_verification_message"`
-	AutoVerifiedAttributes	string	`json:"auto_verified_attributes"`
-	DeviceConfiguration	[]interface{}	`json:"device_configuration"`
-	SmsConfiguration	[]interface{}	`json:"sms_configuration"`
-	Tags	map[string]interface{}	`json:"tags"`
-	MfaConfiguration	string	`json:"mfa_configuration"`
-	EmailConfiguration	[]interface{}	`json:"email_configuration"`
-	Name	string	`json:"name"`
+	UsernameAttributes	[]Generic	`json:"username_attributes"`
 	SmsAuthenticationMessage	string	`json:"sms_authentication_message"`
+	Tags	map[string]Generic	`json:"tags"`
+	MfaConfiguration	string	`json:"mfa_configuration"`
+	EmailConfiguration	[]Generic	`json:"email_configuration"`
+	Name	string	`json:"name"`
+	SmsConfiguration	[]Generic	`json:"sms_configuration"`
+	AutoVerifiedAttributes	Generic	`json:"auto_verified_attributes"`
+	DeviceConfiguration	[]Generic	`json:"device_configuration"`
+	Schema	Generic	`json:"schema"`
+	SmsVerificationMessage	string	`json:"sms_verification_message"`
+	AliasAttributes	Generic	`json:"alias_attributes"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

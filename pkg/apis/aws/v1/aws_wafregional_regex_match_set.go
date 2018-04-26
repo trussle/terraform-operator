@@ -21,7 +21,7 @@ type AwsWafregionalRegexMatchSet struct {
 // AwsWafregionalRegexMatchSetSpec is the spec for a AwsWafregionalRegexMatchSet Resource
 type AwsWafregionalRegexMatchSetSpec struct {
 	Name	string	`json:"name"`
-	RegexMatchTuple	string	`json:"regex_match_tuple"`
+	RegexMatchTuple	Generic	`json:"regex_match_tuple"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

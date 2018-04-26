@@ -20,8 +20,8 @@ type AwsSqsQueuePolicy struct {
 
 // AwsSqsQueuePolicySpec is the spec for a AwsSqsQueuePolicy Resource
 type AwsSqsQueuePolicySpec struct {
-	QueueUrl	string	`json:"queue_url"`
 	Policy	string	`json:"policy"`
+	QueueUrl	string	`json:"queue_url"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

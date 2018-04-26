@@ -20,17 +20,17 @@ type AwsNetworkAclRule struct {
 
 // AwsNetworkAclRuleSpec is the spec for a AwsNetworkAclRule Resource
 type AwsNetworkAclRuleSpec struct {
-	IcmpType	string	`json:"icmp_type"`
-	Protocol	string	`json:"protocol"`
+	Egress	bool	`json:"egress"`
 	RuleAction	string	`json:"rule_action"`
-	ToPort	int	`json:"to_port"`
-	CidrBlock	string	`json:"cidr_block"`
-	Ipv6CidrBlock	string	`json:"ipv6_cidr_block"`
-	FromPort	int	`json:"from_port"`
 	IcmpCode	string	`json:"icmp_code"`
 	NetworkAclId	string	`json:"network_acl_id"`
 	RuleNumber	int	`json:"rule_number"`
-	Egress	bool	`json:"egress"`
+	Protocol	string	`json:"protocol"`
+	CidrBlock	string	`json:"cidr_block"`
+	Ipv6CidrBlock	string	`json:"ipv6_cidr_block"`
+	FromPort	int	`json:"from_port"`
+	ToPort	int	`json:"to_port"`
+	IcmpType	string	`json:"icmp_type"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -20,9 +20,9 @@ type AwsIamRolePolicy struct {
 
 // AwsIamRolePolicySpec is the spec for a AwsIamRolePolicy Resource
 type AwsIamRolePolicySpec struct {
+	Policy	string	`json:"policy"`
 	NamePrefix	string	`json:"name_prefix"`
 	Role	string	`json:"role"`
-	Policy	string	`json:"policy"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

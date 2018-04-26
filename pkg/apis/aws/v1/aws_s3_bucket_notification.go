@@ -20,10 +20,10 @@ type AwsS3BucketNotification struct {
 
 // AwsS3BucketNotificationSpec is the spec for a AwsS3BucketNotification Resource
 type AwsS3BucketNotificationSpec struct {
-	Topic	[]interface{}	`json:"topic"`
-	Queue	[]interface{}	`json:"queue"`
-	LambdaFunction	[]interface{}	`json:"lambda_function"`
 	Bucket	string	`json:"bucket"`
+	Topic	[]Generic	`json:"topic"`
+	Queue	[]Generic	`json:"queue"`
+	LambdaFunction	[]Generic	`json:"lambda_function"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

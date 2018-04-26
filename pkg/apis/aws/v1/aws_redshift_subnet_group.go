@@ -20,10 +20,10 @@ type AwsRedshiftSubnetGroup struct {
 
 // AwsRedshiftSubnetGroupSpec is the spec for a AwsRedshiftSubnetGroup Resource
 type AwsRedshiftSubnetGroupSpec struct {
+	Tags	map[string]Generic	`json:"tags"`
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
-	SubnetIds	string	`json:"subnet_ids"`
-	Tags	map[string]interface{}	`json:"tags"`
+	SubnetIds	Generic	`json:"subnet_ids"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

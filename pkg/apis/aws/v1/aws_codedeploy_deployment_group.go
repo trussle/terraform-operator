@@ -20,16 +20,16 @@ type AwsCodedeployDeploymentGroup struct {
 
 // AwsCodedeployDeploymentGroupSpec is the spec for a AwsCodedeployDeploymentGroup Resource
 type AwsCodedeployDeploymentGroupSpec struct {
-	ServiceRoleArn	string	`json:"service_role_arn"`
-	AutoRollbackConfiguration	[]interface{}	`json:"auto_rollback_configuration"`
-	AutoscalingGroups	string	`json:"autoscaling_groups"`
-	Ec2TagFilter	string	`json:"ec2_tag_filter"`
-	OnPremisesInstanceTagFilter	string	`json:"on_premises_instance_tag_filter"`
 	AppName	string	`json:"app_name"`
-	AlarmConfiguration	[]interface{}	`json:"alarm_configuration"`
-	DeploymentConfigName	string	`json:"deployment_config_name"`
-	TriggerConfiguration	string	`json:"trigger_configuration"`
 	DeploymentGroupName	string	`json:"deployment_group_name"`
+	AutoscalingGroups	Generic	`json:"autoscaling_groups"`
+	DeploymentConfigName	string	`json:"deployment_config_name"`
+	Ec2TagFilter	Generic	`json:"ec2_tag_filter"`
+	ServiceRoleArn	string	`json:"service_role_arn"`
+	AlarmConfiguration	[]Generic	`json:"alarm_configuration"`
+	AutoRollbackConfiguration	[]Generic	`json:"auto_rollback_configuration"`
+	OnPremisesInstanceTagFilter	Generic	`json:"on_premises_instance_tag_filter"`
+	TriggerConfiguration	Generic	`json:"trigger_configuration"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

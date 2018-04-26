@@ -20,8 +20,8 @@ type AwsWafXssMatchSet struct {
 
 // AwsWafXssMatchSetSpec is the spec for a AwsWafXssMatchSet Resource
 type AwsWafXssMatchSetSpec struct {
-	XssMatchTuples	string	`json:"xss_match_tuples"`
 	Name	string	`json:"name"`
+	XssMatchTuples	Generic	`json:"xss_match_tuples"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

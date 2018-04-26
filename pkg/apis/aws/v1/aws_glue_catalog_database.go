@@ -20,10 +20,10 @@ type AwsGlueCatalogDatabase struct {
 
 // AwsGlueCatalogDatabaseSpec is the spec for a AwsGlueCatalogDatabase Resource
 type AwsGlueCatalogDatabaseSpec struct {
-	Parameters	map[string]interface{}	`json:"parameters"`
+	LocationUri	string	`json:"location_uri"`
+	Parameters	map[string]Generic	`json:"parameters"`
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
-	LocationUri	string	`json:"location_uri"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

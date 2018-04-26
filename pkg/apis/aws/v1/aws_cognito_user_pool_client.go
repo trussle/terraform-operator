@@ -20,20 +20,20 @@ type AwsCognitoUserPoolClient struct {
 
 // AwsCognitoUserPoolClientSpec is the spec for a AwsCognitoUserPoolClient Resource
 type AwsCognitoUserPoolClientSpec struct {
-	UserPoolId	string	`json:"user_pool_id"`
-	WriteAttributes	string	`json:"write_attributes"`
-	DefaultRedirectUri	string	`json:"default_redirect_uri"`
-	SupportedIdentityProviders	[]interface{}	`json:"supported_identity_providers"`
+	ExplicitAuthFlows	Generic	`json:"explicit_auth_flows"`
+	WriteAttributes	Generic	`json:"write_attributes"`
+	AllowedOauthScopes	Generic	`json:"allowed_oauth_scopes"`
 	GenerateSecret	bool	`json:"generate_secret"`
-	RefreshTokenValidity	int	`json:"refresh_token_validity"`
-	AllowedOauthScopes	string	`json:"allowed_oauth_scopes"`
-	CallbackUrls	[]interface{}	`json:"callback_urls"`
+	CallbackUrls	[]Generic	`json:"callback_urls"`
+	DefaultRedirectUri	string	`json:"default_redirect_uri"`
+	SupportedIdentityProviders	[]Generic	`json:"supported_identity_providers"`
+	AllowedOauthFlows	Generic	`json:"allowed_oauth_flows"`
 	AllowedOauthFlowsUserPoolClient	bool	`json:"allowed_oauth_flows_user_pool_client"`
-	AllowedOauthFlows	string	`json:"allowed_oauth_flows"`
-	ExplicitAuthFlows	string	`json:"explicit_auth_flows"`
-	ReadAttributes	string	`json:"read_attributes"`
-	LogoutUrls	[]interface{}	`json:"logout_urls"`
+	LogoutUrls	[]Generic	`json:"logout_urls"`
 	Name	string	`json:"name"`
+	UserPoolId	string	`json:"user_pool_id"`
+	ReadAttributes	Generic	`json:"read_attributes"`
+	RefreshTokenValidity	int	`json:"refresh_token_validity"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -20,9 +20,9 @@ type AwsIamUserPolicy struct {
 
 // AwsIamUserPolicySpec is the spec for a AwsIamUserPolicy Resource
 type AwsIamUserPolicySpec struct {
-	User	string	`json:"user"`
 	Policy	string	`json:"policy"`
 	NamePrefix	string	`json:"name_prefix"`
+	User	string	`json:"user"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

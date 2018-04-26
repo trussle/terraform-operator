@@ -21,11 +21,11 @@ type AwsVpcDhcpOptions struct {
 // AwsVpcDhcpOptionsSpec is the spec for a AwsVpcDhcpOptions Resource
 type AwsVpcDhcpOptionsSpec struct {
 	DomainName	string	`json:"domain_name"`
-	DomainNameServers	[]interface{}	`json:"domain_name_servers"`
-	NtpServers	[]interface{}	`json:"ntp_servers"`
+	DomainNameServers	[]Generic	`json:"domain_name_servers"`
+	NtpServers	[]Generic	`json:"ntp_servers"`
 	NetbiosNodeType	string	`json:"netbios_node_type"`
-	NetbiosNameServers	[]interface{}	`json:"netbios_name_servers"`
-	Tags	map[string]interface{}	`json:"tags"`
+	NetbiosNameServers	[]Generic	`json:"netbios_name_servers"`
+	Tags	map[string]Generic	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

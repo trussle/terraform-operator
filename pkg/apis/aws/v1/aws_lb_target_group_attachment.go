@@ -20,10 +20,10 @@ type AwsLbTargetGroupAttachment struct {
 
 // AwsLbTargetGroupAttachmentSpec is the spec for a AwsLbTargetGroupAttachment Resource
 type AwsLbTargetGroupAttachmentSpec struct {
-	Port	int	`json:"port"`
-	AvailabilityZone	string	`json:"availability_zone"`
 	TargetGroupArn	string	`json:"target_group_arn"`
 	TargetId	string	`json:"target_id"`
+	Port	int	`json:"port"`
+	AvailabilityZone	string	`json:"availability_zone"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

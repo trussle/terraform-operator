@@ -20,12 +20,12 @@ type AwsApiGatewayUsagePlan struct {
 
 // AwsApiGatewayUsagePlanSpec is the spec for a AwsApiGatewayUsagePlan Resource
 type AwsApiGatewayUsagePlanSpec struct {
-	ApiStages	[]interface{}	`json:"api_stages"`
-	QuotaSettings	string	`json:"quota_settings"`
-	ThrottleSettings	string	`json:"throttle_settings"`
+	Description	string	`json:"description"`
+	ApiStages	[]Generic	`json:"api_stages"`
+	QuotaSettings	Generic	`json:"quota_settings"`
+	ThrottleSettings	Generic	`json:"throttle_settings"`
 	ProductCode	string	`json:"product_code"`
 	Name	string	`json:"name"`
-	Description	string	`json:"description"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

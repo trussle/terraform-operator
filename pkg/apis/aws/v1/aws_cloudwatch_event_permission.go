@@ -20,9 +20,9 @@ type AwsCloudwatchEventPermission struct {
 
 // AwsCloudwatchEventPermissionSpec is the spec for a AwsCloudwatchEventPermission Resource
 type AwsCloudwatchEventPermissionSpec struct {
+	StatementId	string	`json:"statement_id"`
 	Action	string	`json:"action"`
 	Principal	string	`json:"principal"`
-	StatementId	string	`json:"statement_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -20,11 +20,11 @@ type AwsSsmDocument struct {
 
 // AwsSsmDocumentSpec is the spec for a AwsSsmDocument Resource
 type AwsSsmDocumentSpec struct {
+	DocumentType	string	`json:"document_type"`
 	Content	string	`json:"content"`
 	DocumentFormat	string	`json:"document_format"`
+	Permissions	map[string]Generic	`json:"permissions"`
 	Name	string	`json:"name"`
-	DocumentType	string	`json:"document_type"`
-	Permissions	map[string]interface{}	`json:"permissions"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

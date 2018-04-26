@@ -21,7 +21,7 @@ type AwsWafregionalRegexPatternSet struct {
 // AwsWafregionalRegexPatternSetSpec is the spec for a AwsWafregionalRegexPatternSet Resource
 type AwsWafregionalRegexPatternSetSpec struct {
 	Name	string	`json:"name"`
-	RegexPatternStrings	string	`json:"regex_pattern_strings"`
+	RegexPatternStrings	Generic	`json:"regex_pattern_strings"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -23,10 +23,10 @@ type AwsSesEventDestinationSpec struct {
 	Name	string	`json:"name"`
 	ConfigurationSetName	string	`json:"configuration_set_name"`
 	Enabled	bool	`json:"enabled"`
-	MatchingTypes	string	`json:"matching_types"`
-	CloudwatchDestination	string	`json:"cloudwatch_destination"`
-	KinesisDestination	string	`json:"kinesis_destination"`
-	SnsDestination	string	`json:"sns_destination"`
+	MatchingTypes	Generic	`json:"matching_types"`
+	CloudwatchDestination	Generic	`json:"cloudwatch_destination"`
+	KinesisDestination	Generic	`json:"kinesis_destination"`
+	SnsDestination	Generic	`json:"sns_destination"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

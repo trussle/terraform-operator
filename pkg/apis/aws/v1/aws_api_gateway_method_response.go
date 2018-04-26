@@ -20,13 +20,13 @@ type AwsApiGatewayMethodResponse struct {
 
 // AwsApiGatewayMethodResponseSpec is the spec for a AwsApiGatewayMethodResponse Resource
 type AwsApiGatewayMethodResponseSpec struct {
-	HttpMethod	string	`json:"http_method"`
-	StatusCode	string	`json:"status_code"`
-	ResponseModels	map[string]interface{}	`json:"response_models"`
-	ResponseParameters	map[string]interface{}	`json:"response_parameters"`
+	ResponseParameters	map[string]Generic	`json:"response_parameters"`
 	ResponseParametersInJson	string	`json:"response_parameters_in_json"`
 	RestApiId	string	`json:"rest_api_id"`
 	ResourceId	string	`json:"resource_id"`
+	HttpMethod	string	`json:"http_method"`
+	StatusCode	string	`json:"status_code"`
+	ResponseModels	map[string]Generic	`json:"response_models"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

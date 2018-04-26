@@ -20,10 +20,10 @@ type AwsDxConnection struct {
 
 // AwsDxConnectionSpec is the spec for a AwsDxConnection Resource
 type AwsDxConnectionSpec struct {
-	Location	string	`json:"location"`
-	Tags	map[string]interface{}	`json:"tags"`
 	Name	string	`json:"name"`
 	Bandwidth	string	`json:"bandwidth"`
+	Location	string	`json:"location"`
+	Tags	map[string]Generic	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

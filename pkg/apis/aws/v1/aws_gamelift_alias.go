@@ -20,9 +20,9 @@ type AwsGameliftAlias struct {
 
 // AwsGameliftAliasSpec is the spec for a AwsGameliftAlias Resource
 type AwsGameliftAliasSpec struct {
-	Description	string	`json:"description"`
-	RoutingStrategy	[]interface{}	`json:"routing_strategy"`
 	Name	string	`json:"name"`
+	Description	string	`json:"description"`
+	RoutingStrategy	[]Generic	`json:"routing_strategy"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -20,10 +20,10 @@ type AwsInspectorAssessmentTemplate struct {
 
 // AwsInspectorAssessmentTemplateSpec is the spec for a AwsInspectorAssessmentTemplate Resource
 type AwsInspectorAssessmentTemplateSpec struct {
-	Name	string	`json:"name"`
 	TargetArn	string	`json:"target_arn"`
 	Duration	int	`json:"duration"`
-	RulesPackageArns	string	`json:"rules_package_arns"`
+	RulesPackageArns	Generic	`json:"rules_package_arns"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

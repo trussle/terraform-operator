@@ -20,11 +20,11 @@ type AwsServiceDiscoveryService struct {
 
 // AwsServiceDiscoveryServiceSpec is the spec for a AwsServiceDiscoveryService Resource
 type AwsServiceDiscoveryServiceSpec struct {
-	HealthCheckCustomConfig	[]interface{}	`json:"health_check_custom_config"`
+	DnsConfig	[]Generic	`json:"dns_config"`
+	HealthCheckConfig	[]Generic	`json:"health_check_config"`
+	HealthCheckCustomConfig	[]Generic	`json:"health_check_custom_config"`
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
-	DnsConfig	[]interface{}	`json:"dns_config"`
-	HealthCheckConfig	[]interface{}	`json:"health_check_config"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

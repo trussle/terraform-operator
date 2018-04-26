@@ -20,7 +20,7 @@ type AwsApiGatewayDocumentationPart struct {
 
 // AwsApiGatewayDocumentationPartSpec is the spec for a AwsApiGatewayDocumentationPart Resource
 type AwsApiGatewayDocumentationPartSpec struct {
-	Location	[]interface{}	`json:"location"`
+	Location	[]Generic	`json:"location"`
 	Properties	string	`json:"properties"`
 	RestApiId	string	`json:"rest_api_id"`
 }

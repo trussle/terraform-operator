@@ -20,10 +20,10 @@ type AwsDefaultSecurityGroup struct {
 
 // AwsDefaultSecurityGroupSpec is the spec for a AwsDefaultSecurityGroup Resource
 type AwsDefaultSecurityGroupSpec struct {
-	Tags	map[string]interface{}	`json:"tags"`
+	Tags	map[string]Generic	`json:"tags"`
 	RevokeRulesOnDelete	bool	`json:"revoke_rules_on_delete"`
-	Ingress	string	`json:"ingress"`
-	Egress	string	`json:"egress"`
+	Ingress	Generic	`json:"ingress"`
+	Egress	Generic	`json:"egress"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

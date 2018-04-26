@@ -20,17 +20,17 @@ type AwsSesReceiptRule struct {
 
 // AwsSesReceiptRuleSpec is the spec for a AwsSesReceiptRule Resource
 type AwsSesReceiptRuleSpec struct {
-	After	string	`json:"after"`
-	RuleSetName	string	`json:"rule_set_name"`
-	S3Action	string	`json:"s3_action"`
-	SnsAction	string	`json:"sns_action"`
-	StopAction	string	`json:"stop_action"`
-	BounceAction	string	`json:"bounce_action"`
-	LambdaAction	string	`json:"lambda_action"`
-	WorkmailAction	string	`json:"workmail_action"`
 	Name	string	`json:"name"`
-	Recipients	string	`json:"recipients"`
-	AddHeaderAction	string	`json:"add_header_action"`
+	RuleSetName	string	`json:"rule_set_name"`
+	AddHeaderAction	Generic	`json:"add_header_action"`
+	S3Action	Generic	`json:"s3_action"`
+	After	string	`json:"after"`
+	Recipients	Generic	`json:"recipients"`
+	BounceAction	Generic	`json:"bounce_action"`
+	StopAction	Generic	`json:"stop_action"`
+	WorkmailAction	Generic	`json:"workmail_action"`
+	LambdaAction	Generic	`json:"lambda_action"`
+	SnsAction	Generic	`json:"sns_action"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

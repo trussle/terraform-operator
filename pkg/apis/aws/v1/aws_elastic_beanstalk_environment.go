@@ -20,15 +20,15 @@ type AwsElasticBeanstalkEnvironment struct {
 
 // AwsElasticBeanstalkEnvironmentSpec is the spec for a AwsElasticBeanstalkEnvironment Resource
 type AwsElasticBeanstalkEnvironmentSpec struct {
-	Application	string	`json:"application"`
-	Description	string	`json:"description"`
-	Setting	string	`json:"setting"`
-	Tags	map[string]interface{}	`json:"tags"`
+	Tags	map[string]Generic	`json:"tags"`
 	Name	string	`json:"name"`
-	PollInterval	string	`json:"poll_interval"`
-	Tier	string	`json:"tier"`
-	TemplateName	string	`json:"template_name"`
+	Description	string	`json:"description"`
 	WaitForReadyTimeout	string	`json:"wait_for_ready_timeout"`
+	Tier	string	`json:"tier"`
+	PollInterval	string	`json:"poll_interval"`
+	Application	string	`json:"application"`
+	Setting	Generic	`json:"setting"`
+	TemplateName	string	`json:"template_name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

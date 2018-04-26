@@ -21,9 +21,9 @@ type AwsVpcPeeringConnection struct {
 // AwsVpcPeeringConnectionSpec is the spec for a AwsVpcPeeringConnection Resource
 type AwsVpcPeeringConnectionSpec struct {
 	PeerVpcId	string	`json:"peer_vpc_id"`
+	Tags	map[string]Generic	`json:"tags"`
 	VpcId	string	`json:"vpc_id"`
 	AutoAccept	bool	`json:"auto_accept"`
-	Tags	map[string]interface{}	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

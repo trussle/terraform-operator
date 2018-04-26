@@ -23,7 +23,7 @@ type AwsCloudwatchLogMetricFilterSpec struct {
 	Name	string	`json:"name"`
 	Pattern	string	`json:"pattern"`
 	LogGroupName	string	`json:"log_group_name"`
-	MetricTransformation	[]interface{}	`json:"metric_transformation"`
+	MetricTransformation	[]Generic	`json:"metric_transformation"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

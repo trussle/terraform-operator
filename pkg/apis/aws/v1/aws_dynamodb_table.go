@@ -20,17 +20,17 @@ type AwsDynamodbTable struct {
 
 // AwsDynamodbTableSpec is the spec for a AwsDynamodbTable Resource
 type AwsDynamodbTableSpec struct {
-	StreamEnabled	bool	`json:"stream_enabled"`
-	LocalSecondaryIndex	string	`json:"local_secondary_index"`
-	HashKey	string	`json:"hash_key"`
-	ReadCapacity	int	`json:"read_capacity"`
-	Attribute	string	`json:"attribute"`
-	Name	string	`json:"name"`
-	WriteCapacity	int	`json:"write_capacity"`
-	GlobalSecondaryIndex	string	`json:"global_secondary_index"`
-	Tags	map[string]interface{}	`json:"tags"`
 	RangeKey	string	`json:"range_key"`
-	Ttl	string	`json:"ttl"`
+	WriteCapacity	int	`json:"write_capacity"`
+	Ttl	Generic	`json:"ttl"`
+	Tags	map[string]Generic	`json:"tags"`
+	ReadCapacity	int	`json:"read_capacity"`
+	StreamEnabled	bool	`json:"stream_enabled"`
+	LocalSecondaryIndex	Generic	`json:"local_secondary_index"`
+	Name	string	`json:"name"`
+	HashKey	string	`json:"hash_key"`
+	Attribute	Generic	`json:"attribute"`
+	GlobalSecondaryIndex	Generic	`json:"global_secondary_index"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

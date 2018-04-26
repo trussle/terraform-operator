@@ -21,7 +21,7 @@ type AwsWafregionalSizeConstraintSet struct {
 // AwsWafregionalSizeConstraintSetSpec is the spec for a AwsWafregionalSizeConstraintSet Resource
 type AwsWafregionalSizeConstraintSetSpec struct {
 	Name	string	`json:"name"`
-	SizeConstraints	string	`json:"size_constraints"`
+	SizeConstraints	Generic	`json:"size_constraints"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

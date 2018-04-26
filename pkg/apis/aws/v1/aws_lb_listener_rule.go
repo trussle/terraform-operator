@@ -20,9 +20,9 @@ type AwsLbListenerRule struct {
 
 // AwsLbListenerRuleSpec is the spec for a AwsLbListenerRule Resource
 type AwsLbListenerRuleSpec struct {
-	Condition	string	`json:"condition"`
+	Action	[]Generic	`json:"action"`
+	Condition	Generic	`json:"condition"`
 	ListenerArn	string	`json:"listener_arn"`
-	Action	[]interface{}	`json:"action"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

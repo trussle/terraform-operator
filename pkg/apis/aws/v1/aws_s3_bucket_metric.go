@@ -20,9 +20,9 @@ type AwsS3BucketMetric struct {
 
 // AwsS3BucketMetricSpec is the spec for a AwsS3BucketMetric Resource
 type AwsS3BucketMetricSpec struct {
-	Bucket	string	`json:"bucket"`
-	Filter	[]interface{}	`json:"filter"`
 	Name	string	`json:"name"`
+	Bucket	string	`json:"bucket"`
+	Filter	[]Generic	`json:"filter"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

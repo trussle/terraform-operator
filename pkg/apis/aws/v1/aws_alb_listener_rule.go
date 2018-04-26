@@ -21,8 +21,8 @@ type AwsAlbListenerRule struct {
 // AwsAlbListenerRuleSpec is the spec for a AwsAlbListenerRule Resource
 type AwsAlbListenerRuleSpec struct {
 	ListenerArn	string	`json:"listener_arn"`
-	Action	[]interface{}	`json:"action"`
-	Condition	string	`json:"condition"`
+	Action	[]Generic	`json:"action"`
+	Condition	Generic	`json:"condition"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

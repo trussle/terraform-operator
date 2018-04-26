@@ -20,9 +20,9 @@ type AwsIamOpenidConnectProvider struct {
 
 // AwsIamOpenidConnectProviderSpec is the spec for a AwsIamOpenidConnectProvider Resource
 type AwsIamOpenidConnectProviderSpec struct {
-	ThumbprintList	[]interface{}	`json:"thumbprint_list"`
 	Url	string	`json:"url"`
-	ClientIdList	[]interface{}	`json:"client_id_list"`
+	ClientIdList	[]Generic	`json:"client_id_list"`
+	ThumbprintList	[]Generic	`json:"thumbprint_list"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -21,7 +21,7 @@ type AwsProxyProtocolPolicy struct {
 // AwsProxyProtocolPolicySpec is the spec for a AwsProxyProtocolPolicy Resource
 type AwsProxyProtocolPolicySpec struct {
 	LoadBalancer	string	`json:"load_balancer"`
-	InstancePorts	string	`json:"instance_ports"`
+	InstancePorts	Generic	`json:"instance_ports"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

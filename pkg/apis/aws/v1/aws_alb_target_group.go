@@ -20,12 +20,12 @@ type AwsAlbTargetGroup struct {
 
 // AwsAlbTargetGroupSpec is the spec for a AwsAlbTargetGroup Resource
 type AwsAlbTargetGroupSpec struct {
-	NamePrefix	string	`json:"name_prefix"`
 	Protocol	string	`json:"protocol"`
-	VpcId	string	`json:"vpc_id"`
-	Tags	map[string]interface{}	`json:"tags"`
-	Port	int	`json:"port"`
 	DeregistrationDelay	int	`json:"deregistration_delay"`
+	Tags	map[string]Generic	`json:"tags"`
+	NamePrefix	string	`json:"name_prefix"`
+	Port	int	`json:"port"`
+	VpcId	string	`json:"vpc_id"`
 	TargetType	string	`json:"target_type"`
 }
 

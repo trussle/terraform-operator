@@ -20,9 +20,9 @@ type AwsWafRule struct {
 
 // AwsWafRuleSpec is the spec for a AwsWafRule Resource
 type AwsWafRuleSpec struct {
-	MetricName	string	`json:"metric_name"`
-	Predicates	string	`json:"predicates"`
+	Predicates	Generic	`json:"predicates"`
 	Name	string	`json:"name"`
+	MetricName	string	`json:"metric_name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

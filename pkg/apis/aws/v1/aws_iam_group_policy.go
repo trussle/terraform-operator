@@ -20,9 +20,9 @@ type AwsIamGroupPolicy struct {
 
 // AwsIamGroupPolicySpec is the spec for a AwsIamGroupPolicy Resource
 type AwsIamGroupPolicySpec struct {
-	Group	string	`json:"group"`
 	Policy	string	`json:"policy"`
 	NamePrefix	string	`json:"name_prefix"`
+	Group	string	`json:"group"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

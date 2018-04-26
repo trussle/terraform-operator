@@ -20,18 +20,18 @@ type AwsEcsService struct {
 
 // AwsEcsServiceSpec is the spec for a AwsEcsService Resource
 type AwsEcsServiceSpec struct {
-	Name	string	`json:"name"`
-	LoadBalancer	string	`json:"load_balancer"`
-	PlacementStrategy	string	`json:"placement_strategy"`
-	PlacementConstraints	string	`json:"placement_constraints"`
-	ServiceRegistries	string	`json:"service_registries"`
 	DeploymentMaximumPercent	int	`json:"deployment_maximum_percent"`
 	DeploymentMinimumHealthyPercent	int	`json:"deployment_minimum_healthy_percent"`
-	NetworkConfiguration	[]interface{}	`json:"network_configuration"`
-	TaskDefinition	string	`json:"task_definition"`
-	HealthCheckGracePeriodSeconds	int	`json:"health_check_grace_period_seconds"`
-	DesiredCount	int	`json:"desired_count"`
 	LaunchType	string	`json:"launch_type"`
+	NetworkConfiguration	[]Generic	`json:"network_configuration"`
+	PlacementConstraints	Generic	`json:"placement_constraints"`
+	ServiceRegistries	Generic	`json:"service_registries"`
+	TaskDefinition	string	`json:"task_definition"`
+	LoadBalancer	Generic	`json:"load_balancer"`
+	PlacementStrategy	Generic	`json:"placement_strategy"`
+	Name	string	`json:"name"`
+	DesiredCount	int	`json:"desired_count"`
+	HealthCheckGracePeriodSeconds	int	`json:"health_check_grace_period_seconds"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

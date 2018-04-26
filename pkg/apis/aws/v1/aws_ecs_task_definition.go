@@ -20,14 +20,14 @@ type AwsEcsTaskDefinition struct {
 
 // AwsEcsTaskDefinitionSpec is the spec for a AwsEcsTaskDefinition Resource
 type AwsEcsTaskDefinitionSpec struct {
-	Volume	string	`json:"volume"`
-	RequiresCompatibilities	string	`json:"requires_compatibilities"`
-	ContainerDefinitions	string	`json:"container_definitions"`
+	Cpu	string	`json:"cpu"`
 	TaskRoleArn	string	`json:"task_role_arn"`
 	ExecutionRoleArn	string	`json:"execution_role_arn"`
 	Memory	string	`json:"memory"`
-	PlacementConstraints	string	`json:"placement_constraints"`
-	Cpu	string	`json:"cpu"`
+	Volume	Generic	`json:"volume"`
+	ContainerDefinitions	string	`json:"container_definitions"`
+	PlacementConstraints	Generic	`json:"placement_constraints"`
+	RequiresCompatibilities	Generic	`json:"requires_compatibilities"`
 	Family	string	`json:"family"`
 }
 

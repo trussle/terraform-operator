@@ -20,8 +20,8 @@ type AwsIotPolicy struct {
 
 // AwsIotPolicySpec is the spec for a AwsIotPolicy Resource
 type AwsIotPolicySpec struct {
-	Policy	string	`json:"policy"`
 	Name	string	`json:"name"`
+	Policy	string	`json:"policy"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

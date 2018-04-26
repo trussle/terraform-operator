@@ -20,8 +20,8 @@ type AwsVpnGateway struct {
 
 // AwsVpnGatewaySpec is the spec for a AwsVpnGateway Resource
 type AwsVpnGatewaySpec struct {
+	Tags	map[string]Generic	`json:"tags"`
 	AvailabilityZone	string	`json:"availability_zone"`
-	Tags	map[string]interface{}	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

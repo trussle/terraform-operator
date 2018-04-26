@@ -20,11 +20,11 @@ type AwsAlbListener struct {
 
 // AwsAlbListenerSpec is the spec for a AwsAlbListener Resource
 type AwsAlbListenerSpec struct {
+	Protocol	string	`json:"protocol"`
 	CertificateArn	string	`json:"certificate_arn"`
-	DefaultAction	[]interface{}	`json:"default_action"`
+	DefaultAction	[]Generic	`json:"default_action"`
 	LoadBalancerArn	string	`json:"load_balancer_arn"`
 	Port	int	`json:"port"`
-	Protocol	string	`json:"protocol"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

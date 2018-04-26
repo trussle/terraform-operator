@@ -20,12 +20,12 @@ type AwsRoute53Zone struct {
 
 // AwsRoute53ZoneSpec is the spec for a AwsRoute53Zone Resource
 type AwsRoute53ZoneSpec struct {
+	VpcId	string	`json:"vpc_id"`
 	ForceDestroy	bool	`json:"force_destroy"`
 	Name	string	`json:"name"`
-	DelegationSetId	string	`json:"delegation_set_id"`
 	Comment	string	`json:"comment"`
-	VpcId	string	`json:"vpc_id"`
-	Tags	map[string]interface{}	`json:"tags"`
+	DelegationSetId	string	`json:"delegation_set_id"`
+	Tags	map[string]Generic	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

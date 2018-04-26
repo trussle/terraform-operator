@@ -20,10 +20,10 @@ type AwsCodepipeline struct {
 
 // AwsCodepipelineSpec is the spec for a AwsCodepipeline Resource
 type AwsCodepipelineSpec struct {
-	RoleArn	string	`json:"role_arn"`
-	ArtifactStore	[]interface{}	`json:"artifact_store"`
-	Stage	[]interface{}	`json:"stage"`
 	Name	string	`json:"name"`
+	RoleArn	string	`json:"role_arn"`
+	ArtifactStore	[]Generic	`json:"artifact_store"`
+	Stage	[]Generic	`json:"stage"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

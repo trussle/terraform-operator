@@ -20,11 +20,11 @@ type AwsAmiFromInstance struct {
 
 // AwsAmiFromInstanceSpec is the spec for a AwsAmiFromInstance Resource
 type AwsAmiFromInstanceSpec struct {
-	SnapshotWithoutReboot	bool	`json:"snapshot_without_reboot"`
 	Description	string	`json:"description"`
-	SourceInstanceId	string	`json:"source_instance_id"`
+	SnapshotWithoutReboot	bool	`json:"snapshot_without_reboot"`
 	Name	string	`json:"name"`
-	Tags	map[string]interface{}	`json:"tags"`
+	SourceInstanceId	string	`json:"source_instance_id"`
+	Tags	map[string]Generic	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

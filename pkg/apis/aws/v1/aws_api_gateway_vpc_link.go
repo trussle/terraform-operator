@@ -22,7 +22,7 @@ type AwsApiGatewayVpcLink struct {
 type AwsApiGatewayVpcLinkSpec struct {
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
-	TargetArns	string	`json:"target_arns"`
+	TargetArns	Generic	`json:"target_arns"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

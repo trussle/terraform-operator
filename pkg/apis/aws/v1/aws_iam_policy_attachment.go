@@ -22,9 +22,9 @@ type AwsIamPolicyAttachment struct {
 type AwsIamPolicyAttachmentSpec struct {
 	PolicyArn	string	`json:"policy_arn"`
 	Name	string	`json:"name"`
-	Users	string	`json:"users"`
-	Roles	string	`json:"roles"`
-	Groups	string	`json:"groups"`
+	Users	Generic	`json:"users"`
+	Roles	Generic	`json:"roles"`
+	Groups	Generic	`json:"groups"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

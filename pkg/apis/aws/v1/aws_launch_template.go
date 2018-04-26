@@ -20,28 +20,28 @@ type AwsLaunchTemplate struct {
 
 // AwsLaunchTemplateSpec is the spec for a AwsLaunchTemplate Resource
 type AwsLaunchTemplateSpec struct {
-	BlockDeviceMappings	[]interface{}	`json:"block_device_mappings"`
-	KeyName	string	`json:"key_name"`
-	Description	string	`json:"description"`
-	IamInstanceProfile	[]interface{}	`json:"iam_instance_profile"`
 	InstanceType	string	`json:"instance_type"`
-	NetworkInterfaces	[]interface{}	`json:"network_interfaces"`
-	TagSpecifications	[]interface{}	`json:"tag_specifications"`
+	KeyName	string	`json:"key_name"`
+	Monitoring	[]Generic	`json:"monitoring"`
+	NetworkInterfaces	[]Generic	`json:"network_interfaces"`
+	Description	string	`json:"description"`
+	IamInstanceProfile	[]Generic	`json:"iam_instance_profile"`
+	TagSpecifications	[]Generic	`json:"tag_specifications"`
+	VpcSecurityGroupIds	Generic	`json:"vpc_security_group_ids"`
 	UserData	string	`json:"user_data"`
-	DisableApiTermination	bool	`json:"disable_api_termination"`
-	InstanceInitiatedShutdownBehavior	string	`json:"instance_initiated_shutdown_behavior"`
-	InstanceMarketOptions	[]interface{}	`json:"instance_market_options"`
-	Monitoring	[]interface{}	`json:"monitoring"`
-	RamDiskId	string	`json:"ram_disk_id"`
-	SecurityGroupNames	string	`json:"security_group_names"`
-	VpcSecurityGroupIds	string	`json:"vpc_security_group_ids"`
-	NamePrefix	string	`json:"name_prefix"`
-	CreditSpecification	[]interface{}	`json:"credit_specification"`
-	EbsOptimized	bool	`json:"ebs_optimized"`
-	ElasticGpuSpecifications	[]interface{}	`json:"elastic_gpu_specifications"`
-	ImageId	string	`json:"image_id"`
+	BlockDeviceMappings	[]Generic	`json:"block_device_mappings"`
+	CreditSpecification	[]Generic	`json:"credit_specification"`
+	InstanceMarketOptions	[]Generic	`json:"instance_market_options"`
 	KernelId	string	`json:"kernel_id"`
-	Placement	[]interface{}	`json:"placement"`
+	RamDiskId	string	`json:"ram_disk_id"`
+	SecurityGroupNames	Generic	`json:"security_group_names"`
+	NamePrefix	string	`json:"name_prefix"`
+	DisableApiTermination	bool	`json:"disable_api_termination"`
+	EbsOptimized	bool	`json:"ebs_optimized"`
+	ElasticGpuSpecifications	[]Generic	`json:"elastic_gpu_specifications"`
+	ImageId	string	`json:"image_id"`
+	InstanceInitiatedShutdownBehavior	string	`json:"instance_initiated_shutdown_behavior"`
+	Placement	[]Generic	`json:"placement"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

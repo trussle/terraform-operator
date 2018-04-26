@@ -24,8 +24,8 @@ type AwsConfigConfigRuleSpec struct {
 	Description	string	`json:"description"`
 	InputParameters	string	`json:"input_parameters"`
 	MaximumExecutionFrequency	string	`json:"maximum_execution_frequency"`
-	Scope	[]interface{}	`json:"scope"`
-	Source	[]interface{}	`json:"source"`
+	Scope	[]Generic	`json:"scope"`
+	Source	[]Generic	`json:"source"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -20,8 +20,8 @@ type AwsInspectorAssessmentTarget struct {
 
 // AwsInspectorAssessmentTargetSpec is the spec for a AwsInspectorAssessmentTarget Resource
 type AwsInspectorAssessmentTargetSpec struct {
-	Name	string	`json:"name"`
 	ResourceGroupArn	string	`json:"resource_group_arn"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

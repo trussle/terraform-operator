@@ -20,10 +20,10 @@ type AwsGameliftBuild struct {
 
 // AwsGameliftBuildSpec is the spec for a AwsGameliftBuild Resource
 type AwsGameliftBuildSpec struct {
-	StorageLocation	[]interface{}	`json:"storage_location"`
-	Version	string	`json:"version"`
 	Name	string	`json:"name"`
 	OperatingSystem	string	`json:"operating_system"`
+	StorageLocation	[]Generic	`json:"storage_location"`
+	Version	string	`json:"version"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

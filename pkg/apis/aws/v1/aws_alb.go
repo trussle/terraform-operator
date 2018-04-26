@@ -20,13 +20,13 @@ type AwsAlb struct {
 
 // AwsAlbSpec is the spec for a AwsAlb Resource
 type AwsAlbSpec struct {
-	NamePrefix	string	`json:"name_prefix"`
-	EnableDeletionProtection	bool	`json:"enable_deletion_protection"`
-	EnableHttp2	bool	`json:"enable_http2"`
-	EnableCrossZoneLoadBalancing	bool	`json:"enable_cross_zone_load_balancing"`
-	IdleTimeout	int	`json:"idle_timeout"`
-	Tags	map[string]interface{}	`json:"tags"`
 	LoadBalancerType	string	`json:"load_balancer_type"`
+	EnableCrossZoneLoadBalancing	bool	`json:"enable_cross_zone_load_balancing"`
+	EnableHttp2	bool	`json:"enable_http2"`
+	NamePrefix	string	`json:"name_prefix"`
+	IdleTimeout	int	`json:"idle_timeout"`
+	EnableDeletionProtection	bool	`json:"enable_deletion_protection"`
+	Tags	map[string]Generic	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

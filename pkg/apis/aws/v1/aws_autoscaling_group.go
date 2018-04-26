@@ -20,24 +20,24 @@ type AwsAutoscalingGroup struct {
 
 // AwsAutoscalingGroupSpec is the spec for a AwsAutoscalingGroup Resource
 type AwsAutoscalingGroupSpec struct {
-	TerminationPolicies	[]interface{}	`json:"termination_policies"`
 	WaitForElbCapacity	int	`json:"wait_for_elb_capacity"`
-	LaunchConfiguration	string	`json:"launch_configuration"`
-	ProtectFromScaleIn	bool	`json:"protect_from_scale_in"`
-	InitialLifecycleHook	string	`json:"initial_lifecycle_hook"`
-	PlacementGroup	string	`json:"placement_group"`
-	EnabledMetrics	string	`json:"enabled_metrics"`
-	Tag	string	`json:"tag"`
-	HealthCheckGracePeriod	int	`json:"health_check_grace_period"`
-	MetricsGranularity	string	`json:"metrics_granularity"`
 	MinSize	int	`json:"min_size"`
-	SuspendedProcesses	string	`json:"suspended_processes"`
-	MaxSize	int	`json:"max_size"`
+	Tag	Generic	`json:"tag"`
 	MinElbCapacity	int	`json:"min_elb_capacity"`
 	ForceDelete	bool	`json:"force_delete"`
-	WaitForCapacityTimeout	string	`json:"wait_for_capacity_timeout"`
-	Tags	[]interface{}	`json:"tags"`
+	ProtectFromScaleIn	bool	`json:"protect_from_scale_in"`
+	Tags	[]Generic	`json:"tags"`
+	TerminationPolicies	[]Generic	`json:"termination_policies"`
+	InitialLifecycleHook	Generic	`json:"initial_lifecycle_hook"`
 	NamePrefix	string	`json:"name_prefix"`
+	MaxSize	int	`json:"max_size"`
+	HealthCheckGracePeriod	int	`json:"health_check_grace_period"`
+	SuspendedProcesses	Generic	`json:"suspended_processes"`
+	PlacementGroup	string	`json:"placement_group"`
+	MetricsGranularity	string	`json:"metrics_granularity"`
+	LaunchConfiguration	string	`json:"launch_configuration"`
+	WaitForCapacityTimeout	string	`json:"wait_for_capacity_timeout"`
+	EnabledMetrics	Generic	`json:"enabled_metrics"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

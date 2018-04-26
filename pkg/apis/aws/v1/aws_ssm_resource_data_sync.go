@@ -21,7 +21,7 @@ type AwsSsmResourceDataSync struct {
 // AwsSsmResourceDataSyncSpec is the spec for a AwsSsmResourceDataSync Resource
 type AwsSsmResourceDataSyncSpec struct {
 	Name	string	`json:"name"`
-	S3Destination	[]interface{}	`json:"s3_destination"`
+	S3Destination	[]Generic	`json:"s3_destination"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

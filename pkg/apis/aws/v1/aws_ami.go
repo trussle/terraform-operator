@@ -20,15 +20,15 @@ type AwsAmi struct {
 
 // AwsAmiSpec is the spec for a AwsAmi Resource
 type AwsAmiSpec struct {
+	Architecture	string	`json:"architecture"`
+	RamdiskId	string	`json:"ramdisk_id"`
+	SriovNetSupport	string	`json:"sriov_net_support"`
 	VirtualizationType	string	`json:"virtualization_type"`
 	Description	string	`json:"description"`
-	KernelId	string	`json:"kernel_id"`
-	SriovNetSupport	string	`json:"sriov_net_support"`
-	Architecture	string	`json:"architecture"`
-	Name	string	`json:"name"`
 	RootDeviceName	string	`json:"root_device_name"`
-	RamdiskId	string	`json:"ramdisk_id"`
-	Tags	map[string]interface{}	`json:"tags"`
+	Tags	map[string]Generic	`json:"tags"`
+	KernelId	string	`json:"kernel_id"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

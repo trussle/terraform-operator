@@ -20,32 +20,32 @@ type AwsOpsworksHaproxyLayer struct {
 
 // AwsOpsworksHaproxyLayerSpec is the spec for a AwsOpsworksHaproxyLayer Resource
 type AwsOpsworksHaproxyLayerSpec struct {
-	CustomShutdownRecipes	[]interface{}	`json:"custom_shutdown_recipes"`
-	AutoHealing	bool	`json:"auto_healing"`
-	SystemPackages	string	`json:"system_packages"`
-	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
-	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
+	CustomConfigureRecipes	[]Generic	`json:"custom_configure_recipes"`
 	StackId	string	`json:"stack_id"`
-	EbsVolume	string	`json:"ebs_volume"`
-	Name	string	`json:"name"`
 	StatsEnabled	bool	`json:"stats_enabled"`
-	CustomJson	string	`json:"custom_json"`
-	CustomSetupRecipes	[]interface{}	`json:"custom_setup_recipes"`
-	CustomConfigureRecipes	[]interface{}	`json:"custom_configure_recipes"`
-	CustomDeployRecipes	[]interface{}	`json:"custom_deploy_recipes"`
-	CustomUndeployRecipes	[]interface{}	`json:"custom_undeploy_recipes"`
-	CustomSecurityGroupIds	string	`json:"custom_security_group_ids"`
-	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
-	DrainElbOnShutdown	bool	`json:"drain_elb_on_shutdown"`
-	AutoAssignElasticIps	bool	`json:"auto_assign_elastic_ips"`
 	HealthcheckUrl	string	`json:"healthcheck_url"`
-	ElasticLoadBalancer	string	`json:"elastic_load_balancer"`
-	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
-	HealthcheckMethod	string	`json:"healthcheck_method"`
-	StatsUrl	string	`json:"stats_url"`
+	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
+	EbsVolume	Generic	`json:"ebs_volume"`
 	StatsUser	string	`json:"stats_user"`
 	StatsPassword	string	`json:"stats_password"`
+	DrainElbOnShutdown	bool	`json:"drain_elb_on_shutdown"`
 	AutoAssignPublicIps	bool	`json:"auto_assign_public_ips"`
+	CustomDeployRecipes	[]Generic	`json:"custom_deploy_recipes"`
+	AutoHealing	bool	`json:"auto_healing"`
+	SystemPackages	Generic	`json:"system_packages"`
+	Name	string	`json:"name"`
+	HealthcheckMethod	string	`json:"healthcheck_method"`
+	AutoAssignElasticIps	bool	`json:"auto_assign_elastic_ips"`
+	CustomSetupRecipes	[]Generic	`json:"custom_setup_recipes"`
+	CustomUndeployRecipes	[]Generic	`json:"custom_undeploy_recipes"`
+	CustomShutdownRecipes	[]Generic	`json:"custom_shutdown_recipes"`
+	CustomSecurityGroupIds	Generic	`json:"custom_security_group_ids"`
+	CustomJson	string	`json:"custom_json"`
+	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
+	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
+	ElasticLoadBalancer	string	`json:"elastic_load_balancer"`
+	StatsUrl	string	`json:"stats_url"`
+	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

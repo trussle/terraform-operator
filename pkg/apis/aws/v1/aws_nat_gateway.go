@@ -20,9 +20,9 @@ type AwsNatGateway struct {
 
 // AwsNatGatewaySpec is the spec for a AwsNatGateway Resource
 type AwsNatGatewaySpec struct {
-	Tags	map[string]interface{}	`json:"tags"`
 	AllocationId	string	`json:"allocation_id"`
 	SubnetId	string	`json:"subnet_id"`
+	Tags	map[string]Generic	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

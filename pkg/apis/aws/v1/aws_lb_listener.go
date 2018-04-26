@@ -21,7 +21,7 @@ type AwsLbListener struct {
 // AwsLbListenerSpec is the spec for a AwsLbListener Resource
 type AwsLbListenerSpec struct {
 	CertificateArn	string	`json:"certificate_arn"`
-	DefaultAction	[]interface{}	`json:"default_action"`
+	DefaultAction	[]Generic	`json:"default_action"`
 	LoadBalancerArn	string	`json:"load_balancer_arn"`
 	Port	int	`json:"port"`
 	Protocol	string	`json:"protocol"`

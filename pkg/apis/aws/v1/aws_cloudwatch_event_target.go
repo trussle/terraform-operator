@@ -20,14 +20,14 @@ type AwsCloudwatchEventTarget struct {
 
 // AwsCloudwatchEventTargetSpec is the spec for a AwsCloudwatchEventTarget Resource
 type AwsCloudwatchEventTargetSpec struct {
-	Arn	string	`json:"arn"`
-	InputPath	string	`json:"input_path"`
-	InputTransformer	[]interface{}	`json:"input_transformer"`
+	InputTransformer	[]Generic	`json:"input_transformer"`
 	Rule	string	`json:"rule"`
 	Input	string	`json:"input"`
+	EcsTarget	[]Generic	`json:"ecs_target"`
 	RoleArn	string	`json:"role_arn"`
-	RunCommandTargets	[]interface{}	`json:"run_command_targets"`
-	EcsTarget	[]interface{}	`json:"ecs_target"`
+	RunCommandTargets	[]Generic	`json:"run_command_targets"`
+	Arn	string	`json:"arn"`
+	InputPath	string	`json:"input_path"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

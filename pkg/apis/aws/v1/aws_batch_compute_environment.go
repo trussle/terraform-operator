@@ -20,11 +20,11 @@ type AwsBatchComputeEnvironment struct {
 
 // AwsBatchComputeEnvironmentSpec is the spec for a AwsBatchComputeEnvironment Resource
 type AwsBatchComputeEnvironmentSpec struct {
-	ComputeEnvironmentName	string	`json:"compute_environment_name"`
-	ComputeResources	[]interface{}	`json:"compute_resources"`
 	ServiceRole	string	`json:"service_role"`
-	Type	string	`json:"type"`
 	State	string	`json:"state"`
+	Type	string	`json:"type"`
+	ComputeEnvironmentName	string	`json:"compute_environment_name"`
+	ComputeResources	[]Generic	`json:"compute_resources"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

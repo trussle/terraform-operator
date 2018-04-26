@@ -20,8 +20,8 @@ type AwsDbSecurityGroup struct {
 
 // AwsDbSecurityGroupSpec is the spec for a AwsDbSecurityGroup Resource
 type AwsDbSecurityGroupSpec struct {
-	Ingress	string	`json:"ingress"`
-	Tags	map[string]interface{}	`json:"tags"`
+	Ingress	Generic	`json:"ingress"`
+	Tags	map[string]Generic	`json:"tags"`
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
 }

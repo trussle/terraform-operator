@@ -20,8 +20,8 @@ type AwsElasticsearchDomainPolicy struct {
 
 // AwsElasticsearchDomainPolicySpec is the spec for a AwsElasticsearchDomainPolicy Resource
 type AwsElasticsearchDomainPolicySpec struct {
-	AccessPolicies	string	`json:"access_policies"`
 	DomainName	string	`json:"domain_name"`
+	AccessPolicies	string	`json:"access_policies"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
