@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -23,8 +24,8 @@ type AwsBatchJobDefinitionSpec struct {
 	Type	string	`json:"type"`
 	Name	string	`json:"name"`
 	ContainerProperties	string	`json:"container_properties"`
-	Parameters	map[string]Generic	`json:"parameters"`
-	RetryStrategy	[]Generic	`json:"retry_strategy"`
+	Parameters	map[string]???	`json:"parameters"`
+	RetryStrategy	[]vvmsIDSJ	`json:"retry_strategy"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -37,3 +38,8 @@ type AwsBatchJobDefinitionList struct {
 	Items	[]AwsBatchJobDefinition	`json:"items"`
 }
 
+
+// vvmsIDSJ is a vvmsIDSJ
+type vvmsIDSJ struct {
+	Attempts	int	`json:"attempts"`
+}

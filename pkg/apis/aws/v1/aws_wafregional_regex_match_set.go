@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,7 +22,7 @@ type AwsWafregionalRegexMatchSet struct {
 // AwsWafregionalRegexMatchSetSpec is the spec for a AwsWafregionalRegexMatchSet Resource
 type AwsWafregionalRegexMatchSetSpec struct {
 	Name	string	`json:"name"`
-	RegexMatchTuple	Generic	`json:"regex_match_tuple"`
+	RegexMatchTuple	string	`json:"regex_match_tuple"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

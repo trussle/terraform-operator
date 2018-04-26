@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,14 +21,14 @@ type AwsSsmPatchBaseline struct {
 
 // AwsSsmPatchBaselineSpec is the spec for a AwsSsmPatchBaseline Resource
 type AwsSsmPatchBaselineSpec struct {
+	RejectedPatches	string	`json:"rejected_patches"`
+	OperatingSystem	string	`json:"operating_system"`
 	ApprovedPatchesComplianceLevel	string	`json:"approved_patches_compliance_level"`
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
-	GlobalFilter	[]Generic	`json:"global_filter"`
-	ApprovalRule	[]Generic	`json:"approval_rule"`
-	ApprovedPatches	Generic	`json:"approved_patches"`
-	RejectedPatches	Generic	`json:"rejected_patches"`
-	OperatingSystem	string	`json:"operating_system"`
+	GlobalFilter	[]cjiOgjhY	`json:"global_filter"`
+	ApprovalRule	[]eVwBTCML	`json:"approval_rule"`
+	ApprovedPatches	string	`json:"approved_patches"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -40,3 +41,22 @@ type AwsSsmPatchBaselineList struct {
 	Items	[]AwsSsmPatchBaseline	`json:"items"`
 }
 
+
+// cjiOgjhY is a cjiOgjhY
+type cjiOgjhY struct {
+	Key	string	`json:"key"`
+	Values	[]string	`json:"values"`
+}
+
+// frDGXqwp is a frDGXqwp
+type frDGXqwp struct {
+	Key	string	`json:"key"`
+	Values	[]string	`json:"values"`
+}
+
+// eVwBTCML is a eVwBTCML
+type eVwBTCML struct {
+	ComplianceLevel	string	`json:"compliance_level"`
+	PatchFilter	[]frDGXqwp	`json:"patch_filter"`
+	ApproveAfterDays	int	`json:"approve_after_days"`
+}

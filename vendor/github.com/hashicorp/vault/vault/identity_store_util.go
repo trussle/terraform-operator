@@ -21,7 +21,8 @@ import (
 func (c *Core) loadIdentityStoreArtifacts(ctx context.Context) error {
 	var err error
 	if c.identityStore == nil {
-		return fmt.Errorf("identity store is not setup")
+		c.logger.Warn("identity store is not setup, skipping loading")
+		return nil
 	}
 
 	err = c.identityStore.loadEntities(ctx)
@@ -2309,6 +2310,11 @@ func (i *IdentityStore) refreshExternalGroupMembershipsByEntityID(entityID strin
 		return err
 	}
 
+	mountAccessor := ""
+	if len(groupAliases) != 0 {
+		mountAccessor = groupAliases[0].MountAccessor
+	}
+
 	var newGroups []*identity.Group
 	for _, alias := range groupAliases {
 		aliasByFactors, err := i.MemDBAliasByFactors(alias.MountAccessor, alias.Name, true, true)
@@ -2349,6 +2355,12 @@ func (i *IdentityStore) refreshExternalGroupMembershipsByEntityID(entityID strin
 	// Remove the entity ID from all the deleted groups
 	for _, group := range diff.Deleted {
 		if group.Type != groupTypeExternal {
+			continue
+		}
+
+		// If the external group is from a different mount, don't remove the
+		// entity ID from it.
+		if mountAccessor != "" && group.Alias.MountAccessor != mountAccessor {
 			continue
 		}
 

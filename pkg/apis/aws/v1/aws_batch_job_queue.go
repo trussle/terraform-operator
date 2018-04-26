@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,7 +21,7 @@ type AwsBatchJobQueue struct {
 
 // AwsBatchJobQueueSpec is the spec for a AwsBatchJobQueue Resource
 type AwsBatchJobQueueSpec struct {
-	ComputeEnvironments	[]Generic	`json:"compute_environments"`
+	ComputeEnvironments	[]string	`json:"compute_environments"`
 	Name	string	`json:"name"`
 	Priority	int	`json:"priority"`
 	State	string	`json:"state"`

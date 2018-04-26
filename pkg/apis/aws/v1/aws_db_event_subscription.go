@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,13 +21,13 @@ type AwsDbEventSubscription struct {
 
 // AwsDbEventSubscriptionSpec is the spec for a AwsDbEventSubscription Resource
 type AwsDbEventSubscriptionSpec struct {
-	SourceIds	Generic	`json:"source_ids"`
-	Tags	map[string]Generic	`json:"tags"`
-	Name	string	`json:"name"`
+	Tags	map[string]???	`json:"tags"`
 	SnsTopic	string	`json:"sns_topic"`
-	EventCategories	Generic	`json:"event_categories"`
 	SourceType	string	`json:"source_type"`
+	EventCategories	string	`json:"event_categories"`
+	SourceIds	string	`json:"source_ids"`
 	Enabled	bool	`json:"enabled"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

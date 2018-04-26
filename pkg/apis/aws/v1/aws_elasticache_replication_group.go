@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,21 +21,21 @@ type AwsElasticacheReplicationGroup struct {
 
 // AwsElasticacheReplicationGroupSpec is the spec for a AwsElasticacheReplicationGroup Resource
 type AwsElasticacheReplicationGroupSpec struct {
-	Engine	string	`json:"engine"`
-	Port	int	`json:"port"`
 	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
-	AtRestEncryptionEnabled	bool	`json:"at_rest_encryption_enabled"`
-	SnapshotArns	Generic	`json:"snapshot_arns"`
-	SnapshotRetentionLimit	int	`json:"snapshot_retention_limit"`
 	ReplicationGroupDescription	string	`json:"replication_group_description"`
 	SnapshotName	string	`json:"snapshot_name"`
-	NotificationTopicArn	string	`json:"notification_topic_arn"`
-	Tags	map[string]Generic	`json:"tags"`
+	SnapshotRetentionLimit	int	`json:"snapshot_retention_limit"`
+	Tags	map[string]???	`json:"tags"`
+	ReplicationGroupId	string	`json:"replication_group_id"`
+	AtRestEncryptionEnabled	bool	`json:"at_rest_encryption_enabled"`
+	Port	int	`json:"port"`
 	AutomaticFailoverEnabled	bool	`json:"automatic_failover_enabled"`
 	AuthToken	string	`json:"auth_token"`
-	ReplicationGroupId	string	`json:"replication_group_id"`
 	TransitEncryptionEnabled	bool	`json:"transit_encryption_enabled"`
-	AvailabilityZones	Generic	`json:"availability_zones"`
+	AvailabilityZones	string	`json:"availability_zones"`
+	Engine	string	`json:"engine"`
+	SnapshotArns	string	`json:"snapshot_arns"`
+	NotificationTopicArn	string	`json:"notification_topic_arn"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -47,3 +48,9 @@ type AwsElasticacheReplicationGroupList struct {
 	Items	[]AwsElasticacheReplicationGroup	`json:"items"`
 }
 
+
+// oVVTYNXf is a oVVTYNXf
+type oVVTYNXf struct {
+	ReplicasPerNodeGroup	int	`json:"replicas_per_node_group"`
+	NumNodeGroups	int	`json:"num_node_groups"`
+}

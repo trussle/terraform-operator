@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,9 +22,9 @@ type AwsAcmCertificate struct {
 // AwsAcmCertificateSpec is the spec for a AwsAcmCertificate Resource
 type AwsAcmCertificateSpec struct {
 	DomainName	string	`json:"domain_name"`
-	SubjectAlternativeNames	[]Generic	`json:"subject_alternative_names"`
+	SubjectAlternativeNames	[]string	`json:"subject_alternative_names"`
 	ValidationMethod	string	`json:"validation_method"`
-	Tags	map[string]Generic	`json:"tags"`
+	Tags	map[string]???	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -36,3 +37,7 @@ type AwsAcmCertificateList struct {
 	Items	[]AwsAcmCertificate	`json:"items"`
 }
 
+
+// tAyyqWzK is a tAyyqWzK
+type tAyyqWzK struct {
+}

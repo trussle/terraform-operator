@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,8 +21,8 @@ type AwsEbsVolume struct {
 
 // AwsEbsVolumeSpec is the spec for a AwsEbsVolume Resource
 type AwsEbsVolumeSpec struct {
-	Tags	map[string]Generic	`json:"tags"`
 	AvailabilityZone	string	`json:"availability_zone"`
+	Tags	map[string]???	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,11 +21,11 @@ type AwsSsmDocument struct {
 
 // AwsSsmDocumentSpec is the spec for a AwsSsmDocument Resource
 type AwsSsmDocumentSpec struct {
-	DocumentType	string	`json:"document_type"`
-	Content	string	`json:"content"`
 	DocumentFormat	string	`json:"document_format"`
-	Permissions	map[string]Generic	`json:"permissions"`
+	DocumentType	string	`json:"document_type"`
 	Name	string	`json:"name"`
+	Content	string	`json:"content"`
+	Permissions	map[string]zgexyALB	`json:"permissions"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -37,3 +38,17 @@ type AwsSsmDocumentList struct {
 	Items	[]AwsSsmDocument	`json:"items"`
 }
 
+
+// XVbWGvbq is a XVbWGvbq
+type XVbWGvbq struct {
+	Name	string	`json:"name"`
+	DefaultValue	string	`json:"default_value"`
+	Description	string	`json:"description"`
+	Type	string	`json:"type"`
+}
+
+// zgexyALB is a zgexyALB
+type zgexyALB struct {
+	Type	string	`json:"type"`
+	AccountIds	string	`json:"account_ids"`
+}

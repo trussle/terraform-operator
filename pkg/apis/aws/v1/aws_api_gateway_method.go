@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,15 +22,15 @@ type AwsApiGatewayMethod struct {
 // AwsApiGatewayMethodSpec is the spec for a AwsApiGatewayMethod Resource
 type AwsApiGatewayMethodSpec struct {
 	RestApiId	string	`json:"rest_api_id"`
+	AuthorizerId	string	`json:"authorizer_id"`
+	ApiKeyRequired	bool	`json:"api_key_required"`
+	RequestValidatorId	string	`json:"request_validator_id"`
+	RequestParametersInJson	string	`json:"request_parameters_in_json"`
 	ResourceId	string	`json:"resource_id"`
 	HttpMethod	string	`json:"http_method"`
-	AuthorizerId	string	`json:"authorizer_id"`
-	RequestModels	map[string]Generic	`json:"request_models"`
 	Authorization	string	`json:"authorization"`
-	ApiKeyRequired	bool	`json:"api_key_required"`
-	RequestParameters	map[string]Generic	`json:"request_parameters"`
-	RequestParametersInJson	string	`json:"request_parameters_in_json"`
-	RequestValidatorId	string	`json:"request_validator_id"`
+	RequestModels	map[string]???	`json:"request_models"`
+	RequestParameters	map[string]???	`json:"request_parameters"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,7 +22,7 @@ type AwsWafregionalSqlInjectionMatchSet struct {
 // AwsWafregionalSqlInjectionMatchSetSpec is the spec for a AwsWafregionalSqlInjectionMatchSet Resource
 type AwsWafregionalSqlInjectionMatchSetSpec struct {
 	Name	string	`json:"name"`
-	SqlInjectionMatchTuple	Generic	`json:"sql_injection_match_tuple"`
+	SqlInjectionMatchTuple	string	`json:"sql_injection_match_tuple"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

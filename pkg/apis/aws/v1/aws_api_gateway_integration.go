@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,20 +21,20 @@ type AwsApiGatewayIntegration struct {
 
 // AwsApiGatewayIntegrationSpec is the spec for a AwsApiGatewayIntegration Resource
 type AwsApiGatewayIntegrationSpec struct {
-	Uri	string	`json:"uri"`
-	CacheKeyParameters	Generic	`json:"cache_key_parameters"`
+	Type	string	`json:"type"`
+	HttpMethod	string	`json:"http_method"`
+	IntegrationHttpMethod	string	`json:"integration_http_method"`
+	RequestParameters	map[string]???	`json:"request_parameters"`
+	RequestParametersInJson	string	`json:"request_parameters_in_json"`
+	CacheKeyParameters	string	`json:"cache_key_parameters"`
 	RestApiId	string	`json:"rest_api_id"`
 	ResourceId	string	`json:"resource_id"`
-	HttpMethod	string	`json:"http_method"`
-	ConnectionType	string	`json:"connection_type"`
-	RequestTemplates	map[string]Generic	`json:"request_templates"`
-	RequestParametersInJson	string	`json:"request_parameters_in_json"`
-	Type	string	`json:"type"`
-	ConnectionId	string	`json:"connection_id"`
+	Uri	string	`json:"uri"`
 	Credentials	string	`json:"credentials"`
-	RequestParameters	map[string]Generic	`json:"request_parameters"`
+	RequestTemplates	map[string]???	`json:"request_templates"`
 	ContentHandling	string	`json:"content_handling"`
-	IntegrationHttpMethod	string	`json:"integration_http_method"`
+	ConnectionType	string	`json:"connection_type"`
+	ConnectionId	string	`json:"connection_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

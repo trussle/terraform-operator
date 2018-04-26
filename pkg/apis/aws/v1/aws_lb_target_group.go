@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,13 +21,13 @@ type AwsLbTargetGroup struct {
 
 // AwsLbTargetGroupSpec is the spec for a AwsLbTargetGroup Resource
 type AwsLbTargetGroupSpec struct {
-	NamePrefix	string	`json:"name_prefix"`
-	Port	int	`json:"port"`
-	Tags	map[string]Generic	`json:"tags"`
-	TargetType	string	`json:"target_type"`
 	Protocol	string	`json:"protocol"`
-	VpcId	string	`json:"vpc_id"`
 	DeregistrationDelay	int	`json:"deregistration_delay"`
+	TargetType	string	`json:"target_type"`
+	NamePrefix	string	`json:"name_prefix"`
+	Tags	map[string]???	`json:"tags"`
+	Port	int	`json:"port"`
+	VpcId	string	`json:"vpc_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -39,3 +40,19 @@ type AwsLbTargetGroupList struct {
 	Items	[]AwsLbTargetGroup	`json:"items"`
 }
 
+
+// hUhSWZdg is a hUhSWZdg
+type hUhSWZdg struct {
+	CookieDuration	int	`json:"cookie_duration"`
+	Enabled	bool	`json:"enabled"`
+	Type	string	`json:"type"`
+}
+
+// pyWsRCkc is a pyWsRCkc
+type pyWsRCkc struct {
+	UnhealthyThreshold	int	`json:"unhealthy_threshold"`
+	Interval	int	`json:"interval"`
+	Port	string	`json:"port"`
+	Protocol	string	`json:"protocol"`
+	HealthyThreshold	int	`json:"healthy_threshold"`
+}

@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -34,3 +35,10 @@ type AwsConfigConfigurationRecorderList struct {
 	Items	[]AwsConfigConfigurationRecorder	`json:"items"`
 }
 
+
+// DDvoxIfs is a DDvoxIfs
+type DDvoxIfs struct {
+	AllSupported	bool	`json:"all_supported"`
+	IncludeGlobalResourceTypes	bool	`json:"include_global_resource_types"`
+	ResourceTypes	string	`json:"resource_types"`
+}

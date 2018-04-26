@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,8 +21,8 @@ type AwsServiceDiscoveryPublicDnsNamespace struct {
 
 // AwsServiceDiscoveryPublicDnsNamespaceSpec is the spec for a AwsServiceDiscoveryPublicDnsNamespace Resource
 type AwsServiceDiscoveryPublicDnsNamespaceSpec struct {
-	Description	string	`json:"description"`
 	Name	string	`json:"name"`
+	Description	string	`json:"description"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

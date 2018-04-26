@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,10 +21,10 @@ type AwsNetworkInterface struct {
 
 // AwsNetworkInterfaceSpec is the spec for a AwsNetworkInterface Resource
 type AwsNetworkInterfaceSpec struct {
+	Tags	map[string]???	`json:"tags"`
+	SourceDestCheck	bool	`json:"source_dest_check"`
 	Description	string	`json:"description"`
 	SubnetId	string	`json:"subnet_id"`
-	SourceDestCheck	bool	`json:"source_dest_check"`
-	Tags	map[string]Generic	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

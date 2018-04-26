@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,14 +21,14 @@ type AwsElasticBeanstalkEnvironment struct {
 
 // AwsElasticBeanstalkEnvironmentSpec is the spec for a AwsElasticBeanstalkEnvironment Resource
 type AwsElasticBeanstalkEnvironmentSpec struct {
-	Tags	map[string]Generic	`json:"tags"`
 	Name	string	`json:"name"`
-	Description	string	`json:"description"`
-	WaitForReadyTimeout	string	`json:"wait_for_ready_timeout"`
 	Tier	string	`json:"tier"`
+	Setting	string	`json:"setting"`
+	WaitForReadyTimeout	string	`json:"wait_for_ready_timeout"`
+	Tags	map[string]???	`json:"tags"`
 	PollInterval	string	`json:"poll_interval"`
 	Application	string	`json:"application"`
-	Setting	Generic	`json:"setting"`
+	Description	string	`json:"description"`
 	TemplateName	string	`json:"template_name"`
 }
 

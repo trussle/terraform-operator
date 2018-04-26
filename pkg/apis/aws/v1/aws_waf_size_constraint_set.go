@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,7 +22,7 @@ type AwsWafSizeConstraintSet struct {
 // AwsWafSizeConstraintSetSpec is the spec for a AwsWafSizeConstraintSet Resource
 type AwsWafSizeConstraintSetSpec struct {
 	Name	string	`json:"name"`
-	SizeConstraints	Generic	`json:"size_constraints"`
+	SizeConstraints	string	`json:"size_constraints"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -1,3 +1,4 @@
 package v1
 
-type Generic interface{}
+type GenericList []interface{}
+type GenericMap  map[string]interface{}

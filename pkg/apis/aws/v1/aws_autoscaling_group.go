@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,24 +21,24 @@ type AwsAutoscalingGroup struct {
 
 // AwsAutoscalingGroupSpec is the spec for a AwsAutoscalingGroup Resource
 type AwsAutoscalingGroupSpec struct {
-	WaitForElbCapacity	int	`json:"wait_for_elb_capacity"`
-	MinSize	int	`json:"min_size"`
-	Tag	Generic	`json:"tag"`
-	MinElbCapacity	int	`json:"min_elb_capacity"`
-	ForceDelete	bool	`json:"force_delete"`
-	ProtectFromScaleIn	bool	`json:"protect_from_scale_in"`
-	Tags	[]Generic	`json:"tags"`
-	TerminationPolicies	[]Generic	`json:"termination_policies"`
-	InitialLifecycleHook	Generic	`json:"initial_lifecycle_hook"`
-	NamePrefix	string	`json:"name_prefix"`
-	MaxSize	int	`json:"max_size"`
 	HealthCheckGracePeriod	int	`json:"health_check_grace_period"`
-	SuspendedProcesses	Generic	`json:"suspended_processes"`
-	PlacementGroup	string	`json:"placement_group"`
+	SuspendedProcesses	string	`json:"suspended_processes"`
 	MetricsGranularity	string	`json:"metrics_granularity"`
+	WaitForElbCapacity	int	`json:"wait_for_elb_capacity"`
+	Tag	string	`json:"tag"`
+	MinSize	int	`json:"min_size"`
+	MinElbCapacity	int	`json:"min_elb_capacity"`
+	TerminationPolicies	[]string	`json:"termination_policies"`
+	Tags	[]map[string]???	`json:"tags"`
+	NamePrefix	string	`json:"name_prefix"`
+	ForceDelete	bool	`json:"force_delete"`
+	PlacementGroup	string	`json:"placement_group"`
+	EnabledMetrics	string	`json:"enabled_metrics"`
 	LaunchConfiguration	string	`json:"launch_configuration"`
+	MaxSize	int	`json:"max_size"`
 	WaitForCapacityTimeout	string	`json:"wait_for_capacity_timeout"`
-	EnabledMetrics	Generic	`json:"enabled_metrics"`
+	ProtectFromScaleIn	bool	`json:"protect_from_scale_in"`
+	InitialLifecycleHook	string	`json:"initial_lifecycle_hook"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

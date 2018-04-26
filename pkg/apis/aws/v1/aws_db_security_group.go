@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,8 +21,8 @@ type AwsDbSecurityGroup struct {
 
 // AwsDbSecurityGroupSpec is the spec for a AwsDbSecurityGroup Resource
 type AwsDbSecurityGroupSpec struct {
-	Ingress	Generic	`json:"ingress"`
-	Tags	map[string]Generic	`json:"tags"`
+	Ingress	string	`json:"ingress"`
+	Tags	map[string]???	`json:"tags"`
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
 }

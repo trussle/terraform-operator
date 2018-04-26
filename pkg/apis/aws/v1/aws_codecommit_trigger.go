@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,7 +22,7 @@ type AwsCodecommitTrigger struct {
 // AwsCodecommitTriggerSpec is the spec for a AwsCodecommitTrigger Resource
 type AwsCodecommitTriggerSpec struct {
 	RepositoryName	string	`json:"repository_name"`
-	Trigger	Generic	`json:"trigger"`
+	Trigger	string	`json:"trigger"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -543,6 +543,7 @@ func validateS3BucketLifecycleTimestamp(v interface{}, k string) (ws []string, e
 
 func validateS3BucketLifecycleStorageClass() schema.SchemaValidateFunc {
 	return validation.StringInSlice([]string{
+		s3.TransitionStorageClassOnezoneIa,
 		s3.TransitionStorageClassStandardIa,
 		s3.TransitionStorageClassGlacier,
 	}, false)
@@ -1750,8 +1751,8 @@ func validateLaunchTemplateName(v interface{}, k string) (ws []string, errors []
 		errors = append(errors, fmt.Errorf("%q cannot be longer than 99 characters, name is limited to 125", k))
 	} else if !strings.HasSuffix(k, "prefix") && len(value) > 125 {
 		errors = append(errors, fmt.Errorf("%q cannot be longer than 125 characters", k))
-	} else if !regexp.MustCompile(`^[0-9a-zA-Z()./_]+$`).MatchString(value) {
-		errors = append(errors, fmt.Errorf("%q can only alphanumeric characters and ()./_ symbols", k))
+	} else if !regexp.MustCompile(`^[0-9a-zA-Z()./_\-]+$`).MatchString(value) {
+		errors = append(errors, fmt.Errorf("%q can only alphanumeric characters and ()./_- symbols", k))
 	}
 	return
 }

@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,8 +21,8 @@ type AwsVpcEndpointRouteTableAssociation struct {
 
 // AwsVpcEndpointRouteTableAssociationSpec is the spec for a AwsVpcEndpointRouteTableAssociation Resource
 type AwsVpcEndpointRouteTableAssociationSpec struct {
-	VpcEndpointId	string	`json:"vpc_endpoint_id"`
 	RouteTableId	string	`json:"route_table_id"`
+	VpcEndpointId	string	`json:"vpc_endpoint_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

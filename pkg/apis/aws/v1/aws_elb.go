@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,12 +21,12 @@ type AwsElb struct {
 
 // AwsElbSpec is the spec for a AwsElb Resource
 type AwsElbSpec struct {
-	CrossZoneLoadBalancing	bool	`json:"cross_zone_load_balancing"`
-	AccessLogs	[]Generic	`json:"access_logs"`
-	Tags	map[string]Generic	`json:"tags"`
 	NamePrefix	string	`json:"name_prefix"`
+	Listener	string	`json:"listener"`
 	ConnectionDrainingTimeout	int	`json:"connection_draining_timeout"`
-	Listener	Generic	`json:"listener"`
+	Tags	map[string]???	`json:"tags"`
+	CrossZoneLoadBalancing	bool	`json:"cross_zone_load_balancing"`
+	AccessLogs	[]HMLUIDjU	`json:"access_logs"`
 	IdleTimeout	int	`json:"idle_timeout"`
 	ConnectionDraining	bool	`json:"connection_draining"`
 }
@@ -40,3 +41,20 @@ type AwsElbList struct {
 	Items	[]AwsElb	`json:"items"`
 }
 
+
+// gBpnbPbg is a gBpnbPbg
+type gBpnbPbg struct {
+	HealthyThreshold	int	`json:"healthy_threshold"`
+	UnhealthyThreshold	int	`json:"unhealthy_threshold"`
+	Target	string	`json:"target"`
+	Interval	int	`json:"interval"`
+	Timeout	int	`json:"timeout"`
+}
+
+// HMLUIDjU is a HMLUIDjU
+type HMLUIDjU struct {
+	Interval	int	`json:"interval"`
+	Bucket	string	`json:"bucket"`
+	BucketPrefix	string	`json:"bucket_prefix"`
+	Enabled	bool	`json:"enabled"`
+}

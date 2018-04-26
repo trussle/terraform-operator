@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,8 +22,8 @@ type AwsAutoscalingNotification struct {
 // AwsAutoscalingNotificationSpec is the spec for a AwsAutoscalingNotification Resource
 type AwsAutoscalingNotificationSpec struct {
 	TopicArn	string	`json:"topic_arn"`
-	GroupNames	Generic	`json:"group_names"`
-	Notifications	Generic	`json:"notifications"`
+	GroupNames	string	`json:"group_names"`
+	Notifications	string	`json:"notifications"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,9 +21,9 @@ type AwsIamGroupMembership struct {
 
 // AwsIamGroupMembershipSpec is the spec for a AwsIamGroupMembership Resource
 type AwsIamGroupMembershipSpec struct {
-	Users	Generic	`json:"users"`
-	Group	string	`json:"group"`
 	Name	string	`json:"name"`
+	Users	string	`json:"users"`
+	Group	string	`json:"group"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

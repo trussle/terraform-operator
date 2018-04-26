@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,12 +21,12 @@ type AwsGlueConnection struct {
 
 // AwsGlueConnectionSpec is the spec for a AwsGlueConnection Resource
 type AwsGlueConnectionSpec struct {
-	ConnectionProperties	map[string]Generic	`json:"connection_properties"`
-	ConnectionType	string	`json:"connection_type"`
 	Description	string	`json:"description"`
-	MatchCriteria	[]Generic	`json:"match_criteria"`
+	MatchCriteria	[]string	`json:"match_criteria"`
 	Name	string	`json:"name"`
-	PhysicalConnectionRequirements	[]Generic	`json:"physical_connection_requirements"`
+	PhysicalConnectionRequirements	[]JYWRncGK	`json:"physical_connection_requirements"`
+	ConnectionProperties	map[string]???	`json:"connection_properties"`
+	ConnectionType	string	`json:"connection_type"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -38,3 +39,9 @@ type AwsGlueConnectionList struct {
 	Items	[]AwsGlueConnection	`json:"items"`
 }
 
+
+// JYWRncGK is a JYWRncGK
+type JYWRncGK struct {
+	SecurityGroupIdList	[]string	`json:"security_group_id_list"`
+	SubnetId	string	`json:"subnet_id"`
+}

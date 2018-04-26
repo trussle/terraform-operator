@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,10 +21,10 @@ type AwsLbCookieStickinessPolicy struct {
 
 // AwsLbCookieStickinessPolicySpec is the spec for a AwsLbCookieStickinessPolicy Resource
 type AwsLbCookieStickinessPolicySpec struct {
+	CookieExpirationPeriod	int	`json:"cookie_expiration_period"`
 	Name	string	`json:"name"`
 	LoadBalancer	string	`json:"load_balancer"`
 	LbPort	int	`json:"lb_port"`
-	CookieExpirationPeriod	int	`json:"cookie_expiration_period"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

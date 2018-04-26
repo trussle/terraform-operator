@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,21 +21,21 @@ type AwsOpsworksApplication struct {
 
 // AwsOpsworksApplicationSpec is the spec for a AwsOpsworksApplication Resource
 type AwsOpsworksApplicationSpec struct {
-	Description	string	`json:"description"`
-	EnableSsl	bool	`json:"enable_ssl"`
+	Type	string	`json:"type"`
 	DocumentRoot	string	`json:"document_root"`
-	DataSourceType	string	`json:"data_source_type"`
 	DataSourceDatabaseName	string	`json:"data_source_database_name"`
-	Domains	[]Generic	`json:"domains"`
-	Environment	Generic	`json:"environment"`
-	SslConfiguration	[]Generic	`json:"ssl_configuration"`
+	Environment	string	`json:"environment"`
 	Name	string	`json:"name"`
+	StackId	string	`json:"stack_id"`
 	RailsEnv	string	`json:"rails_env"`
+	SslConfiguration	[]CSfkFohs	`json:"ssl_configuration"`
 	AutoBundleOnDeploy	string	`json:"auto_bundle_on_deploy"`
 	AwsFlowRubySettings	string	`json:"aws_flow_ruby_settings"`
+	Description	string	`json:"description"`
+	EnableSsl	bool	`json:"enable_ssl"`
+	DataSourceType	string	`json:"data_source_type"`
 	DataSourceArn	string	`json:"data_source_arn"`
-	Type	string	`json:"type"`
-	StackId	string	`json:"stack_id"`
+	Domains	[]string	`json:"domains"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -47,3 +48,20 @@ type AwsOpsworksApplicationList struct {
 	Items	[]AwsOpsworksApplication	`json:"items"`
 }
 
+
+// KLdTkNyo is a KLdTkNyo
+type KLdTkNyo struct {
+	Type	string	`json:"type"`
+	Url	string	`json:"url"`
+	Username	string	`json:"username"`
+	Password	string	`json:"password"`
+	Revision	string	`json:"revision"`
+	SshKey	string	`json:"ssh_key"`
+}
+
+// CSfkFohs is a CSfkFohs
+type CSfkFohs struct {
+	Certificate	string	`json:"certificate"`
+	PrivateKey	string	`json:"private_key"`
+	Chain	string	`json:"chain"`
+}

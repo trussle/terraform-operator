@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,26 +22,26 @@ type AwsOpsworksMemcachedLayer struct {
 // AwsOpsworksMemcachedLayerSpec is the spec for a AwsOpsworksMemcachedLayer Resource
 type AwsOpsworksMemcachedLayerSpec struct {
 	AutoAssignElasticIps	bool	`json:"auto_assign_elastic_ips"`
-	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
-	CustomSecurityGroupIds	Generic	`json:"custom_security_group_ids"`
+	CustomSetupRecipes	[]string	`json:"custom_setup_recipes"`
+	StackId	string	`json:"stack_id"`
+	CustomUndeployRecipes	[]string	`json:"custom_undeploy_recipes"`
+	CustomShutdownRecipes	[]string	`json:"custom_shutdown_recipes"`
 	DrainElbOnShutdown	bool	`json:"drain_elb_on_shutdown"`
+	Name	string	`json:"name"`
+	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
+	EbsVolume	string	`json:"ebs_volume"`
+	AutoAssignPublicIps	bool	`json:"auto_assign_public_ips"`
+	ElasticLoadBalancer	string	`json:"elastic_load_balancer"`
+	CustomDeployRecipes	[]string	`json:"custom_deploy_recipes"`
+	CustomJson	string	`json:"custom_json"`
+	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
 	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
 	AllocatedMemory	int	`json:"allocated_memory"`
-	AutoAssignPublicIps	bool	`json:"auto_assign_public_ips"`
-	CustomShutdownRecipes	[]Generic	`json:"custom_shutdown_recipes"`
+	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
+	CustomConfigureRecipes	[]string	`json:"custom_configure_recipes"`
+	CustomSecurityGroupIds	string	`json:"custom_security_group_ids"`
 	AutoHealing	bool	`json:"auto_healing"`
-	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
-	EbsVolume	Generic	`json:"ebs_volume"`
-	ElasticLoadBalancer	string	`json:"elastic_load_balancer"`
-	CustomDeployRecipes	[]Generic	`json:"custom_deploy_recipes"`
-	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
-	SystemPackages	Generic	`json:"system_packages"`
-	CustomSetupRecipes	[]Generic	`json:"custom_setup_recipes"`
-	CustomConfigureRecipes	[]Generic	`json:"custom_configure_recipes"`
-	CustomUndeployRecipes	[]Generic	`json:"custom_undeploy_recipes"`
-	CustomJson	string	`json:"custom_json"`
-	StackId	string	`json:"stack_id"`
-	Name	string	`json:"name"`
+	SystemPackages	string	`json:"system_packages"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -229,6 +229,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsCustomerGateways().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("awsdaxclusters"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsDaxClusters().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("awsdaxparametergroups"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsDaxParameterGroups().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("awsdaxsubnetgroups"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsDaxSubnetGroups().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("awsdbeventsubscriptions"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsDbEventSubscriptions().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("awsdbinstances"):
@@ -545,6 +549,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsOrganizationsAccounts().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("awsorganizationsorganizations"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsOrganizationsOrganizations().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("awsorganizationspolicies"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsOrganizationsPolicies().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("awsorganizationspolicyattachments"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsOrganizationsPolicyAttachments().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("awsplacementgroups"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsPlacementGroups().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("awsproxyprotocolpolicies"):
@@ -591,6 +599,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsS3BucketObjects().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("awss3bucketpolicies"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsS3BucketPolicies().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("awssecretsmanagersecrets"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsSecretsmanagerSecrets().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("awssecretsmanagersecretversions"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsSecretsmanagerSecretVersions().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("awssecuritygroups"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsSecurityGroups().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("awssecuritygrouprules"):

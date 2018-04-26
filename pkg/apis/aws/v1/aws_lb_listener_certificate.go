@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,8 +21,8 @@ type AwsLbListenerCertificate struct {
 
 // AwsLbListenerCertificateSpec is the spec for a AwsLbListenerCertificate Resource
 type AwsLbListenerCertificateSpec struct {
-	CertificateArn	string	`json:"certificate_arn"`
 	ListenerArn	string	`json:"listener_arn"`
+	CertificateArn	string	`json:"certificate_arn"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

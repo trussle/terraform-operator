@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,8 +21,8 @@ type AwsWafregionalGeoMatchSet struct {
 
 // AwsWafregionalGeoMatchSetSpec is the spec for a AwsWafregionalGeoMatchSet Resource
 type AwsWafregionalGeoMatchSetSpec struct {
-	GeoMatchConstraint	Generic	`json:"geo_match_constraint"`
 	Name	string	`json:"name"`
+	GeoMatchConstraint	string	`json:"geo_match_constraint"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

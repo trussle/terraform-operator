@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,10 +21,10 @@ type AwsIamPolicy struct {
 
 // AwsIamPolicySpec is the spec for a AwsIamPolicy Resource
 type AwsIamPolicySpec struct {
-	Description	string	`json:"description"`
-	Path	string	`json:"path"`
 	Policy	string	`json:"policy"`
 	NamePrefix	string	`json:"name_prefix"`
+	Description	string	`json:"description"`
+	Path	string	`json:"path"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

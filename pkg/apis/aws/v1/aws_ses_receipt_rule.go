@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,17 +21,17 @@ type AwsSesReceiptRule struct {
 
 // AwsSesReceiptRuleSpec is the spec for a AwsSesReceiptRule Resource
 type AwsSesReceiptRuleSpec struct {
+	Recipients	string	`json:"recipients"`
+	StopAction	string	`json:"stop_action"`
+	WorkmailAction	string	`json:"workmail_action"`
+	After	string	`json:"after"`
+	S3Action	string	`json:"s3_action"`
+	SnsAction	string	`json:"sns_action"`
+	BounceAction	string	`json:"bounce_action"`
+	AddHeaderAction	string	`json:"add_header_action"`
+	LambdaAction	string	`json:"lambda_action"`
 	Name	string	`json:"name"`
 	RuleSetName	string	`json:"rule_set_name"`
-	AddHeaderAction	Generic	`json:"add_header_action"`
-	S3Action	Generic	`json:"s3_action"`
-	After	string	`json:"after"`
-	Recipients	Generic	`json:"recipients"`
-	BounceAction	Generic	`json:"bounce_action"`
-	StopAction	Generic	`json:"stop_action"`
-	WorkmailAction	Generic	`json:"workmail_action"`
-	LambdaAction	Generic	`json:"lambda_action"`
-	SnsAction	Generic	`json:"sns_action"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

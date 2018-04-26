@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,8 +21,8 @@ type AwsDbSnapshot struct {
 
 // AwsDbSnapshotSpec is the spec for a AwsDbSnapshot Resource
 type AwsDbSnapshotSpec struct {
-	DbSnapshotIdentifier	string	`json:"db_snapshot_identifier"`
 	DbInstanceIdentifier	string	`json:"db_instance_identifier"`
+	DbSnapshotIdentifier	string	`json:"db_snapshot_identifier"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

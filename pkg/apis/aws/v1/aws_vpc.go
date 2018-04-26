@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,9 +22,9 @@ type AwsVpc struct {
 // AwsVpcSpec is the spec for a AwsVpc Resource
 type AwsVpcSpec struct {
 	CidrBlock	string	`json:"cidr_block"`
-	Tags	map[string]Generic	`json:"tags"`
 	AssignGeneratedIpv6CidrBlock	bool	`json:"assign_generated_ipv6_cidr_block"`
 	EnableDnsSupport	bool	`json:"enable_dns_support"`
+	Tags	map[string]???	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

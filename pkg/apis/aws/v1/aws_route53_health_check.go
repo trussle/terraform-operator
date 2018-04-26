@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,23 +21,23 @@ type AwsRoute53HealthCheck struct {
 
 // AwsRoute53HealthCheckSpec is the spec for a AwsRoute53HealthCheck Resource
 type AwsRoute53HealthCheckSpec struct {
-	Type	string	`json:"type"`
-	Fqdn	string	`json:"fqdn"`
-	Port	int	`json:"port"`
+	Regions	string	`json:"regions"`
+	Tags	map[string]???	`json:"tags"`
+	IpAddress	string	`json:"ip_address"`
 	SearchString	string	`json:"search_string"`
-	Tags	map[string]Generic	`json:"tags"`
-	InsufficientDataHealthStatus	string	`json:"insufficient_data_health_status"`
+	ChildHealthchecks	string	`json:"child_healthchecks"`
+	FailureThreshold	int	`json:"failure_threshold"`
+	Fqdn	string	`json:"fqdn"`
 	ReferenceName	string	`json:"reference_name"`
-	RequestInterval	int	`json:"request_interval"`
-	InvertHealthcheck	bool	`json:"invert_healthcheck"`
 	ResourcePath	string	`json:"resource_path"`
 	MeasureLatency	bool	`json:"measure_latency"`
-	ChildHealthchecks	Generic	`json:"child_healthchecks"`
-	ChildHealthThreshold	int	`json:"child_health_threshold"`
-	Regions	Generic	`json:"regions"`
-	FailureThreshold	int	`json:"failure_threshold"`
 	CloudwatchAlarmRegion	string	`json:"cloudwatch_alarm_region"`
-	IpAddress	string	`json:"ip_address"`
+	InsufficientDataHealthStatus	string	`json:"insufficient_data_health_status"`
+	Type	string	`json:"type"`
+	Port	int	`json:"port"`
+	InvertHealthcheck	bool	`json:"invert_healthcheck"`
+	RequestInterval	int	`json:"request_interval"`
+	ChildHealthThreshold	int	`json:"child_health_threshold"`
 	CloudwatchAlarmName	string	`json:"cloudwatch_alarm_name"`
 }
 

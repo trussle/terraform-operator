@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -23,7 +24,7 @@ type AwsSsmMaintenanceWindowTargetSpec struct {
 	OwnerInformation	string	`json:"owner_information"`
 	WindowId	string	`json:"window_id"`
 	ResourceType	string	`json:"resource_type"`
-	Targets	[]Generic	`json:"targets"`
+	Targets	[]dMiyLpru	`json:"targets"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -36,3 +37,9 @@ type AwsSsmMaintenanceWindowTargetList struct {
 	Items	[]AwsSsmMaintenanceWindowTarget	`json:"items"`
 }
 
+
+// dMiyLpru is a dMiyLpru
+type dMiyLpru struct {
+	Key	string	`json:"key"`
+	Values	[]string	`json:"values"`
+}

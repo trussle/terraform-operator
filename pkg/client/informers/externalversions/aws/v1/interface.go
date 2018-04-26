@@ -200,6 +200,10 @@ type Interface interface {
 	AwsCustomerGateways() AwsCustomerGatewayInformer
 	// AwsDaxClusters returns a AwsDaxClusterInformer.
 	AwsDaxClusters() AwsDaxClusterInformer
+	// AwsDaxParameterGroups returns a AwsDaxParameterGroupInformer.
+	AwsDaxParameterGroups() AwsDaxParameterGroupInformer
+	// AwsDaxSubnetGroups returns a AwsDaxSubnetGroupInformer.
+	AwsDaxSubnetGroups() AwsDaxSubnetGroupInformer
 	// AwsDbEventSubscriptions returns a AwsDbEventSubscriptionInformer.
 	AwsDbEventSubscriptions() AwsDbEventSubscriptionInformer
 	// AwsDbInstances returns a AwsDbInstanceInformer.
@@ -516,6 +520,10 @@ type Interface interface {
 	AwsOrganizationsAccounts() AwsOrganizationsAccountInformer
 	// AwsOrganizationsOrganizations returns a AwsOrganizationsOrganizationInformer.
 	AwsOrganizationsOrganizations() AwsOrganizationsOrganizationInformer
+	// AwsOrganizationsPolicies returns a AwsOrganizationsPolicyInformer.
+	AwsOrganizationsPolicies() AwsOrganizationsPolicyInformer
+	// AwsOrganizationsPolicyAttachments returns a AwsOrganizationsPolicyAttachmentInformer.
+	AwsOrganizationsPolicyAttachments() AwsOrganizationsPolicyAttachmentInformer
 	// AwsPlacementGroups returns a AwsPlacementGroupInformer.
 	AwsPlacementGroups() AwsPlacementGroupInformer
 	// AwsProxyProtocolPolicies returns a AwsProxyProtocolPolicyInformer.
@@ -562,6 +570,10 @@ type Interface interface {
 	AwsS3BucketObjects() AwsS3BucketObjectInformer
 	// AwsS3BucketPolicies returns a AwsS3BucketPolicyInformer.
 	AwsS3BucketPolicies() AwsS3BucketPolicyInformer
+	// AwsSecretsmanagerSecrets returns a AwsSecretsmanagerSecretInformer.
+	AwsSecretsmanagerSecrets() AwsSecretsmanagerSecretInformer
+	// AwsSecretsmanagerSecretVersions returns a AwsSecretsmanagerSecretVersionInformer.
+	AwsSecretsmanagerSecretVersions() AwsSecretsmanagerSecretVersionInformer
 	// AwsSecurityGroups returns a AwsSecurityGroupInformer.
 	AwsSecurityGroups() AwsSecurityGroupInformer
 	// AwsSecurityGroupRules returns a AwsSecurityGroupRuleInformer.
@@ -1181,6 +1193,16 @@ func (v *version) AwsCustomerGateways() AwsCustomerGatewayInformer {
 // AwsDaxClusters returns a AwsDaxClusterInformer.
 func (v *version) AwsDaxClusters() AwsDaxClusterInformer {
 	return &awsDaxClusterInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// AwsDaxParameterGroups returns a AwsDaxParameterGroupInformer.
+func (v *version) AwsDaxParameterGroups() AwsDaxParameterGroupInformer {
+	return &awsDaxParameterGroupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// AwsDaxSubnetGroups returns a AwsDaxSubnetGroupInformer.
+func (v *version) AwsDaxSubnetGroups() AwsDaxSubnetGroupInformer {
+	return &awsDaxSubnetGroupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // AwsDbEventSubscriptions returns a AwsDbEventSubscriptionInformer.
@@ -1973,6 +1995,16 @@ func (v *version) AwsOrganizationsOrganizations() AwsOrganizationsOrganizationIn
 	return &awsOrganizationsOrganizationInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
+// AwsOrganizationsPolicies returns a AwsOrganizationsPolicyInformer.
+func (v *version) AwsOrganizationsPolicies() AwsOrganizationsPolicyInformer {
+	return &awsOrganizationsPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// AwsOrganizationsPolicyAttachments returns a AwsOrganizationsPolicyAttachmentInformer.
+func (v *version) AwsOrganizationsPolicyAttachments() AwsOrganizationsPolicyAttachmentInformer {
+	return &awsOrganizationsPolicyAttachmentInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
 // AwsPlacementGroups returns a AwsPlacementGroupInformer.
 func (v *version) AwsPlacementGroups() AwsPlacementGroupInformer {
 	return &awsPlacementGroupInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -2086,6 +2118,16 @@ func (v *version) AwsS3BucketObjects() AwsS3BucketObjectInformer {
 // AwsS3BucketPolicies returns a AwsS3BucketPolicyInformer.
 func (v *version) AwsS3BucketPolicies() AwsS3BucketPolicyInformer {
 	return &awsS3BucketPolicyInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// AwsSecretsmanagerSecrets returns a AwsSecretsmanagerSecretInformer.
+func (v *version) AwsSecretsmanagerSecrets() AwsSecretsmanagerSecretInformer {
+	return &awsSecretsmanagerSecretInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+}
+
+// AwsSecretsmanagerSecretVersions returns a AwsSecretsmanagerSecretVersionInformer.
+func (v *version) AwsSecretsmanagerSecretVersions() AwsSecretsmanagerSecretVersionInformer {
+	return &awsSecretsmanagerSecretVersionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // AwsSecurityGroups returns a AwsSecurityGroupInformer.

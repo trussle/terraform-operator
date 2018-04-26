@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,32 +21,32 @@ type AwsOpsworksRailsAppLayer struct {
 
 // AwsOpsworksRailsAppLayerSpec is the spec for a AwsOpsworksRailsAppLayer Resource
 type AwsOpsworksRailsAppLayerSpec struct {
-	ElasticLoadBalancer	string	`json:"elastic_load_balancer"`
-	CustomSetupRecipes	[]Generic	`json:"custom_setup_recipes"`
-	CustomConfigureRecipes	[]Generic	`json:"custom_configure_recipes"`
-	CustomUndeployRecipes	[]Generic	`json:"custom_undeploy_recipes"`
-	CustomJson	string	`json:"custom_json"`
-	DrainElbOnShutdown	bool	`json:"drain_elb_on_shutdown"`
-	StackId	string	`json:"stack_id"`
-	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
-	PassengerVersion	string	`json:"passenger_version"`
-	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
-	CustomDeployRecipes	[]Generic	`json:"custom_deploy_recipes"`
-	SystemPackages	Generic	`json:"system_packages"`
-	ManageBundler	bool	`json:"manage_bundler"`
-	BundlerVersion	string	`json:"bundler_version"`
-	AutoAssignPublicIps	bool	`json:"auto_assign_public_ips"`
-	CustomShutdownRecipes	[]Generic	`json:"custom_shutdown_recipes"`
-	CustomSecurityGroupIds	Generic	`json:"custom_security_group_ids"`
-	AutoHealing	bool	`json:"auto_healing"`
+	CustomConfigureRecipes	[]string	`json:"custom_configure_recipes"`
+	CustomDeployRecipes	[]string	`json:"custom_deploy_recipes"`
 	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
-	EbsVolume	Generic	`json:"ebs_volume"`
+	StackId	string	`json:"stack_id"`
+	EbsVolume	string	`json:"ebs_volume"`
+	AutoAssignPublicIps	bool	`json:"auto_assign_public_ips"`
+	CustomSetupRecipes	[]string	`json:"custom_setup_recipes"`
+	CustomUndeployRecipes	[]string	`json:"custom_undeploy_recipes"`
+	CustomSecurityGroupIds	string	`json:"custom_security_group_ids"`
+	CustomJson	string	`json:"custom_json"`
+	AutoHealing	bool	`json:"auto_healing"`
+	DrainElbOnShutdown	bool	`json:"drain_elb_on_shutdown"`
+	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
 	Name	string	`json:"name"`
-	RubyVersion	string	`json:"ruby_version"`
-	RubygemsVersion	string	`json:"rubygems_version"`
+	PassengerVersion	string	`json:"passenger_version"`
+	BundlerVersion	string	`json:"bundler_version"`
 	AutoAssignElasticIps	bool	`json:"auto_assign_elastic_ips"`
+	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
+	ElasticLoadBalancer	string	`json:"elastic_load_balancer"`
 	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
+	RubyVersion	string	`json:"ruby_version"`
 	AppServer	string	`json:"app_server"`
+	RubygemsVersion	string	`json:"rubygems_version"`
+	ManageBundler	bool	`json:"manage_bundler"`
+	CustomShutdownRecipes	[]string	`json:"custom_shutdown_recipes"`
+	SystemPackages	string	`json:"system_packages"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

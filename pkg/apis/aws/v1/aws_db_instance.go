@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,23 +21,24 @@ type AwsDbInstance struct {
 
 // AwsDbInstanceSpec is the spec for a AwsDbInstance Resource
 type AwsDbInstanceSpec struct {
-	Iops	int	`json:"iops"`
 	ReplicateSourceDb	string	`json:"replicate_source_db"`
-	AllowMajorVersionUpgrade	bool	`json:"allow_major_version_upgrade"`
-	EnabledCloudwatchLogsExports	[]Generic	`json:"enabled_cloudwatch_logs_exports"`
-	PubliclyAccessible	bool	`json:"publicly_accessible"`
-	SecurityGroupNames	Generic	`json:"security_group_names"`
-	FinalSnapshotIdentifier	string	`json:"final_snapshot_identifier"`
-	SnapshotIdentifier	string	`json:"snapshot_identifier"`
-	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
 	StorageEncrypted	bool	`json:"storage_encrypted"`
-	Tags	map[string]Generic	`json:"tags"`
-	InstanceClass	string	`json:"instance_class"`
+	S3Import	[]IubeYTND	`json:"s3_import"`
+	Password	string	`json:"password"`
+	SnapshotIdentifier	string	`json:"snapshot_identifier"`
+	EnabledCloudwatchLogsExports	[]string	`json:"enabled_cloudwatch_logs_exports"`
+	FinalSnapshotIdentifier	string	`json:"final_snapshot_identifier"`
+	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
+	AllowMajorVersionUpgrade	bool	`json:"allow_major_version_upgrade"`
+	MonitoringInterval	int	`json:"monitoring_interval"`
+	SkipFinalSnapshot	bool	`json:"skip_final_snapshot"`
 	CopyTagsToSnapshot	bool	`json:"copy_tags_to_snapshot"`
 	IamDatabaseAuthenticationEnabled	bool	`json:"iam_database_authentication_enabled"`
-	Password	string	`json:"password"`
-	SkipFinalSnapshot	bool	`json:"skip_final_snapshot"`
-	MonitoringInterval	int	`json:"monitoring_interval"`
+	Tags	map[string]???	`json:"tags"`
+	Iops	int	`json:"iops"`
+	PubliclyAccessible	bool	`json:"publicly_accessible"`
+	SecurityGroupNames	string	`json:"security_group_names"`
+	InstanceClass	string	`json:"instance_class"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -49,3 +51,12 @@ type AwsDbInstanceList struct {
 	Items	[]AwsDbInstance	`json:"items"`
 }
 
+
+// IubeYTND is a IubeYTND
+type IubeYTND struct {
+	SourceEngine	string	`json:"source_engine"`
+	SourceEngineVersion	string	`json:"source_engine_version"`
+	BucketName	string	`json:"bucket_name"`
+	BucketPrefix	string	`json:"bucket_prefix"`
+	IngestionRole	string	`json:"ingestion_role"`
+}

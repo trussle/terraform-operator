@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,10 +21,10 @@ type AwsVpcEndpointConnectionNotification struct {
 
 // AwsVpcEndpointConnectionNotificationSpec is the spec for a AwsVpcEndpointConnectionNotification Resource
 type AwsVpcEndpointConnectionNotificationSpec struct {
-	VpcEndpointServiceId	string	`json:"vpc_endpoint_service_id"`
 	VpcEndpointId	string	`json:"vpc_endpoint_id"`
 	ConnectionNotificationArn	string	`json:"connection_notification_arn"`
-	ConnectionEvents	Generic	`json:"connection_events"`
+	ConnectionEvents	string	`json:"connection_events"`
+	VpcEndpointServiceId	string	`json:"vpc_endpoint_service_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

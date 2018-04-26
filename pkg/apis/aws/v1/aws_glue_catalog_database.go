@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,10 +21,10 @@ type AwsGlueCatalogDatabase struct {
 
 // AwsGlueCatalogDatabaseSpec is the spec for a AwsGlueCatalogDatabase Resource
 type AwsGlueCatalogDatabaseSpec struct {
-	LocationUri	string	`json:"location_uri"`
-	Parameters	map[string]Generic	`json:"parameters"`
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
+	LocationUri	string	`json:"location_uri"`
+	Parameters	map[string]???	`json:"parameters"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

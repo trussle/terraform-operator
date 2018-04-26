@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,10 +21,10 @@ type AwsLoadBalancerPolicy struct {
 
 // AwsLoadBalancerPolicySpec is the spec for a AwsLoadBalancerPolicy Resource
 type AwsLoadBalancerPolicySpec struct {
-	PolicyTypeName	string	`json:"policy_type_name"`
-	PolicyAttribute	Generic	`json:"policy_attribute"`
-	LoadBalancerName	string	`json:"load_balancer_name"`
 	PolicyName	string	`json:"policy_name"`
+	PolicyTypeName	string	`json:"policy_type_name"`
+	PolicyAttribute	string	`json:"policy_attribute"`
+	LoadBalancerName	string	`json:"load_balancer_name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,7 +21,7 @@ type AwsDefaultVpc struct {
 
 // AwsDefaultVpcSpec is the spec for a AwsDefaultVpc Resource
 type AwsDefaultVpcSpec struct {
-	Tags	map[string]Generic	`json:"tags"`
+	Tags	map[string]???	`json:"tags"`
 	EnableDnsSupport	bool	`json:"enable_dns_support"`
 }
 

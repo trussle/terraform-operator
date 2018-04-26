@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,10 +21,10 @@ type AwsGlacierVault struct {
 
 // AwsGlacierVaultSpec is the spec for a AwsGlacierVault Resource
 type AwsGlacierVaultSpec struct {
-	Name	string	`json:"name"`
 	AccessPolicy	string	`json:"access_policy"`
-	Notification	[]Generic	`json:"notification"`
-	Tags	map[string]Generic	`json:"tags"`
+	Notification	[]DSYEofkk	`json:"notification"`
+	Tags	map[string]???	`json:"tags"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -36,3 +37,9 @@ type AwsGlacierVaultList struct {
 	Items	[]AwsGlacierVault	`json:"items"`
 }
 
+
+// DSYEofkk is a DSYEofkk
+type DSYEofkk struct {
+	Events	string	`json:"events"`
+	SnsTopic	string	`json:"sns_topic"`
+}

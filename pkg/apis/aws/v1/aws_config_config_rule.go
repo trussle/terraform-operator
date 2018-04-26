@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,12 +21,12 @@ type AwsConfigConfigRule struct {
 
 // AwsConfigConfigRuleSpec is the spec for a AwsConfigConfigRule Resource
 type AwsConfigConfigRuleSpec struct {
-	Name	string	`json:"name"`
-	Description	string	`json:"description"`
 	InputParameters	string	`json:"input_parameters"`
 	MaximumExecutionFrequency	string	`json:"maximum_execution_frequency"`
-	Scope	[]Generic	`json:"scope"`
-	Source	[]Generic	`json:"source"`
+	Scope	[]hTtUTuWJ	`json:"scope"`
+	Source	[]RGiQjOTc	`json:"source"`
+	Name	string	`json:"name"`
+	Description	string	`json:"description"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -38,3 +39,18 @@ type AwsConfigConfigRuleList struct {
 	Items	[]AwsConfigConfigRule	`json:"items"`
 }
 
+
+// hTtUTuWJ is a hTtUTuWJ
+type hTtUTuWJ struct {
+	ComplianceResourceId	string	`json:"compliance_resource_id"`
+	ComplianceResourceTypes	string	`json:"compliance_resource_types"`
+	TagKey	string	`json:"tag_key"`
+	TagValue	string	`json:"tag_value"`
+}
+
+// RGiQjOTc is a RGiQjOTc
+type RGiQjOTc struct {
+	SourceDetail	string	`json:"source_detail"`
+	SourceIdentifier	string	`json:"source_identifier"`
+	Owner	string	`json:"owner"`
+}

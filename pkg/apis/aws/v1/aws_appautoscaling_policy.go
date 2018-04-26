@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,18 +22,18 @@ type AwsAppautoscalingPolicy struct {
 // AwsAppautoscalingPolicySpec is the spec for a AwsAppautoscalingPolicy Resource
 type AwsAppautoscalingPolicySpec struct {
 	PolicyType	string	`json:"policy_type"`
-	ResourceId	string	`json:"resource_id"`
 	ScalableDimension	string	`json:"scalable_dimension"`
-	StepScalingPolicyConfiguration	[]Generic	`json:"step_scaling_policy_configuration"`
-	Alarms	[]Generic	`json:"alarms"`
-	MinAdjustmentMagnitude	int	`json:"min_adjustment_magnitude"`
-	MetricAggregationType	string	`json:"metric_aggregation_type"`
-	TargetTrackingScalingPolicyConfiguration	[]Generic	`json:"target_tracking_scaling_policy_configuration"`
-	Name	string	`json:"name"`
-	ServiceNamespace	string	`json:"service_namespace"`
+	StepScalingPolicyConfiguration	[]mYYtEjVg	`json:"step_scaling_policy_configuration"`
 	AdjustmentType	string	`json:"adjustment_type"`
 	Cooldown	int	`json:"cooldown"`
-	StepAdjustment	Generic	`json:"step_adjustment"`
+	TargetTrackingScalingPolicyConfiguration	[]wfFbbGGc	`json:"target_tracking_scaling_policy_configuration"`
+	MinAdjustmentMagnitude	int	`json:"min_adjustment_magnitude"`
+	Name	string	`json:"name"`
+	ServiceNamespace	string	`json:"service_namespace"`
+	MetricAggregationType	string	`json:"metric_aggregation_type"`
+	ResourceId	string	`json:"resource_id"`
+	Alarms	[]string	`json:"alarms"`
+	StepAdjustment	string	`json:"step_adjustment"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -45,3 +46,37 @@ type AwsAppautoscalingPolicyList struct {
 	Items	[]AwsAppautoscalingPolicy	`json:"items"`
 }
 
+
+// mYYtEjVg is a mYYtEjVg
+type mYYtEjVg struct {
+	AdjustmentType	string	`json:"adjustment_type"`
+	Cooldown	int	`json:"cooldown"`
+	MetricAggregationType	string	`json:"metric_aggregation_type"`
+	MinAdjustmentMagnitude	int	`json:"min_adjustment_magnitude"`
+	StepAdjustment	string	`json:"step_adjustment"`
+}
+
+// nqbaEREu is a nqbaEREu
+type nqbaEREu struct {
+	Dimensions	string	`json:"dimensions"`
+	MetricName	string	`json:"metric_name"`
+	Namespace	string	`json:"namespace"`
+	Statistic	string	`json:"statistic"`
+	Unit	string	`json:"unit"`
+}
+
+// nUZjQXmZ is a nUZjQXmZ
+type nUZjQXmZ struct {
+	PredefinedMetricType	string	`json:"predefined_metric_type"`
+	ResourceLabel	string	`json:"resource_label"`
+}
+
+// wfFbbGGc is a wfFbbGGc
+type wfFbbGGc struct {
+	CustomizedMetricSpecification	[]nqbaEREu	`json:"customized_metric_specification"`
+	PredefinedMetricSpecification	[]nUZjQXmZ	`json:"predefined_metric_specification"`
+	DisableScaleIn	bool	`json:"disable_scale_in"`
+	ScaleInCooldown	int	`json:"scale_in_cooldown"`
+	ScaleOutCooldown	int	`json:"scale_out_cooldown"`
+	TargetValue	float64	`json:"target_value"`
+}

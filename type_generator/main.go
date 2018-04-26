@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"strings"
 	"text/tabwriter"
 
@@ -12,6 +13,8 @@ import (
 )
 
 const apiVersion = "v1"
+
+var extraStructBuffer = []string{}
 
 func main() {
 	prov := aws.Provider().(*schema.Provider)
@@ -39,6 +42,7 @@ package %s
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -48,6 +52,11 @@ import (
 %s
 %s
 `, apiVersion, generateTypeStructString(name), generateSpecStructString(name, m), generateTypeStructStringList(name))
+
+	for _, v := range extraStructBuffer {
+		fmt.Fprintf(bb, v)
+	}
+	extraStructBuffer = []string{}
 	w.Flush()
 	err := ioutil.WriteFile(path, bb.Bytes(), 0755)
 	if err != nil {
@@ -114,7 +123,7 @@ type %sSpec struct {
 
 func generateFieldString(k string, v *schema.Schema) string {
 	name := titleStr(k)
-	t := typeAsString(v.Type)
+	t := typeSchemaAsString(v)
 	if v.Computed {
 		return ""
 	}
@@ -127,26 +136,52 @@ func titleStr(s string) string {
 	return strings.Replace(t, " ", "", -1)
 }
 
-func typeAsString(t schema.ValueType) string {
-	switch t {
+func typeSchemaAsString(t *schema.Schema) string {
+	switch t.Type {
 	case schema.TypeString:
 		return "string"
 	case schema.TypeBool:
 		return "bool"
 	case schema.TypeFloat:
-		return "float"
+		return "float64"
 	case schema.TypeInt:
 		return "int"
 	case schema.TypeList:
-		return "[]Generic"
-		//		return "[]Generic{}"
+		return "[]" + typeElemAsString(t.Elem)
 	case schema.TypeMap:
-		return "map[string]Generic"
-		//		return "map[string]Generic{}"
+		return "map[string]" + typeElemAsString(t.Elem)
 	}
 
-	return "Generic"
-	//return "string{}"
+	return "string"
+}
+
+func typeElemAsString(i interface{}) string {
+	switch i.(type) {
+	case *schema.Schema:
+		return typeSchemaAsString(i.(*schema.Schema))
+	case *schema.Resource:
+		// Complex object, shit ourselves.
+		name := RandStringRunes(8)
+		generateInlineStruct(name, i.(*schema.Resource))
+		return name
+	}
+
+	return "???"
+}
+
+func generateInlineStruct(name string, r *schema.Resource) {
+	spec := fmt.Sprintf(`
+// %s is a %s
+type %s struct {
+`, name, name, name)
+	for k, v := range r.Schema {
+		l := generateFieldString(k, v)
+		if l != "" {
+			spec = spec + l + "\n"
+		}
+	}
+	spec = spec + "}\n"
+	extraStructBuffer = append(extraStructBuffer, spec)
 }
 
 func generateRegisterFile(path string, m map[string]*schema.Resource) error {
@@ -157,13 +192,12 @@ func generateRegisterFile(path string, m map[string]*schema.Resource) error {
 
 	foo := fmt.Sprintf(`
 	package %s
-
 	import (
 		meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 		"k8s.io/apimachinery/pkg/runtime"
 		"k8s.io/apimachinery/pkg/runtime/schema"
 	
-		"github.com/trussle/terraform-controller/pkg/apis/aws"
+		"github.com/trussle/terraform-operator/pkg/apis/aws"
 	)
 	
 	// GroupVersion is the identifier for the API which includes
@@ -209,4 +243,14 @@ func generateAddKnownTypesCallString(m map[string]*schema.Resource) string {
 	}
 	o = o + "\n)"
 	return o
+}
+
+var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+
+func RandStringRunes(n int) string {
+	b := make([]rune, n)
+	for i := range b {
+		b[i] = letterRunes[rand.Intn(len(letterRunes))]
+	}
+	return string(b)
 }

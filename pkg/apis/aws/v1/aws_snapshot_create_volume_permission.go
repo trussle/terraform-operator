@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,8 +21,8 @@ type AwsSnapshotCreateVolumePermission struct {
 
 // AwsSnapshotCreateVolumePermissionSpec is the spec for a AwsSnapshotCreateVolumePermission Resource
 type AwsSnapshotCreateVolumePermissionSpec struct {
-	SnapshotId	string	`json:"snapshot_id"`
 	AccountId	string	`json:"account_id"`
+	SnapshotId	string	`json:"snapshot_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

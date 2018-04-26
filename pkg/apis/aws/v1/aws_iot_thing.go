@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,7 +22,7 @@ type AwsIotThing struct {
 // AwsIotThingSpec is the spec for a AwsIotThing Resource
 type AwsIotThingSpec struct {
 	Name	string	`json:"name"`
-	Attributes	map[string]Generic	`json:"attributes"`
+	Attributes	map[string]???	`json:"attributes"`
 	ThingTypeName	string	`json:"thing_type_name"`
 }
 

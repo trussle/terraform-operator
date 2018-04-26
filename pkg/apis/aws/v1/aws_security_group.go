@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,8 +21,8 @@ type AwsSecurityGroup struct {
 
 // AwsSecurityGroupSpec is the spec for a AwsSecurityGroup Resource
 type AwsSecurityGroupSpec struct {
+	Tags	map[string]???	`json:"tags"`
 	Description	string	`json:"description"`
-	Tags	map[string]Generic	`json:"tags"`
 	RevokeRulesOnDelete	bool	`json:"revoke_rules_on_delete"`
 	NamePrefix	string	`json:"name_prefix"`
 }

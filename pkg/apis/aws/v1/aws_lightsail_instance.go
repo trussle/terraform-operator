@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,12 +21,12 @@ type AwsLightsailInstance struct {
 
 // AwsLightsailInstanceSpec is the spec for a AwsLightsailInstance Resource
 type AwsLightsailInstanceSpec struct {
-	BlueprintId	string	`json:"blueprint_id"`
-	UserData	string	`json:"user_data"`
 	BundleId	string	`json:"bundle_id"`
-	KeyPairName	string	`json:"key_pair_name"`
+	UserData	string	`json:"user_data"`
 	Name	string	`json:"name"`
 	AvailabilityZone	string	`json:"availability_zone"`
+	BlueprintId	string	`json:"blueprint_id"`
+	KeyPairName	string	`json:"key_pair_name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

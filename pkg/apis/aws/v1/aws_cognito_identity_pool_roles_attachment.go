@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,9 +21,9 @@ type AwsCognitoIdentityPoolRolesAttachment struct {
 
 // AwsCognitoIdentityPoolRolesAttachmentSpec is the spec for a AwsCognitoIdentityPoolRolesAttachment Resource
 type AwsCognitoIdentityPoolRolesAttachmentSpec struct {
-	Roles	map[string]Generic	`json:"roles"`
 	IdentityPoolId	string	`json:"identity_pool_id"`
-	RoleMapping	Generic	`json:"role_mapping"`
+	RoleMapping	string	`json:"role_mapping"`
+	Roles	map[string]tjAyRRDe	`json:"roles"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -35,3 +36,9 @@ type AwsCognitoIdentityPoolRolesAttachmentList struct {
 	Items	[]AwsCognitoIdentityPoolRolesAttachment	`json:"items"`
 }
 
+
+// tjAyRRDe is a tjAyRRDe
+type tjAyRRDe struct {
+	Authenticated	string	`json:"authenticated"`
+	Unauthenticated	string	`json:"unauthenticated"`
+}

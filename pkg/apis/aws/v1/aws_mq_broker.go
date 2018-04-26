@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,16 +21,16 @@ type AwsMqBroker struct {
 
 // AwsMqBrokerSpec is the spec for a AwsMqBroker Resource
 type AwsMqBrokerSpec struct {
-	SecurityGroups	Generic	`json:"security_groups"`
-	ApplyImmediately	bool	`json:"apply_immediately"`
-	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
-	EngineType	string	`json:"engine_type"`
-	HostInstanceType	string	`json:"host_instance_type"`
-	BrokerName	string	`json:"broker_name"`
 	DeploymentMode	string	`json:"deployment_mode"`
-	PubliclyAccessible	bool	`json:"publicly_accessible"`
 	EngineVersion	string	`json:"engine_version"`
-	User	Generic	`json:"user"`
+	PubliclyAccessible	bool	`json:"publicly_accessible"`
+	ApplyImmediately	bool	`json:"apply_immediately"`
+	BrokerName	string	`json:"broker_name"`
+	EngineType	string	`json:"engine_type"`
+	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
+	HostInstanceType	string	`json:"host_instance_type"`
+	SecurityGroups	string	`json:"security_groups"`
+	User	string	`json:"user"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -42,3 +43,18 @@ type AwsMqBrokerList struct {
 	Items	[]AwsMqBroker	`json:"items"`
 }
 
+
+// VVxSAZWE is a VVxSAZWE
+type VVxSAZWE struct {
+	DayOfWeek	string	`json:"day_of_week"`
+	TimeOfDay	string	`json:"time_of_day"`
+	TimeZone	string	`json:"time_zone"`
+}
+
+// XejhAquX is a XejhAquX
+type XejhAquX struct {
+}
+
+// daaaZlRH is a daaaZlRH
+type daaaZlRH struct {
+}

@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,9 +21,9 @@ type AwsElasticacheSubnetGroup struct {
 
 // AwsElasticacheSubnetGroupSpec is the spec for a AwsElasticacheSubnetGroup Resource
 type AwsElasticacheSubnetGroupSpec struct {
+	SubnetIds	string	`json:"subnet_ids"`
 	Description	string	`json:"description"`
 	Name	string	`json:"name"`
-	SubnetIds	Generic	`json:"subnet_ids"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

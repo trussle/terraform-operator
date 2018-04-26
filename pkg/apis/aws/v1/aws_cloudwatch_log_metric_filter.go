@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,10 +21,10 @@ type AwsCloudwatchLogMetricFilter struct {
 
 // AwsCloudwatchLogMetricFilterSpec is the spec for a AwsCloudwatchLogMetricFilter Resource
 type AwsCloudwatchLogMetricFilterSpec struct {
+	LogGroupName	string	`json:"log_group_name"`
+	MetricTransformation	[]lPWyqOsU	`json:"metric_transformation"`
 	Name	string	`json:"name"`
 	Pattern	string	`json:"pattern"`
-	LogGroupName	string	`json:"log_group_name"`
-	MetricTransformation	[]Generic	`json:"metric_transformation"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -36,3 +37,11 @@ type AwsCloudwatchLogMetricFilterList struct {
 	Items	[]AwsCloudwatchLogMetricFilter	`json:"items"`
 }
 
+
+// lPWyqOsU is a lPWyqOsU
+type lPWyqOsU struct {
+	DefaultValue	float64	`json:"default_value"`
+	Name	string	`json:"name"`
+	Namespace	string	`json:"namespace"`
+	Value	string	`json:"value"`
+}

@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -23,7 +24,7 @@ type AwsRedshiftParameterGroupSpec struct {
 	Name	string	`json:"name"`
 	Family	string	`json:"family"`
 	Description	string	`json:"description"`
-	Parameter	Generic	`json:"parameter"`
+	Parameter	string	`json:"parameter"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

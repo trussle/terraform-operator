@@ -115,6 +115,8 @@ type TrussleV1Interface interface {
 	AwsConfigDeliveryChannelsGetter
 	AwsCustomerGatewaysGetter
 	AwsDaxClustersGetter
+	AwsDaxParameterGroupsGetter
+	AwsDaxSubnetGroupsGetter
 	AwsDbEventSubscriptionsGetter
 	AwsDbInstancesGetter
 	AwsDbOptionGroupsGetter
@@ -273,6 +275,8 @@ type TrussleV1Interface interface {
 	AwsOpsworksUserProfilesGetter
 	AwsOrganizationsAccountsGetter
 	AwsOrganizationsOrganizationsGetter
+	AwsOrganizationsPoliciesGetter
+	AwsOrganizationsPolicyAttachmentsGetter
 	AwsPlacementGroupsGetter
 	AwsProxyProtocolPoliciesGetter
 	AwsRdsClustersGetter
@@ -296,6 +300,8 @@ type TrussleV1Interface interface {
 	AwsS3BucketNotificationsGetter
 	AwsS3BucketObjectsGetter
 	AwsS3BucketPoliciesGetter
+	AwsSecretsmanagerSecretsGetter
+	AwsSecretsmanagerSecretVersionsGetter
 	AwsSecurityGroupsGetter
 	AwsSecurityGroupRulesGetter
 	AwsServiceDiscoveryPrivateDnsNamespacesGetter
@@ -737,6 +743,14 @@ func (c *TrussleV1Client) AwsCustomerGateways(namespace string) AwsCustomerGatew
 
 func (c *TrussleV1Client) AwsDaxClusters(namespace string) AwsDaxClusterInterface {
 	return newAwsDaxClusters(c, namespace)
+}
+
+func (c *TrussleV1Client) AwsDaxParameterGroups(namespace string) AwsDaxParameterGroupInterface {
+	return newAwsDaxParameterGroups(c, namespace)
+}
+
+func (c *TrussleV1Client) AwsDaxSubnetGroups(namespace string) AwsDaxSubnetGroupInterface {
+	return newAwsDaxSubnetGroups(c, namespace)
 }
 
 func (c *TrussleV1Client) AwsDbEventSubscriptions(namespace string) AwsDbEventSubscriptionInterface {
@@ -1371,6 +1385,14 @@ func (c *TrussleV1Client) AwsOrganizationsOrganizations(namespace string) AwsOrg
 	return newAwsOrganizationsOrganizations(c, namespace)
 }
 
+func (c *TrussleV1Client) AwsOrganizationsPolicies(namespace string) AwsOrganizationsPolicyInterface {
+	return newAwsOrganizationsPolicies(c, namespace)
+}
+
+func (c *TrussleV1Client) AwsOrganizationsPolicyAttachments(namespace string) AwsOrganizationsPolicyAttachmentInterface {
+	return newAwsOrganizationsPolicyAttachments(c, namespace)
+}
+
 func (c *TrussleV1Client) AwsPlacementGroups(namespace string) AwsPlacementGroupInterface {
 	return newAwsPlacementGroups(c, namespace)
 }
@@ -1461,6 +1483,14 @@ func (c *TrussleV1Client) AwsS3BucketObjects(namespace string) AwsS3BucketObject
 
 func (c *TrussleV1Client) AwsS3BucketPolicies(namespace string) AwsS3BucketPolicyInterface {
 	return newAwsS3BucketPolicies(c, namespace)
+}
+
+func (c *TrussleV1Client) AwsSecretsmanagerSecrets(namespace string) AwsSecretsmanagerSecretInterface {
+	return newAwsSecretsmanagerSecrets(c, namespace)
+}
+
+func (c *TrussleV1Client) AwsSecretsmanagerSecretVersions(namespace string) AwsSecretsmanagerSecretVersionInterface {
+	return newAwsSecretsmanagerSecretVersions(c, namespace)
 }
 
 func (c *TrussleV1Client) AwsSecurityGroups(namespace string) AwsSecurityGroupInterface {

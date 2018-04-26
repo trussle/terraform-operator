@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,8 +21,9 @@ type AwsElasticBeanstalkApplication struct {
 
 // AwsElasticBeanstalkApplicationSpec is the spec for a AwsElasticBeanstalkApplication Resource
 type AwsElasticBeanstalkApplicationSpec struct {
-	Name	string	`json:"name"`
 	Description	string	`json:"description"`
+	AppversionLifecycle	[]rKCtzkjk	`json:"appversion_lifecycle"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -34,3 +36,11 @@ type AwsElasticBeanstalkApplicationList struct {
 	Items	[]AwsElasticBeanstalkApplication	`json:"items"`
 }
 
+
+// rKCtzkjk is a rKCtzkjk
+type rKCtzkjk struct {
+	ServiceRole	string	`json:"service_role"`
+	MaxAgeInDays	int	`json:"max_age_in_days"`
+	MaxCount	int	`json:"max_count"`
+	DeleteSourceFromS3	bool	`json:"delete_source_from_s3"`
+}

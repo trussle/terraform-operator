@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,8 +21,8 @@ type AwsRouteTable struct {
 
 // AwsRouteTableSpec is the spec for a AwsRouteTable Resource
 type AwsRouteTableSpec struct {
+	Tags	map[string]???	`json:"tags"`
 	VpcId	string	`json:"vpc_id"`
-	Tags	map[string]Generic	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -722,6 +722,22 @@ type AwsDaxClusterListerExpansion interface{}
 // AwsDaxClusterNamespaceLister.
 type AwsDaxClusterNamespaceListerExpansion interface{}
 
+// AwsDaxParameterGroupListerExpansion allows custom methods to be added to
+// AwsDaxParameterGroupLister.
+type AwsDaxParameterGroupListerExpansion interface{}
+
+// AwsDaxParameterGroupNamespaceListerExpansion allows custom methods to be added to
+// AwsDaxParameterGroupNamespaceLister.
+type AwsDaxParameterGroupNamespaceListerExpansion interface{}
+
+// AwsDaxSubnetGroupListerExpansion allows custom methods to be added to
+// AwsDaxSubnetGroupLister.
+type AwsDaxSubnetGroupListerExpansion interface{}
+
+// AwsDaxSubnetGroupNamespaceListerExpansion allows custom methods to be added to
+// AwsDaxSubnetGroupNamespaceLister.
+type AwsDaxSubnetGroupNamespaceListerExpansion interface{}
+
 // AwsDbEventSubscriptionListerExpansion allows custom methods to be added to
 // AwsDbEventSubscriptionLister.
 type AwsDbEventSubscriptionListerExpansion interface{}
@@ -1986,6 +2002,22 @@ type AwsOrganizationsOrganizationListerExpansion interface{}
 // AwsOrganizationsOrganizationNamespaceLister.
 type AwsOrganizationsOrganizationNamespaceListerExpansion interface{}
 
+// AwsOrganizationsPolicyListerExpansion allows custom methods to be added to
+// AwsOrganizationsPolicyLister.
+type AwsOrganizationsPolicyListerExpansion interface{}
+
+// AwsOrganizationsPolicyNamespaceListerExpansion allows custom methods to be added to
+// AwsOrganizationsPolicyNamespaceLister.
+type AwsOrganizationsPolicyNamespaceListerExpansion interface{}
+
+// AwsOrganizationsPolicyAttachmentListerExpansion allows custom methods to be added to
+// AwsOrganizationsPolicyAttachmentLister.
+type AwsOrganizationsPolicyAttachmentListerExpansion interface{}
+
+// AwsOrganizationsPolicyAttachmentNamespaceListerExpansion allows custom methods to be added to
+// AwsOrganizationsPolicyAttachmentNamespaceLister.
+type AwsOrganizationsPolicyAttachmentNamespaceListerExpansion interface{}
+
 // AwsPlacementGroupListerExpansion allows custom methods to be added to
 // AwsPlacementGroupLister.
 type AwsPlacementGroupListerExpansion interface{}
@@ -2169,6 +2201,22 @@ type AwsS3BucketPolicyListerExpansion interface{}
 // AwsS3BucketPolicyNamespaceListerExpansion allows custom methods to be added to
 // AwsS3BucketPolicyNamespaceLister.
 type AwsS3BucketPolicyNamespaceListerExpansion interface{}
+
+// AwsSecretsmanagerSecretListerExpansion allows custom methods to be added to
+// AwsSecretsmanagerSecretLister.
+type AwsSecretsmanagerSecretListerExpansion interface{}
+
+// AwsSecretsmanagerSecretNamespaceListerExpansion allows custom methods to be added to
+// AwsSecretsmanagerSecretNamespaceLister.
+type AwsSecretsmanagerSecretNamespaceListerExpansion interface{}
+
+// AwsSecretsmanagerSecretVersionListerExpansion allows custom methods to be added to
+// AwsSecretsmanagerSecretVersionLister.
+type AwsSecretsmanagerSecretVersionListerExpansion interface{}
+
+// AwsSecretsmanagerSecretVersionNamespaceListerExpansion allows custom methods to be added to
+// AwsSecretsmanagerSecretVersionNamespaceLister.
+type AwsSecretsmanagerSecretVersionNamespaceListerExpansion interface{}
 
 // AwsSecurityGroupListerExpansion allows custom methods to be added to
 // AwsSecurityGroupLister.

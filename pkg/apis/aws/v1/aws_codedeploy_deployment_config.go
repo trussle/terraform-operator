@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,7 +22,7 @@ type AwsCodedeployDeploymentConfig struct {
 // AwsCodedeployDeploymentConfigSpec is the spec for a AwsCodedeployDeploymentConfig Resource
 type AwsCodedeployDeploymentConfigSpec struct {
 	DeploymentConfigName	string	`json:"deployment_config_name"`
-	MinimumHealthyHosts	[]Generic	`json:"minimum_healthy_hosts"`
+	MinimumHealthyHosts	[]EYeqkKHq	`json:"minimum_healthy_hosts"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -34,3 +35,9 @@ type AwsCodedeployDeploymentConfigList struct {
 	Items	[]AwsCodedeployDeploymentConfig	`json:"items"`
 }
 
+
+// EYeqkKHq is a EYeqkKHq
+type EYeqkKHq struct {
+	Value	int	`json:"value"`
+	Type	string	`json:"type"`
+}

@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,11 +21,11 @@ type AwsDbOptionGroup struct {
 
 // AwsDbOptionGroupSpec is the spec for a AwsDbOptionGroup Resource
 type AwsDbOptionGroupSpec struct {
-	Tags	map[string]Generic	`json:"tags"`
 	EngineName	string	`json:"engine_name"`
 	MajorEngineVersion	string	`json:"major_engine_version"`
 	OptionGroupDescription	string	`json:"option_group_description"`
-	Option	Generic	`json:"option"`
+	Option	string	`json:"option"`
+	Tags	map[string]???	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

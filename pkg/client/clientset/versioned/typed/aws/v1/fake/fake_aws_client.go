@@ -380,6 +380,14 @@ func (c *FakeTrussleV1) AwsDaxClusters(namespace string) v1.AwsDaxClusterInterfa
 	return &FakeAwsDaxClusters{c, namespace}
 }
 
+func (c *FakeTrussleV1) AwsDaxParameterGroups(namespace string) v1.AwsDaxParameterGroupInterface {
+	return &FakeAwsDaxParameterGroups{c, namespace}
+}
+
+func (c *FakeTrussleV1) AwsDaxSubnetGroups(namespace string) v1.AwsDaxSubnetGroupInterface {
+	return &FakeAwsDaxSubnetGroups{c, namespace}
+}
+
 func (c *FakeTrussleV1) AwsDbEventSubscriptions(namespace string) v1.AwsDbEventSubscriptionInterface {
 	return &FakeAwsDbEventSubscriptions{c, namespace}
 }
@@ -1012,6 +1020,14 @@ func (c *FakeTrussleV1) AwsOrganizationsOrganizations(namespace string) v1.AwsOr
 	return &FakeAwsOrganizationsOrganizations{c, namespace}
 }
 
+func (c *FakeTrussleV1) AwsOrganizationsPolicies(namespace string) v1.AwsOrganizationsPolicyInterface {
+	return &FakeAwsOrganizationsPolicies{c, namespace}
+}
+
+func (c *FakeTrussleV1) AwsOrganizationsPolicyAttachments(namespace string) v1.AwsOrganizationsPolicyAttachmentInterface {
+	return &FakeAwsOrganizationsPolicyAttachments{c, namespace}
+}
+
 func (c *FakeTrussleV1) AwsPlacementGroups(namespace string) v1.AwsPlacementGroupInterface {
 	return &FakeAwsPlacementGroups{c, namespace}
 }
@@ -1102,6 +1118,14 @@ func (c *FakeTrussleV1) AwsS3BucketObjects(namespace string) v1.AwsS3BucketObjec
 
 func (c *FakeTrussleV1) AwsS3BucketPolicies(namespace string) v1.AwsS3BucketPolicyInterface {
 	return &FakeAwsS3BucketPolicies{c, namespace}
+}
+
+func (c *FakeTrussleV1) AwsSecretsmanagerSecrets(namespace string) v1.AwsSecretsmanagerSecretInterface {
+	return &FakeAwsSecretsmanagerSecrets{c, namespace}
+}
+
+func (c *FakeTrussleV1) AwsSecretsmanagerSecretVersions(namespace string) v1.AwsSecretsmanagerSecretVersionInterface {
+	return &FakeAwsSecretsmanagerSecretVersions{c, namespace}
 }
 
 func (c *FakeTrussleV1) AwsSecurityGroups(namespace string) v1.AwsSecurityGroupInterface {

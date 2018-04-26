@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,9 +21,9 @@ type AwsDefaultRouteTable struct {
 
 // AwsDefaultRouteTableSpec is the spec for a AwsDefaultRouteTable Resource
 type AwsDefaultRouteTableSpec struct {
-	Tags	map[string]Generic	`json:"tags"`
+	Tags	map[string]???	`json:"tags"`
 	DefaultRouteTableId	string	`json:"default_route_table_id"`
-	PropagatingVgws	Generic	`json:"propagating_vgws"`
+	PropagatingVgws	string	`json:"propagating_vgws"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

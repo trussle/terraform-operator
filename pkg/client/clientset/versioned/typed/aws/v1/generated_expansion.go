@@ -194,6 +194,10 @@ type AwsCustomerGatewayExpansion interface{}
 
 type AwsDaxClusterExpansion interface{}
 
+type AwsDaxParameterGroupExpansion interface{}
+
+type AwsDaxSubnetGroupExpansion interface{}
+
 type AwsDbEventSubscriptionExpansion interface{}
 
 type AwsDbInstanceExpansion interface{}
@@ -510,6 +514,10 @@ type AwsOrganizationsAccountExpansion interface{}
 
 type AwsOrganizationsOrganizationExpansion interface{}
 
+type AwsOrganizationsPolicyExpansion interface{}
+
+type AwsOrganizationsPolicyAttachmentExpansion interface{}
+
 type AwsPlacementGroupExpansion interface{}
 
 type AwsProxyProtocolPolicyExpansion interface{}
@@ -555,6 +563,10 @@ type AwsS3BucketNotificationExpansion interface{}
 type AwsS3BucketObjectExpansion interface{}
 
 type AwsS3BucketPolicyExpansion interface{}
+
+type AwsSecretsmanagerSecretExpansion interface{}
+
+type AwsSecretsmanagerSecretVersionExpansion interface{}
 
 type AwsSecurityGroupExpansion interface{}
 

@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,10 +21,10 @@ type AwsRdsClusterParameterGroup struct {
 
 // AwsRdsClusterParameterGroupSpec is the spec for a AwsRdsClusterParameterGroup Resource
 type AwsRdsClusterParameterGroupSpec struct {
+	Parameter	string	`json:"parameter"`
+	Tags	map[string]???	`json:"tags"`
 	Family	string	`json:"family"`
 	Description	string	`json:"description"`
-	Parameter	Generic	`json:"parameter"`
-	Tags	map[string]Generic	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

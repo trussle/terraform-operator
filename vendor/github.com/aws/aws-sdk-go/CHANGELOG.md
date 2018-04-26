@@ -1,3 +1,41 @@
+Release v1.13.37 (2018-04-25)
+===
+
+### Service Client Updates
+* `service/codedeploy`: Updates service API and documentation
+  * AWS CodeDeploy has a new exception that indicates when a GitHub token is not valid.
+* `service/rekognition`: Updates service documentation
+  * Documentation updates for Amazon Rekognition.
+* `service/xray`: Updates service API and documentation
+  * Added PutEncryptionConfig and GetEncryptionConfig APIs for managing data encryption settings. Use PutEncryptionConfig to configure X-Ray to use an AWS Key Management Service customer master key to encrypt trace data at rest.
+
+Release v1.13.36 (2018-04-24)
+===
+
+### Service Client Updates
+* `service/elasticbeanstalk`: Updates service API and documentation
+  * Support tracking Elastic Beanstalk resources in AWS Config.
+* `service/secretsmanager`: Updates service documentation
+  * Documentation updates for secretsmanager
+
+Release v1.13.35 (2018-04-23)
+===
+
+### Service Client Updates
+* `service/autoscaling-plans`: Updates service API and documentation
+* `service/iot`: Updates service API and documentation
+  * Add IotAnalyticsAction which sends message data to an AWS IoT Analytics channel
+* `service/iotanalytics`: Adds new service
+
+### SDK Enhancements
+* `aws/endpoints`: Add Get Region description to endpoints package ([#1909](https://github.com/aws/aws-sdk-go/pull/1909))
+  * Adds exposing the description field of the endpoints Region struct.
+  * Fixes [#1194](https://github.com/aws/aws-sdk-go/issues/1194)
+
+### SDK Bugs
+* Fix XML unmarshaler not correctly unmarshaling list of timestamp values ([#1894](https://github.com/aws/aws-sdk-go/pull/1894))
+  * Fixes a bug in the XML unmarshaler that would incorrectly try to unmarshal "time.Time" parameters that did not have the struct tag type on them. This would occur for nested lists like CloudWatch's GetMetricDataResponse MetricDataResults timestamp parameters.
+  * Fixes [#1892](https://github.com/aws/aws-sdk-go/issues/1892)
 Release v1.13.34 (2018-04-20)
 ===
 

@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,11 +22,11 @@ type AwsApiGatewayDomainName struct {
 // AwsApiGatewayDomainNameSpec is the spec for a AwsApiGatewayDomainName Resource
 type AwsApiGatewayDomainNameSpec struct {
 	CertificateChain	string	`json:"certificate_chain"`
-	CertificateName	string	`json:"certificate_name"`
-	CertificateBody	string	`json:"certificate_body"`
 	CertificatePrivateKey	string	`json:"certificate_private_key"`
-	DomainName	string	`json:"domain_name"`
 	CertificateArn	string	`json:"certificate_arn"`
+	CertificateBody	string	`json:"certificate_body"`
+	CertificateName	string	`json:"certificate_name"`
+	DomainName	string	`json:"domain_name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

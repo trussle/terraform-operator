@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,15 +21,15 @@ type AwsApiGatewayIntegrationResponse struct {
 
 // AwsApiGatewayIntegrationResponseSpec is the spec for a AwsApiGatewayIntegrationResponse Resource
 type AwsApiGatewayIntegrationResponseSpec struct {
+	RestApiId	string	`json:"rest_api_id"`
+	SelectionPattern	string	`json:"selection_pattern"`
+	ResponseParameters	map[string]???	`json:"response_parameters"`
+	ResponseParametersInJson	string	`json:"response_parameters_in_json"`
+	ContentHandling	string	`json:"content_handling"`
+	ResourceId	string	`json:"resource_id"`
 	HttpMethod	string	`json:"http_method"`
 	StatusCode	string	`json:"status_code"`
-	ResponseParameters	map[string]Generic	`json:"response_parameters"`
-	ContentHandling	string	`json:"content_handling"`
-	ResponseParametersInJson	string	`json:"response_parameters_in_json"`
-	RestApiId	string	`json:"rest_api_id"`
-	ResourceId	string	`json:"resource_id"`
-	SelectionPattern	string	`json:"selection_pattern"`
-	ResponseTemplates	map[string]Generic	`json:"response_templates"`
+	ResponseTemplates	map[string]???	`json:"response_templates"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

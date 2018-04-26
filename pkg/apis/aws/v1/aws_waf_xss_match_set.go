@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,7 +22,7 @@ type AwsWafXssMatchSet struct {
 // AwsWafXssMatchSetSpec is the spec for a AwsWafXssMatchSet Resource
 type AwsWafXssMatchSetSpec struct {
 	Name	string	`json:"name"`
-	XssMatchTuples	Generic	`json:"xss_match_tuples"`
+	XssMatchTuples	string	`json:"xss_match_tuples"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

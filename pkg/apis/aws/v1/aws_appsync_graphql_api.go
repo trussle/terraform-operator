@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -22,7 +23,7 @@ type AwsAppsyncGraphqlApi struct {
 type AwsAppsyncGraphqlApiSpec struct {
 	AuthenticationType	string	`json:"authentication_type"`
 	Name	string	`json:"name"`
-	UserPoolConfig	[]Generic	`json:"user_pool_config"`
+	UserPoolConfig	[]nMkGuotV	`json:"user_pool_config"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -35,3 +36,11 @@ type AwsAppsyncGraphqlApiList struct {
 	Items	[]AwsAppsyncGraphqlApi	`json:"items"`
 }
 
+
+// nMkGuotV is a nMkGuotV
+type nMkGuotV struct {
+	AppIdClientRegex	string	`json:"app_id_client_regex"`
+	AwsRegion	string	`json:"aws_region"`
+	DefaultAction	string	`json:"default_action"`
+	UserPoolId	string	`json:"user_pool_id"`
+}

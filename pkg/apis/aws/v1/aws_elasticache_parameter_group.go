@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,10 +21,10 @@ type AwsElasticacheParameterGroup struct {
 
 // AwsElasticacheParameterGroupSpec is the spec for a AwsElasticacheParameterGroup Resource
 type AwsElasticacheParameterGroupSpec struct {
+	Parameter	string	`json:"parameter"`
 	Name	string	`json:"name"`
 	Family	string	`json:"family"`
 	Description	string	`json:"description"`
-	Parameter	Generic	`json:"parameter"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

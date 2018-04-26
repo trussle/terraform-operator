@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,18 +21,18 @@ type AwsRdsCluster struct {
 
 // AwsRdsClusterSpec is the spec for a AwsRdsCluster Resource
 type AwsRdsClusterSpec struct {
-	StorageEncrypted	bool	`json:"storage_encrypted"`
 	BackupRetentionPeriod	int	`json:"backup_retention_period"`
-	Tags	map[string]Generic	`json:"tags"`
+	SourceRegion	string	`json:"source_region"`
+	IamRoles	string	`json:"iam_roles"`
+	Engine	string	`json:"engine"`
+	FinalSnapshotIdentifier	string	`json:"final_snapshot_identifier"`
+	StorageEncrypted	bool	`json:"storage_encrypted"`
+	SnapshotIdentifier	string	`json:"snapshot_identifier"`
+	Tags	map[string]???	`json:"tags"`
 	ReplicationSourceIdentifier	string	`json:"replication_source_identifier"`
 	IamDatabaseAuthenticationEnabled	bool	`json:"iam_database_authentication_enabled"`
-	Engine	string	`json:"engine"`
 	SkipFinalSnapshot	bool	`json:"skip_final_snapshot"`
-	IamRoles	Generic	`json:"iam_roles"`
-	SourceRegion	string	`json:"source_region"`
 	MasterPassword	string	`json:"master_password"`
-	SnapshotIdentifier	string	`json:"snapshot_identifier"`
-	FinalSnapshotIdentifier	string	`json:"final_snapshot_identifier"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

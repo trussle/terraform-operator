@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,7 +22,7 @@ type AwsProxyProtocolPolicy struct {
 // AwsProxyProtocolPolicySpec is the spec for a AwsProxyProtocolPolicy Resource
 type AwsProxyProtocolPolicySpec struct {
 	LoadBalancer	string	`json:"load_balancer"`
-	InstancePorts	Generic	`json:"instance_ports"`
+	InstancePorts	string	`json:"instance_ports"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

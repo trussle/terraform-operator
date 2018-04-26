@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,12 +21,12 @@ type AwsEmrInstanceGroup struct {
 
 // AwsEmrInstanceGroupSpec is the spec for a AwsEmrInstanceGroup Resource
 type AwsEmrInstanceGroupSpec struct {
-	InstanceCount	int	`json:"instance_count"`
 	Name	string	`json:"name"`
 	EbsOptimized	bool	`json:"ebs_optimized"`
-	EbsConfig	Generic	`json:"ebs_config"`
+	EbsConfig	string	`json:"ebs_config"`
 	ClusterId	string	`json:"cluster_id"`
 	InstanceType	string	`json:"instance_type"`
+	InstanceCount	int	`json:"instance_count"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

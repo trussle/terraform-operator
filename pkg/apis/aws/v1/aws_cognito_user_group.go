@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,11 +21,11 @@ type AwsCognitoUserGroup struct {
 
 // AwsCognitoUserGroupSpec is the spec for a AwsCognitoUserGroup Resource
 type AwsCognitoUserGroupSpec struct {
-	Name	string	`json:"name"`
-	Precedence	int	`json:"precedence"`
 	RoleArn	string	`json:"role_arn"`
 	UserPoolId	string	`json:"user_pool_id"`
 	Description	string	`json:"description"`
+	Name	string	`json:"name"`
+	Precedence	int	`json:"precedence"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

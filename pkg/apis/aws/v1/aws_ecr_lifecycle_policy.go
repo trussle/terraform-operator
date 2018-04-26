@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,8 +21,8 @@ type AwsEcrLifecyclePolicy struct {
 
 // AwsEcrLifecyclePolicySpec is the spec for a AwsEcrLifecyclePolicy Resource
 type AwsEcrLifecyclePolicySpec struct {
-	Policy	string	`json:"policy"`
 	Repository	string	`json:"repository"`
+	Policy	string	`json:"policy"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

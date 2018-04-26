@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,10 +21,10 @@ type AwsAlbTargetGroupAttachment struct {
 
 // AwsAlbTargetGroupAttachmentSpec is the spec for a AwsAlbTargetGroupAttachment Resource
 type AwsAlbTargetGroupAttachmentSpec struct {
+	AvailabilityZone	string	`json:"availability_zone"`
 	TargetGroupArn	string	`json:"target_group_arn"`
 	TargetId	string	`json:"target_id"`
 	Port	int	`json:"port"`
-	AvailabilityZone	string	`json:"availability_zone"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

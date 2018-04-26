@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,10 +21,10 @@ type AwsWafregionalWebAcl struct {
 
 // AwsWafregionalWebAclSpec is the spec for a AwsWafregionalWebAcl Resource
 type AwsWafregionalWebAclSpec struct {
-	MetricName	string	`json:"metric_name"`
-	Rule	Generic	`json:"rule"`
 	Name	string	`json:"name"`
-	DefaultAction	[]Generic	`json:"default_action"`
+	DefaultAction	[]fgPyCKmx	`json:"default_action"`
+	MetricName	string	`json:"metric_name"`
+	Rule	string	`json:"rule"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -36,3 +37,8 @@ type AwsWafregionalWebAclList struct {
 	Items	[]AwsWafregionalWebAcl	`json:"items"`
 }
 
+
+// fgPyCKmx is a fgPyCKmx
+type fgPyCKmx struct {
+	Type	string	`json:"type"`
+}

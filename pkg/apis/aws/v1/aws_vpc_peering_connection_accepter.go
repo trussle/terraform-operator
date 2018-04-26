@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,8 +22,8 @@ type AwsVpcPeeringConnectionAccepter struct {
 // AwsVpcPeeringConnectionAccepterSpec is the spec for a AwsVpcPeeringConnectionAccepter Resource
 type AwsVpcPeeringConnectionAccepterSpec struct {
 	VpcPeeringConnectionId	string	`json:"vpc_peering_connection_id"`
-	Tags	map[string]Generic	`json:"tags"`
 	AutoAccept	bool	`json:"auto_accept"`
+	Tags	map[string]???	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

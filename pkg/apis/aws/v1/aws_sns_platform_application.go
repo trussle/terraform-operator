@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,16 +21,16 @@ type AwsSnsPlatformApplication struct {
 
 // AwsSnsPlatformApplicationSpec is the spec for a AwsSnsPlatformApplication Resource
 type AwsSnsPlatformApplicationSpec struct {
-	EventEndpointCreatedTopicArn	string	`json:"event_endpoint_created_topic_arn"`
-	EventEndpointDeletedTopicArn	string	`json:"event_endpoint_deleted_topic_arn"`
-	EventEndpointUpdatedTopicArn	string	`json:"event_endpoint_updated_topic_arn"`
-	SuccessFeedbackSampleRate	string	`json:"success_feedback_sample_rate"`
-	Name	string	`json:"name"`
-	PlatformCredential	string	`json:"platform_credential"`
 	EventDeliveryFailureTopicArn	string	`json:"event_delivery_failure_topic_arn"`
-	Platform	string	`json:"platform"`
+	EventEndpointCreatedTopicArn	string	`json:"event_endpoint_created_topic_arn"`
+	EventEndpointUpdatedTopicArn	string	`json:"event_endpoint_updated_topic_arn"`
 	FailureFeedbackRoleArn	string	`json:"failure_feedback_role_arn"`
 	PlatformPrincipal	string	`json:"platform_principal"`
+	Platform	string	`json:"platform"`
+	PlatformCredential	string	`json:"platform_credential"`
+	SuccessFeedbackSampleRate	string	`json:"success_feedback_sample_rate"`
+	Name	string	`json:"name"`
+	EventEndpointDeletedTopicArn	string	`json:"event_endpoint_deleted_topic_arn"`
 	SuccessFeedbackRoleArn	string	`json:"success_feedback_role_arn"`
 }
 

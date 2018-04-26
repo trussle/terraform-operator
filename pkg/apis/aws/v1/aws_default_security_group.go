@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,10 +21,10 @@ type AwsDefaultSecurityGroup struct {
 
 // AwsDefaultSecurityGroupSpec is the spec for a AwsDefaultSecurityGroup Resource
 type AwsDefaultSecurityGroupSpec struct {
-	Tags	map[string]Generic	`json:"tags"`
+	Ingress	string	`json:"ingress"`
 	RevokeRulesOnDelete	bool	`json:"revoke_rules_on_delete"`
-	Ingress	Generic	`json:"ingress"`
-	Egress	Generic	`json:"egress"`
+	Egress	string	`json:"egress"`
+	Tags	map[string]???	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

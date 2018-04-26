@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,13 +21,13 @@ type AwsSsmParameter struct {
 
 // AwsSsmParameterSpec is the spec for a AwsSsmParameter Resource
 type AwsSsmParameterSpec struct {
-	Type	string	`json:"type"`
-	Value	string	`json:"value"`
 	Name	string	`json:"name"`
+	Value	string	`json:"value"`
 	Description	string	`json:"description"`
+	Type	string	`json:"type"`
 	Overwrite	bool	`json:"overwrite"`
 	AllowedPattern	string	`json:"allowed_pattern"`
-	Tags	map[string]Generic	`json:"tags"`
+	Tags	map[string]???	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

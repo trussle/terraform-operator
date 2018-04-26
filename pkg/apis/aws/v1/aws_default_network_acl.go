@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,11 +21,11 @@ type AwsDefaultNetworkAcl struct {
 
 // AwsDefaultNetworkAclSpec is the spec for a AwsDefaultNetworkAcl Resource
 type AwsDefaultNetworkAclSpec struct {
-	Ingress	Generic	`json:"ingress"`
-	Egress	Generic	`json:"egress"`
-	Tags	map[string]Generic	`json:"tags"`
+	SubnetIds	string	`json:"subnet_ids"`
+	Ingress	string	`json:"ingress"`
+	Egress	string	`json:"egress"`
+	Tags	map[string]???	`json:"tags"`
 	DefaultNetworkAclId	string	`json:"default_network_acl_id"`
-	SubnetIds	Generic	`json:"subnet_ids"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

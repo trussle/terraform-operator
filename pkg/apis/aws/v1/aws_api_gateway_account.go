@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -33,3 +34,7 @@ type AwsApiGatewayAccountList struct {
 	Items	[]AwsApiGatewayAccount	`json:"items"`
 }
 
+
+// XkzzfNaV is a XkzzfNaV
+type XkzzfNaV struct {
+}

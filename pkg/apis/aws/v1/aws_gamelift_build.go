@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,10 +21,10 @@ type AwsGameliftBuild struct {
 
 // AwsGameliftBuildSpec is the spec for a AwsGameliftBuild Resource
 type AwsGameliftBuildSpec struct {
+	StorageLocation	[]arcSbblm	`json:"storage_location"`
+	Version	string	`json:"version"`
 	Name	string	`json:"name"`
 	OperatingSystem	string	`json:"operating_system"`
-	StorageLocation	[]Generic	`json:"storage_location"`
-	Version	string	`json:"version"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -36,3 +37,10 @@ type AwsGameliftBuildList struct {
 	Items	[]AwsGameliftBuild	`json:"items"`
 }
 
+
+// arcSbblm is a arcSbblm
+type arcSbblm struct {
+	Bucket	string	`json:"bucket"`
+	Key	string	`json:"key"`
+	RoleArn	string	`json:"role_arn"`
+}

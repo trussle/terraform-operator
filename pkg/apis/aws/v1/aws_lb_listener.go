@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,11 +21,11 @@ type AwsLbListener struct {
 
 // AwsLbListenerSpec is the spec for a AwsLbListener Resource
 type AwsLbListenerSpec struct {
-	CertificateArn	string	`json:"certificate_arn"`
-	DefaultAction	[]Generic	`json:"default_action"`
 	LoadBalancerArn	string	`json:"load_balancer_arn"`
 	Port	int	`json:"port"`
 	Protocol	string	`json:"protocol"`
+	CertificateArn	string	`json:"certificate_arn"`
+	DefaultAction	[]OxKmRNwK	`json:"default_action"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -37,3 +38,9 @@ type AwsLbListenerList struct {
 	Items	[]AwsLbListener	`json:"items"`
 }
 
+
+// OxKmRNwK is a OxKmRNwK
+type OxKmRNwK struct {
+	TargetGroupArn	string	`json:"target_group_arn"`
+	Type	string	`json:"type"`
+}

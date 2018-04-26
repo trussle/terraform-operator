@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,18 +21,18 @@ type AwsEcsService struct {
 
 // AwsEcsServiceSpec is the spec for a AwsEcsService Resource
 type AwsEcsServiceSpec struct {
-	DeploymentMaximumPercent	int	`json:"deployment_maximum_percent"`
-	DeploymentMinimumHealthyPercent	int	`json:"deployment_minimum_healthy_percent"`
-	LaunchType	string	`json:"launch_type"`
-	NetworkConfiguration	[]Generic	`json:"network_configuration"`
-	PlacementConstraints	Generic	`json:"placement_constraints"`
-	ServiceRegistries	Generic	`json:"service_registries"`
 	TaskDefinition	string	`json:"task_definition"`
-	LoadBalancer	Generic	`json:"load_balancer"`
-	PlacementStrategy	Generic	`json:"placement_strategy"`
-	Name	string	`json:"name"`
 	DesiredCount	int	`json:"desired_count"`
+	LoadBalancer	string	`json:"load_balancer"`
+	NetworkConfiguration	[]eKovPdQS	`json:"network_configuration"`
+	ServiceRegistries	string	`json:"service_registries"`
+	Name	string	`json:"name"`
+	LaunchType	string	`json:"launch_type"`
+	DeploymentMaximumPercent	int	`json:"deployment_maximum_percent"`
+	PlacementConstraints	string	`json:"placement_constraints"`
 	HealthCheckGracePeriodSeconds	int	`json:"health_check_grace_period_seconds"`
+	DeploymentMinimumHealthyPercent	int	`json:"deployment_minimum_healthy_percent"`
+	PlacementStrategy	string	`json:"placement_strategy"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -44,3 +45,10 @@ type AwsEcsServiceList struct {
 	Items	[]AwsEcsService	`json:"items"`
 }
 
+
+// eKovPdQS is a eKovPdQS
+type eKovPdQS struct {
+	Subnets	string	`json:"subnets"`
+	AssignPublicIp	bool	`json:"assign_public_ip"`
+	SecurityGroups	string	`json:"security_groups"`
+}

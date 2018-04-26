@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,10 +21,10 @@ type AwsDmsReplicationInstance struct {
 
 // AwsDmsReplicationInstanceSpec is the spec for a AwsDmsReplicationInstance Resource
 type AwsDmsReplicationInstanceSpec struct {
-	ReplicationInstanceId	string	`json:"replication_instance_id"`
 	ReplicationInstanceClass	string	`json:"replication_instance_class"`
-	Tags	map[string]Generic	`json:"tags"`
 	ApplyImmediately	bool	`json:"apply_immediately"`
+	ReplicationInstanceId	string	`json:"replication_instance_id"`
+	Tags	map[string]???	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

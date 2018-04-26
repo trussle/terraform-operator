@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,11 +21,11 @@ type AwsApiGatewayDeployment struct {
 
 // AwsApiGatewayDeploymentSpec is the spec for a AwsApiGatewayDeployment Resource
 type AwsApiGatewayDeploymentSpec struct {
-	RestApiId	string	`json:"rest_api_id"`
 	StageName	string	`json:"stage_name"`
 	Description	string	`json:"description"`
 	StageDescription	string	`json:"stage_description"`
-	Variables	map[string]Generic	`json:"variables"`
+	Variables	map[string]???	`json:"variables"`
+	RestApiId	string	`json:"rest_api_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

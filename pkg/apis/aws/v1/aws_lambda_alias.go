@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,10 +21,10 @@ type AwsLambdaAlias struct {
 
 // AwsLambdaAliasSpec is the spec for a AwsLambdaAlias Resource
 type AwsLambdaAliasSpec struct {
+	Name	string	`json:"name"`
 	Description	string	`json:"description"`
 	FunctionName	string	`json:"function_name"`
 	FunctionVersion	string	`json:"function_version"`
-	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

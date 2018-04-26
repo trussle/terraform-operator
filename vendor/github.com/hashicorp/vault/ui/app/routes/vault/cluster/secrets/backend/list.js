@@ -27,50 +27,47 @@ export default Ember.Route.extend({
     }
   },
 
-  capabilities(secret) {
-    const { backend } = this.paramsFor('vault.cluster.secrets.backend');
-    const path = backend + '/' + secret;
-    return this.store.findRecord('capabilities', path);
-  },
-
   getModelType(backend, tab) {
-    const types = {
+    let types = {
       transit: 'transit-key',
       ssh: 'role-ssh',
       aws: 'role-aws',
-      cubbyhole: 'secret-cubbyhole',
       pki: tab === 'certs' ? 'pki-certificate' : 'role-pki',
     };
-    const backendModel = this.store.peekRecord('secret-engine', backend);
-    return types[backendModel.get('type')] || 'secret';
+    let backendModel = this.store.peekRecord('secret-engine', backend);
+    let defaultType = 'secret';
+    if (backendModel.get('type') === 'kv' && backendModel.get('options.version') === 2) {
+      defaultType = 'secret-v2';
+    }
+    return types[backendModel.get('type')] || defaultType;
   },
 
   model(params) {
     const secret = params.secret ? params.secret : '';
     const { backend } = this.paramsFor('vault.cluster.secrets.backend');
-    const backends = this.modelFor('vault.cluster.secrets').mapBy('id');
+    const backendModel = this.modelFor('vault.cluster.secrets.backend');
     return Ember.RSVP.hash({
+      secret,
       secrets: this.store
-        .lazyPaginatedQuery(this.getModelType(backend, params.tab), {
-          id: secret,
-          backend,
-          responsePath: 'data.keys',
-          page: params.page,
-          pageFilter: params.pageFilter,
-          size: 100,
-        })
-        .then(model => {
-          this.set('has404', false);
-          return model;
-        })
-        .catch(err => {
-          if (backends.includes(backend) && err.httpStatus === 404 && secret === '') {
-            return [];
-          } else {
-            throw err;
-          }
-        }),
-      capabilities: this.capabilities(secret),
+      .lazyPaginatedQuery(this.getModelType(backend, params.tab), {
+        id: secret,
+        backend,
+        responsePath: 'data.keys',
+        page: params.page,
+        pageFilter: params.pageFilter,
+        size: 100,
+      })
+      .then(model => {
+        this.set('has404', false);
+        return model;
+      })
+      .catch(err => {
+        if (backendModel && err.httpStatus === 404 && secret === '') {
+          return [];
+        } else {
+          throw err;
+        }
+      })
     });
   },
 
@@ -99,20 +96,20 @@ export default Ember.Route.extend({
       );
   },
 
-  setupController(controller, model) {
-    const secretParams = this.paramsFor(this.routeName);
-    const secret = secretParams.secret ? secretParams.secret : '';
-    const { backend } = this.paramsFor('vault.cluster.secrets.backend');
-    const backendModel = this.store.peekRecord('secret-engine', backend);
-    const has404 = this.get('has404');
+  setupController(controller, resolvedModel) {
+    let secretParams = this.paramsFor(this.routeName);
+    let secret = resolvedModel.secret;
+    let model = resolvedModel.secrets;
+    let { backend } = this.paramsFor('vault.cluster.secrets.backend');
+    let backendModel = this.store.peekRecord('secret-engine', backend);
+    let has404 = this.get('has404');
     controller.set('hasModel', true);
     controller.setProperties({
-      model: model.secrets,
-      capabilities: model.capabilities,
-      baseKey: { id: secret },
+      model,
       has404,
       backend,
       backendModel,
+      baseKey: { id: secret },
       backendType: backendModel.get('type'),
     });
     if (!has404) {
@@ -125,7 +122,7 @@ export default Ember.Route.extend({
       }
       controller.setProperties({
         filter: filter || '',
-        page: model.secrets.get('meta.currentPage') || 1,
+        page: model.get('meta.currentPage') || 1,
       });
     }
   },
@@ -141,11 +138,9 @@ export default Ember.Route.extend({
     error(error, transition) {
       const { secret } = this.paramsFor(this.routeName);
       const { backend } = this.paramsFor('vault.cluster.secrets.backend');
-      const backends = this.modelFor('vault.cluster.secrets').mapBy('id');
 
       Ember.set(error, 'secret', secret);
       Ember.set(error, 'isRoot', true);
-      Ember.set(error, 'hasBackend', backends.includes(backend));
       Ember.set(error, 'backend', backend);
       const hasModel = this.controllerFor(this.routeName).get('hasModel');
       // only swallow the error if we have a previous model

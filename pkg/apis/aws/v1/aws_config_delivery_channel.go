@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,11 +21,11 @@ type AwsConfigDeliveryChannel struct {
 
 // AwsConfigDeliveryChannelSpec is the spec for a AwsConfigDeliveryChannel Resource
 type AwsConfigDeliveryChannelSpec struct {
-	S3KeyPrefix	string	`json:"s3_key_prefix"`
-	SnsTopicArn	string	`json:"sns_topic_arn"`
-	SnapshotDeliveryProperties	[]Generic	`json:"snapshot_delivery_properties"`
 	Name	string	`json:"name"`
 	S3BucketName	string	`json:"s3_bucket_name"`
+	S3KeyPrefix	string	`json:"s3_key_prefix"`
+	SnsTopicArn	string	`json:"sns_topic_arn"`
+	SnapshotDeliveryProperties	[]SsqcnCTu	`json:"snapshot_delivery_properties"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -37,3 +38,8 @@ type AwsConfigDeliveryChannelList struct {
 	Items	[]AwsConfigDeliveryChannel	`json:"items"`
 }
 
+
+// SsqcnCTu is a SsqcnCTu
+type SsqcnCTu struct {
+	DeliveryFrequency	string	`json:"delivery_frequency"`
+}

@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,13 +22,13 @@ type AwsGlueJob struct {
 // AwsGlueJobSpec is the spec for a AwsGlueJob Resource
 type AwsGlueJobSpec struct {
 	AllocatedCapacity	int	`json:"allocated_capacity"`
-	Command	[]Generic	`json:"command"`
+	Command	[]TjPcDeMi	`json:"command"`
+	Connections	[]string	`json:"connections"`
+	DefaultArguments	map[string]???	`json:"default_arguments"`
 	Description	string	`json:"description"`
 	MaxRetries	int	`json:"max_retries"`
 	Name	string	`json:"name"`
 	RoleArn	string	`json:"role_arn"`
-	Connections	[]Generic	`json:"connections"`
-	DefaultArguments	map[string]Generic	`json:"default_arguments"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -40,3 +41,14 @@ type AwsGlueJobList struct {
 	Items	[]AwsGlueJob	`json:"items"`
 }
 
+
+// TjPcDeMi is a TjPcDeMi
+type TjPcDeMi struct {
+	Name	string	`json:"name"`
+	ScriptLocation	string	`json:"script_location"`
+}
+
+// xVduzfhi is a xVduzfhi
+type xVduzfhi struct {
+	MaxConcurrentRuns	int	`json:"max_concurrent_runs"`
+}

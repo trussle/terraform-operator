@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,8 +21,8 @@ type AwsWafByteMatchSet struct {
 
 // AwsWafByteMatchSetSpec is the spec for a AwsWafByteMatchSet Resource
 type AwsWafByteMatchSetSpec struct {
-	ByteMatchTuples	Generic	`json:"byte_match_tuples"`
 	Name	string	`json:"name"`
+	ByteMatchTuples	string	`json:"byte_match_tuples"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

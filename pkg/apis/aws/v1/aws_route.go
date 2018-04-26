@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,9 +22,9 @@ type AwsRoute struct {
 // AwsRouteSpec is the spec for a AwsRoute Resource
 type AwsRouteSpec struct {
 	DestinationCidrBlock	string	`json:"destination_cidr_block"`
-	RouteTableId	string	`json:"route_table_id"`
-	DestinationIpv6CidrBlock	string	`json:"destination_ipv6_cidr_block"`
 	VpcPeeringConnectionId	string	`json:"vpc_peering_connection_id"`
+	DestinationIpv6CidrBlock	string	`json:"destination_ipv6_cidr_block"`
+	RouteTableId	string	`json:"route_table_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

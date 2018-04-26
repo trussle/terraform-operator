@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,14 +21,14 @@ type AwsElastictranscoderPreset struct {
 
 // AwsElastictranscoderPresetSpec is the spec for a AwsElastictranscoderPreset Resource
 type AwsElastictranscoderPresetSpec struct {
-	Description	string	`json:"description"`
-	Thumbnails	Generic	`json:"thumbnails"`
-	Video	Generic	`json:"video"`
-	VideoCodecOptions	map[string]Generic	`json:"video_codec_options"`
 	Container	string	`json:"container"`
-	Audio	Generic	`json:"audio"`
-	AudioCodecOptions	Generic	`json:"audio_codec_options"`
-	VideoWatermarks	Generic	`json:"video_watermarks"`
+	Video	string	`json:"video"`
+	VideoWatermarks	string	`json:"video_watermarks"`
+	Audio	string	`json:"audio"`
+	AudioCodecOptions	string	`json:"audio_codec_options"`
+	Description	string	`json:"description"`
+	Thumbnails	string	`json:"thumbnails"`
+	VideoCodecOptions	map[string]???	`json:"video_codec_options"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

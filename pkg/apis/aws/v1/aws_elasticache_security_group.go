@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,7 +21,7 @@ type AwsElasticacheSecurityGroup struct {
 
 // AwsElasticacheSecurityGroupSpec is the spec for a AwsElasticacheSecurityGroup Resource
 type AwsElasticacheSecurityGroupSpec struct {
-	SecurityGroupNames	Generic	`json:"security_group_names"`
+	SecurityGroupNames	string	`json:"security_group_names"`
 	Description	string	`json:"description"`
 	Name	string	`json:"name"`
 }

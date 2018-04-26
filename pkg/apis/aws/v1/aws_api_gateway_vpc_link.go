@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -22,7 +23,7 @@ type AwsApiGatewayVpcLink struct {
 type AwsApiGatewayVpcLinkSpec struct {
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
-	TargetArns	Generic	`json:"target_arns"`
+	TargetArns	string	`json:"target_arns"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

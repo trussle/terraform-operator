@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,14 +21,14 @@ type AwsRdsClusterInstance struct {
 
 // AwsRdsClusterInstanceSpec is the spec for a AwsRdsClusterInstance Resource
 type AwsRdsClusterInstanceSpec struct {
-	PubliclyAccessible	bool	`json:"publicly_accessible"`
-	Engine	string	`json:"engine"`
-	ClusterIdentifier	string	`json:"cluster_identifier"`
-	PromotionTier	int	`json:"promotion_tier"`
-	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
-	InstanceClass	string	`json:"instance_class"`
-	Tags	map[string]Generic	`json:"tags"`
 	MonitoringInterval	int	`json:"monitoring_interval"`
+	PubliclyAccessible	bool	`json:"publicly_accessible"`
+	InstanceClass	string	`json:"instance_class"`
+	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
+	ClusterIdentifier	string	`json:"cluster_identifier"`
+	Tags	map[string]???	`json:"tags"`
+	Engine	string	`json:"engine"`
+	PromotionTier	int	`json:"promotion_tier"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

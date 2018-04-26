@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,9 +21,9 @@ type AwsGuarddutyMember struct {
 
 // AwsGuarddutyMemberSpec is the spec for a AwsGuarddutyMember Resource
 type AwsGuarddutyMemberSpec struct {
-	AccountId	string	`json:"account_id"`
 	DetectorId	string	`json:"detector_id"`
 	Email	string	`json:"email"`
+	AccountId	string	`json:"account_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

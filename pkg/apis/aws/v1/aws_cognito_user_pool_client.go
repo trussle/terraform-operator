@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,19 +21,19 @@ type AwsCognitoUserPoolClient struct {
 
 // AwsCognitoUserPoolClientSpec is the spec for a AwsCognitoUserPoolClient Resource
 type AwsCognitoUserPoolClientSpec struct {
-	ExplicitAuthFlows	Generic	`json:"explicit_auth_flows"`
-	WriteAttributes	Generic	`json:"write_attributes"`
-	AllowedOauthScopes	Generic	`json:"allowed_oauth_scopes"`
-	GenerateSecret	bool	`json:"generate_secret"`
-	CallbackUrls	[]Generic	`json:"callback_urls"`
-	DefaultRedirectUri	string	`json:"default_redirect_uri"`
-	SupportedIdentityProviders	[]Generic	`json:"supported_identity_providers"`
-	AllowedOauthFlows	Generic	`json:"allowed_oauth_flows"`
-	AllowedOauthFlowsUserPoolClient	bool	`json:"allowed_oauth_flows_user_pool_client"`
-	LogoutUrls	[]Generic	`json:"logout_urls"`
-	Name	string	`json:"name"`
+	LogoutUrls	[]string	`json:"logout_urls"`
 	UserPoolId	string	`json:"user_pool_id"`
-	ReadAttributes	Generic	`json:"read_attributes"`
+	ExplicitAuthFlows	string	`json:"explicit_auth_flows"`
+	WriteAttributes	string	`json:"write_attributes"`
+	AllowedOauthFlowsUserPoolClient	bool	`json:"allowed_oauth_flows_user_pool_client"`
+	AllowedOauthScopes	string	`json:"allowed_oauth_scopes"`
+	CallbackUrls	[]string	`json:"callback_urls"`
+	Name	string	`json:"name"`
+	GenerateSecret	bool	`json:"generate_secret"`
+	AllowedOauthFlows	string	`json:"allowed_oauth_flows"`
+	DefaultRedirectUri	string	`json:"default_redirect_uri"`
+	SupportedIdentityProviders	[]string	`json:"supported_identity_providers"`
+	ReadAttributes	string	`json:"read_attributes"`
 	RefreshTokenValidity	int	`json:"refresh_token_validity"`
 }
 

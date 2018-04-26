@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,8 +21,8 @@ type AwsConfigConfigurationRecorderStatus struct {
 
 // AwsConfigConfigurationRecorderStatusSpec is the spec for a AwsConfigConfigurationRecorderStatus Resource
 type AwsConfigConfigurationRecorderStatusSpec struct {
-	Name	string	`json:"name"`
 	IsEnabled	bool	`json:"is_enabled"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

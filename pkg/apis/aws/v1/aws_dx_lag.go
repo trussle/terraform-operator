@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,11 +21,11 @@ type AwsDxLag struct {
 
 // AwsDxLagSpec is the spec for a AwsDxLag Resource
 type AwsDxLagSpec struct {
-	ForceDestroy	bool	`json:"force_destroy"`
-	Tags	map[string]Generic	`json:"tags"`
 	Name	string	`json:"name"`
 	ConnectionsBandwidth	string	`json:"connections_bandwidth"`
 	Location	string	`json:"location"`
+	ForceDestroy	bool	`json:"force_destroy"`
+	Tags	map[string]???	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,8 +21,8 @@ type AwsIamAccessKey struct {
 
 // AwsIamAccessKeySpec is the spec for a AwsIamAccessKey Resource
 type AwsIamAccessKeySpec struct {
-	User	string	`json:"user"`
 	PgpKey	string	`json:"pgp_key"`
+	User	string	`json:"user"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

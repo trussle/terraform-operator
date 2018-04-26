@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,9 +21,9 @@ type AwsLbListenerRule struct {
 
 // AwsLbListenerRuleSpec is the spec for a AwsLbListenerRule Resource
 type AwsLbListenerRuleSpec struct {
-	Action	[]Generic	`json:"action"`
-	Condition	Generic	`json:"condition"`
 	ListenerArn	string	`json:"listener_arn"`
+	Action	[]xdkhCBcg	`json:"action"`
+	Condition	string	`json:"condition"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -35,3 +36,9 @@ type AwsLbListenerRuleList struct {
 	Items	[]AwsLbListenerRule	`json:"items"`
 }
 
+
+// xdkhCBcg is a xdkhCBcg
+type xdkhCBcg struct {
+	TargetGroupArn	string	`json:"target_group_arn"`
+	Type	string	`json:"type"`
+}

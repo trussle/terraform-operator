@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,11 +21,11 @@ type AwsIamPolicyAttachment struct {
 
 // AwsIamPolicyAttachmentSpec is the spec for a AwsIamPolicyAttachment Resource
 type AwsIamPolicyAttachmentSpec struct {
+	Roles	string	`json:"roles"`
+	Groups	string	`json:"groups"`
 	PolicyArn	string	`json:"policy_arn"`
 	Name	string	`json:"name"`
-	Users	Generic	`json:"users"`
-	Roles	Generic	`json:"roles"`
-	Groups	Generic	`json:"groups"`
+	Users	string	`json:"users"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

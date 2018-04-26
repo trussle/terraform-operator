@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,22 +21,22 @@ type AwsIotTopicRule struct {
 
 // AwsIotTopicRuleSpec is the spec for a AwsIotTopicRule Resource
 type AwsIotTopicRuleSpec struct {
-	SqlVersion	string	`json:"sql_version"`
-	CloudwatchAlarm	Generic	`json:"cloudwatch_alarm"`
-	Elasticsearch	Generic	`json:"elasticsearch"`
-	Lambda	Generic	`json:"lambda"`
-	Sqs	Generic	`json:"sqs"`
-	Name	string	`json:"name"`
+	Kinesis	string	`json:"kinesis"`
 	Description	string	`json:"description"`
-	Republish	Generic	`json:"republish"`
-	S3	Generic	`json:"s3"`
-	Sns	Generic	`json:"sns"`
 	Enabled	bool	`json:"enabled"`
+	Dynamodb	string	`json:"dynamodb"`
+	Elasticsearch	string	`json:"elasticsearch"`
+	Firehose	string	`json:"firehose"`
+	Name	string	`json:"name"`
+	SqlVersion	string	`json:"sql_version"`
+	CloudwatchAlarm	string	`json:"cloudwatch_alarm"`
+	CloudwatchMetric	string	`json:"cloudwatch_metric"`
+	Republish	string	`json:"republish"`
 	Sql	string	`json:"sql"`
-	Kinesis	Generic	`json:"kinesis"`
-	Firehose	Generic	`json:"firehose"`
-	CloudwatchMetric	Generic	`json:"cloudwatch_metric"`
-	Dynamodb	Generic	`json:"dynamodb"`
+	Lambda	string	`json:"lambda"`
+	S3	string	`json:"s3"`
+	Sns	string	`json:"sns"`
+	Sqs	string	`json:"sqs"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

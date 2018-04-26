@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,9 +21,9 @@ type AwsApiGatewayUsagePlanKey struct {
 
 // AwsApiGatewayUsagePlanKeySpec is the spec for a AwsApiGatewayUsagePlanKey Resource
 type AwsApiGatewayUsagePlanKeySpec struct {
+	UsagePlanId	string	`json:"usage_plan_id"`
 	KeyId	string	`json:"key_id"`
 	KeyType	string	`json:"key_type"`
-	UsagePlanId	string	`json:"usage_plan_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

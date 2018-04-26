@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,10 +21,10 @@ type AwsInspectorAssessmentTemplate struct {
 
 // AwsInspectorAssessmentTemplateSpec is the spec for a AwsInspectorAssessmentTemplate Resource
 type AwsInspectorAssessmentTemplateSpec struct {
-	TargetArn	string	`json:"target_arn"`
 	Duration	int	`json:"duration"`
-	RulesPackageArns	Generic	`json:"rules_package_arns"`
+	RulesPackageArns	string	`json:"rules_package_arns"`
 	Name	string	`json:"name"`
+	TargetArn	string	`json:"target_arn"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

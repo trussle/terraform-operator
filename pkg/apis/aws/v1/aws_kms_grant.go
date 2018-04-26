@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,13 +21,13 @@ type AwsKmsGrant struct {
 
 // AwsKmsGrantSpec is the spec for a AwsKmsGrant Resource
 type AwsKmsGrantSpec struct {
-	KeyId	string	`json:"key_id"`
-	GrantCreationTokens	Generic	`json:"grant_creation_tokens"`
-	RetireOnDelete	bool	`json:"retire_on_delete"`
 	Name	string	`json:"name"`
+	KeyId	string	`json:"key_id"`
+	RetireOnDelete	bool	`json:"retire_on_delete"`
+	GrantCreationTokens	string	`json:"grant_creation_tokens"`
 	GranteePrincipal	string	`json:"grantee_principal"`
-	Operations	Generic	`json:"operations"`
-	Constraints	Generic	`json:"constraints"`
+	Operations	string	`json:"operations"`
+	Constraints	string	`json:"constraints"`
 	RetiringPrincipal	string	`json:"retiring_principal"`
 }
 

@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,8 +21,8 @@ type AwsEmrSecurityConfiguration struct {
 
 // AwsEmrSecurityConfigurationSpec is the spec for a AwsEmrSecurityConfiguration Resource
 type AwsEmrSecurityConfigurationSpec struct {
-	Configuration	string	`json:"configuration"`
 	NamePrefix	string	`json:"name_prefix"`
+	Configuration	string	`json:"configuration"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

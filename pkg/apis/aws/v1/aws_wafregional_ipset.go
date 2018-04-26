@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,8 +21,8 @@ type AwsWafregionalIpset struct {
 
 // AwsWafregionalIpsetSpec is the spec for a AwsWafregionalIpset Resource
 type AwsWafregionalIpsetSpec struct {
+	IpSetDescriptor	string	`json:"ip_set_descriptor"`
 	Name	string	`json:"name"`
-	IpSetDescriptor	Generic	`json:"ip_set_descriptor"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

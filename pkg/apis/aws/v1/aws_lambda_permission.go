@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,13 +21,13 @@ type AwsLambdaPermission struct {
 
 // AwsLambdaPermissionSpec is the spec for a AwsLambdaPermission Resource
 type AwsLambdaPermissionSpec struct {
-	FunctionName	string	`json:"function_name"`
 	Principal	string	`json:"principal"`
 	Qualifier	string	`json:"qualifier"`
 	SourceAccount	string	`json:"source_account"`
 	SourceArn	string	`json:"source_arn"`
 	StatementId	string	`json:"statement_id"`
 	Action	string	`json:"action"`
+	FunctionName	string	`json:"function_name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,10 +21,10 @@ type AwsAthenaNamedQuery struct {
 
 // AwsAthenaNamedQuerySpec is the spec for a AwsAthenaNamedQuery Resource
 type AwsAthenaNamedQuerySpec struct {
-	Name	string	`json:"name"`
 	Query	string	`json:"query"`
 	Database	string	`json:"database"`
 	Description	string	`json:"description"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

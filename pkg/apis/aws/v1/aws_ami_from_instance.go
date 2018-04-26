@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,11 +21,11 @@ type AwsAmiFromInstance struct {
 
 // AwsAmiFromInstanceSpec is the spec for a AwsAmiFromInstance Resource
 type AwsAmiFromInstanceSpec struct {
-	Description	string	`json:"description"`
 	SnapshotWithoutReboot	bool	`json:"snapshot_without_reboot"`
+	Description	string	`json:"description"`
 	Name	string	`json:"name"`
+	Tags	map[string]???	`json:"tags"`
 	SourceInstanceId	string	`json:"source_instance_id"`
-	Tags	map[string]Generic	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

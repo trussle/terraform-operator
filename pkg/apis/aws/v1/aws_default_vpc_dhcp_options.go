@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,9 +21,9 @@ type AwsDefaultVpcDhcpOptions struct {
 
 // AwsDefaultVpcDhcpOptionsSpec is the spec for a AwsDefaultVpcDhcpOptions Resource
 type AwsDefaultVpcDhcpOptionsSpec struct {
+	Tags	map[string]???	`json:"tags"`
 	NetbiosNodeType	string	`json:"netbios_node_type"`
-	NetbiosNameServers	[]Generic	`json:"netbios_name_servers"`
-	Tags	map[string]Generic	`json:"tags"`
+	NetbiosNameServers	[]string	`json:"netbios_name_servers"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

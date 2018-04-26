@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,27 +21,27 @@ type AwsOpsworksMysqlLayer struct {
 
 // AwsOpsworksMysqlLayerSpec is the spec for a AwsOpsworksMysqlLayer Resource
 type AwsOpsworksMysqlLayerSpec struct {
-	CustomDeployRecipes	[]Generic	`json:"custom_deploy_recipes"`
+	DrainElbOnShutdown	bool	`json:"drain_elb_on_shutdown"`
+	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
+	Name	string	`json:"name"`
+	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
+	CustomConfigureRecipes	[]string	`json:"custom_configure_recipes"`
+	CustomShutdownRecipes	[]string	`json:"custom_shutdown_recipes"`
+	CustomSecurityGroupIds	string	`json:"custom_security_group_ids"`
+	CustomJson	string	`json:"custom_json"`
+	CustomDeployRecipes	[]string	`json:"custom_deploy_recipes"`
+	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
 	StackId	string	`json:"stack_id"`
 	RootPasswordOnAllInstances	bool	`json:"root_password_on_all_instances"`
-	EbsVolume	Generic	`json:"ebs_volume"`
-	Name	string	`json:"name"`
 	AutoAssignElasticIps	bool	`json:"auto_assign_elastic_ips"`
-	CustomSetupRecipes	[]Generic	`json:"custom_setup_recipes"`
-	CustomUndeployRecipes	[]Generic	`json:"custom_undeploy_recipes"`
-	CustomJson	string	`json:"custom_json"`
-	DrainElbOnShutdown	bool	`json:"drain_elb_on_shutdown"`
-	SystemPackages	Generic	`json:"system_packages"`
-	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
-	CustomConfigureRecipes	[]Generic	`json:"custom_configure_recipes"`
-	CustomShutdownRecipes	[]Generic	`json:"custom_shutdown_recipes"`
-	CustomSecurityGroupIds	Generic	`json:"custom_security_group_ids"`
-	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
-	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
-	AutoAssignPublicIps	bool	`json:"auto_assign_public_ips"`
 	ElasticLoadBalancer	string	`json:"elastic_load_balancer"`
+	CustomSetupRecipes	[]string	`json:"custom_setup_recipes"`
+	CustomUndeployRecipes	[]string	`json:"custom_undeploy_recipes"`
+	SystemPackages	string	`json:"system_packages"`
+	AutoAssignPublicIps	bool	`json:"auto_assign_public_ips"`
 	AutoHealing	bool	`json:"auto_healing"`
-	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
+	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
+	EbsVolume	string	`json:"ebs_volume"`
 	RootPassword	string	`json:"root_password"`
 }
 

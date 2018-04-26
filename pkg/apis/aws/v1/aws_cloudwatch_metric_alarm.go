@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,24 +21,24 @@ type AwsCloudwatchMetricAlarm struct {
 
 // AwsCloudwatchMetricAlarmSpec is the spec for a AwsCloudwatchMetricAlarm Resource
 type AwsCloudwatchMetricAlarmSpec struct {
-	DatapointsToAlarm	int	`json:"datapoints_to_alarm"`
-	AlarmName	string	`json:"alarm_name"`
-	Namespace	string	`json:"namespace"`
-	Statistic	string	`json:"statistic"`
+	Unit	string	`json:"unit"`
+	Threshold	float64	`json:"threshold"`
 	ActionsEnabled	bool	`json:"actions_enabled"`
 	AlarmDescription	string	`json:"alarm_description"`
-	Dimensions	map[string]Generic	`json:"dimensions"`
-	InsufficientDataActions	Generic	`json:"insufficient_data_actions"`
-	Unit	string	`json:"unit"`
-	EvaluationPeriods	int	`json:"evaluation_periods"`
-	ExtendedStatistic	string	`json:"extended_statistic"`
-	MetricName	string	`json:"metric_name"`
+	DatapointsToAlarm	int	`json:"datapoints_to_alarm"`
+	Dimensions	map[string]???	`json:"dimensions"`
+	InsufficientDataActions	string	`json:"insufficient_data_actions"`
 	Period	int	`json:"period"`
-	OkActions	Generic	`json:"ok_actions"`
-	ComparisonOperator	string	`json:"comparison_operator"`
-	AlarmActions	Generic	`json:"alarm_actions"`
+	EvaluationPeriods	int	`json:"evaluation_periods"`
+	Statistic	string	`json:"statistic"`
+	AlarmActions	string	`json:"alarm_actions"`
 	TreatMissingData	string	`json:"treat_missing_data"`
-	Threshold	float	`json:"threshold"`
+	ComparisonOperator	string	`json:"comparison_operator"`
+	MetricName	string	`json:"metric_name"`
+	Namespace	string	`json:"namespace"`
+	OkActions	string	`json:"ok_actions"`
+	ExtendedStatistic	string	`json:"extended_statistic"`
+	AlarmName	string	`json:"alarm_name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,8 +22,8 @@ type AwsDbSubnetGroup struct {
 // AwsDbSubnetGroupSpec is the spec for a AwsDbSubnetGroup Resource
 type AwsDbSubnetGroupSpec struct {
 	Description	string	`json:"description"`
-	SubnetIds	Generic	`json:"subnet_ids"`
-	Tags	map[string]Generic	`json:"tags"`
+	SubnetIds	string	`json:"subnet_ids"`
+	Tags	map[string]???	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

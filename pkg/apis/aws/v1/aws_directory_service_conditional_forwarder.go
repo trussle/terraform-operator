@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,7 +22,7 @@ type AwsDirectoryServiceConditionalForwarder struct {
 // AwsDirectoryServiceConditionalForwarderSpec is the spec for a AwsDirectoryServiceConditionalForwarder Resource
 type AwsDirectoryServiceConditionalForwarderSpec struct {
 	DirectoryId	string	`json:"directory_id"`
-	DnsIps	[]Generic	`json:"dns_ips"`
+	DnsIps	[]string	`json:"dns_ips"`
 	RemoteDomainName	string	`json:"remote_domain_name"`
 }
 

@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -22,7 +23,7 @@ type AwsCloudwatchLogGroup struct {
 type AwsCloudwatchLogGroupSpec struct {
 	RetentionInDays	int	`json:"retention_in_days"`
 	KmsKeyId	string	`json:"kms_key_id"`
-	Tags	map[string]Generic	`json:"tags"`
+	Tags	map[string]???	`json:"tags"`
 	NamePrefix	string	`json:"name_prefix"`
 }
 

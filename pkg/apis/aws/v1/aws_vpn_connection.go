@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,10 +21,10 @@ type AwsVpnConnection struct {
 
 // AwsVpnConnectionSpec is the spec for a AwsVpnConnection Resource
 type AwsVpnConnectionSpec struct {
-	Tags	map[string]Generic	`json:"tags"`
 	VpnGatewayId	string	`json:"vpn_gateway_id"`
-	CustomerGatewayId	string	`json:"customer_gateway_id"`
 	Type	string	`json:"type"`
+	CustomerGatewayId	string	`json:"customer_gateway_id"`
+	Tags	map[string]???	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

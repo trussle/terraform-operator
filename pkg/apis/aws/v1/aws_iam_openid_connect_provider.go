@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,8 +22,8 @@ type AwsIamOpenidConnectProvider struct {
 // AwsIamOpenidConnectProviderSpec is the spec for a AwsIamOpenidConnectProvider Resource
 type AwsIamOpenidConnectProviderSpec struct {
 	Url	string	`json:"url"`
-	ClientIdList	[]Generic	`json:"client_id_list"`
-	ThumbprintList	[]Generic	`json:"thumbprint_list"`
+	ClientIdList	[]string	`json:"client_id_list"`
+	ThumbprintList	[]string	`json:"thumbprint_list"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

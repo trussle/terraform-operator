@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -22,7 +23,7 @@ type AwsWafRateBasedRule struct {
 type AwsWafRateBasedRuleSpec struct {
 	Name	string	`json:"name"`
 	MetricName	string	`json:"metric_name"`
-	Predicates	Generic	`json:"predicates"`
+	Predicates	string	`json:"predicates"`
 	RateKey	string	`json:"rate_key"`
 	RateLimit	int	`json:"rate_limit"`
 }

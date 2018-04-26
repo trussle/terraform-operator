@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,16 +21,16 @@ type AwsDmsEndpoint struct {
 
 // AwsDmsEndpointSpec is the spec for a AwsDmsEndpoint Resource
 type AwsDmsEndpointSpec struct {
-	ServerName	string	`json:"server_name"`
-	ServiceAccessRole	string	`json:"service_access_role"`
+	EndpointId	string	`json:"endpoint_id"`
+	Password	string	`json:"password"`
 	EngineName	string	`json:"engine_name"`
 	Username	string	`json:"username"`
-	Tags	map[string]Generic	`json:"tags"`
-	Password	string	`json:"password"`
-	Port	int	`json:"port"`
 	DatabaseName	string	`json:"database_name"`
-	EndpointId	string	`json:"endpoint_id"`
+	ServerName	string	`json:"server_name"`
+	ServiceAccessRole	string	`json:"service_access_role"`
 	EndpointType	string	`json:"endpoint_type"`
+	Port	int	`json:"port"`
+	Tags	map[string]???	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

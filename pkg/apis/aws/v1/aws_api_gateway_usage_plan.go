@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,9 +22,9 @@ type AwsApiGatewayUsagePlan struct {
 // AwsApiGatewayUsagePlanSpec is the spec for a AwsApiGatewayUsagePlan Resource
 type AwsApiGatewayUsagePlanSpec struct {
 	Description	string	`json:"description"`
-	ApiStages	[]Generic	`json:"api_stages"`
-	QuotaSettings	Generic	`json:"quota_settings"`
-	ThrottleSettings	Generic	`json:"throttle_settings"`
+	ApiStages	[]wQpOQgNc	`json:"api_stages"`
+	QuotaSettings	string	`json:"quota_settings"`
+	ThrottleSettings	string	`json:"throttle_settings"`
 	ProductCode	string	`json:"product_code"`
 	Name	string	`json:"name"`
 }
@@ -38,3 +39,9 @@ type AwsApiGatewayUsagePlanList struct {
 	Items	[]AwsApiGatewayUsagePlan	`json:"items"`
 }
 
+
+// wQpOQgNc is a wQpOQgNc
+type wQpOQgNc struct {
+	ApiId	string	`json:"api_id"`
+	Stage	string	`json:"stage"`
+}

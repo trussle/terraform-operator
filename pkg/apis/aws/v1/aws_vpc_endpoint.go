@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,11 +21,11 @@ type AwsVpcEndpoint struct {
 
 // AwsVpcEndpointSpec is the spec for a AwsVpcEndpoint Resource
 type AwsVpcEndpointSpec struct {
-	PrivateDnsEnabled	bool	`json:"private_dns_enabled"`
-	AutoAccept	bool	`json:"auto_accept"`
-	VpcId	string	`json:"vpc_id"`
 	VpcEndpointType	string	`json:"vpc_endpoint_type"`
 	ServiceName	string	`json:"service_name"`
+	PrivateDnsEnabled	bool	`json:"private_dns_enabled"`
+	VpcId	string	`json:"vpc_id"`
+	AutoAccept	bool	`json:"auto_accept"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -37,3 +38,7 @@ type AwsVpcEndpointList struct {
 	Items	[]AwsVpcEndpoint	`json:"items"`
 }
 
+
+// MJjxzuai is a MJjxzuai
+type MJjxzuai struct {
+}

@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,24 +21,24 @@ type AwsLambdaFunction struct {
 
 // AwsLambdaFunctionSpec is the spec for a AwsLambdaFunction Resource
 type AwsLambdaFunctionSpec struct {
-	ReservedConcurrentExecutions	int	`json:"reserved_concurrent_executions"`
-	Publish	bool	`json:"publish"`
-	S3ObjectVersion	string	`json:"s3_object_version"`
-	DeadLetterConfig	[]Generic	`json:"dead_letter_config"`
+	S3Key	string	`json:"s3_key"`
 	FunctionName	string	`json:"function_name"`
+	ReservedConcurrentExecutions	int	`json:"reserved_concurrent_executions"`
+	Role	string	`json:"role"`
+	Filename	string	`json:"filename"`
+	DeadLetterConfig	[]RVjaRzLN	`json:"dead_letter_config"`
+	Publish	bool	`json:"publish"`
+	VpcConfig	[]TXYeUCWK	`json:"vpc_config"`
+	Tags	map[string]???	`json:"tags"`
+	S3Bucket	string	`json:"s3_bucket"`
 	Handler	string	`json:"handler"`
 	MemorySize	int	`json:"memory_size"`
-	KmsKeyArn	string	`json:"kms_key_arn"`
-	Timeout	int	`json:"timeout"`
-	Tags	map[string]Generic	`json:"tags"`
-	Filename	string	`json:"filename"`
-	Description	string	`json:"description"`
-	Role	string	`json:"role"`
-	VpcConfig	[]Generic	`json:"vpc_config"`
-	S3Bucket	string	`json:"s3_bucket"`
-	S3Key	string	`json:"s3_key"`
 	Runtime	string	`json:"runtime"`
-	Environment	[]Generic	`json:"environment"`
+	Environment	[]mBTvKSJf	`json:"environment"`
+	KmsKeyArn	string	`json:"kms_key_arn"`
+	S3ObjectVersion	string	`json:"s3_object_version"`
+	Description	string	`json:"description"`
+	Timeout	int	`json:"timeout"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -50,3 +51,24 @@ type AwsLambdaFunctionList struct {
 	Items	[]AwsLambdaFunction	`json:"items"`
 }
 
+
+// RVjaRzLN is a RVjaRzLN
+type RVjaRzLN struct {
+	TargetArn	string	`json:"target_arn"`
+}
+
+// TXYeUCWK is a TXYeUCWK
+type TXYeUCWK struct {
+	SubnetIds	string	`json:"subnet_ids"`
+	SecurityGroupIds	string	`json:"security_group_ids"`
+}
+
+// sXbGyRAO is a sXbGyRAO
+type sXbGyRAO struct {
+	Mode	string	`json:"mode"`
+}
+
+// mBTvKSJf is a mBTvKSJf
+type mBTvKSJf struct {
+	Variables	map[string]???	`json:"variables"`
+}

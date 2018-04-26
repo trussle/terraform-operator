@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,15 +21,15 @@ type AwsDmsReplicationTask struct {
 
 // AwsDmsReplicationTaskSpec is the spec for a AwsDmsReplicationTask Resource
 type AwsDmsReplicationTaskSpec struct {
+	ReplicationTaskId	string	`json:"replication_task_id"`
 	ReplicationTaskSettings	string	`json:"replication_task_settings"`
-	SourceEndpointArn	string	`json:"source_endpoint_arn"`
 	TableMappings	string	`json:"table_mappings"`
-	Tags	map[string]Generic	`json:"tags"`
-	TargetEndpointArn	string	`json:"target_endpoint_arn"`
 	CdcStartTime	string	`json:"cdc_start_time"`
 	MigrationType	string	`json:"migration_type"`
 	ReplicationInstanceArn	string	`json:"replication_instance_arn"`
-	ReplicationTaskId	string	`json:"replication_task_id"`
+	SourceEndpointArn	string	`json:"source_endpoint_arn"`
+	Tags	map[string]???	`json:"tags"`
+	TargetEndpointArn	string	`json:"target_endpoint_arn"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,14 +22,14 @@ type AwsAmi struct {
 // AwsAmiSpec is the spec for a AwsAmi Resource
 type AwsAmiSpec struct {
 	Architecture	string	`json:"architecture"`
-	RamdiskId	string	`json:"ramdisk_id"`
 	SriovNetSupport	string	`json:"sriov_net_support"`
 	VirtualizationType	string	`json:"virtualization_type"`
-	Description	string	`json:"description"`
-	RootDeviceName	string	`json:"root_device_name"`
-	Tags	map[string]Generic	`json:"tags"`
+	Tags	map[string]???	`json:"tags"`
 	KernelId	string	`json:"kernel_id"`
+	RootDeviceName	string	`json:"root_device_name"`
 	Name	string	`json:"name"`
+	RamdiskId	string	`json:"ramdisk_id"`
+	Description	string	`json:"description"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

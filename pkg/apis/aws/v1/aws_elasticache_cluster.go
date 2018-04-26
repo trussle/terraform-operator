@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,14 +21,14 @@ type AwsElasticacheCluster struct {
 
 // AwsElasticacheClusterSpec is the spec for a AwsElasticacheCluster Resource
 type AwsElasticacheClusterSpec struct {
-	SnapshotRetentionLimit	int	`json:"snapshot_retention_limit"`
-	SnapshotArns	Generic	`json:"snapshot_arns"`
+	SnapshotArns	string	`json:"snapshot_arns"`
+	Port	int	`json:"port"`
+	SnapshotName	string	`json:"snapshot_name"`
 	NotificationTopicArn	string	`json:"notification_topic_arn"`
 	ClusterId	string	`json:"cluster_id"`
-	AvailabilityZones	Generic	`json:"availability_zones"`
-	SnapshotName	string	`json:"snapshot_name"`
-	Port	int	`json:"port"`
-	Tags	map[string]Generic	`json:"tags"`
+	Tags	map[string]???	`json:"tags"`
+	AvailabilityZones	string	`json:"availability_zones"`
+	SnapshotRetentionLimit	int	`json:"snapshot_retention_limit"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -40,3 +41,7 @@ type AwsElasticacheClusterList struct {
 	Items	[]AwsElasticacheCluster	`json:"items"`
 }
 
+
+// DOUnXzmD is a DOUnXzmD
+type DOUnXzmD struct {
+}

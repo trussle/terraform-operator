@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,15 +21,15 @@ type AwsApiGatewayAuthorizer struct {
 
 // AwsApiGatewayAuthorizerSpec is the spec for a AwsApiGatewayAuthorizer Resource
 type AwsApiGatewayAuthorizerSpec struct {
-	AuthorizerUri	string	`json:"authorizer_uri"`
-	Name	string	`json:"name"`
 	Type	string	`json:"type"`
+	IdentityValidationExpression	string	`json:"identity_validation_expression"`
+	ProviderArns	string	`json:"provider_arns"`
+	IdentitySource	string	`json:"identity_source"`
+	Name	string	`json:"name"`
+	RestApiId	string	`json:"rest_api_id"`
+	AuthorizerUri	string	`json:"authorizer_uri"`
 	AuthorizerCredentials	string	`json:"authorizer_credentials"`
 	AuthorizerResultTtlInSeconds	int	`json:"authorizer_result_ttl_in_seconds"`
-	IdentityValidationExpression	string	`json:"identity_validation_expression"`
-	IdentitySource	string	`json:"identity_source"`
-	RestApiId	string	`json:"rest_api_id"`
-	ProviderArns	Generic	`json:"provider_arns"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

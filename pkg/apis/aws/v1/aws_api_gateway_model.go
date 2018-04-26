@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,11 +21,11 @@ type AwsApiGatewayModel struct {
 
 // AwsApiGatewayModelSpec is the spec for a AwsApiGatewayModel Resource
 type AwsApiGatewayModelSpec struct {
+	Description	string	`json:"description"`
+	Schema	string	`json:"schema"`
 	ContentType	string	`json:"content_type"`
 	RestApiId	string	`json:"rest_api_id"`
 	Name	string	`json:"name"`
-	Description	string	`json:"description"`
-	Schema	string	`json:"schema"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

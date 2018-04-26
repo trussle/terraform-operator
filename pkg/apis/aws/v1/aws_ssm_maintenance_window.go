@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,12 +21,12 @@ type AwsSsmMaintenanceWindow struct {
 
 // AwsSsmMaintenanceWindowSpec is the spec for a AwsSsmMaintenanceWindow Resource
 type AwsSsmMaintenanceWindowSpec struct {
+	Name	string	`json:"name"`
 	Schedule	string	`json:"schedule"`
 	Duration	int	`json:"duration"`
 	Cutoff	int	`json:"cutoff"`
 	AllowUnassociatedTargets	bool	`json:"allow_unassociated_targets"`
 	Enabled	bool	`json:"enabled"`
-	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

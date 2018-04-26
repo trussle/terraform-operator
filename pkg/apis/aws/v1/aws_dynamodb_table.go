@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,17 +21,17 @@ type AwsDynamodbTable struct {
 
 // AwsDynamodbTableSpec is the spec for a AwsDynamodbTable Resource
 type AwsDynamodbTableSpec struct {
-	RangeKey	string	`json:"range_key"`
-	WriteCapacity	int	`json:"write_capacity"`
-	Ttl	Generic	`json:"ttl"`
-	Tags	map[string]Generic	`json:"tags"`
-	ReadCapacity	int	`json:"read_capacity"`
-	StreamEnabled	bool	`json:"stream_enabled"`
-	LocalSecondaryIndex	Generic	`json:"local_secondary_index"`
 	Name	string	`json:"name"`
 	HashKey	string	`json:"hash_key"`
-	Attribute	Generic	`json:"attribute"`
-	GlobalSecondaryIndex	Generic	`json:"global_secondary_index"`
+	RangeKey	string	`json:"range_key"`
+	StreamEnabled	bool	`json:"stream_enabled"`
+	WriteCapacity	int	`json:"write_capacity"`
+	Attribute	string	`json:"attribute"`
+	LocalSecondaryIndex	string	`json:"local_secondary_index"`
+	ReadCapacity	int	`json:"read_capacity"`
+	GlobalSecondaryIndex	string	`json:"global_secondary_index"`
+	Tags	map[string]???	`json:"tags"`
+	Ttl	string	`json:"ttl"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -43,3 +44,8 @@ type AwsDynamodbTableList struct {
 	Items	[]AwsDynamodbTable	`json:"items"`
 }
 
+
+// mHEfnwcN is a mHEfnwcN
+type mHEfnwcN struct {
+	Enabled	bool	`json:"enabled"`
+}

@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,7 +21,7 @@ type AwsEbsSnapshot struct {
 
 // AwsEbsSnapshotSpec is the spec for a AwsEbsSnapshot Resource
 type AwsEbsSnapshotSpec struct {
-	Tags	map[string]Generic	`json:"tags"`
+	Tags	map[string]???	`json:"tags"`
 	VolumeId	string	`json:"volume_id"`
 	Description	string	`json:"description"`
 }

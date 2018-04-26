@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,9 +21,9 @@ type AwsApiGatewayDocumentationPart struct {
 
 // AwsApiGatewayDocumentationPartSpec is the spec for a AwsApiGatewayDocumentationPart Resource
 type AwsApiGatewayDocumentationPartSpec struct {
-	Location	[]Generic	`json:"location"`
-	Properties	string	`json:"properties"`
 	RestApiId	string	`json:"rest_api_id"`
+	Location	[]mBdtZtcO	`json:"location"`
+	Properties	string	`json:"properties"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -35,3 +36,12 @@ type AwsApiGatewayDocumentationPartList struct {
 	Items	[]AwsApiGatewayDocumentationPart	`json:"items"`
 }
 
+
+// mBdtZtcO is a mBdtZtcO
+type mBdtZtcO struct {
+	Method	string	`json:"method"`
+	Name	string	`json:"name"`
+	Path	string	`json:"path"`
+	StatusCode	string	`json:"status_code"`
+	Type	string	`json:"type"`
+}

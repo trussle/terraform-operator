@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,12 +22,12 @@ type AwsCognitoIdentityPool struct {
 // AwsCognitoIdentityPoolSpec is the spec for a AwsCognitoIdentityPool Resource
 type AwsCognitoIdentityPoolSpec struct {
 	IdentityPoolName	string	`json:"identity_pool_name"`
-	CognitoIdentityProviders	Generic	`json:"cognito_identity_providers"`
+	CognitoIdentityProviders	string	`json:"cognito_identity_providers"`
 	DeveloperProviderName	string	`json:"developer_provider_name"`
 	AllowUnauthenticatedIdentities	bool	`json:"allow_unauthenticated_identities"`
-	OpenidConnectProviderArns	[]Generic	`json:"openid_connect_provider_arns"`
-	SamlProviderArns	[]Generic	`json:"saml_provider_arns"`
-	SupportedLoginProviders	map[string]Generic	`json:"supported_login_providers"`
+	OpenidConnectProviderArns	[]string	`json:"openid_connect_provider_arns"`
+	SamlProviderArns	[]string	`json:"saml_provider_arns"`
+	SupportedLoginProviders	map[string]string	`json:"supported_login_providers"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

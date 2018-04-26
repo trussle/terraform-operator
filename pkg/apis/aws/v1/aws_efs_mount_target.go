@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,8 +21,8 @@ type AwsEfsMountTarget struct {
 
 // AwsEfsMountTargetSpec is the spec for a AwsEfsMountTarget Resource
 type AwsEfsMountTargetSpec struct {
-	SubnetId	string	`json:"subnet_id"`
 	FileSystemId	string	`json:"file_system_id"`
+	SubnetId	string	`json:"subnet_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

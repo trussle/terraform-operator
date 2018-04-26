@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,10 +21,10 @@ type AwsKmsKey struct {
 
 // AwsKmsKeySpec is the spec for a AwsKmsKey Resource
 type AwsKmsKeySpec struct {
-	IsEnabled	bool	`json:"is_enabled"`
-	Tags	map[string]Generic	`json:"tags"`
-	EnableKeyRotation	bool	`json:"enable_key_rotation"`
 	DeletionWindowInDays	int	`json:"deletion_window_in_days"`
+	IsEnabled	bool	`json:"is_enabled"`
+	EnableKeyRotation	bool	`json:"enable_key_rotation"`
+	Tags	map[string]???	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

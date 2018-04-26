@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -23,7 +24,8 @@ type AwsApiGatewayRestApiSpec struct {
 	MinimumCompressionSize	int	`json:"minimum_compression_size"`
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
-	BinaryMediaTypes	[]Generic	`json:"binary_media_types"`
+	Policy	string	`json:"policy"`
+	BinaryMediaTypes	[]string	`json:"binary_media_types"`
 	Body	string	`json:"body"`
 }
 

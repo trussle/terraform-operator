@@ -1,0 +1,37 @@
+
+package v1
+
+import (
+	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
+)
+
+// +genclient
+// +genclient:noStatus
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsDaxParameterGroup describes a AwsDaxParameterGroup resource
+type AwsDaxParameterGroup struct {
+	meta_v1.TypeMeta	`json:",inline"`
+	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
+
+	Spec	AwsDaxParameterGroupSpec	`json:"spec"`
+}
+
+
+// AwsDaxParameterGroupSpec is the spec for a AwsDaxParameterGroup Resource
+type AwsDaxParameterGroupSpec struct {
+	Description	string	`json:"description"`
+	Name	string	`json:"name"`
+}
+
+// +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
+
+// AwsDaxParameterGroupList is a list of AwsDaxParameterGroup resources
+type AwsDaxParameterGroupList struct {
+	meta_v1.TypeMeta	`json:",inline"`
+	meta_v1.ObjectMeta	`json:"metadata,omitempty"`
+
+	Items	[]AwsDaxParameterGroup	`json:"items"`
+}
+

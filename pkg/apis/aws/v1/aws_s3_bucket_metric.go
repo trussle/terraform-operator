@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,9 +21,9 @@ type AwsS3BucketMetric struct {
 
 // AwsS3BucketMetricSpec is the spec for a AwsS3BucketMetric Resource
 type AwsS3BucketMetricSpec struct {
-	Name	string	`json:"name"`
 	Bucket	string	`json:"bucket"`
-	Filter	[]Generic	`json:"filter"`
+	Filter	[]zgaczAIn	`json:"filter"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -35,3 +36,9 @@ type AwsS3BucketMetricList struct {
 	Items	[]AwsS3BucketMetric	`json:"items"`
 }
 
+
+// zgaczAIn is a zgaczAIn
+type zgaczAIn struct {
+	Tags	map[string]???	`json:"tags"`
+	Prefix	string	`json:"prefix"`
+}

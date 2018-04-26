@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,10 +21,10 @@ type AwsWafWebAcl struct {
 
 // AwsWafWebAclSpec is the spec for a AwsWafWebAcl Resource
 type AwsWafWebAclSpec struct {
-	Rules	Generic	`json:"rules"`
 	Name	string	`json:"name"`
-	DefaultAction	Generic	`json:"default_action"`
+	DefaultAction	string	`json:"default_action"`
 	MetricName	string	`json:"metric_name"`
+	Rules	string	`json:"rules"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

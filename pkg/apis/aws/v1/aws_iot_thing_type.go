@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,7 +22,7 @@ type AwsIotThingType struct {
 // AwsIotThingTypeSpec is the spec for a AwsIotThingType Resource
 type AwsIotThingTypeSpec struct {
 	Name	string	`json:"name"`
-	Properties	[]Generic	`json:"properties"`
+	Properties	[]ZIvaBjMk	`json:"properties"`
 	Deprecated	bool	`json:"deprecated"`
 }
 
@@ -35,3 +36,8 @@ type AwsIotThingTypeList struct {
 	Items	[]AwsIotThingType	`json:"items"`
 }
 
+
+// ZIvaBjMk is a ZIvaBjMk
+type ZIvaBjMk struct {
+	Description	string	`json:"description"`
+}

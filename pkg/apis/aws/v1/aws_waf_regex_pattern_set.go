@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,7 +22,7 @@ type AwsWafRegexPatternSet struct {
 // AwsWafRegexPatternSetSpec is the spec for a AwsWafRegexPatternSet Resource
 type AwsWafRegexPatternSetSpec struct {
 	Name	string	`json:"name"`
-	RegexPatternStrings	Generic	`json:"regex_pattern_strings"`
+	RegexPatternStrings	string	`json:"regex_pattern_strings"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

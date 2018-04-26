@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,11 +21,11 @@ type AwsWafregionalRateBasedRule struct {
 
 // AwsWafregionalRateBasedRuleSpec is the spec for a AwsWafregionalRateBasedRule Resource
 type AwsWafregionalRateBasedRuleSpec struct {
-	Predicate	Generic	`json:"predicate"`
-	RateKey	string	`json:"rate_key"`
-	RateLimit	int	`json:"rate_limit"`
 	Name	string	`json:"name"`
 	MetricName	string	`json:"metric_name"`
+	Predicate	string	`json:"predicate"`
+	RateKey	string	`json:"rate_key"`
+	RateLimit	int	`json:"rate_limit"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

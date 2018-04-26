@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,12 +21,12 @@ type AwsAppautoscalingScheduledAction struct {
 
 // AwsAppautoscalingScheduledActionSpec is the spec for a AwsAppautoscalingScheduledAction Resource
 type AwsAppautoscalingScheduledActionSpec struct {
-	ScalableDimension	string	`json:"scalable_dimension"`
-	Schedule	string	`json:"schedule"`
 	Name	string	`json:"name"`
 	ServiceNamespace	string	`json:"service_namespace"`
 	ResourceId	string	`json:"resource_id"`
-	ScalableTargetAction	[]Generic	`json:"scalable_target_action"`
+	ScalableDimension	string	`json:"scalable_dimension"`
+	Schedule	string	`json:"schedule"`
+	ScalableTargetAction	[]qQFbucqN	`json:"scalable_target_action"`
 	StartTime	string	`json:"start_time"`
 	EndTime	string	`json:"end_time"`
 }
@@ -40,3 +41,9 @@ type AwsAppautoscalingScheduledActionList struct {
 	Items	[]AwsAppautoscalingScheduledAction	`json:"items"`
 }
 
+
+// qQFbucqN is a qQFbucqN
+type qQFbucqN struct {
+	MaxCapacity	int	`json:"max_capacity"`
+	MinCapacity	int	`json:"min_capacity"`
+}

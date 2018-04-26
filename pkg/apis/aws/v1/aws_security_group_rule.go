@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -21,15 +22,15 @@ type AwsSecurityGroupRule struct {
 // AwsSecurityGroupRuleSpec is the spec for a AwsSecurityGroupRule Resource
 type AwsSecurityGroupRuleSpec struct {
 	FromPort	int	`json:"from_port"`
-	ToPort	int	`json:"to_port"`
-	PrefixListIds	[]Generic	`json:"prefix_list_ids"`
-	SecurityGroupId	string	`json:"security_group_id"`
-	Type	string	`json:"type"`
 	Protocol	string	`json:"protocol"`
-	CidrBlocks	[]Generic	`json:"cidr_blocks"`
-	Ipv6CidrBlocks	[]Generic	`json:"ipv6_cidr_blocks"`
+	CidrBlocks	[]string	`json:"cidr_blocks"`
+	Ipv6CidrBlocks	[]string	`json:"ipv6_cidr_blocks"`
+	Type	string	`json:"type"`
+	PrefixListIds	[]string	`json:"prefix_list_ids"`
+	SecurityGroupId	string	`json:"security_group_id"`
 	Self	bool	`json:"self"`
 	Description	string	`json:"description"`
+	ToPort	int	`json:"to_port"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

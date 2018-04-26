@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -20,16 +21,16 @@ type AwsSqsQueue struct {
 
 // AwsSqsQueueSpec is the spec for a AwsSqsQueue Resource
 type AwsSqsQueueSpec struct {
-	MessageRetentionSeconds	int	`json:"message_retention_seconds"`
 	RedrivePolicy	string	`json:"redrive_policy"`
-	FifoQueue	bool	`json:"fifo_queue"`
 	ContentBasedDeduplication	bool	`json:"content_based_deduplication"`
 	MaxMessageSize	int	`json:"max_message_size"`
-	Tags	map[string]Generic	`json:"tags"`
-	DelaySeconds	int	`json:"delay_seconds"`
-	ReceiveWaitTimeSeconds	int	`json:"receive_wait_time_seconds"`
+	MessageRetentionSeconds	int	`json:"message_retention_seconds"`
+	FifoQueue	bool	`json:"fifo_queue"`
 	KmsMasterKeyId	string	`json:"kms_master_key_id"`
+	Tags	map[string]???	`json:"tags"`
 	NamePrefix	string	`json:"name_prefix"`
+	ReceiveWaitTimeSeconds	int	`json:"receive_wait_time_seconds"`
+	DelaySeconds	int	`json:"delay_seconds"`
 	VisibilityTimeoutSeconds	int	`json:"visibility_timeout_seconds"`
 }
 

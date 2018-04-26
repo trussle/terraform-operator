@@ -3,6 +3,7 @@ package v1
 
 import (
 	meta_v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+//	"github.com/hashicorp/terraform/helper/schema"
 )
 
 // +genclient
@@ -22,7 +23,7 @@ type AwsWafregionalRule struct {
 type AwsWafregionalRuleSpec struct {
 	Name	string	`json:"name"`
 	MetricName	string	`json:"metric_name"`
-	Predicate	Generic	`json:"predicate"`
+	Predicate	string	`json:"predicate"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
