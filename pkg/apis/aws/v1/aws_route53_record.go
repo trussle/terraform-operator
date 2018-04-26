@@ -21,22 +21,22 @@ type AwsRoute53Record struct {
 
 // AwsRoute53RecordSpec is the spec for a AwsRoute53Record Resource
 type AwsRoute53RecordSpec struct {
-	Records	string	`json:"records"`
-	AllowOverwrite	bool	`json:"allow_overwrite"`
-	Ttl	int	`json:"ttl"`
-	WeightedRoutingPolicy	[]kUvYxToc	`json:"weighted_routing_policy"`
-	MultivalueAnswerRoutingPolicy	bool	`json:"multivalue_answer_routing_policy"`
-	Name	string	`json:"name"`
-	GeolocationRoutingPolicy	[]DoTiUUJe	`json:"geolocation_routing_policy"`
-	HealthCheckId	string	`json:"health_check_id"`
-	Type	string	`json:"type"`
 	SetIdentifier	string	`json:"set_identifier"`
-	Failover	string	`json:"failover"`
-	Alias	string	`json:"alias"`
-	FailoverRoutingPolicy	[]VakGzAAL	`json:"failover_routing_policy"`
-	LatencyRoutingPolicy	[]tLhTUZHJ	`json:"latency_routing_policy"`
+	Records	string	`json:"records"`
+	Type	string	`json:"type"`
 	ZoneId	string	`json:"zone_id"`
+	Alias	Alias	`json:"alias"`
+	MultivalueAnswerRoutingPolicy	bool	`json:"multivalue_answer_routing_policy"`
+	AllowOverwrite	bool	`json:"allow_overwrite"`
+	GeolocationRoutingPolicy	[]GeolocationRoutingPolicy	`json:"geolocation_routing_policy"`
+	WeightedRoutingPolicy	[]WeightedRoutingPolicy	`json:"weighted_routing_policy"`
 	Weight	int	`json:"weight"`
+	Failover	string	`json:"failover"`
+	FailoverRoutingPolicy	[]FailoverRoutingPolicy	`json:"failover_routing_policy"`
+	LatencyRoutingPolicy	[]LatencyRoutingPolicy	`json:"latency_routing_policy"`
+	Name	string	`json:"name"`
+	Ttl	int	`json:"ttl"`
+	HealthCheckId	string	`json:"health_check_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -50,24 +50,31 @@ type AwsRoute53RecordList struct {
 }
 
 
-// kUvYxToc is a kUvYxToc
-type kUvYxToc struct {
-	Weight	int	`json:"weight"`
-}
-
-// DoTiUUJe is a DoTiUUJe
-type DoTiUUJe struct {
+// GeolocationRoutingPolicy is a GeolocationRoutingPolicy
+type GeolocationRoutingPolicy struct {
 	Continent	string	`json:"continent"`
 	Country	string	`json:"country"`
 	Subdivision	string	`json:"subdivision"`
 }
 
-// VakGzAAL is a VakGzAAL
-type VakGzAAL struct {
+// WeightedRoutingPolicy is a WeightedRoutingPolicy
+type WeightedRoutingPolicy struct {
+	Weight	int	`json:"weight"`
+}
+
+// FailoverRoutingPolicy is a FailoverRoutingPolicy
+type FailoverRoutingPolicy struct {
 	Type	string	`json:"type"`
 }
 
-// tLhTUZHJ is a tLhTUZHJ
-type tLhTUZHJ struct {
+// LatencyRoutingPolicy is a LatencyRoutingPolicy
+type LatencyRoutingPolicy struct {
 	Region	string	`json:"region"`
+}
+
+// Alias is a Alias
+type Alias struct {
+	ZoneId	string	`json:"zone_id"`
+	Name	string	`json:"name"`
+	EvaluateTargetHealth	bool	`json:"evaluate_target_health"`
 }

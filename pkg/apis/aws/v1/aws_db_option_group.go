@@ -24,8 +24,8 @@ type AwsDbOptionGroupSpec struct {
 	EngineName	string	`json:"engine_name"`
 	MajorEngineVersion	string	`json:"major_engine_version"`
 	OptionGroupDescription	string	`json:"option_group_description"`
-	Option	string	`json:"option"`
-	Tags	map[string]???	`json:"tags"`
+	Option	Option	`json:"option"`
+	Tags	map[string]string	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -38,3 +38,19 @@ type AwsDbOptionGroupList struct {
 	Items	[]AwsDbOptionGroup	`json:"items"`
 }
 
+
+// Option is a Option
+type Option struct {
+	VpcSecurityGroupMemberships	string	`json:"vpc_security_group_memberships"`
+	Version	string	`json:"version"`
+	OptionName	string	`json:"option_name"`
+	OptionSettings	OptionSettings	`json:"option_settings"`
+	Port	int	`json:"port"`
+	DbSecurityGroupMemberships	string	`json:"db_security_group_memberships"`
+}
+
+// OptionSettings is a OptionSettings
+type OptionSettings struct {
+	Name	string	`json:"name"`
+	Value	string	`json:"value"`
+}

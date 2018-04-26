@@ -21,25 +21,25 @@ type AwsRedshiftCluster struct {
 
 // AwsRedshiftClusterSpec is the spec for a AwsRedshiftCluster Resource
 type AwsRedshiftClusterSpec struct {
-	OwnerAccount	string	`json:"owner_account"`
-	ElasticIp	string	`json:"elastic_ip"`
-	SkipFinalSnapshot	bool	`json:"skip_final_snapshot"`
-	SnapshotIdentifier	string	`json:"snapshot_identifier"`
-	Tags	map[string]???	`json:"tags"`
+	ClusterIdentifier	string	`json:"cluster_identifier"`
 	MasterPassword	string	`json:"master_password"`
-	FinalSnapshotIdentifier	string	`json:"final_snapshot_identifier"`
-	SnapshotCopy	[]OtaRLUtm	`json:"snapshot_copy"`
-	AutomatedSnapshotRetentionPeriod	int	`json:"automated_snapshot_retention_period"`
-	ClusterVersion	string	`json:"cluster_version"`
+	PubliclyAccessible	bool	`json:"publicly_accessible"`
+	OwnerAccount	string	`json:"owner_account"`
+	Tags	map[string]string	`json:"tags"`
+	ElasticIp	string	`json:"elastic_ip"`
+	SnapshotIdentifier	string	`json:"snapshot_identifier"`
 	NodeType	string	`json:"node_type"`
-	Logging	[]YgmSVYBA	`json:"logging"`
-	Port	int	`json:"port"`
 	NumberOfNodes	int	`json:"number_of_nodes"`
+	FinalSnapshotIdentifier	string	`json:"final_snapshot_identifier"`
+	SkipFinalSnapshot	bool	`json:"skip_final_snapshot"`
+	SnapshotCopy	[]SnapshotCopy	`json:"snapshot_copy"`
+	ClusterVersion	string	`json:"cluster_version"`
+	Port	int	`json:"port"`
 	AllowVersionUpgrade	bool	`json:"allow_version_upgrade"`
 	SnapshotClusterIdentifier	string	`json:"snapshot_cluster_identifier"`
-	ClusterIdentifier	string	`json:"cluster_identifier"`
+	Logging	[]Logging	`json:"logging"`
 	MasterUsername	string	`json:"master_username"`
-	PubliclyAccessible	bool	`json:"publicly_accessible"`
+	AutomatedSnapshotRetentionPeriod	int	`json:"automated_snapshot_retention_period"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -53,14 +53,14 @@ type AwsRedshiftClusterList struct {
 }
 
 
-// OtaRLUtm is a OtaRLUtm
-type OtaRLUtm struct {
+// SnapshotCopy is a SnapshotCopy
+type SnapshotCopy struct {
 	DestinationRegion	string	`json:"destination_region"`
 	RetentionPeriod	int	`json:"retention_period"`
 	GrantName	string	`json:"grant_name"`
 }
 
-// YgmSVYBA is a YgmSVYBA
-type YgmSVYBA struct {
+// Logging is a Logging
+type Logging struct {
 	Enable	bool	`json:"enable"`
 }

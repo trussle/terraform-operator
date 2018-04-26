@@ -21,27 +21,27 @@ type AwsOpsworksMemcachedLayer struct {
 
 // AwsOpsworksMemcachedLayerSpec is the spec for a AwsOpsworksMemcachedLayer Resource
 type AwsOpsworksMemcachedLayerSpec struct {
-	AutoAssignElasticIps	bool	`json:"auto_assign_elastic_ips"`
-	CustomSetupRecipes	[]string	`json:"custom_setup_recipes"`
-	StackId	string	`json:"stack_id"`
-	CustomUndeployRecipes	[]string	`json:"custom_undeploy_recipes"`
-	CustomShutdownRecipes	[]string	`json:"custom_shutdown_recipes"`
-	DrainElbOnShutdown	bool	`json:"drain_elb_on_shutdown"`
-	Name	string	`json:"name"`
-	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
-	EbsVolume	string	`json:"ebs_volume"`
-	AutoAssignPublicIps	bool	`json:"auto_assign_public_ips"`
-	ElasticLoadBalancer	string	`json:"elastic_load_balancer"`
 	CustomDeployRecipes	[]string	`json:"custom_deploy_recipes"`
+	CustomUndeployRecipes	[]string	`json:"custom_undeploy_recipes"`
 	CustomJson	string	`json:"custom_json"`
-	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
+	DrainElbOnShutdown	bool	`json:"drain_elb_on_shutdown"`
 	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
-	AllocatedMemory	int	`json:"allocated_memory"`
+	EbsVolume	EbsVolume	`json:"ebs_volume"`
+	ElasticLoadBalancer	string	`json:"elastic_load_balancer"`
 	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
+	CustomSetupRecipes	[]string	`json:"custom_setup_recipes"`
 	CustomConfigureRecipes	[]string	`json:"custom_configure_recipes"`
-	CustomSecurityGroupIds	string	`json:"custom_security_group_ids"`
+	StackId	string	`json:"stack_id"`
+	AllocatedMemory	int	`json:"allocated_memory"`
+	AutoAssignElasticIps	bool	`json:"auto_assign_elastic_ips"`
 	AutoHealing	bool	`json:"auto_healing"`
 	SystemPackages	string	`json:"system_packages"`
+	Name	string	`json:"name"`
+	AutoAssignPublicIps	bool	`json:"auto_assign_public_ips"`
+	CustomSecurityGroupIds	string	`json:"custom_security_group_ids"`
+	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
+	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
+	CustomShutdownRecipes	[]string	`json:"custom_shutdown_recipes"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -54,3 +54,13 @@ type AwsOpsworksMemcachedLayerList struct {
 	Items	[]AwsOpsworksMemcachedLayer	`json:"items"`
 }
 
+
+// EbsVolume is a EbsVolume
+type EbsVolume struct {
+	RaidLevel	string	`json:"raid_level"`
+	Size	int	`json:"size"`
+	Type	string	`json:"type"`
+	Iops	int	`json:"iops"`
+	MountPoint	string	`json:"mount_point"`
+	NumberOfDisks	int	`json:"number_of_disks"`
+}

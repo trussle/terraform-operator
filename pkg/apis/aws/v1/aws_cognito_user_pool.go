@@ -21,18 +21,18 @@ type AwsCognitoUserPool struct {
 
 // AwsCognitoUserPoolSpec is the spec for a AwsCognitoUserPool Resource
 type AwsCognitoUserPoolSpec struct {
-	MfaConfiguration	string	`json:"mfa_configuration"`
-	Schema	string	`json:"schema"`
-	SmsVerificationMessage	string	`json:"sms_verification_message"`
-	UsernameAttributes	[]string	`json:"username_attributes"`
 	AutoVerifiedAttributes	string	`json:"auto_verified_attributes"`
-	DeviceConfiguration	[]VVdHtAkn	`json:"device_configuration"`
-	EmailConfiguration	[]jEQxCqkD	`json:"email_configuration"`
-	Name	string	`json:"name"`
+	SmsVerificationMessage	string	`json:"sms_verification_message"`
 	SmsAuthenticationMessage	string	`json:"sms_authentication_message"`
-	SmsConfiguration	[]sXTOdPOR	`json:"sms_configuration"`
+	EmailConfiguration	[]EmailConfiguration	`json:"email_configuration"`
+	Name	string	`json:"name"`
+	Schema	Schema	`json:"schema"`
+	SmsConfiguration	[]SmsConfiguration	`json:"sms_configuration"`
+	Tags	map[string]string	`json:"tags"`
+	DeviceConfiguration	[]DeviceConfiguration	`json:"device_configuration"`
+	MfaConfiguration	string	`json:"mfa_configuration"`
+	UsernameAttributes	[]string	`json:"username_attributes"`
 	AliasAttributes	string	`json:"alias_attributes"`
-	Tags	map[string]???	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -46,62 +46,85 @@ type AwsCognitoUserPoolList struct {
 }
 
 
-// dQrIPjyQ is a dQrIPjyQ
-type dQrIPjyQ struct {
+// LambdaConfig is a LambdaConfig
+type LambdaConfig struct {
+	CustomMessage	string	`json:"custom_message"`
+	PreAuthentication	string	`json:"pre_authentication"`
+	PreSignUp	string	`json:"pre_sign_up"`
+	PreTokenGeneration	string	`json:"pre_token_generation"`
+	VerifyAuthChallengeResponse	string	`json:"verify_auth_challenge_response"`
+	CreateAuthChallenge	string	`json:"create_auth_challenge"`
+	DefineAuthChallenge	string	`json:"define_auth_challenge"`
+	PostAuthentication	string	`json:"post_authentication"`
+	PostConfirmation	string	`json:"post_confirmation"`
+	UserMigration	string	`json:"user_migration"`
+}
+
+// NumberAttributeConstraints is a NumberAttributeConstraints
+type NumberAttributeConstraints struct {
+	MaxValue	string	`json:"max_value"`
+	MinValue	string	`json:"min_value"`
+}
+
+// Schema is a Schema
+type Schema struct {
+	StringAttributeConstraints	[]StringAttributeConstraints	`json:"string_attribute_constraints"`
+	AttributeDataType	string	`json:"attribute_data_type"`
+	DeveloperOnlyAttribute	bool	`json:"developer_only_attribute"`
+	Mutable	bool	`json:"mutable"`
+	Name	string	`json:"name"`
+	NumberAttributeConstraints	[]NumberAttributeConstraints	`json:"number_attribute_constraints"`
+	Required	bool	`json:"required"`
+}
+
+// SmsConfiguration is a SmsConfiguration
+type SmsConfiguration struct {
+	ExternalId	string	`json:"external_id"`
+	SnsCallerArn	string	`json:"sns_caller_arn"`
+}
+
+// DeviceConfiguration is a DeviceConfiguration
+type DeviceConfiguration struct {
+	ChallengeRequiredOnNewDevice	bool	`json:"challenge_required_on_new_device"`
+	DeviceOnlyRememberedOnUserPrompt	bool	`json:"device_only_remembered_on_user_prompt"`
+}
+
+// InviteMessageTemplate is a InviteMessageTemplate
+type InviteMessageTemplate struct {
 	EmailMessage	string	`json:"email_message"`
 	EmailSubject	string	`json:"email_subject"`
 	SmsMessage	string	`json:"sms_message"`
 }
 
-// PexOUAbU is a PexOUAbU
-type PexOUAbU struct {
-	AllowAdminCreateUserOnly	bool	`json:"allow_admin_create_user_only"`
-	InviteMessageTemplate	[]dQrIPjyQ	`json:"invite_message_template"`
-	UnusedAccountValidityDays	int	`json:"unused_account_validity_days"`
-}
-
-// yQFStFub is a yQFStFub
-type yQFStFub struct {
-	PreAuthentication	string	`json:"pre_authentication"`
-	PreSignUp	string	`json:"pre_sign_up"`
-	VerifyAuthChallengeResponse	string	`json:"verify_auth_challenge_response"`
-	UserMigration	string	`json:"user_migration"`
-	CreateAuthChallenge	string	`json:"create_auth_challenge"`
-	CustomMessage	string	`json:"custom_message"`
-	DefineAuthChallenge	string	`json:"define_auth_challenge"`
-	PostAuthentication	string	`json:"post_authentication"`
-	PostConfirmation	string	`json:"post_confirmation"`
-	PreTokenGeneration	string	`json:"pre_token_generation"`
-}
-
-// VVdHtAkn is a VVdHtAkn
-type VVdHtAkn struct {
-	ChallengeRequiredOnNewDevice	bool	`json:"challenge_required_on_new_device"`
-	DeviceOnlyRememberedOnUserPrompt	bool	`json:"device_only_remembered_on_user_prompt"`
-}
-
-// jEQxCqkD is a jEQxCqkD
-type jEQxCqkD struct {
+// EmailConfiguration is a EmailConfiguration
+type EmailConfiguration struct {
 	ReplyToEmailAddress	string	`json:"reply_to_email_address"`
 	SourceArn	string	`json:"source_arn"`
 }
 
-// IfTGXeJt is a IfTGXeJt
-type IfTGXeJt struct {
-	DefaultEmailOption	string	`json:"default_email_option"`
-}
-
-// uncbfqQU is a uncbfqQU
-type uncbfqQU struct {
+// PasswordPolicy is a PasswordPolicy
+type PasswordPolicy struct {
+	RequireLowercase	bool	`json:"require_lowercase"`
+	RequireNumbers	bool	`json:"require_numbers"`
 	RequireSymbols	bool	`json:"require_symbols"`
 	RequireUppercase	bool	`json:"require_uppercase"`
 	MinimumLength	int	`json:"minimum_length"`
-	RequireLowercase	bool	`json:"require_lowercase"`
-	RequireNumbers	bool	`json:"require_numbers"`
 }
 
-// sXTOdPOR is a sXTOdPOR
-type sXTOdPOR struct {
-	ExternalId	string	`json:"external_id"`
-	SnsCallerArn	string	`json:"sns_caller_arn"`
+// StringAttributeConstraints is a StringAttributeConstraints
+type StringAttributeConstraints struct {
+	MinLength	string	`json:"min_length"`
+	MaxLength	string	`json:"max_length"`
+}
+
+// VerificationMessageTemplate is a VerificationMessageTemplate
+type VerificationMessageTemplate struct {
+	DefaultEmailOption	string	`json:"default_email_option"`
+}
+
+// AdminCreateUserConfig is a AdminCreateUserConfig
+type AdminCreateUserConfig struct {
+	AllowAdminCreateUserOnly	bool	`json:"allow_admin_create_user_only"`
+	InviteMessageTemplate	[]InviteMessageTemplate	`json:"invite_message_template"`
+	UnusedAccountValidityDays	int	`json:"unused_account_validity_days"`
 }

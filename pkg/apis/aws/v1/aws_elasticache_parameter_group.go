@@ -21,7 +21,7 @@ type AwsElasticacheParameterGroup struct {
 
 // AwsElasticacheParameterGroupSpec is the spec for a AwsElasticacheParameterGroup Resource
 type AwsElasticacheParameterGroupSpec struct {
-	Parameter	string	`json:"parameter"`
+	Parameter	Parameter	`json:"parameter"`
 	Name	string	`json:"name"`
 	Family	string	`json:"family"`
 	Description	string	`json:"description"`
@@ -37,3 +37,9 @@ type AwsElasticacheParameterGroupList struct {
 	Items	[]AwsElasticacheParameterGroup	`json:"items"`
 }
 
+
+// Parameter is a Parameter
+type Parameter struct {
+	Name	string	`json:"name"`
+	Value	string	`json:"value"`
+}

@@ -21,16 +21,16 @@ type AwsCodedeployDeploymentGroup struct {
 
 // AwsCodedeployDeploymentGroupSpec is the spec for a AwsCodedeployDeploymentGroup Resource
 type AwsCodedeployDeploymentGroupSpec struct {
-	AlarmConfiguration	[]jzaLbtZs	`json:"alarm_configuration"`
-	AutoRollbackConfiguration	[]zQMDQiYC	`json:"auto_rollback_configuration"`
 	DeploymentConfigName	string	`json:"deployment_config_name"`
-	OnPremisesInstanceTagFilter	string	`json:"on_premises_instance_tag_filter"`
-	AppName	string	`json:"app_name"`
-	TriggerConfiguration	string	`json:"trigger_configuration"`
-	Ec2TagFilter	string	`json:"ec2_tag_filter"`
+	Ec2TagFilter	Ec2TagFilter	`json:"ec2_tag_filter"`
 	DeploymentGroupName	string	`json:"deployment_group_name"`
-	ServiceRoleArn	string	`json:"service_role_arn"`
+	AlarmConfiguration	[]AlarmConfiguration	`json:"alarm_configuration"`
 	AutoscalingGroups	string	`json:"autoscaling_groups"`
+	TriggerConfiguration	TriggerConfiguration	`json:"trigger_configuration"`
+	AppName	string	`json:"app_name"`
+	ServiceRoleArn	string	`json:"service_role_arn"`
+	AutoRollbackConfiguration	[]AutoRollbackConfiguration	`json:"auto_rollback_configuration"`
+	OnPremisesInstanceTagFilter	OnPremisesInstanceTagFilter	`json:"on_premises_instance_tag_filter"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -44,50 +44,81 @@ type AwsCodedeployDeploymentGroupList struct {
 }
 
 
-// jzaLbtZs is a jzaLbtZs
-type jzaLbtZs struct {
+// TriggerConfiguration is a TriggerConfiguration
+type TriggerConfiguration struct {
+	TriggerTargetArn	string	`json:"trigger_target_arn"`
+	TriggerEvents	string	`json:"trigger_events"`
+	TriggerName	string	`json:"trigger_name"`
+}
+
+// DeploymentStyle is a DeploymentStyle
+type DeploymentStyle struct {
+	DeploymentOption	string	`json:"deployment_option"`
+	DeploymentType	string	`json:"deployment_type"`
+}
+
+// DeploymentReadyOption is a DeploymentReadyOption
+type DeploymentReadyOption struct {
+	ActionOnTimeout	string	`json:"action_on_timeout"`
+	WaitTimeInMinutes	int	`json:"wait_time_in_minutes"`
+}
+
+// GreenFleetProvisioningOption is a GreenFleetProvisioningOption
+type GreenFleetProvisioningOption struct {
+	Action	string	`json:"action"`
+}
+
+// TerminateBlueInstancesOnDeploymentSuccess is a TerminateBlueInstancesOnDeploymentSuccess
+type TerminateBlueInstancesOnDeploymentSuccess struct {
+	Action	string	`json:"action"`
+	TerminationWaitTimeInMinutes	int	`json:"termination_wait_time_in_minutes"`
+}
+
+// BlueGreenDeploymentConfig is a BlueGreenDeploymentConfig
+type BlueGreenDeploymentConfig struct {
+	DeploymentReadyOption	[]DeploymentReadyOption	`json:"deployment_ready_option"`
+	TerminateBlueInstancesOnDeploymentSuccess	[]TerminateBlueInstancesOnDeploymentSuccess	`json:"terminate_blue_instances_on_deployment_success"`
+}
+
+// ElbInfo is a ElbInfo
+type ElbInfo struct {
+	Name	string	`json:"name"`
+}
+
+// LoadBalancerInfo is a LoadBalancerInfo
+type LoadBalancerInfo struct {
+	ElbInfo	ElbInfo	`json:"elb_info"`
+	TargetGroupInfo	TargetGroupInfo	`json:"target_group_info"`
+}
+
+// OnPremisesInstanceTagFilter is a OnPremisesInstanceTagFilter
+type OnPremisesInstanceTagFilter struct {
+	Key	string	`json:"key"`
+	Type	string	`json:"type"`
+	Value	string	`json:"value"`
+}
+
+// Ec2TagFilter is a Ec2TagFilter
+type Ec2TagFilter struct {
+	Value	string	`json:"value"`
+	Key	string	`json:"key"`
+	Type	string	`json:"type"`
+}
+
+// AlarmConfiguration is a AlarmConfiguration
+type AlarmConfiguration struct {
 	Alarms	string	`json:"alarms"`
 	Enabled	bool	`json:"enabled"`
 	IgnorePollAlarmFailure	bool	`json:"ignore_poll_alarm_failure"`
 }
 
-// yMGeuDtR is a yMGeuDtR
-type yMGeuDtR struct {
-	ElbInfo	string	`json:"elb_info"`
-	TargetGroupInfo	string	`json:"target_group_info"`
+// TargetGroupInfo is a TargetGroupInfo
+type TargetGroupInfo struct {
+	Name	string	`json:"name"`
 }
 
-// zQMDQiYC is a zQMDQiYC
-type zQMDQiYC struct {
+// AutoRollbackConfiguration is a AutoRollbackConfiguration
+type AutoRollbackConfiguration struct {
 	Enabled	bool	`json:"enabled"`
 	Events	string	`json:"events"`
-}
-
-// OhgHOvgS is a OhgHOvgS
-type OhgHOvgS struct {
-	DeploymentOption	string	`json:"deployment_option"`
-	DeploymentType	string	`json:"deployment_type"`
-}
-
-// NufNjJhh is a NufNjJhh
-type NufNjJhh struct {
-	Action	string	`json:"action"`
-	TerminationWaitTimeInMinutes	int	`json:"termination_wait_time_in_minutes"`
-}
-
-// jUVRuSqf is a jUVRuSqf
-type jUVRuSqf struct {
-	ActionOnTimeout	string	`json:"action_on_timeout"`
-	WaitTimeInMinutes	int	`json:"wait_time_in_minutes"`
-}
-
-// gqVMkPYV is a gqVMkPYV
-type gqVMkPYV struct {
-	Action	string	`json:"action"`
-}
-
-// eycJPJHY is a eycJPJHY
-type eycJPJHY struct {
-	TerminateBlueInstancesOnDeploymentSuccess	[]NufNjJhh	`json:"terminate_blue_instances_on_deployment_success"`
-	DeploymentReadyOption	[]jUVRuSqf	`json:"deployment_ready_option"`
 }

@@ -24,13 +24,13 @@ type AwsApiGatewayStageSpec struct {
 	ClientCertificateId	string	`json:"client_certificate_id"`
 	DeploymentId	string	`json:"deployment_id"`
 	Description	string	`json:"description"`
-	DocumentationVersion	string	`json:"documentation_version"`
-	Variables	map[string]???	`json:"variables"`
-	Tags	map[string]???	`json:"tags"`
+	StageName	string	`json:"stage_name"`
+	Variables	map[string]string	`json:"variables"`
+	Tags	map[string]string	`json:"tags"`
 	CacheClusterEnabled	bool	`json:"cache_cluster_enabled"`
 	CacheClusterSize	string	`json:"cache_cluster_size"`
+	DocumentationVersion	string	`json:"documentation_version"`
 	RestApiId	string	`json:"rest_api_id"`
-	StageName	string	`json:"stage_name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

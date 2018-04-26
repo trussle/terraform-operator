@@ -23,7 +23,7 @@ type AwsWafregionalRule struct {
 type AwsWafregionalRuleSpec struct {
 	Name	string	`json:"name"`
 	MetricName	string	`json:"metric_name"`
-	Predicate	string	`json:"predicate"`
+	Predicate	Predicate	`json:"predicate"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -36,3 +36,10 @@ type AwsWafregionalRuleList struct {
 	Items	[]AwsWafregionalRule	`json:"items"`
 }
 
+
+// Predicate is a Predicate
+type Predicate struct {
+	Type	string	`json:"type"`
+	Negated	bool	`json:"negated"`
+	DataId	string	`json:"data_id"`
+}

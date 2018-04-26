@@ -21,10 +21,10 @@ type AwsCloudwatchLogMetricFilter struct {
 
 // AwsCloudwatchLogMetricFilterSpec is the spec for a AwsCloudwatchLogMetricFilter Resource
 type AwsCloudwatchLogMetricFilterSpec struct {
-	LogGroupName	string	`json:"log_group_name"`
-	MetricTransformation	[]lPWyqOsU	`json:"metric_transformation"`
 	Name	string	`json:"name"`
 	Pattern	string	`json:"pattern"`
+	LogGroupName	string	`json:"log_group_name"`
+	MetricTransformation	[]MetricTransformation	`json:"metric_transformation"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -38,10 +38,10 @@ type AwsCloudwatchLogMetricFilterList struct {
 }
 
 
-// lPWyqOsU is a lPWyqOsU
-type lPWyqOsU struct {
-	DefaultValue	float64	`json:"default_value"`
-	Name	string	`json:"name"`
+// MetricTransformation is a MetricTransformation
+type MetricTransformation struct {
 	Namespace	string	`json:"namespace"`
 	Value	string	`json:"value"`
+	DefaultValue	float64	`json:"default_value"`
+	Name	string	`json:"name"`
 }

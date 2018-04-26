@@ -21,9 +21,9 @@ type AwsIotThingType struct {
 
 // AwsIotThingTypeSpec is the spec for a AwsIotThingType Resource
 type AwsIotThingTypeSpec struct {
-	Name	string	`json:"name"`
-	Properties	[]ZIvaBjMk	`json:"properties"`
+	Properties	[]Properties	`json:"properties"`
 	Deprecated	bool	`json:"deprecated"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -37,7 +37,7 @@ type AwsIotThingTypeList struct {
 }
 
 
-// ZIvaBjMk is a ZIvaBjMk
-type ZIvaBjMk struct {
+// Properties is a Properties
+type Properties struct {
 	Description	string	`json:"description"`
 }

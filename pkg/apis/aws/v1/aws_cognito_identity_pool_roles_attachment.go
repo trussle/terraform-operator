@@ -22,8 +22,8 @@ type AwsCognitoIdentityPoolRolesAttachment struct {
 // AwsCognitoIdentityPoolRolesAttachmentSpec is the spec for a AwsCognitoIdentityPoolRolesAttachment Resource
 type AwsCognitoIdentityPoolRolesAttachmentSpec struct {
 	IdentityPoolId	string	`json:"identity_pool_id"`
-	RoleMapping	string	`json:"role_mapping"`
-	Roles	map[string]tjAyRRDe	`json:"roles"`
+	RoleMapping	RoleMapping	`json:"role_mapping"`
+	Roles	map[string]Roles	`json:"roles"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -37,8 +37,24 @@ type AwsCognitoIdentityPoolRolesAttachmentList struct {
 }
 
 
-// tjAyRRDe is a tjAyRRDe
-type tjAyRRDe struct {
+// Roles is a Roles
+type Roles struct {
 	Authenticated	string	`json:"authenticated"`
 	Unauthenticated	string	`json:"unauthenticated"`
+}
+
+// MappingRule is a MappingRule
+type MappingRule struct {
+	Claim	string	`json:"claim"`
+	MatchType	string	`json:"match_type"`
+	RoleArn	string	`json:"role_arn"`
+	Value	string	`json:"value"`
+}
+
+// RoleMapping is a RoleMapping
+type RoleMapping struct {
+	IdentityProvider	string	`json:"identity_provider"`
+	AmbiguousRoleResolution	string	`json:"ambiguous_role_resolution"`
+	MappingRule	[]MappingRule	`json:"mapping_rule"`
+	Type	string	`json:"type"`
 }

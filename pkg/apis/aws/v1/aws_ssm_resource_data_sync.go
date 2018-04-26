@@ -21,8 +21,8 @@ type AwsSsmResourceDataSync struct {
 
 // AwsSsmResourceDataSyncSpec is the spec for a AwsSsmResourceDataSync Resource
 type AwsSsmResourceDataSyncSpec struct {
+	S3Destination	[]S3Destination	`json:"s3_destination"`
 	Name	string	`json:"name"`
-	S3Destination	[]MmpBHCSj	`json:"s3_destination"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -36,8 +36,8 @@ type AwsSsmResourceDataSyncList struct {
 }
 
 
-// MmpBHCSj is a MmpBHCSj
-type MmpBHCSj struct {
+// S3Destination is a S3Destination
+type S3Destination struct {
 	KmsKeyArn	string	`json:"kms_key_arn"`
 	BucketName	string	`json:"bucket_name"`
 	Prefix	string	`json:"prefix"`

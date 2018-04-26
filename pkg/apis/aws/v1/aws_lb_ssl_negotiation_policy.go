@@ -21,10 +21,10 @@ type AwsLbSslNegotiationPolicy struct {
 
 // AwsLbSslNegotiationPolicySpec is the spec for a AwsLbSslNegotiationPolicy Resource
 type AwsLbSslNegotiationPolicySpec struct {
-	Name	string	`json:"name"`
 	LoadBalancer	string	`json:"load_balancer"`
 	LbPort	int	`json:"lb_port"`
-	Attribute	string	`json:"attribute"`
+	Attribute	Attribute	`json:"attribute"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -37,3 +37,9 @@ type AwsLbSslNegotiationPolicyList struct {
 	Items	[]AwsLbSslNegotiationPolicy	`json:"items"`
 }
 
+
+// Attribute is a Attribute
+type Attribute struct {
+	Name	string	`json:"name"`
+	Value	string	`json:"value"`
+}

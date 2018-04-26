@@ -22,7 +22,7 @@ type AwsIotThing struct {
 // AwsIotThingSpec is the spec for a AwsIotThing Resource
 type AwsIotThingSpec struct {
 	Name	string	`json:"name"`
-	Attributes	map[string]???	`json:"attributes"`
+	Attributes	map[string]string	`json:"attributes"`
 	ThingTypeName	string	`json:"thing_type_name"`
 }
 

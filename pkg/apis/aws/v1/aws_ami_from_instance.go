@@ -21,11 +21,11 @@ type AwsAmiFromInstance struct {
 
 // AwsAmiFromInstanceSpec is the spec for a AwsAmiFromInstance Resource
 type AwsAmiFromInstanceSpec struct {
+	Tags	map[string]string	`json:"tags"`
+	SourceInstanceId	string	`json:"source_instance_id"`
 	SnapshotWithoutReboot	bool	`json:"snapshot_without_reboot"`
 	Description	string	`json:"description"`
 	Name	string	`json:"name"`
-	Tags	map[string]???	`json:"tags"`
-	SourceInstanceId	string	`json:"source_instance_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -38,3 +38,11 @@ type AwsAmiFromInstanceList struct {
 	Items	[]AwsAmiFromInstance	`json:"items"`
 }
 
+
+// EbsBlockDevice is a EbsBlockDevice
+type EbsBlockDevice struct {
+}
+
+// EphemeralBlockDevice is a EphemeralBlockDevice
+type EphemeralBlockDevice struct {
+}

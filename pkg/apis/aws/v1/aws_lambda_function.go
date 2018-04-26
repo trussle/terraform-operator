@@ -21,24 +21,24 @@ type AwsLambdaFunction struct {
 
 // AwsLambdaFunctionSpec is the spec for a AwsLambdaFunction Resource
 type AwsLambdaFunctionSpec struct {
-	S3Key	string	`json:"s3_key"`
-	FunctionName	string	`json:"function_name"`
-	ReservedConcurrentExecutions	int	`json:"reserved_concurrent_executions"`
-	Role	string	`json:"role"`
-	Filename	string	`json:"filename"`
-	DeadLetterConfig	[]RVjaRzLN	`json:"dead_letter_config"`
-	Publish	bool	`json:"publish"`
-	VpcConfig	[]TXYeUCWK	`json:"vpc_config"`
-	Tags	map[string]???	`json:"tags"`
-	S3Bucket	string	`json:"s3_bucket"`
-	Handler	string	`json:"handler"`
-	MemorySize	int	`json:"memory_size"`
 	Runtime	string	`json:"runtime"`
-	Environment	[]mBTvKSJf	`json:"environment"`
-	KmsKeyArn	string	`json:"kms_key_arn"`
 	S3ObjectVersion	string	`json:"s3_object_version"`
-	Description	string	`json:"description"`
+	FunctionName	string	`json:"function_name"`
+	Handler	string	`json:"handler"`
+	ReservedConcurrentExecutions	int	`json:"reserved_concurrent_executions"`
+	Tags	map[string]string	`json:"tags"`
+	S3Bucket	string	`json:"s3_bucket"`
+	S3Key	string	`json:"s3_key"`
+	Role	string	`json:"role"`
 	Timeout	int	`json:"timeout"`
+	KmsKeyArn	string	`json:"kms_key_arn"`
+	Environment	[]Environment	`json:"environment"`
+	Description	string	`json:"description"`
+	DeadLetterConfig	[]DeadLetterConfig	`json:"dead_letter_config"`
+	Publish	bool	`json:"publish"`
+	VpcConfig	[]VpcConfig	`json:"vpc_config"`
+	Filename	string	`json:"filename"`
+	MemorySize	int	`json:"memory_size"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -52,23 +52,23 @@ type AwsLambdaFunctionList struct {
 }
 
 
-// RVjaRzLN is a RVjaRzLN
-type RVjaRzLN struct {
+// Environment is a Environment
+type Environment struct {
+	Variables	map[string]string	`json:"variables"`
+}
+
+// DeadLetterConfig is a DeadLetterConfig
+type DeadLetterConfig struct {
 	TargetArn	string	`json:"target_arn"`
 }
 
-// TXYeUCWK is a TXYeUCWK
-type TXYeUCWK struct {
+// VpcConfig is a VpcConfig
+type VpcConfig struct {
 	SubnetIds	string	`json:"subnet_ids"`
 	SecurityGroupIds	string	`json:"security_group_ids"`
 }
 
-// sXbGyRAO is a sXbGyRAO
-type sXbGyRAO struct {
+// TracingConfig is a TracingConfig
+type TracingConfig struct {
 	Mode	string	`json:"mode"`
-}
-
-// mBTvKSJf is a mBTvKSJf
-type mBTvKSJf struct {
-	Variables	map[string]???	`json:"variables"`
 }

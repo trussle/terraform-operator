@@ -21,16 +21,16 @@ type AwsSsmMaintenanceWindowTask struct {
 
 // AwsSsmMaintenanceWindowTaskSpec is the spec for a AwsSsmMaintenanceWindowTask Resource
 type AwsSsmMaintenanceWindowTaskSpec struct {
+	WindowId	string	`json:"window_id"`
+	MaxConcurrency	string	`json:"max_concurrency"`
+	Priority	int	`json:"priority"`
+	LoggingInfo	[]LoggingInfo	`json:"logging_info"`
+	TaskParameters	[]TaskParameters	`json:"task_parameters"`
 	MaxErrors	string	`json:"max_errors"`
 	TaskType	string	`json:"task_type"`
 	TaskArn	string	`json:"task_arn"`
-	Targets	[]vAUkAwww	`json:"targets"`
-	WindowId	string	`json:"window_id"`
 	ServiceRoleArn	string	`json:"service_role_arn"`
-	Priority	int	`json:"priority"`
-	LoggingInfo	[]TndUJHiQ	`json:"logging_info"`
-	TaskParameters	[]ecbxzvqz	`json:"task_parameters"`
-	MaxConcurrency	string	`json:"max_concurrency"`
+	Targets	[]Targets	`json:"targets"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -44,21 +44,21 @@ type AwsSsmMaintenanceWindowTaskList struct {
 }
 
 
-// vAUkAwww is a vAUkAwww
-type vAUkAwww struct {
+// Targets is a Targets
+type Targets struct {
 	Key	string	`json:"key"`
 	Values	[]string	`json:"values"`
 }
 
-// TndUJHiQ is a TndUJHiQ
-type TndUJHiQ struct {
+// LoggingInfo is a LoggingInfo
+type LoggingInfo struct {
+	S3BucketPrefix	string	`json:"s3_bucket_prefix"`
 	S3BucketName	string	`json:"s3_bucket_name"`
 	S3Region	string	`json:"s3_region"`
-	S3BucketPrefix	string	`json:"s3_bucket_prefix"`
 }
 
-// ecbxzvqz is a ecbxzvqz
-type ecbxzvqz struct {
-	Name	string	`json:"name"`
+// TaskParameters is a TaskParameters
+type TaskParameters struct {
 	Values	[]string	`json:"values"`
+	Name	string	`json:"name"`
 }

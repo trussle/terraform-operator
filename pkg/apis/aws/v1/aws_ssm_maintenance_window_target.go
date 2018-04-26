@@ -21,10 +21,10 @@ type AwsSsmMaintenanceWindowTarget struct {
 
 // AwsSsmMaintenanceWindowTargetSpec is the spec for a AwsSsmMaintenanceWindowTarget Resource
 type AwsSsmMaintenanceWindowTargetSpec struct {
-	OwnerInformation	string	`json:"owner_information"`
 	WindowId	string	`json:"window_id"`
 	ResourceType	string	`json:"resource_type"`
-	Targets	[]dMiyLpru	`json:"targets"`
+	Targets	[]Targets	`json:"targets"`
+	OwnerInformation	string	`json:"owner_information"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -38,8 +38,8 @@ type AwsSsmMaintenanceWindowTargetList struct {
 }
 
 
-// dMiyLpru is a dMiyLpru
-type dMiyLpru struct {
+// Targets is a Targets
+type Targets struct {
 	Key	string	`json:"key"`
 	Values	[]string	`json:"values"`
 }

@@ -21,8 +21,8 @@ type AwsCloudwatchLogDestinationPolicy struct {
 
 // AwsCloudwatchLogDestinationPolicySpec is the spec for a AwsCloudwatchLogDestinationPolicy Resource
 type AwsCloudwatchLogDestinationPolicySpec struct {
-	DestinationName	string	`json:"destination_name"`
 	AccessPolicy	string	`json:"access_policy"`
+	DestinationName	string	`json:"destination_name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -21,8 +21,8 @@ type AwsDefaultVpc struct {
 
 // AwsDefaultVpcSpec is the spec for a AwsDefaultVpc Resource
 type AwsDefaultVpcSpec struct {
-	Tags	map[string]???	`json:"tags"`
 	EnableDnsSupport	bool	`json:"enable_dns_support"`
+	Tags	map[string]string	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

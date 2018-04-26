@@ -21,14 +21,14 @@ type AwsGlueJob struct {
 
 // AwsGlueJobSpec is the spec for a AwsGlueJob Resource
 type AwsGlueJobSpec struct {
+	RoleArn	string	`json:"role_arn"`
 	AllocatedCapacity	int	`json:"allocated_capacity"`
-	Command	[]TjPcDeMi	`json:"command"`
+	DefaultArguments	map[string]string	`json:"default_arguments"`
+	Name	string	`json:"name"`
+	Command	[]Command	`json:"command"`
 	Connections	[]string	`json:"connections"`
-	DefaultArguments	map[string]???	`json:"default_arguments"`
 	Description	string	`json:"description"`
 	MaxRetries	int	`json:"max_retries"`
-	Name	string	`json:"name"`
-	RoleArn	string	`json:"role_arn"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -42,13 +42,13 @@ type AwsGlueJobList struct {
 }
 
 
-// TjPcDeMi is a TjPcDeMi
-type TjPcDeMi struct {
-	Name	string	`json:"name"`
-	ScriptLocation	string	`json:"script_location"`
+// ExecutionProperty is a ExecutionProperty
+type ExecutionProperty struct {
+	MaxConcurrentRuns	int	`json:"max_concurrent_runs"`
 }
 
-// xVduzfhi is a xVduzfhi
-type xVduzfhi struct {
-	MaxConcurrentRuns	int	`json:"max_concurrent_runs"`
+// Command is a Command
+type Command struct {
+	Name	string	`json:"name"`
+	ScriptLocation	string	`json:"script_location"`
 }

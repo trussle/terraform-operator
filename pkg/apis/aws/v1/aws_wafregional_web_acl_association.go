@@ -21,8 +21,8 @@ type AwsWafregionalWebAclAssociation struct {
 
 // AwsWafregionalWebAclAssociationSpec is the spec for a AwsWafregionalWebAclAssociation Resource
 type AwsWafregionalWebAclAssociationSpec struct {
-	ResourceArn	string	`json:"resource_arn"`
 	WebAclId	string	`json:"web_acl_id"`
+	ResourceArn	string	`json:"resource_arn"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

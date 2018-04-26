@@ -23,8 +23,8 @@ type AwsVpnConnection struct {
 type AwsVpnConnectionSpec struct {
 	VpnGatewayId	string	`json:"vpn_gateway_id"`
 	Type	string	`json:"type"`
+	Tags	map[string]string	`json:"tags"`
 	CustomerGatewayId	string	`json:"customer_gateway_id"`
-	Tags	map[string]???	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -37,3 +37,11 @@ type AwsVpnConnectionList struct {
 	Items	[]AwsVpnConnection	`json:"items"`
 }
 
+
+// Routes is a Routes
+type Routes struct {
+}
+
+// VgwTelemetry is a VgwTelemetry
+type VgwTelemetry struct {
+}

@@ -21,9 +21,9 @@ type AwsEbsSnapshot struct {
 
 // AwsEbsSnapshotSpec is the spec for a AwsEbsSnapshot Resource
 type AwsEbsSnapshotSpec struct {
-	Tags	map[string]???	`json:"tags"`
 	VolumeId	string	`json:"volume_id"`
 	Description	string	`json:"description"`
+	Tags	map[string]string	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -21,8 +21,8 @@ type AwsInternetGateway struct {
 
 // AwsInternetGatewaySpec is the spec for a AwsInternetGateway Resource
 type AwsInternetGatewaySpec struct {
+	Tags	map[string]string	`json:"tags"`
 	VpcId	string	`json:"vpc_id"`
-	Tags	map[string]???	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

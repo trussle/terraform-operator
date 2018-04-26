@@ -21,8 +21,8 @@ type AwsSnsTopicPolicy struct {
 
 // AwsSnsTopicPolicySpec is the spec for a AwsSnsTopicPolicy Resource
 type AwsSnsTopicPolicySpec struct {
-	Arn	string	`json:"arn"`
 	Policy	string	`json:"policy"`
+	Arn	string	`json:"arn"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

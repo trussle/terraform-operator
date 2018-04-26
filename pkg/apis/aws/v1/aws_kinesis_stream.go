@@ -21,13 +21,13 @@ type AwsKinesisStream struct {
 
 // AwsKinesisStreamSpec is the spec for a AwsKinesisStream Resource
 type AwsKinesisStreamSpec struct {
-	ShardCount	int	`json:"shard_count"`
-	RetentionPeriod	int	`json:"retention_period"`
 	ShardLevelMetrics	string	`json:"shard_level_metrics"`
 	EncryptionType	string	`json:"encryption_type"`
 	KmsKeyId	string	`json:"kms_key_id"`
-	Tags	map[string]???	`json:"tags"`
+	Tags	map[string]string	`json:"tags"`
 	Name	string	`json:"name"`
+	ShardCount	int	`json:"shard_count"`
+	RetentionPeriod	int	`json:"retention_period"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -22,9 +22,9 @@ type AwsS3BucketNotification struct {
 // AwsS3BucketNotificationSpec is the spec for a AwsS3BucketNotification Resource
 type AwsS3BucketNotificationSpec struct {
 	Bucket	string	`json:"bucket"`
-	Topic	[]nyNSLTvm	`json:"topic"`
-	Queue	[]wZLbKtzi	`json:"queue"`
-	LambdaFunction	[]YpTpzlFP	`json:"lambda_function"`
+	Topic	[]Topic	`json:"topic"`
+	Queue	[]Queue	`json:"queue"`
+	LambdaFunction	[]LambdaFunction	`json:"lambda_function"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -38,26 +38,26 @@ type AwsS3BucketNotificationList struct {
 }
 
 
-// nyNSLTvm is a nyNSLTvm
-type nyNSLTvm struct {
-	Events	string	`json:"events"`
-	FilterPrefix	string	`json:"filter_prefix"`
+// Topic is a Topic
+type Topic struct {
 	FilterSuffix	string	`json:"filter_suffix"`
 	TopicArn	string	`json:"topic_arn"`
+	Events	string	`json:"events"`
+	FilterPrefix	string	`json:"filter_prefix"`
 }
 
-// wZLbKtzi is a wZLbKtzi
-type wZLbKtzi struct {
+// Queue is a Queue
+type Queue struct {
 	FilterPrefix	string	`json:"filter_prefix"`
 	FilterSuffix	string	`json:"filter_suffix"`
 	QueueArn	string	`json:"queue_arn"`
 	Events	string	`json:"events"`
 }
 
-// YpTpzlFP is a YpTpzlFP
-type YpTpzlFP struct {
-	FilterPrefix	string	`json:"filter_prefix"`
-	FilterSuffix	string	`json:"filter_suffix"`
+// LambdaFunction is a LambdaFunction
+type LambdaFunction struct {
 	LambdaFunctionArn	string	`json:"lambda_function_arn"`
 	Events	string	`json:"events"`
+	FilterPrefix	string	`json:"filter_prefix"`
+	FilterSuffix	string	`json:"filter_suffix"`
 }

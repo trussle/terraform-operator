@@ -21,9 +21,9 @@ type AwsApiGatewayDocumentationVersion struct {
 
 // AwsApiGatewayDocumentationVersionSpec is the spec for a AwsApiGatewayDocumentationVersion Resource
 type AwsApiGatewayDocumentationVersionSpec struct {
-	Description	string	`json:"description"`
 	Version	string	`json:"version"`
 	RestApiId	string	`json:"rest_api_id"`
+	Description	string	`json:"description"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

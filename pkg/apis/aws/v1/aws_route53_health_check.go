@@ -21,24 +21,24 @@ type AwsRoute53HealthCheck struct {
 
 // AwsRoute53HealthCheckSpec is the spec for a AwsRoute53HealthCheck Resource
 type AwsRoute53HealthCheckSpec struct {
-	Regions	string	`json:"regions"`
-	Tags	map[string]???	`json:"tags"`
-	IpAddress	string	`json:"ip_address"`
-	SearchString	string	`json:"search_string"`
-	ChildHealthchecks	string	`json:"child_healthchecks"`
-	FailureThreshold	int	`json:"failure_threshold"`
-	Fqdn	string	`json:"fqdn"`
-	ReferenceName	string	`json:"reference_name"`
-	ResourcePath	string	`json:"resource_path"`
-	MeasureLatency	bool	`json:"measure_latency"`
-	CloudwatchAlarmRegion	string	`json:"cloudwatch_alarm_region"`
-	InsufficientDataHealthStatus	string	`json:"insufficient_data_health_status"`
-	Type	string	`json:"type"`
-	Port	int	`json:"port"`
-	InvertHealthcheck	bool	`json:"invert_healthcheck"`
 	RequestInterval	int	`json:"request_interval"`
+	IpAddress	string	`json:"ip_address"`
+	Fqdn	string	`json:"fqdn"`
+	ResourcePath	string	`json:"resource_path"`
+	Tags	map[string]string	`json:"tags"`
+	Port	int	`json:"port"`
 	ChildHealthThreshold	int	`json:"child_health_threshold"`
 	CloudwatchAlarmName	string	`json:"cloudwatch_alarm_name"`
+	InsufficientDataHealthStatus	string	`json:"insufficient_data_health_status"`
+	ReferenceName	string	`json:"reference_name"`
+	Type	string	`json:"type"`
+	InvertHealthcheck	bool	`json:"invert_healthcheck"`
+	SearchString	string	`json:"search_string"`
+	MeasureLatency	bool	`json:"measure_latency"`
+	ChildHealthchecks	string	`json:"child_healthchecks"`
+	CloudwatchAlarmRegion	string	`json:"cloudwatch_alarm_region"`
+	FailureThreshold	int	`json:"failure_threshold"`
+	Regions	string	`json:"regions"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

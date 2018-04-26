@@ -21,10 +21,10 @@ type AwsWafWebAcl struct {
 
 // AwsWafWebAclSpec is the spec for a AwsWafWebAcl Resource
 type AwsWafWebAclSpec struct {
-	Name	string	`json:"name"`
-	DefaultAction	string	`json:"default_action"`
+	DefaultAction	DefaultAction	`json:"default_action"`
 	MetricName	string	`json:"metric_name"`
-	Rules	string	`json:"rules"`
+	Rules	Rules	`json:"rules"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -37,3 +37,21 @@ type AwsWafWebAclList struct {
 	Items	[]AwsWafWebAcl	`json:"items"`
 }
 
+
+// Action is a Action
+type Action struct {
+	Type	string	`json:"type"`
+}
+
+// Rules is a Rules
+type Rules struct {
+	Action	Action	`json:"action"`
+	Priority	int	`json:"priority"`
+	Type	string	`json:"type"`
+	RuleId	string	`json:"rule_id"`
+}
+
+// DefaultAction is a DefaultAction
+type DefaultAction struct {
+	Type	string	`json:"type"`
+}

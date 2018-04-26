@@ -21,17 +21,17 @@ type AwsAutoscalingPolicy struct {
 
 // AwsAutoscalingPolicySpec is the spec for a AwsAutoscalingPolicy Resource
 type AwsAutoscalingPolicySpec struct {
-	EstimatedInstanceWarmup	int	`json:"estimated_instance_warmup"`
-	MinAdjustmentMagnitude	int	`json:"min_adjustment_magnitude"`
 	AdjustmentType	string	`json:"adjustment_type"`
+	PolicyType	string	`json:"policy_type"`
+	ScalingAdjustment	int	`json:"scaling_adjustment"`
+	TargetTrackingConfiguration	[]TargetTrackingConfiguration	`json:"target_tracking_configuration"`
+	MinAdjustmentStep	int	`json:"min_adjustment_step"`
+	StepAdjustment	StepAdjustment	`json:"step_adjustment"`
+	Name	string	`json:"name"`
 	AutoscalingGroupName	string	`json:"autoscaling_group_name"`
 	Cooldown	int	`json:"cooldown"`
-	MinAdjustmentStep	int	`json:"min_adjustment_step"`
-	ScalingAdjustment	int	`json:"scaling_adjustment"`
-	StepAdjustment	string	`json:"step_adjustment"`
-	TargetTrackingConfiguration	[]LQrCNPAN	`json:"target_tracking_configuration"`
-	Name	string	`json:"name"`
-	PolicyType	string	`json:"policy_type"`
+	EstimatedInstanceWarmup	int	`json:"estimated_instance_warmup"`
+	MinAdjustmentMagnitude	int	`json:"min_adjustment_magnitude"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -45,31 +45,38 @@ type AwsAutoscalingPolicyList struct {
 }
 
 
-// WvkkOdej is a WvkkOdej
-type WvkkOdej struct {
-	PredefinedMetricType	string	`json:"predefined_metric_type"`
+// StepAdjustment is a StepAdjustment
+type StepAdjustment struct {
+	MetricIntervalLowerBound	string	`json:"metric_interval_lower_bound"`
+	MetricIntervalUpperBound	string	`json:"metric_interval_upper_bound"`
+	ScalingAdjustment	int	`json:"scaling_adjustment"`
+}
+
+// PredefinedMetricSpecification is a PredefinedMetricSpecification
+type PredefinedMetricSpecification struct {
 	ResourceLabel	string	`json:"resource_label"`
+	PredefinedMetricType	string	`json:"predefined_metric_type"`
 }
 
-// MUqBcVFo is a MUqBcVFo
-type MUqBcVFo struct {
-	Name	string	`json:"name"`
+// MetricDimension is a MetricDimension
+type MetricDimension struct {
 	Value	string	`json:"value"`
+	Name	string	`json:"name"`
 }
 
-// VcugMVTn is a VcugMVTn
-type VcugMVTn struct {
-	Unit	string	`json:"unit"`
-	MetricDimension	[]MUqBcVFo	`json:"metric_dimension"`
+// CustomizedMetricSpecification is a CustomizedMetricSpecification
+type CustomizedMetricSpecification struct {
+	MetricDimension	[]MetricDimension	`json:"metric_dimension"`
 	MetricName	string	`json:"metric_name"`
 	Namespace	string	`json:"namespace"`
 	Statistic	string	`json:"statistic"`
+	Unit	string	`json:"unit"`
 }
 
-// LQrCNPAN is a LQrCNPAN
-type LQrCNPAN struct {
-	PredefinedMetricSpecification	[]WvkkOdej	`json:"predefined_metric_specification"`
-	CustomizedMetricSpecification	[]VcugMVTn	`json:"customized_metric_specification"`
+// TargetTrackingConfiguration is a TargetTrackingConfiguration
+type TargetTrackingConfiguration struct {
+	PredefinedMetricSpecification	[]PredefinedMetricSpecification	`json:"predefined_metric_specification"`
+	CustomizedMetricSpecification	[]CustomizedMetricSpecification	`json:"customized_metric_specification"`
 	TargetValue	float64	`json:"target_value"`
 	DisableScaleIn	bool	`json:"disable_scale_in"`
 }

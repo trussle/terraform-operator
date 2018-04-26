@@ -21,10 +21,10 @@ type AwsNetworkInterface struct {
 
 // AwsNetworkInterfaceSpec is the spec for a AwsNetworkInterface Resource
 type AwsNetworkInterfaceSpec struct {
-	Tags	map[string]???	`json:"tags"`
 	SourceDestCheck	bool	`json:"source_dest_check"`
-	Description	string	`json:"description"`
+	Tags	map[string]string	`json:"tags"`
 	SubnetId	string	`json:"subnet_id"`
+	Description	string	`json:"description"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -37,3 +37,9 @@ type AwsNetworkInterfaceList struct {
 	Items	[]AwsNetworkInterface	`json:"items"`
 }
 
+
+// Attachment is a Attachment
+type Attachment struct {
+	Instance	string	`json:"instance"`
+	DeviceIndex	int	`json:"device_index"`
+}

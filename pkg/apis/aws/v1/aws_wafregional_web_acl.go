@@ -21,10 +21,10 @@ type AwsWafregionalWebAcl struct {
 
 // AwsWafregionalWebAclSpec is the spec for a AwsWafregionalWebAcl Resource
 type AwsWafregionalWebAclSpec struct {
-	Name	string	`json:"name"`
-	DefaultAction	[]fgPyCKmx	`json:"default_action"`
 	MetricName	string	`json:"metric_name"`
-	Rule	string	`json:"rule"`
+	Rule	Rule	`json:"rule"`
+	Name	string	`json:"name"`
+	DefaultAction	[]DefaultAction	`json:"default_action"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -38,7 +38,19 @@ type AwsWafregionalWebAclList struct {
 }
 
 
-// fgPyCKmx is a fgPyCKmx
-type fgPyCKmx struct {
+// Action is a Action
+type Action struct {
+	Type	string	`json:"type"`
+}
+
+// Rule is a Rule
+type Rule struct {
+	Action	[]Action	`json:"action"`
+	Priority	int	`json:"priority"`
+	RuleId	string	`json:"rule_id"`
+}
+
+// DefaultAction is a DefaultAction
+type DefaultAction struct {
 	Type	string	`json:"type"`
 }

@@ -21,17 +21,17 @@ type AwsCloudwatchEventTarget struct {
 
 // AwsCloudwatchEventTargetSpec is the spec for a AwsCloudwatchEventTarget Resource
 type AwsCloudwatchEventTargetSpec struct {
-	Arn	string	`json:"arn"`
+	InputTransformer	[]InputTransformer	`json:"input_transformer"`
+	Rule	string	`json:"rule"`
 	Input	string	`json:"input"`
 	InputPath	string	`json:"input_path"`
-	InputTransformer	[]LqLIbAat	`json:"input_transformer"`
+	RunCommandTargets	[]RunCommandTargets	`json:"run_command_targets"`
+	BatchTarget	[]BatchTarget	`json:"batch_target"`
+	KinesisTarget	[]KinesisTarget	`json:"kinesis_target"`
+	Arn	string	`json:"arn"`
 	RoleArn	string	`json:"role_arn"`
-	RunCommandTargets	[]LYHdaopo	`json:"run_command_targets"`
-	EcsTarget	[]vFOkqIex	`json:"ecs_target"`
-	BatchTarget	[]sFzXzrlc	`json:"batch_target"`
-	KinesisTarget	[]ztxcdJJF	`json:"kinesis_target"`
-	SqsTarget	[]uyZHRCov	`json:"sqs_target"`
-	Rule	string	`json:"rule"`
+	EcsTarget	[]EcsTarget	`json:"ecs_target"`
+	SqsTarget	[]SqsTarget	`json:"sqs_target"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -45,38 +45,38 @@ type AwsCloudwatchEventTargetList struct {
 }
 
 
-// LqLIbAat is a LqLIbAat
-type LqLIbAat struct {
-	InputPaths	map[string]???	`json:"input_paths"`
-	InputTemplate	string	`json:"input_template"`
+// KinesisTarget is a KinesisTarget
+type KinesisTarget struct {
+	PartitionKeyPath	string	`json:"partition_key_path"`
 }
 
-// LYHdaopo is a LYHdaopo
-type LYHdaopo struct {
-	Key	string	`json:"key"`
-	Values	[]string	`json:"values"`
-}
-
-// vFOkqIex is a vFOkqIex
-type vFOkqIex struct {
+// EcsTarget is a EcsTarget
+type EcsTarget struct {
 	TaskCount	int	`json:"task_count"`
 	TaskDefinitionArn	string	`json:"task_definition_arn"`
 }
 
-// sFzXzrlc is a sFzXzrlc
-type sFzXzrlc struct {
-	JobDefinition	string	`json:"job_definition"`
+// SqsTarget is a SqsTarget
+type SqsTarget struct {
+	MessageGroupId	string	`json:"message_group_id"`
+}
+
+// InputTransformer is a InputTransformer
+type InputTransformer struct {
+	InputPaths	map[string]string	`json:"input_paths"`
+	InputTemplate	string	`json:"input_template"`
+}
+
+// RunCommandTargets is a RunCommandTargets
+type RunCommandTargets struct {
+	Key	string	`json:"key"`
+	Values	[]string	`json:"values"`
+}
+
+// BatchTarget is a BatchTarget
+type BatchTarget struct {
 	JobName	string	`json:"job_name"`
 	ArraySize	int	`json:"array_size"`
 	JobAttempts	int	`json:"job_attempts"`
-}
-
-// ztxcdJJF is a ztxcdJJF
-type ztxcdJJF struct {
-	PartitionKeyPath	string	`json:"partition_key_path"`
-}
-
-// uyZHRCov is a uyZHRCov
-type uyZHRCov struct {
-	MessageGroupId	string	`json:"message_group_id"`
+	JobDefinition	string	`json:"job_definition"`
 }

@@ -21,14 +21,14 @@ type AwsGameliftFleet struct {
 
 // AwsGameliftFleetSpec is the spec for a AwsGameliftFleet Resource
 type AwsGameliftFleetSpec struct {
-	ResourceCreationLimitPolicy	[]uZJUuZkJ	`json:"resource_creation_limit_policy"`
-	RuntimeConfiguration	[]wQsrzoVW	`json:"runtime_configuration"`
-	Ec2InboundPermission	[]KrSOKAaK	`json:"ec2_inbound_permission"`
-	Name	string	`json:"name"`
-	Description	string	`json:"description"`
-	NewGameSessionProtectionPolicy	string	`json:"new_game_session_protection_policy"`
 	BuildId	string	`json:"build_id"`
 	Ec2InstanceType	string	`json:"ec2_instance_type"`
+	Description	string	`json:"description"`
+	Ec2InboundPermission	[]Ec2InboundPermission	`json:"ec2_inbound_permission"`
+	NewGameSessionProtectionPolicy	string	`json:"new_game_session_protection_policy"`
+	Name	string	`json:"name"`
+	ResourceCreationLimitPolicy	[]ResourceCreationLimitPolicy	`json:"resource_creation_limit_policy"`
+	RuntimeConfiguration	[]RuntimeConfiguration	`json:"runtime_configuration"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -42,30 +42,30 @@ type AwsGameliftFleetList struct {
 }
 
 
-// uZJUuZkJ is a uZJUuZkJ
-type uZJUuZkJ struct {
+// Ec2InboundPermission is a Ec2InboundPermission
+type Ec2InboundPermission struct {
+	Protocol	string	`json:"protocol"`
+	ToPort	int	`json:"to_port"`
+	FromPort	int	`json:"from_port"`
+	IpRange	string	`json:"ip_range"`
+}
+
+// ResourceCreationLimitPolicy is a ResourceCreationLimitPolicy
+type ResourceCreationLimitPolicy struct {
 	NewGameSessionsPerCreator	int	`json:"new_game_sessions_per_creator"`
 	PolicyPeriodInMinutes	int	`json:"policy_period_in_minutes"`
 }
 
-// aYedKZpE is a aYedKZpE
-type aYedKZpE struct {
+// ServerProcess is a ServerProcess
+type ServerProcess struct {
 	ConcurrentExecutions	int	`json:"concurrent_executions"`
 	LaunchPath	string	`json:"launch_path"`
 	Parameters	string	`json:"parameters"`
 }
 
-// wQsrzoVW is a wQsrzoVW
-type wQsrzoVW struct {
+// RuntimeConfiguration is a RuntimeConfiguration
+type RuntimeConfiguration struct {
 	GameSessionActivationTimeoutSeconds	int	`json:"game_session_activation_timeout_seconds"`
 	MaxConcurrentGameSessionActivations	int	`json:"max_concurrent_game_session_activations"`
-	ServerProcess	[]aYedKZpE	`json:"server_process"`
-}
-
-// KrSOKAaK is a KrSOKAaK
-type KrSOKAaK struct {
-	FromPort	int	`json:"from_port"`
-	IpRange	string	`json:"ip_range"`
-	Protocol	string	`json:"protocol"`
-	ToPort	int	`json:"to_port"`
+	ServerProcess	[]ServerProcess	`json:"server_process"`
 }

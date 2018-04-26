@@ -21,26 +21,26 @@ type AwsOpsworksStaticWebLayer struct {
 
 // AwsOpsworksStaticWebLayerSpec is the spec for a AwsOpsworksStaticWebLayer Resource
 type AwsOpsworksStaticWebLayerSpec struct {
-	CustomSetupRecipes	[]string	`json:"custom_setup_recipes"`
-	CustomSecurityGroupIds	string	`json:"custom_security_group_ids"`
-	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
-	DrainElbOnShutdown	bool	`json:"drain_elb_on_shutdown"`
-	SystemPackages	string	`json:"system_packages"`
-	EbsVolume	string	`json:"ebs_volume"`
-	AutoAssignPublicIps	bool	`json:"auto_assign_public_ips"`
-	CustomConfigureRecipes	[]string	`json:"custom_configure_recipes"`
-	CustomDeployRecipes	[]string	`json:"custom_deploy_recipes"`
-	CustomJson	string	`json:"custom_json"`
-	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
-	AutoAssignElasticIps	bool	`json:"auto_assign_elastic_ips"`
-	AutoHealing	bool	`json:"auto_healing"`
-	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
-	Name	string	`json:"name"`
-	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
+	EbsVolume	EbsVolume	`json:"ebs_volume"`
 	ElasticLoadBalancer	string	`json:"elastic_load_balancer"`
+	StackId	string	`json:"stack_id"`
+	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
+	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
+	CustomDeployRecipes	[]string	`json:"custom_deploy_recipes"`
+	AutoHealing	bool	`json:"auto_healing"`
+	CustomSetupRecipes	[]string	`json:"custom_setup_recipes"`
+	CustomConfigureRecipes	[]string	`json:"custom_configure_recipes"`
 	CustomUndeployRecipes	[]string	`json:"custom_undeploy_recipes"`
 	CustomShutdownRecipes	[]string	`json:"custom_shutdown_recipes"`
-	StackId	string	`json:"stack_id"`
+	CustomJson	string	`json:"custom_json"`
+	DrainElbOnShutdown	bool	`json:"drain_elb_on_shutdown"`
+	AutoAssignElasticIps	bool	`json:"auto_assign_elastic_ips"`
+	AutoAssignPublicIps	bool	`json:"auto_assign_public_ips"`
+	SystemPackages	string	`json:"system_packages"`
+	Name	string	`json:"name"`
+	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
+	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
+	CustomSecurityGroupIds	string	`json:"custom_security_group_ids"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -53,3 +53,13 @@ type AwsOpsworksStaticWebLayerList struct {
 	Items	[]AwsOpsworksStaticWebLayer	`json:"items"`
 }
 
+
+// EbsVolume is a EbsVolume
+type EbsVolume struct {
+	Iops	int	`json:"iops"`
+	MountPoint	string	`json:"mount_point"`
+	NumberOfDisks	int	`json:"number_of_disks"`
+	RaidLevel	string	`json:"raid_level"`
+	Size	int	`json:"size"`
+	Type	string	`json:"type"`
+}

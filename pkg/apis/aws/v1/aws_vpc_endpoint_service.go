@@ -21,8 +21,8 @@ type AwsVpcEndpointService struct {
 
 // AwsVpcEndpointServiceSpec is the spec for a AwsVpcEndpointService Resource
 type AwsVpcEndpointServiceSpec struct {
-	AcceptanceRequired	bool	`json:"acceptance_required"`
 	NetworkLoadBalancerArns	string	`json:"network_load_balancer_arns"`
+	AcceptanceRequired	bool	`json:"acceptance_required"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

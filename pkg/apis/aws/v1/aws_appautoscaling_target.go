@@ -21,11 +21,11 @@ type AwsAppautoscalingTarget struct {
 
 // AwsAppautoscalingTargetSpec is the spec for a AwsAppautoscalingTarget Resource
 type AwsAppautoscalingTargetSpec struct {
+	ResourceId	string	`json:"resource_id"`
 	ScalableDimension	string	`json:"scalable_dimension"`
 	ServiceNamespace	string	`json:"service_namespace"`
 	MaxCapacity	int	`json:"max_capacity"`
 	MinCapacity	int	`json:"min_capacity"`
-	ResourceId	string	`json:"resource_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -21,8 +21,8 @@ type AwsIamGroupPolicyAttachment struct {
 
 // AwsIamGroupPolicyAttachmentSpec is the spec for a AwsIamGroupPolicyAttachment Resource
 type AwsIamGroupPolicyAttachmentSpec struct {
-	PolicyArn	string	`json:"policy_arn"`
 	Group	string	`json:"group"`
+	PolicyArn	string	`json:"policy_arn"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

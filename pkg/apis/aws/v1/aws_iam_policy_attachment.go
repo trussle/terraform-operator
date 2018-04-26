@@ -21,11 +21,11 @@ type AwsIamPolicyAttachment struct {
 
 // AwsIamPolicyAttachmentSpec is the spec for a AwsIamPolicyAttachment Resource
 type AwsIamPolicyAttachmentSpec struct {
+	Name	string	`json:"name"`
+	Users	string	`json:"users"`
 	Roles	string	`json:"roles"`
 	Groups	string	`json:"groups"`
 	PolicyArn	string	`json:"policy_arn"`
-	Name	string	`json:"name"`
-	Users	string	`json:"users"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

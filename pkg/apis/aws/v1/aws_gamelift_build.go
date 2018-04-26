@@ -21,10 +21,10 @@ type AwsGameliftBuild struct {
 
 // AwsGameliftBuildSpec is the spec for a AwsGameliftBuild Resource
 type AwsGameliftBuildSpec struct {
-	StorageLocation	[]arcSbblm	`json:"storage_location"`
-	Version	string	`json:"version"`
 	Name	string	`json:"name"`
 	OperatingSystem	string	`json:"operating_system"`
+	StorageLocation	[]StorageLocation	`json:"storage_location"`
+	Version	string	`json:"version"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -38,8 +38,8 @@ type AwsGameliftBuildList struct {
 }
 
 
-// arcSbblm is a arcSbblm
-type arcSbblm struct {
+// StorageLocation is a StorageLocation
+type StorageLocation struct {
 	Bucket	string	`json:"bucket"`
 	Key	string	`json:"key"`
 	RoleArn	string	`json:"role_arn"`

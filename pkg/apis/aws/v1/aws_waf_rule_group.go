@@ -21,9 +21,9 @@ type AwsWafRuleGroup struct {
 
 // AwsWafRuleGroupSpec is the spec for a AwsWafRuleGroup Resource
 type AwsWafRuleGroupSpec struct {
-	MetricName	string	`json:"metric_name"`
-	ActivatedRule	string	`json:"activated_rule"`
 	Name	string	`json:"name"`
+	MetricName	string	`json:"metric_name"`
+	ActivatedRule	ActivatedRule	`json:"activated_rule"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -36,3 +36,16 @@ type AwsWafRuleGroupList struct {
 	Items	[]AwsWafRuleGroup	`json:"items"`
 }
 
+
+// Action is a Action
+type Action struct {
+	Type	string	`json:"type"`
+}
+
+// ActivatedRule is a ActivatedRule
+type ActivatedRule struct {
+	Type	string	`json:"type"`
+	Action	[]Action	`json:"action"`
+	Priority	int	`json:"priority"`
+	RuleId	string	`json:"rule_id"`
+}

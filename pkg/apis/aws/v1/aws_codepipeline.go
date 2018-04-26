@@ -23,8 +23,8 @@ type AwsCodepipeline struct {
 type AwsCodepipelineSpec struct {
 	Name	string	`json:"name"`
 	RoleArn	string	`json:"role_arn"`
-	ArtifactStore	[]XVlBzgba	`json:"artifact_store"`
-	Stage	[]hTHctcuA	`json:"stage"`
+	ArtifactStore	[]ArtifactStore	`json:"artifact_store"`
+	Stage	[]Stage	`json:"stage"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -38,34 +38,34 @@ type AwsCodepipelineList struct {
 }
 
 
-// iCMRAjWw is a iCMRAjWw
-type iCMRAjWw struct {
-	Id	string	`json:"id"`
-	Type	string	`json:"type"`
-}
-
-// XVlBzgba is a XVlBzgba
-type XVlBzgba struct {
-	EncryptionKey	[]iCMRAjWw	`json:"encryption_key"`
+// ArtifactStore is a ArtifactStore
+type ArtifactStore struct {
 	Location	string	`json:"location"`
 	Type	string	`json:"type"`
+	EncryptionKey	[]EncryptionKey	`json:"encryption_key"`
 }
 
-// xhxKQFDa is a xhxKQFDa
-type xhxKQFDa struct {
-	RoleArn	string	`json:"role_arn"`
-	Category	string	`json:"category"`
+// Action is a Action
+type Action struct {
 	Provider	string	`json:"provider"`
-	Version	string	`json:"version"`
-	OutputArtifacts	[]string	`json:"output_artifacts"`
-	Configuration	map[string]???	`json:"configuration"`
-	Owner	string	`json:"owner"`
 	InputArtifacts	[]string	`json:"input_artifacts"`
+	OutputArtifacts	[]string	`json:"output_artifacts"`
+	Configuration	map[string]string	`json:"configuration"`
+	Category	string	`json:"category"`
+	Owner	string	`json:"owner"`
+	Version	string	`json:"version"`
 	Name	string	`json:"name"`
+	RoleArn	string	`json:"role_arn"`
 }
 
-// hTHctcuA is a hTHctcuA
-type hTHctcuA struct {
+// Stage is a Stage
+type Stage struct {
 	Name	string	`json:"name"`
-	Action	[]xhxKQFDa	`json:"action"`
+	Action	[]Action	`json:"action"`
+}
+
+// EncryptionKey is a EncryptionKey
+type EncryptionKey struct {
+	Id	string	`json:"id"`
+	Type	string	`json:"type"`
 }

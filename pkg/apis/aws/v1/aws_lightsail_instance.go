@@ -21,12 +21,12 @@ type AwsLightsailInstance struct {
 
 // AwsLightsailInstanceSpec is the spec for a AwsLightsailInstance Resource
 type AwsLightsailInstanceSpec struct {
-	BundleId	string	`json:"bundle_id"`
-	UserData	string	`json:"user_data"`
 	Name	string	`json:"name"`
 	AvailabilityZone	string	`json:"availability_zone"`
+	UserData	string	`json:"user_data"`
 	BlueprintId	string	`json:"blueprint_id"`
 	KeyPairName	string	`json:"key_pair_name"`
+	BundleId	string	`json:"bundle_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

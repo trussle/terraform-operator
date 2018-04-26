@@ -21,23 +21,23 @@ type AwsOpsworksStack struct {
 
 // AwsOpsworksStackSpec is the spec for a AwsOpsworksStack Resource
 type AwsOpsworksStackSpec struct {
-	ConfigurationManagerName	string	`json:"configuration_manager_name"`
-	DefaultRootDeviceType	string	`json:"default_root_device_type"`
-	HostnameTheme	string	`json:"hostname_theme"`
+	Tags	map[string]string	`json:"tags"`
+	UseCustomCookbooks	bool	`json:"use_custom_cookbooks"`
 	UseOpsworksSecurityGroups	bool	`json:"use_opsworks_security_groups"`
-	Name	string	`json:"name"`
 	Region	string	`json:"region"`
-	ServiceRoleArn	string	`json:"service_role_arn"`
-	Color	string	`json:"color"`
-	ConfigurationManagerVersion	string	`json:"configuration_manager_version"`
-	Tags	map[string]???	`json:"tags"`
-	DefaultInstanceProfileArn	string	`json:"default_instance_profile_arn"`
 	ManageBerkshelf	bool	`json:"manage_berkshelf"`
 	BerkshelfVersion	string	`json:"berkshelf_version"`
-	CustomJson	string	`json:"custom_json"`
-	DefaultOs	string	`json:"default_os"`
+	HostnameTheme	string	`json:"hostname_theme"`
+	Name	string	`json:"name"`
+	DefaultInstanceProfileArn	string	`json:"default_instance_profile_arn"`
 	DefaultSshKeyName	string	`json:"default_ssh_key_name"`
-	UseCustomCookbooks	bool	`json:"use_custom_cookbooks"`
+	CustomJson	string	`json:"custom_json"`
+	DefaultRootDeviceType	string	`json:"default_root_device_type"`
+	ServiceRoleArn	string	`json:"service_role_arn"`
+	Color	string	`json:"color"`
+	ConfigurationManagerName	string	`json:"configuration_manager_name"`
+	ConfigurationManagerVersion	string	`json:"configuration_manager_version"`
+	DefaultOs	string	`json:"default_os"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -51,12 +51,12 @@ type AwsOpsworksStackList struct {
 }
 
 
-// bLnAIPRY is a bLnAIPRY
-type bLnAIPRY struct {
-	SshKey	string	`json:"ssh_key"`
+// CustomCookbooksSource is a CustomCookbooksSource
+type CustomCookbooksSource struct {
 	Type	string	`json:"type"`
 	Url	string	`json:"url"`
 	Username	string	`json:"username"`
 	Password	string	`json:"password"`
 	Revision	string	`json:"revision"`
+	SshKey	string	`json:"ssh_key"`
 }

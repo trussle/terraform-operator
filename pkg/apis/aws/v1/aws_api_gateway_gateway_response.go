@@ -21,11 +21,11 @@ type AwsApiGatewayGatewayResponse struct {
 
 // AwsApiGatewayGatewayResponseSpec is the spec for a AwsApiGatewayGatewayResponse Resource
 type AwsApiGatewayGatewayResponseSpec struct {
+	ResponseParameters	map[string]string	`json:"response_parameters"`
+	RestApiId	string	`json:"rest_api_id"`
 	ResponseType	string	`json:"response_type"`
 	StatusCode	string	`json:"status_code"`
-	ResponseTemplates	map[string]???	`json:"response_templates"`
-	ResponseParameters	map[string]???	`json:"response_parameters"`
-	RestApiId	string	`json:"rest_api_id"`
+	ResponseTemplates	map[string]string	`json:"response_templates"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -21,11 +21,11 @@ type AwsBatchComputeEnvironment struct {
 
 // AwsBatchComputeEnvironmentSpec is the spec for a AwsBatchComputeEnvironment Resource
 type AwsBatchComputeEnvironmentSpec struct {
-	ComputeResources	[]jQpkSlxk	`json:"compute_resources"`
 	ServiceRole	string	`json:"service_role"`
-	ComputeEnvironmentName	string	`json:"compute_environment_name"`
+	ComputeResources	[]ComputeResources	`json:"compute_resources"`
 	State	string	`json:"state"`
 	Type	string	`json:"type"`
+	ComputeEnvironmentName	string	`json:"compute_environment_name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -39,19 +39,19 @@ type AwsBatchComputeEnvironmentList struct {
 }
 
 
-// jQpkSlxk is a jQpkSlxk
-type jQpkSlxk struct {
-	InstanceRole	string	`json:"instance_role"`
-	MaxVcpus	int	`json:"max_vcpus"`
+// ComputeResources is a ComputeResources
+type ComputeResources struct {
 	Subnets	string	`json:"subnets"`
-	Tags	map[string]???	`json:"tags"`
+	Tags	map[string]string	`json:"tags"`
 	Type	string	`json:"type"`
-	BidPercentage	int	`json:"bid_percentage"`
-	DesiredVcpus	int	`json:"desired_vcpus"`
+	MinVcpus	int	`json:"min_vcpus"`
+	SpotIamFleetRole	string	`json:"spot_iam_fleet_role"`
 	Ec2KeyPair	string	`json:"ec2_key_pair"`
 	ImageId	string	`json:"image_id"`
+	InstanceRole	string	`json:"instance_role"`
 	InstanceType	string	`json:"instance_type"`
-	MinVcpus	int	`json:"min_vcpus"`
+	MaxVcpus	int	`json:"max_vcpus"`
 	SecurityGroupIds	string	`json:"security_group_ids"`
-	SpotIamFleetRole	string	`json:"spot_iam_fleet_role"`
+	BidPercentage	int	`json:"bid_percentage"`
+	DesiredVcpus	int	`json:"desired_vcpus"`
 }

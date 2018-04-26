@@ -21,10 +21,10 @@ type AwsApiGatewayRequestValidator struct {
 
 // AwsApiGatewayRequestValidatorSpec is the spec for a AwsApiGatewayRequestValidator Resource
 type AwsApiGatewayRequestValidatorSpec struct {
+	RestApiId	string	`json:"rest_api_id"`
 	Name	string	`json:"name"`
 	ValidateRequestBody	bool	`json:"validate_request_body"`
 	ValidateRequestParameters	bool	`json:"validate_request_parameters"`
-	RestApiId	string	`json:"rest_api_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

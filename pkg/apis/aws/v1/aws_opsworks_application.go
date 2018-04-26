@@ -21,21 +21,21 @@ type AwsOpsworksApplication struct {
 
 // AwsOpsworksApplicationSpec is the spec for a AwsOpsworksApplication Resource
 type AwsOpsworksApplicationSpec struct {
+	DataSourceArn	string	`json:"data_source_arn"`
+	SslConfiguration	[]SslConfiguration	`json:"ssl_configuration"`
+	RailsEnv	string	`json:"rails_env"`
+	AutoBundleOnDeploy	string	`json:"auto_bundle_on_deploy"`
+	DataSourceType	string	`json:"data_source_type"`
 	Type	string	`json:"type"`
-	DocumentRoot	string	`json:"document_root"`
-	DataSourceDatabaseName	string	`json:"data_source_database_name"`
-	Environment	string	`json:"environment"`
+	Domains	[]string	`json:"domains"`
+	Description	string	`json:"description"`
+	Environment	Environment	`json:"environment"`
+	EnableSsl	bool	`json:"enable_ssl"`
 	Name	string	`json:"name"`
 	StackId	string	`json:"stack_id"`
-	RailsEnv	string	`json:"rails_env"`
-	SslConfiguration	[]CSfkFohs	`json:"ssl_configuration"`
-	AutoBundleOnDeploy	string	`json:"auto_bundle_on_deploy"`
+	DocumentRoot	string	`json:"document_root"`
 	AwsFlowRubySettings	string	`json:"aws_flow_ruby_settings"`
-	Description	string	`json:"description"`
-	EnableSsl	bool	`json:"enable_ssl"`
-	DataSourceType	string	`json:"data_source_type"`
-	DataSourceArn	string	`json:"data_source_arn"`
-	Domains	[]string	`json:"domains"`
+	DataSourceDatabaseName	string	`json:"data_source_database_name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -49,8 +49,15 @@ type AwsOpsworksApplicationList struct {
 }
 
 
-// KLdTkNyo is a KLdTkNyo
-type KLdTkNyo struct {
+// SslConfiguration is a SslConfiguration
+type SslConfiguration struct {
+	Certificate	string	`json:"certificate"`
+	PrivateKey	string	`json:"private_key"`
+	Chain	string	`json:"chain"`
+}
+
+// AppSource is a AppSource
+type AppSource struct {
 	Type	string	`json:"type"`
 	Url	string	`json:"url"`
 	Username	string	`json:"username"`
@@ -59,9 +66,9 @@ type KLdTkNyo struct {
 	SshKey	string	`json:"ssh_key"`
 }
 
-// CSfkFohs is a CSfkFohs
-type CSfkFohs struct {
-	Certificate	string	`json:"certificate"`
-	PrivateKey	string	`json:"private_key"`
-	Chain	string	`json:"chain"`
+// Environment is a Environment
+type Environment struct {
+	Key	string	`json:"key"`
+	Value	string	`json:"value"`
+	Secure	bool	`json:"secure"`
 }

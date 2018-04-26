@@ -21,16 +21,16 @@ type AwsMqBroker struct {
 
 // AwsMqBrokerSpec is the spec for a AwsMqBroker Resource
 type AwsMqBrokerSpec struct {
-	DeploymentMode	string	`json:"deployment_mode"`
-	EngineVersion	string	`json:"engine_version"`
-	PubliclyAccessible	bool	`json:"publicly_accessible"`
 	ApplyImmediately	bool	`json:"apply_immediately"`
+	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
+	DeploymentMode	string	`json:"deployment_mode"`
+	HostInstanceType	string	`json:"host_instance_type"`
 	BrokerName	string	`json:"broker_name"`
 	EngineType	string	`json:"engine_type"`
-	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
-	HostInstanceType	string	`json:"host_instance_type"`
+	EngineVersion	string	`json:"engine_version"`
+	PubliclyAccessible	bool	`json:"publicly_accessible"`
 	SecurityGroups	string	`json:"security_groups"`
-	User	string	`json:"user"`
+	User	User	`json:"user"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -44,17 +44,25 @@ type AwsMqBrokerList struct {
 }
 
 
-// VVxSAZWE is a VVxSAZWE
-type VVxSAZWE struct {
-	DayOfWeek	string	`json:"day_of_week"`
+// MaintenanceWindowStartTime is a MaintenanceWindowStartTime
+type MaintenanceWindowStartTime struct {
 	TimeOfDay	string	`json:"time_of_day"`
 	TimeZone	string	`json:"time_zone"`
+	DayOfWeek	string	`json:"day_of_week"`
 }
 
-// XejhAquX is a XejhAquX
-type XejhAquX struct {
+// Instances is a Instances
+type Instances struct {
 }
 
-// daaaZlRH is a daaaZlRH
-type daaaZlRH struct {
+// User is a User
+type User struct {
+	Groups	string	`json:"groups"`
+	Password	string	`json:"password"`
+	Username	string	`json:"username"`
+	ConsoleAccess	bool	`json:"console_access"`
+}
+
+// Configuration is a Configuration
+type Configuration struct {
 }

@@ -21,32 +21,32 @@ type AwsOpsworksHaproxyLayer struct {
 
 // AwsOpsworksHaproxyLayerSpec is the spec for a AwsOpsworksHaproxyLayer Resource
 type AwsOpsworksHaproxyLayerSpec struct {
-	DrainElbOnShutdown	bool	`json:"drain_elb_on_shutdown"`
-	HealthcheckMethod	string	`json:"healthcheck_method"`
-	StatsUrl	string	`json:"stats_url"`
-	CustomSetupRecipes	[]string	`json:"custom_setup_recipes"`
-	CustomConfigureRecipes	[]string	`json:"custom_configure_recipes"`
-	AutoHealing	bool	`json:"auto_healing"`
+	ElasticLoadBalancer	string	`json:"elastic_load_balancer"`
 	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
 	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
-	StatsUser	string	`json:"stats_user"`
-	StatsPassword	string	`json:"stats_password"`
-	AutoAssignElasticIps	bool	`json:"auto_assign_elastic_ips"`
-	ElasticLoadBalancer	string	`json:"elastic_load_balancer"`
-	SystemPackages	string	`json:"system_packages"`
-	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
+	DrainElbOnShutdown	bool	`json:"drain_elb_on_shutdown"`
 	Name	string	`json:"name"`
-	EbsVolume	string	`json:"ebs_volume"`
-	StatsEnabled	bool	`json:"stats_enabled"`
-	HealthcheckUrl	string	`json:"healthcheck_url"`
+	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
+	CustomSetupRecipes	[]string	`json:"custom_setup_recipes"`
+	CustomConfigureRecipes	[]string	`json:"custom_configure_recipes"`
+	CustomJson	string	`json:"custom_json"`
+	AutoHealing	bool	`json:"auto_healing"`
+	StatsUser	string	`json:"stats_user"`
+	AutoAssignElasticIps	bool	`json:"auto_assign_elastic_ips"`
 	AutoAssignPublicIps	bool	`json:"auto_assign_public_ips"`
 	CustomDeployRecipes	[]string	`json:"custom_deploy_recipes"`
+	StackId	string	`json:"stack_id"`
+	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
+	EbsVolume	EbsVolume	`json:"ebs_volume"`
+	HealthcheckMethod	string	`json:"healthcheck_method"`
+	StatsEnabled	bool	`json:"stats_enabled"`
+	StatsUrl	string	`json:"stats_url"`
 	CustomUndeployRecipes	[]string	`json:"custom_undeploy_recipes"`
 	CustomShutdownRecipes	[]string	`json:"custom_shutdown_recipes"`
-	StackId	string	`json:"stack_id"`
-	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
 	CustomSecurityGroupIds	string	`json:"custom_security_group_ids"`
-	CustomJson	string	`json:"custom_json"`
+	SystemPackages	string	`json:"system_packages"`
+	StatsPassword	string	`json:"stats_password"`
+	HealthcheckUrl	string	`json:"healthcheck_url"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -59,3 +59,13 @@ type AwsOpsworksHaproxyLayerList struct {
 	Items	[]AwsOpsworksHaproxyLayer	`json:"items"`
 }
 
+
+// EbsVolume is a EbsVolume
+type EbsVolume struct {
+	Iops	int	`json:"iops"`
+	MountPoint	string	`json:"mount_point"`
+	NumberOfDisks	int	`json:"number_of_disks"`
+	RaidLevel	string	`json:"raid_level"`
+	Size	int	`json:"size"`
+	Type	string	`json:"type"`
+}

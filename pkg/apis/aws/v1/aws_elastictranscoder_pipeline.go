@@ -22,11 +22,11 @@ type AwsElastictranscoderPipeline struct {
 // AwsElastictranscoderPipelineSpec is the spec for a AwsElastictranscoderPipeline Resource
 type AwsElastictranscoderPipelineSpec struct {
 	AwsKmsKeyArn	string	`json:"aws_kms_key_arn"`
-	ContentConfigPermissions	string	`json:"content_config_permissions"`
+	Notifications	Notifications	`json:"notifications"`
+	ThumbnailConfigPermissions	ThumbnailConfigPermissions	`json:"thumbnail_config_permissions"`
+	ContentConfigPermissions	ContentConfigPermissions	`json:"content_config_permissions"`
 	InputBucket	string	`json:"input_bucket"`
 	Role	string	`json:"role"`
-	Notifications	string	`json:"notifications"`
-	ThumbnailConfigPermissions	string	`json:"thumbnail_config_permissions"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -39,3 +39,35 @@ type AwsElastictranscoderPipelineList struct {
 	Items	[]AwsElastictranscoderPipeline	`json:"items"`
 }
 
+
+// Notifications is a Notifications
+type Notifications struct {
+	Completed	string	`json:"completed"`
+	Error	string	`json:"error"`
+	Progressing	string	`json:"progressing"`
+	Warning	string	`json:"warning"`
+}
+
+// ThumbnailConfigPermissions is a ThumbnailConfigPermissions
+type ThumbnailConfigPermissions struct {
+	Grantee	string	`json:"grantee"`
+	GranteeType	string	`json:"grantee_type"`
+	Access	[]string	`json:"access"`
+}
+
+// ContentConfigPermissions is a ContentConfigPermissions
+type ContentConfigPermissions struct {
+	GranteeType	string	`json:"grantee_type"`
+	Access	[]string	`json:"access"`
+	Grantee	string	`json:"grantee"`
+}
+
+// ThumbnailConfig is a ThumbnailConfig
+type ThumbnailConfig struct {
+	StorageClass	string	`json:"storage_class"`
+}
+
+// ContentConfig is a ContentConfig
+type ContentConfig struct {
+	StorageClass	string	`json:"storage_class"`
+}

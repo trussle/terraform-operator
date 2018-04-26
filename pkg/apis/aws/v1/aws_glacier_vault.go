@@ -21,10 +21,10 @@ type AwsGlacierVault struct {
 
 // AwsGlacierVaultSpec is the spec for a AwsGlacierVault Resource
 type AwsGlacierVaultSpec struct {
-	AccessPolicy	string	`json:"access_policy"`
-	Notification	[]DSYEofkk	`json:"notification"`
-	Tags	map[string]???	`json:"tags"`
+	Notification	[]Notification	`json:"notification"`
+	Tags	map[string]string	`json:"tags"`
 	Name	string	`json:"name"`
+	AccessPolicy	string	`json:"access_policy"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -38,8 +38,8 @@ type AwsGlacierVaultList struct {
 }
 
 
-// DSYEofkk is a DSYEofkk
-type DSYEofkk struct {
+// Notification is a Notification
+type Notification struct {
 	Events	string	`json:"events"`
 	SnsTopic	string	`json:"sns_topic"`
 }

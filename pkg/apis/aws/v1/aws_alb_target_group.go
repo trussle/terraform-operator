@@ -21,13 +21,13 @@ type AwsAlbTargetGroup struct {
 
 // AwsAlbTargetGroupSpec is the spec for a AwsAlbTargetGroup Resource
 type AwsAlbTargetGroupSpec struct {
-	Protocol	string	`json:"protocol"`
-	Tags	map[string]???	`json:"tags"`
 	NamePrefix	string	`json:"name_prefix"`
-	Port	int	`json:"port"`
-	DeregistrationDelay	int	`json:"deregistration_delay"`
-	TargetType	string	`json:"target_type"`
+	Protocol	string	`json:"protocol"`
 	VpcId	string	`json:"vpc_id"`
+	DeregistrationDelay	int	`json:"deregistration_delay"`
+	Tags	map[string]string	`json:"tags"`
+	Port	int	`json:"port"`
+	TargetType	string	`json:"target_type"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -41,18 +41,18 @@ type AwsAlbTargetGroupList struct {
 }
 
 
-// zKaWlfVc is a zKaWlfVc
-type zKaWlfVc struct {
+// Stickiness is a Stickiness
+type Stickiness struct {
+	Enabled	bool	`json:"enabled"`
+	Type	string	`json:"type"`
+	CookieDuration	int	`json:"cookie_duration"`
+}
+
+// HealthCheck is a HealthCheck
+type HealthCheck struct {
 	Protocol	string	`json:"protocol"`
 	HealthyThreshold	int	`json:"healthy_threshold"`
 	UnhealthyThreshold	int	`json:"unhealthy_threshold"`
 	Interval	int	`json:"interval"`
 	Port	string	`json:"port"`
-}
-
-// jYMcwVxD is a jYMcwVxD
-type jYMcwVxD struct {
-	Enabled	bool	`json:"enabled"`
-	Type	string	`json:"type"`
-	CookieDuration	int	`json:"cookie_duration"`
 }

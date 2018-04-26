@@ -21,11 +21,11 @@ type AwsSsmActivation struct {
 
 // AwsSsmActivationSpec is the spec for a AwsSsmActivation Resource
 type AwsSsmActivationSpec struct {
+	IamRole	string	`json:"iam_role"`
+	RegistrationLimit	int	`json:"registration_limit"`
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
 	ExpirationDate	string	`json:"expiration_date"`
-	IamRole	string	`json:"iam_role"`
-	RegistrationLimit	int	`json:"registration_limit"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -23,7 +23,7 @@ type AwsWafRateBasedRule struct {
 type AwsWafRateBasedRuleSpec struct {
 	Name	string	`json:"name"`
 	MetricName	string	`json:"metric_name"`
-	Predicates	string	`json:"predicates"`
+	Predicates	Predicates	`json:"predicates"`
 	RateKey	string	`json:"rate_key"`
 	RateLimit	int	`json:"rate_limit"`
 }
@@ -38,3 +38,10 @@ type AwsWafRateBasedRuleList struct {
 	Items	[]AwsWafRateBasedRule	`json:"items"`
 }
 
+
+// Predicates is a Predicates
+type Predicates struct {
+	Negated	bool	`json:"negated"`
+	DataId	string	`json:"data_id"`
+	Type	string	`json:"type"`
+}

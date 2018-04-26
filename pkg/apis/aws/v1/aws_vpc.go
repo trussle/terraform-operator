@@ -21,10 +21,10 @@ type AwsVpc struct {
 
 // AwsVpcSpec is the spec for a AwsVpc Resource
 type AwsVpcSpec struct {
+	EnableDnsSupport	bool	`json:"enable_dns_support"`
 	CidrBlock	string	`json:"cidr_block"`
 	AssignGeneratedIpv6CidrBlock	bool	`json:"assign_generated_ipv6_cidr_block"`
-	EnableDnsSupport	bool	`json:"enable_dns_support"`
-	Tags	map[string]???	`json:"tags"`
+	Tags	map[string]string	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

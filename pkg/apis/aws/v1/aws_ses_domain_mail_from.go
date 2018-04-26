@@ -21,9 +21,9 @@ type AwsSesDomainMailFrom struct {
 
 // AwsSesDomainMailFromSpec is the spec for a AwsSesDomainMailFrom Resource
 type AwsSesDomainMailFromSpec struct {
+	BehaviorOnMxFailure	string	`json:"behavior_on_mx_failure"`
 	Domain	string	`json:"domain"`
 	MailFromDomain	string	`json:"mail_from_domain"`
-	BehaviorOnMxFailure	string	`json:"behavior_on_mx_failure"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

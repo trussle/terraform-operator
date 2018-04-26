@@ -21,9 +21,9 @@ type AwsApiGatewayDocumentationPart struct {
 
 // AwsApiGatewayDocumentationPartSpec is the spec for a AwsApiGatewayDocumentationPart Resource
 type AwsApiGatewayDocumentationPartSpec struct {
-	RestApiId	string	`json:"rest_api_id"`
-	Location	[]mBdtZtcO	`json:"location"`
+	Location	[]Location	`json:"location"`
 	Properties	string	`json:"properties"`
+	RestApiId	string	`json:"rest_api_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -37,8 +37,8 @@ type AwsApiGatewayDocumentationPartList struct {
 }
 
 
-// mBdtZtcO is a mBdtZtcO
-type mBdtZtcO struct {
+// Location is a Location
+type Location struct {
 	Method	string	`json:"method"`
 	Name	string	`json:"name"`
 	Path	string	`json:"path"`

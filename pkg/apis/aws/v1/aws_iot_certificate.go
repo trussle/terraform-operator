@@ -21,8 +21,8 @@ type AwsIotCertificate struct {
 
 // AwsIotCertificateSpec is the spec for a AwsIotCertificate Resource
 type AwsIotCertificateSpec struct {
-	Csr	string	`json:"csr"`
 	Active	bool	`json:"active"`
+	Csr	string	`json:"csr"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

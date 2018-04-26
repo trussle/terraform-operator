@@ -21,24 +21,24 @@ type AwsAutoscalingGroup struct {
 
 // AwsAutoscalingGroupSpec is the spec for a AwsAutoscalingGroup Resource
 type AwsAutoscalingGroupSpec struct {
-	HealthCheckGracePeriod	int	`json:"health_check_grace_period"`
 	SuspendedProcesses	string	`json:"suspended_processes"`
-	MetricsGranularity	string	`json:"metrics_granularity"`
-	WaitForElbCapacity	int	`json:"wait_for_elb_capacity"`
-	Tag	string	`json:"tag"`
+	ProtectFromScaleIn	bool	`json:"protect_from_scale_in"`
 	MinSize	int	`json:"min_size"`
-	MinElbCapacity	int	`json:"min_elb_capacity"`
-	TerminationPolicies	[]string	`json:"termination_policies"`
-	Tags	[]map[string]???	`json:"tags"`
+	MaxSize	int	`json:"max_size"`
+	Tags	[]map[string]string	`json:"tags"`
+	HealthCheckGracePeriod	int	`json:"health_check_grace_period"`
+	WaitForCapacityTimeout	string	`json:"wait_for_capacity_timeout"`
+	Tag	Tag	`json:"tag"`
 	NamePrefix	string	`json:"name_prefix"`
-	ForceDelete	bool	`json:"force_delete"`
 	PlacementGroup	string	`json:"placement_group"`
 	EnabledMetrics	string	`json:"enabled_metrics"`
+	InitialLifecycleHook	InitialLifecycleHook	`json:"initial_lifecycle_hook"`
 	LaunchConfiguration	string	`json:"launch_configuration"`
-	MaxSize	int	`json:"max_size"`
-	WaitForCapacityTimeout	string	`json:"wait_for_capacity_timeout"`
-	ProtectFromScaleIn	bool	`json:"protect_from_scale_in"`
-	InitialLifecycleHook	string	`json:"initial_lifecycle_hook"`
+	MinElbCapacity	int	`json:"min_elb_capacity"`
+	WaitForElbCapacity	int	`json:"wait_for_elb_capacity"`
+	TerminationPolicies	[]string	`json:"termination_policies"`
+	MetricsGranularity	string	`json:"metrics_granularity"`
+	ForceDelete	bool	`json:"force_delete"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -51,3 +51,20 @@ type AwsAutoscalingGroupList struct {
 	Items	[]AwsAutoscalingGroup	`json:"items"`
 }
 
+
+// Tag is a Tag
+type Tag struct {
+	Key	string	`json:"key"`
+	Value	string	`json:"value"`
+	PropagateAtLaunch	bool	`json:"propagate_at_launch"`
+}
+
+// InitialLifecycleHook is a InitialLifecycleHook
+type InitialLifecycleHook struct {
+	NotificationTargetArn	string	`json:"notification_target_arn"`
+	RoleArn	string	`json:"role_arn"`
+	Name	string	`json:"name"`
+	HeartbeatTimeout	int	`json:"heartbeat_timeout"`
+	LifecycleTransition	string	`json:"lifecycle_transition"`
+	NotificationMetadata	string	`json:"notification_metadata"`
+}

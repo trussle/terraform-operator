@@ -23,7 +23,7 @@ type AwsAppsyncGraphqlApi struct {
 type AwsAppsyncGraphqlApiSpec struct {
 	AuthenticationType	string	`json:"authentication_type"`
 	Name	string	`json:"name"`
-	UserPoolConfig	[]nMkGuotV	`json:"user_pool_config"`
+	UserPoolConfig	[]UserPoolConfig	`json:"user_pool_config"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -37,8 +37,8 @@ type AwsAppsyncGraphqlApiList struct {
 }
 
 
-// nMkGuotV is a nMkGuotV
-type nMkGuotV struct {
+// UserPoolConfig is a UserPoolConfig
+type UserPoolConfig struct {
 	AppIdClientRegex	string	`json:"app_id_client_regex"`
 	AwsRegion	string	`json:"aws_region"`
 	DefaultAction	string	`json:"default_action"`

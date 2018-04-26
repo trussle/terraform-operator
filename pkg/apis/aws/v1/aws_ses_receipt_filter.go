@@ -21,9 +21,9 @@ type AwsSesReceiptFilter struct {
 
 // AwsSesReceiptFilterSpec is the spec for a AwsSesReceiptFilter Resource
 type AwsSesReceiptFilterSpec struct {
-	Policy	string	`json:"policy"`
 	Name	string	`json:"name"`
 	Cidr	string	`json:"cidr"`
+	Policy	string	`json:"policy"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

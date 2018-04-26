@@ -21,8 +21,8 @@ type AwsIamGroup struct {
 
 // AwsIamGroupSpec is the spec for a AwsIamGroup Resource
 type AwsIamGroupSpec struct {
-	Name	string	`json:"name"`
 	Path	string	`json:"path"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

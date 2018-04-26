@@ -21,16 +21,16 @@ type AwsSecurityGroupRule struct {
 
 // AwsSecurityGroupRuleSpec is the spec for a AwsSecurityGroupRule Resource
 type AwsSecurityGroupRuleSpec struct {
-	FromPort	int	`json:"from_port"`
-	Protocol	string	`json:"protocol"`
-	CidrBlocks	[]string	`json:"cidr_blocks"`
-	Ipv6CidrBlocks	[]string	`json:"ipv6_cidr_blocks"`
+	Self	bool	`json:"self"`
 	Type	string	`json:"type"`
+	Protocol	string	`json:"protocol"`
 	PrefixListIds	[]string	`json:"prefix_list_ids"`
 	SecurityGroupId	string	`json:"security_group_id"`
-	Self	bool	`json:"self"`
-	Description	string	`json:"description"`
+	FromPort	int	`json:"from_port"`
 	ToPort	int	`json:"to_port"`
+	CidrBlocks	[]string	`json:"cidr_blocks"`
+	Ipv6CidrBlocks	[]string	`json:"ipv6_cidr_blocks"`
+	Description	string	`json:"description"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -21,8 +21,8 @@ type AwsConfigConfigurationRecorderStatus struct {
 
 // AwsConfigConfigurationRecorderStatusSpec is the spec for a AwsConfigConfigurationRecorderStatus Resource
 type AwsConfigConfigurationRecorderStatusSpec struct {
-	IsEnabled	bool	`json:"is_enabled"`
 	Name	string	`json:"name"`
+	IsEnabled	bool	`json:"is_enabled"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

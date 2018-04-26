@@ -23,8 +23,8 @@ type AwsDbParameterGroup struct {
 type AwsDbParameterGroupSpec struct {
 	Family	string	`json:"family"`
 	Description	string	`json:"description"`
-	Parameter	string	`json:"parameter"`
-	Tags	map[string]???	`json:"tags"`
+	Parameter	Parameter	`json:"parameter"`
+	Tags	map[string]string	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -37,3 +37,10 @@ type AwsDbParameterGroupList struct {
 	Items	[]AwsDbParameterGroup	`json:"items"`
 }
 
+
+// Parameter is a Parameter
+type Parameter struct {
+	Name	string	`json:"name"`
+	Value	string	`json:"value"`
+	ApplyMethod	string	`json:"apply_method"`
+}

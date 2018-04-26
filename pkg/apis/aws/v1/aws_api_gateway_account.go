@@ -35,6 +35,6 @@ type AwsApiGatewayAccountList struct {
 }
 
 
-// XkzzfNaV is a XkzzfNaV
-type XkzzfNaV struct {
+// ThrottleSettings is a ThrottleSettings
+type ThrottleSettings struct {
 }

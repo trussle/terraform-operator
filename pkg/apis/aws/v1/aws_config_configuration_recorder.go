@@ -36,8 +36,8 @@ type AwsConfigConfigurationRecorderList struct {
 }
 
 
-// DDvoxIfs is a DDvoxIfs
-type DDvoxIfs struct {
+// RecordingGroup is a RecordingGroup
+type RecordingGroup struct {
 	AllSupported	bool	`json:"all_supported"`
 	IncludeGlobalResourceTypes	bool	`json:"include_global_resource_types"`
 	ResourceTypes	string	`json:"resource_types"`

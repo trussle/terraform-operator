@@ -21,14 +21,14 @@ type AwsElasticacheCluster struct {
 
 // AwsElasticacheClusterSpec is the spec for a AwsElasticacheCluster Resource
 type AwsElasticacheClusterSpec struct {
-	SnapshotArns	string	`json:"snapshot_arns"`
 	Port	int	`json:"port"`
-	SnapshotName	string	`json:"snapshot_name"`
-	NotificationTopicArn	string	`json:"notification_topic_arn"`
 	ClusterId	string	`json:"cluster_id"`
-	Tags	map[string]???	`json:"tags"`
-	AvailabilityZones	string	`json:"availability_zones"`
+	SnapshotName	string	`json:"snapshot_name"`
 	SnapshotRetentionLimit	int	`json:"snapshot_retention_limit"`
+	Tags	map[string]string	`json:"tags"`
+	AvailabilityZones	string	`json:"availability_zones"`
+	SnapshotArns	string	`json:"snapshot_arns"`
+	NotificationTopicArn	string	`json:"notification_topic_arn"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -42,6 +42,6 @@ type AwsElasticacheClusterList struct {
 }
 
 
-// DOUnXzmD is a DOUnXzmD
-type DOUnXzmD struct {
+// CacheNodes is a CacheNodes
+type CacheNodes struct {
 }

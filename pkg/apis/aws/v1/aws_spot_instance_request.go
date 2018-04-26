@@ -21,27 +21,27 @@ type AwsSpotInstanceRequest struct {
 
 // AwsSpotInstanceRequestSpec is the spec for a AwsSpotInstanceRequest Resource
 type AwsSpotInstanceRequestSpec struct {
-	Tags	map[string]???	`json:"tags"`
+	Tags	map[string]string	`json:"tags"`
+	BlockDevice	map[string]string	`json:"block_device"`
+	InstanceType	string	`json:"instance_type"`
+	InstanceInitiatedShutdownBehavior	string	`json:"instance_initiated_shutdown_behavior"`
+	SpotType	string	`json:"spot_type"`
+	LaunchGroup	string	`json:"launch_group"`
+	CreditSpecification	[]CreditSpecification	`json:"credit_specification"`
+	SpotPrice	string	`json:"spot_price"`
+	DisableApiTermination	bool	`json:"disable_api_termination"`
+	Monitoring	bool	`json:"monitoring"`
+	InstanceInterruptionBehaviour	string	`json:"instance_interruption_behaviour"`
+	Ami	string	`json:"ami"`
+	UserDataBase64	string	`json:"user_data_base64"`
+	WaitForFulfillment	bool	`json:"wait_for_fulfillment"`
+	IamInstanceProfile	string	`json:"iam_instance_profile"`
+	BlockDurationMinutes	int	`json:"block_duration_minutes"`
 	SourceDestCheck	bool	`json:"source_dest_check"`
 	UserData	string	`json:"user_data"`
+	VolumeTags	map[string]string	`json:"volume_tags"`
 	GetPasswordData	bool	`json:"get_password_data"`
-	DisableApiTermination	bool	`json:"disable_api_termination"`
-	Ami	string	`json:"ami"`
-	InstanceType	string	`json:"instance_type"`
 	EbsOptimized	bool	`json:"ebs_optimized"`
-	InstanceInitiatedShutdownBehavior	string	`json:"instance_initiated_shutdown_behavior"`
-	IamInstanceProfile	string	`json:"iam_instance_profile"`
-	LaunchGroup	string	`json:"launch_group"`
-	BlockDurationMinutes	int	`json:"block_duration_minutes"`
-	InstanceInterruptionBehaviour	string	`json:"instance_interruption_behaviour"`
-	CreditSpecification	[]LVCxaSJl	`json:"credit_specification"`
-	Monitoring	bool	`json:"monitoring"`
-	SpotType	string	`json:"spot_type"`
-	UserDataBase64	string	`json:"user_data_base64"`
-	SpotPrice	string	`json:"spot_price"`
-	WaitForFulfillment	bool	`json:"wait_for_fulfillment"`
-	VolumeTags	map[string]???	`json:"volume_tags"`
-	BlockDevice	map[string]???	`json:"block_device"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -55,12 +55,32 @@ type AwsSpotInstanceRequestList struct {
 }
 
 
-// zwVGqMZc is a zwVGqMZc
-type zwVGqMZc struct {
+// EbsBlockDevice is a EbsBlockDevice
+type EbsBlockDevice struct {
 	DeleteOnTermination	bool	`json:"delete_on_termination"`
+	DeviceName	string	`json:"device_name"`
 }
 
-// LVCxaSJl is a LVCxaSJl
-type LVCxaSJl struct {
+// EphemeralBlockDevice is a EphemeralBlockDevice
+type EphemeralBlockDevice struct {
+	DeviceName	string	`json:"device_name"`
+	VirtualName	string	`json:"virtual_name"`
+	NoDevice	bool	`json:"no_device"`
+}
+
+// CreditSpecification is a CreditSpecification
+type CreditSpecification struct {
 	CpuCredits	string	`json:"cpu_credits"`
+}
+
+// NetworkInterface is a NetworkInterface
+type NetworkInterface struct {
+	DeleteOnTermination	bool	`json:"delete_on_termination"`
+	NetworkInterfaceId	string	`json:"network_interface_id"`
+	DeviceIndex	int	`json:"device_index"`
+}
+
+// RootBlockDevice is a RootBlockDevice
+type RootBlockDevice struct {
+	DeleteOnTermination	bool	`json:"delete_on_termination"`
 }

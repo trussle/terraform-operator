@@ -22,7 +22,7 @@ type AwsWafSizeConstraintSet struct {
 // AwsWafSizeConstraintSetSpec is the spec for a AwsWafSizeConstraintSet Resource
 type AwsWafSizeConstraintSetSpec struct {
 	Name	string	`json:"name"`
-	SizeConstraints	string	`json:"size_constraints"`
+	SizeConstraints	SizeConstraints	`json:"size_constraints"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -35,3 +35,17 @@ type AwsWafSizeConstraintSetList struct {
 	Items	[]AwsWafSizeConstraintSet	`json:"items"`
 }
 
+
+// FieldToMatch is a FieldToMatch
+type FieldToMatch struct {
+	Data	string	`json:"data"`
+	Type	string	`json:"type"`
+}
+
+// SizeConstraints is a SizeConstraints
+type SizeConstraints struct {
+	Size	int	`json:"size"`
+	TextTransformation	string	`json:"text_transformation"`
+	FieldToMatch	FieldToMatch	`json:"field_to_match"`
+	ComparisonOperator	string	`json:"comparison_operator"`
+}

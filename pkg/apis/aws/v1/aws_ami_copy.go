@@ -21,12 +21,12 @@ type AwsAmiCopy struct {
 
 // AwsAmiCopySpec is the spec for a AwsAmiCopy Resource
 type AwsAmiCopySpec struct {
-	Tags	map[string]???	`json:"tags"`
-	Description	string	`json:"description"`
-	Name	string	`json:"name"`
-	SourceAmiId	string	`json:"source_ami_id"`
-	SourceAmiRegion	string	`json:"source_ami_region"`
 	Encrypted	bool	`json:"encrypted"`
+	Description	string	`json:"description"`
+	SourceAmiRegion	string	`json:"source_ami_region"`
+	Name	string	`json:"name"`
+	Tags	map[string]string	`json:"tags"`
+	SourceAmiId	string	`json:"source_ami_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -39,3 +39,11 @@ type AwsAmiCopyList struct {
 	Items	[]AwsAmiCopy	`json:"items"`
 }
 
+
+// EbsBlockDevice is a EbsBlockDevice
+type EbsBlockDevice struct {
+}
+
+// EphemeralBlockDevice is a EphemeralBlockDevice
+type EphemeralBlockDevice struct {
+}

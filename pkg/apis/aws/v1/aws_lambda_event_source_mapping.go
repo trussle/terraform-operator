@@ -21,11 +21,11 @@ type AwsLambdaEventSourceMapping struct {
 
 // AwsLambdaEventSourceMappingSpec is the spec for a AwsLambdaEventSourceMapping Resource
 type AwsLambdaEventSourceMappingSpec struct {
-	FunctionName	string	`json:"function_name"`
 	BatchSize	int	`json:"batch_size"`
-	Enabled	bool	`json:"enabled"`
 	EventSourceArn	string	`json:"event_source_arn"`
+	FunctionName	string	`json:"function_name"`
 	StartingPosition	string	`json:"starting_position"`
+	Enabled	bool	`json:"enabled"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -21,15 +21,15 @@ type AwsApiGatewayIntegrationResponse struct {
 
 // AwsApiGatewayIntegrationResponseSpec is the spec for a AwsApiGatewayIntegrationResponse Resource
 type AwsApiGatewayIntegrationResponseSpec struct {
-	RestApiId	string	`json:"rest_api_id"`
+	HttpMethod	string	`json:"http_method"`
 	SelectionPattern	string	`json:"selection_pattern"`
-	ResponseParameters	map[string]???	`json:"response_parameters"`
+	RestApiId	string	`json:"rest_api_id"`
+	ResourceId	string	`json:"resource_id"`
+	ResponseParameters	map[string]string	`json:"response_parameters"`
 	ResponseParametersInJson	string	`json:"response_parameters_in_json"`
 	ContentHandling	string	`json:"content_handling"`
-	ResourceId	string	`json:"resource_id"`
-	HttpMethod	string	`json:"http_method"`
 	StatusCode	string	`json:"status_code"`
-	ResponseTemplates	map[string]???	`json:"response_templates"`
+	ResponseTemplates	map[string]string	`json:"response_templates"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

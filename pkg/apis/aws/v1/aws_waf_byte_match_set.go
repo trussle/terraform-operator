@@ -21,8 +21,8 @@ type AwsWafByteMatchSet struct {
 
 // AwsWafByteMatchSetSpec is the spec for a AwsWafByteMatchSet Resource
 type AwsWafByteMatchSetSpec struct {
+	ByteMatchTuples	ByteMatchTuples	`json:"byte_match_tuples"`
 	Name	string	`json:"name"`
-	ByteMatchTuples	string	`json:"byte_match_tuples"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -35,3 +35,17 @@ type AwsWafByteMatchSetList struct {
 	Items	[]AwsWafByteMatchSet	`json:"items"`
 }
 
+
+// FieldToMatch is a FieldToMatch
+type FieldToMatch struct {
+	Data	string	`json:"data"`
+	Type	string	`json:"type"`
+}
+
+// ByteMatchTuples is a ByteMatchTuples
+type ByteMatchTuples struct {
+	TextTransformation	string	`json:"text_transformation"`
+	FieldToMatch	FieldToMatch	`json:"field_to_match"`
+	PositionalConstraint	string	`json:"positional_constraint"`
+	TargetString	string	`json:"target_string"`
+}

@@ -21,13 +21,13 @@ type AwsSsmParameter struct {
 
 // AwsSsmParameterSpec is the spec for a AwsSsmParameter Resource
 type AwsSsmParameterSpec struct {
-	Name	string	`json:"name"`
-	Value	string	`json:"value"`
-	Description	string	`json:"description"`
 	Type	string	`json:"type"`
+	Value	string	`json:"value"`
 	Overwrite	bool	`json:"overwrite"`
 	AllowedPattern	string	`json:"allowed_pattern"`
-	Tags	map[string]???	`json:"tags"`
+	Tags	map[string]string	`json:"tags"`
+	Name	string	`json:"name"`
+	Description	string	`json:"description"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

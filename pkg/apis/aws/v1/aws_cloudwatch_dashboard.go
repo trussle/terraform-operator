@@ -21,8 +21,8 @@ type AwsCloudwatchDashboard struct {
 
 // AwsCloudwatchDashboardSpec is the spec for a AwsCloudwatchDashboard Resource
 type AwsCloudwatchDashboardSpec struct {
-	DashboardBody	string	`json:"dashboard_body"`
 	DashboardName	string	`json:"dashboard_name"`
+	DashboardBody	string	`json:"dashboard_body"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -21,8 +21,8 @@ type AwsDbSecurityGroup struct {
 
 // AwsDbSecurityGroupSpec is the spec for a AwsDbSecurityGroup Resource
 type AwsDbSecurityGroupSpec struct {
-	Ingress	string	`json:"ingress"`
-	Tags	map[string]???	`json:"tags"`
+	Ingress	Ingress	`json:"ingress"`
+	Tags	map[string]string	`json:"tags"`
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
 }
@@ -37,3 +37,8 @@ type AwsDbSecurityGroupList struct {
 	Items	[]AwsDbSecurityGroup	`json:"items"`
 }
 
+
+// Ingress is a Ingress
+type Ingress struct {
+	Cidr	string	`json:"cidr"`
+}

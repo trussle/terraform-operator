@@ -21,8 +21,8 @@ type AwsEbsVolume struct {
 
 // AwsEbsVolumeSpec is the spec for a AwsEbsVolume Resource
 type AwsEbsVolumeSpec struct {
+	Tags	map[string]string	`json:"tags"`
 	AvailabilityZone	string	`json:"availability_zone"`
-	Tags	map[string]???	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -21,9 +21,9 @@ type AwsElasticBeanstalkApplication struct {
 
 // AwsElasticBeanstalkApplicationSpec is the spec for a AwsElasticBeanstalkApplication Resource
 type AwsElasticBeanstalkApplicationSpec struct {
-	Description	string	`json:"description"`
-	AppversionLifecycle	[]rKCtzkjk	`json:"appversion_lifecycle"`
 	Name	string	`json:"name"`
+	Description	string	`json:"description"`
+	AppversionLifecycle	[]AppversionLifecycle	`json:"appversion_lifecycle"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -37,8 +37,8 @@ type AwsElasticBeanstalkApplicationList struct {
 }
 
 
-// rKCtzkjk is a rKCtzkjk
-type rKCtzkjk struct {
+// AppversionLifecycle is a AppversionLifecycle
+type AppversionLifecycle struct {
 	ServiceRole	string	`json:"service_role"`
 	MaxAgeInDays	int	`json:"max_age_in_days"`
 	MaxCount	int	`json:"max_count"`

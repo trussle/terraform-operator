@@ -22,16 +22,16 @@ type AwsSqsQueue struct {
 // AwsSqsQueueSpec is the spec for a AwsSqsQueue Resource
 type AwsSqsQueueSpec struct {
 	RedrivePolicy	string	`json:"redrive_policy"`
-	ContentBasedDeduplication	bool	`json:"content_based_deduplication"`
-	MaxMessageSize	int	`json:"max_message_size"`
-	MessageRetentionSeconds	int	`json:"message_retention_seconds"`
-	FifoQueue	bool	`json:"fifo_queue"`
-	KmsMasterKeyId	string	`json:"kms_master_key_id"`
-	Tags	map[string]???	`json:"tags"`
-	NamePrefix	string	`json:"name_prefix"`
-	ReceiveWaitTimeSeconds	int	`json:"receive_wait_time_seconds"`
+	Tags	map[string]string	`json:"tags"`
 	DelaySeconds	int	`json:"delay_seconds"`
+	MessageRetentionSeconds	int	`json:"message_retention_seconds"`
 	VisibilityTimeoutSeconds	int	`json:"visibility_timeout_seconds"`
+	ContentBasedDeduplication	bool	`json:"content_based_deduplication"`
+	KmsMasterKeyId	string	`json:"kms_master_key_id"`
+	NamePrefix	string	`json:"name_prefix"`
+	MaxMessageSize	int	`json:"max_message_size"`
+	FifoQueue	bool	`json:"fifo_queue"`
+	ReceiveWaitTimeSeconds	int	`json:"receive_wait_time_seconds"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

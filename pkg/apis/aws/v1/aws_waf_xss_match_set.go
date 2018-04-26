@@ -22,7 +22,7 @@ type AwsWafXssMatchSet struct {
 // AwsWafXssMatchSetSpec is the spec for a AwsWafXssMatchSet Resource
 type AwsWafXssMatchSetSpec struct {
 	Name	string	`json:"name"`
-	XssMatchTuples	string	`json:"xss_match_tuples"`
+	XssMatchTuples	XssMatchTuples	`json:"xss_match_tuples"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -35,3 +35,15 @@ type AwsWafXssMatchSetList struct {
 	Items	[]AwsWafXssMatchSet	`json:"items"`
 }
 
+
+// FieldToMatch is a FieldToMatch
+type FieldToMatch struct {
+	Data	string	`json:"data"`
+	Type	string	`json:"type"`
+}
+
+// XssMatchTuples is a XssMatchTuples
+type XssMatchTuples struct {
+	FieldToMatch	FieldToMatch	`json:"field_to_match"`
+	TextTransformation	string	`json:"text_transformation"`
+}

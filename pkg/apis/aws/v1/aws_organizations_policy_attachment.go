@@ -21,8 +21,8 @@ type AwsOrganizationsPolicyAttachment struct {
 
 // AwsOrganizationsPolicyAttachmentSpec is the spec for a AwsOrganizationsPolicyAttachment Resource
 type AwsOrganizationsPolicyAttachmentSpec struct {
-	PolicyId	string	`json:"policy_id"`
 	TargetId	string	`json:"target_id"`
+	PolicyId	string	`json:"policy_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

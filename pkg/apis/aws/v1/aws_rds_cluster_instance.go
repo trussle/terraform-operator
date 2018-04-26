@@ -21,14 +21,14 @@ type AwsRdsClusterInstance struct {
 
 // AwsRdsClusterInstanceSpec is the spec for a AwsRdsClusterInstance Resource
 type AwsRdsClusterInstanceSpec struct {
-	MonitoringInterval	int	`json:"monitoring_interval"`
 	PubliclyAccessible	bool	`json:"publicly_accessible"`
 	InstanceClass	string	`json:"instance_class"`
-	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
-	ClusterIdentifier	string	`json:"cluster_identifier"`
-	Tags	map[string]???	`json:"tags"`
-	Engine	string	`json:"engine"`
 	PromotionTier	int	`json:"promotion_tier"`
+	Engine	string	`json:"engine"`
+	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
+	MonitoringInterval	int	`json:"monitoring_interval"`
+	ClusterIdentifier	string	`json:"cluster_identifier"`
+	Tags	map[string]string	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

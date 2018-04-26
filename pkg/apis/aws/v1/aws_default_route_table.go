@@ -21,7 +21,7 @@ type AwsDefaultRouteTable struct {
 
 // AwsDefaultRouteTableSpec is the spec for a AwsDefaultRouteTable Resource
 type AwsDefaultRouteTableSpec struct {
-	Tags	map[string]???	`json:"tags"`
+	Tags	map[string]string	`json:"tags"`
 	DefaultRouteTableId	string	`json:"default_route_table_id"`
 	PropagatingVgws	string	`json:"propagating_vgws"`
 }
@@ -36,3 +36,15 @@ type AwsDefaultRouteTableList struct {
 	Items	[]AwsDefaultRouteTable	`json:"items"`
 }
 
+
+// Route is a Route
+type Route struct {
+	NetworkInterfaceId	string	`json:"network_interface_id"`
+	CidrBlock	string	`json:"cidr_block"`
+	Ipv6CidrBlock	string	`json:"ipv6_cidr_block"`
+	EgressOnlyGatewayId	string	`json:"egress_only_gateway_id"`
+	GatewayId	string	`json:"gateway_id"`
+	InstanceId	string	`json:"instance_id"`
+	NatGatewayId	string	`json:"nat_gateway_id"`
+	VpcPeeringConnectionId	string	`json:"vpc_peering_connection_id"`
+}

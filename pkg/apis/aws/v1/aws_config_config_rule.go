@@ -21,12 +21,12 @@ type AwsConfigConfigRule struct {
 
 // AwsConfigConfigRuleSpec is the spec for a AwsConfigConfigRule Resource
 type AwsConfigConfigRuleSpec struct {
-	InputParameters	string	`json:"input_parameters"`
-	MaximumExecutionFrequency	string	`json:"maximum_execution_frequency"`
-	Scope	[]hTtUTuWJ	`json:"scope"`
-	Source	[]RGiQjOTc	`json:"source"`
+	Source	[]Source	`json:"source"`
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
+	InputParameters	string	`json:"input_parameters"`
+	MaximumExecutionFrequency	string	`json:"maximum_execution_frequency"`
+	Scope	[]Scope	`json:"scope"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -40,17 +40,24 @@ type AwsConfigConfigRuleList struct {
 }
 
 
-// hTtUTuWJ is a hTtUTuWJ
-type hTtUTuWJ struct {
-	ComplianceResourceId	string	`json:"compliance_resource_id"`
-	ComplianceResourceTypes	string	`json:"compliance_resource_types"`
-	TagKey	string	`json:"tag_key"`
-	TagValue	string	`json:"tag_value"`
+// SourceDetail is a SourceDetail
+type SourceDetail struct {
+	MaximumExecutionFrequency	string	`json:"maximum_execution_frequency"`
+	MessageType	string	`json:"message_type"`
+	EventSource	string	`json:"event_source"`
 }
 
-// RGiQjOTc is a RGiQjOTc
-type RGiQjOTc struct {
-	SourceDetail	string	`json:"source_detail"`
-	SourceIdentifier	string	`json:"source_identifier"`
+// Source is a Source
+type Source struct {
 	Owner	string	`json:"owner"`
+	SourceDetail	SourceDetail	`json:"source_detail"`
+	SourceIdentifier	string	`json:"source_identifier"`
+}
+
+// Scope is a Scope
+type Scope struct {
+	TagKey	string	`json:"tag_key"`
+	TagValue	string	`json:"tag_value"`
+	ComplianceResourceId	string	`json:"compliance_resource_id"`
+	ComplianceResourceTypes	string	`json:"compliance_resource_types"`
 }

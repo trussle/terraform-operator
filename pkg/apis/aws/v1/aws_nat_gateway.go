@@ -21,7 +21,7 @@ type AwsNatGateway struct {
 
 // AwsNatGatewaySpec is the spec for a AwsNatGateway Resource
 type AwsNatGatewaySpec struct {
-	Tags	map[string]???	`json:"tags"`
+	Tags	map[string]string	`json:"tags"`
 	AllocationId	string	`json:"allocation_id"`
 	SubnetId	string	`json:"subnet_id"`
 }

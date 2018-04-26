@@ -21,8 +21,8 @@ type AwsIamRolePolicyAttachment struct {
 
 // AwsIamRolePolicyAttachmentSpec is the spec for a AwsIamRolePolicyAttachment Resource
 type AwsIamRolePolicyAttachmentSpec struct {
-	Role	string	`json:"role"`
 	PolicyArn	string	`json:"policy_arn"`
+	Role	string	`json:"role"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

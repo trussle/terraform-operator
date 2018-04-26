@@ -21,15 +21,15 @@ type AwsDmsReplicationTask struct {
 
 // AwsDmsReplicationTaskSpec is the spec for a AwsDmsReplicationTask Resource
 type AwsDmsReplicationTaskSpec struct {
+	CdcStartTime	string	`json:"cdc_start_time"`
+	SourceEndpointArn	string	`json:"source_endpoint_arn"`
+	TargetEndpointArn	string	`json:"target_endpoint_arn"`
+	MigrationType	string	`json:"migration_type"`
+	ReplicationInstanceArn	string	`json:"replication_instance_arn"`
 	ReplicationTaskId	string	`json:"replication_task_id"`
 	ReplicationTaskSettings	string	`json:"replication_task_settings"`
 	TableMappings	string	`json:"table_mappings"`
-	CdcStartTime	string	`json:"cdc_start_time"`
-	MigrationType	string	`json:"migration_type"`
-	ReplicationInstanceArn	string	`json:"replication_instance_arn"`
-	SourceEndpointArn	string	`json:"source_endpoint_arn"`
-	Tags	map[string]???	`json:"tags"`
-	TargetEndpointArn	string	`json:"target_endpoint_arn"`
+	Tags	map[string]string	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -21,10 +21,10 @@ type AwsApiGatewayBasePathMapping struct {
 
 // AwsApiGatewayBasePathMappingSpec is the spec for a AwsApiGatewayBasePathMapping Resource
 type AwsApiGatewayBasePathMappingSpec struct {
-	ApiId	string	`json:"api_id"`
 	BasePath	string	`json:"base_path"`
 	StageName	string	`json:"stage_name"`
 	DomainName	string	`json:"domain_name"`
+	ApiId	string	`json:"api_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -21,21 +21,21 @@ type AwsElasticacheReplicationGroup struct {
 
 // AwsElasticacheReplicationGroupSpec is the spec for a AwsElasticacheReplicationGroup Resource
 type AwsElasticacheReplicationGroupSpec struct {
-	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
-	ReplicationGroupDescription	string	`json:"replication_group_description"`
 	SnapshotName	string	`json:"snapshot_name"`
-	SnapshotRetentionLimit	int	`json:"snapshot_retention_limit"`
-	Tags	map[string]???	`json:"tags"`
-	ReplicationGroupId	string	`json:"replication_group_id"`
-	AtRestEncryptionEnabled	bool	`json:"at_rest_encryption_enabled"`
 	Port	int	`json:"port"`
-	AutomaticFailoverEnabled	bool	`json:"automatic_failover_enabled"`
+	Tags	map[string]string	`json:"tags"`
 	AuthToken	string	`json:"auth_token"`
-	TransitEncryptionEnabled	bool	`json:"transit_encryption_enabled"`
 	AvailabilityZones	string	`json:"availability_zones"`
+	AutomaticFailoverEnabled	bool	`json:"automatic_failover_enabled"`
+	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
 	Engine	string	`json:"engine"`
 	SnapshotArns	string	`json:"snapshot_arns"`
+	ReplicationGroupDescription	string	`json:"replication_group_description"`
+	TransitEncryptionEnabled	bool	`json:"transit_encryption_enabled"`
 	NotificationTopicArn	string	`json:"notification_topic_arn"`
+	ReplicationGroupId	string	`json:"replication_group_id"`
+	AtRestEncryptionEnabled	bool	`json:"at_rest_encryption_enabled"`
+	SnapshotRetentionLimit	int	`json:"snapshot_retention_limit"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -49,8 +49,8 @@ type AwsElasticacheReplicationGroupList struct {
 }
 
 
-// oVVTYNXf is a oVVTYNXf
-type oVVTYNXf struct {
+// ClusterMode is a ClusterMode
+type ClusterMode struct {
 	ReplicasPerNodeGroup	int	`json:"replicas_per_node_group"`
 	NumNodeGroups	int	`json:"num_node_groups"`
 }

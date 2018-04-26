@@ -24,7 +24,7 @@ type AwsGlueCatalogDatabaseSpec struct {
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
 	LocationUri	string	`json:"location_uri"`
-	Parameters	map[string]???	`json:"parameters"`
+	Parameters	map[string]string	`json:"parameters"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

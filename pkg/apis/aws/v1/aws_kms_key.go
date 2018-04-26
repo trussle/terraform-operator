@@ -21,10 +21,10 @@ type AwsKmsKey struct {
 
 // AwsKmsKeySpec is the spec for a AwsKmsKey Resource
 type AwsKmsKeySpec struct {
-	DeletionWindowInDays	int	`json:"deletion_window_in_days"`
 	IsEnabled	bool	`json:"is_enabled"`
 	EnableKeyRotation	bool	`json:"enable_key_rotation"`
-	Tags	map[string]???	`json:"tags"`
+	DeletionWindowInDays	int	`json:"deletion_window_in_days"`
+	Tags	map[string]string	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

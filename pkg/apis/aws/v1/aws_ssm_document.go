@@ -23,9 +23,9 @@ type AwsSsmDocument struct {
 type AwsSsmDocumentSpec struct {
 	DocumentFormat	string	`json:"document_format"`
 	DocumentType	string	`json:"document_type"`
-	Name	string	`json:"name"`
 	Content	string	`json:"content"`
-	Permissions	map[string]zgexyALB	`json:"permissions"`
+	Name	string	`json:"name"`
+	Permissions	map[string]Permissions	`json:"permissions"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -39,16 +39,16 @@ type AwsSsmDocumentList struct {
 }
 
 
-// XVbWGvbq is a XVbWGvbq
-type XVbWGvbq struct {
+// Parameter is a Parameter
+type Parameter struct {
 	Name	string	`json:"name"`
 	DefaultValue	string	`json:"default_value"`
 	Description	string	`json:"description"`
 	Type	string	`json:"type"`
 }
 
-// zgexyALB is a zgexyALB
-type zgexyALB struct {
+// Permissions is a Permissions
+type Permissions struct {
 	Type	string	`json:"type"`
 	AccountIds	string	`json:"account_ids"`
 }

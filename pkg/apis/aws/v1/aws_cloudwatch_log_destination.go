@@ -21,9 +21,9 @@ type AwsCloudwatchLogDestination struct {
 
 // AwsCloudwatchLogDestinationSpec is the spec for a AwsCloudwatchLogDestination Resource
 type AwsCloudwatchLogDestinationSpec struct {
-	TargetArn	string	`json:"target_arn"`
 	Name	string	`json:"name"`
 	RoleArn	string	`json:"role_arn"`
+	TargetArn	string	`json:"target_arn"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

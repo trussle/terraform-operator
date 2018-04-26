@@ -21,24 +21,24 @@ type AwsCloudwatchMetricAlarm struct {
 
 // AwsCloudwatchMetricAlarmSpec is the spec for a AwsCloudwatchMetricAlarm Resource
 type AwsCloudwatchMetricAlarmSpec struct {
+	ComparisonOperator	string	`json:"comparison_operator"`
+	InsufficientDataActions	string	`json:"insufficient_data_actions"`
 	Unit	string	`json:"unit"`
+	AlarmName	string	`json:"alarm_name"`
+	Statistic	string	`json:"statistic"`
 	Threshold	float64	`json:"threshold"`
 	ActionsEnabled	bool	`json:"actions_enabled"`
 	AlarmDescription	string	`json:"alarm_description"`
 	DatapointsToAlarm	int	`json:"datapoints_to_alarm"`
-	Dimensions	map[string]???	`json:"dimensions"`
-	InsufficientDataActions	string	`json:"insufficient_data_actions"`
-	Period	int	`json:"period"`
-	EvaluationPeriods	int	`json:"evaluation_periods"`
-	Statistic	string	`json:"statistic"`
 	AlarmActions	string	`json:"alarm_actions"`
-	TreatMissingData	string	`json:"treat_missing_data"`
-	ComparisonOperator	string	`json:"comparison_operator"`
+	EvaluationPeriods	int	`json:"evaluation_periods"`
 	MetricName	string	`json:"metric_name"`
 	Namespace	string	`json:"namespace"`
+	Period	int	`json:"period"`
+	Dimensions	map[string]string	`json:"dimensions"`
 	OkActions	string	`json:"ok_actions"`
 	ExtendedStatistic	string	`json:"extended_statistic"`
-	AlarmName	string	`json:"alarm_name"`
+	TreatMissingData	string	`json:"treat_missing_data"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

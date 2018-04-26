@@ -21,10 +21,10 @@ type AwsLambdaAlias struct {
 
 // AwsLambdaAliasSpec is the spec for a AwsLambdaAlias Resource
 type AwsLambdaAliasSpec struct {
+	FunctionVersion	string	`json:"function_version"`
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
 	FunctionName	string	`json:"function_name"`
-	FunctionVersion	string	`json:"function_version"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

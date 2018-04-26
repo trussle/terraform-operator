@@ -21,17 +21,17 @@ type AwsOpsworksInstance struct {
 
 // AwsOpsworksInstanceSpec is the spec for a AwsOpsworksInstance Resource
 type AwsOpsworksInstanceSpec struct {
-	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
-	AgentVersion	string	`json:"agent_version"`
-	LayerIds	[]string	`json:"layer_ids"`
-	State	string	`json:"state"`
-	StackId	string	`json:"stack_id"`
-	EbsOptimized	bool	`json:"ebs_optimized"`
-	InstanceType	string	`json:"instance_type"`
-	AutoScalingType	string	`json:"auto_scaling_type"`
-	DeleteEbs	bool	`json:"delete_ebs"`
-	DeleteEip	bool	`json:"delete_eip"`
 	Architecture	string	`json:"architecture"`
+	State	string	`json:"state"`
+	EbsOptimized	bool	`json:"ebs_optimized"`
+	DeleteEbs	bool	`json:"delete_ebs"`
+	AutoScalingType	string	`json:"auto_scaling_type"`
+	InstanceType	string	`json:"instance_type"`
+	StackId	string	`json:"stack_id"`
+	AgentVersion	string	`json:"agent_version"`
+	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
+	LayerIds	[]string	`json:"layer_ids"`
+	DeleteEip	bool	`json:"delete_eip"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -44,3 +44,20 @@ type AwsOpsworksInstanceList struct {
 	Items	[]AwsOpsworksInstance	`json:"items"`
 }
 
+
+// EphemeralBlockDevice is a EphemeralBlockDevice
+type EphemeralBlockDevice struct {
+	DeviceName	string	`json:"device_name"`
+	VirtualName	string	`json:"virtual_name"`
+}
+
+// RootBlockDevice is a RootBlockDevice
+type RootBlockDevice struct {
+	DeleteOnTermination	bool	`json:"delete_on_termination"`
+}
+
+// EbsBlockDevice is a EbsBlockDevice
+type EbsBlockDevice struct {
+	DeleteOnTermination	bool	`json:"delete_on_termination"`
+	DeviceName	string	`json:"device_name"`
+}

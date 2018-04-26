@@ -21,13 +21,13 @@ type AwsAlb struct {
 
 // AwsAlbSpec is the spec for a AwsAlb Resource
 type AwsAlbSpec struct {
-	EnableDeletionProtection	bool	`json:"enable_deletion_protection"`
-	LoadBalancerType	string	`json:"load_balancer_type"`
-	IdleTimeout	int	`json:"idle_timeout"`
 	NamePrefix	string	`json:"name_prefix"`
-	Tags	map[string]???	`json:"tags"`
 	EnableCrossZoneLoadBalancing	bool	`json:"enable_cross_zone_load_balancing"`
 	EnableHttp2	bool	`json:"enable_http2"`
+	EnableDeletionProtection	bool	`json:"enable_deletion_protection"`
+	IdleTimeout	int	`json:"idle_timeout"`
+	Tags	map[string]string	`json:"tags"`
+	LoadBalancerType	string	`json:"load_balancer_type"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -41,7 +41,13 @@ type AwsAlbList struct {
 }
 
 
-// ItIBhgIv is a ItIBhgIv
-type ItIBhgIv struct {
+// SubnetMapping is a SubnetMapping
+type SubnetMapping struct {
+	SubnetId	string	`json:"subnet_id"`
+	AllocationId	string	`json:"allocation_id"`
+}
+
+// AccessLogs is a AccessLogs
+type AccessLogs struct {
 	Bucket	string	`json:"bucket"`
 }

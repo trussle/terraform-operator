@@ -21,20 +21,20 @@ type AwsApiGatewayIntegration struct {
 
 // AwsApiGatewayIntegrationSpec is the spec for a AwsApiGatewayIntegration Resource
 type AwsApiGatewayIntegrationSpec struct {
-	Type	string	`json:"type"`
-	HttpMethod	string	`json:"http_method"`
-	IntegrationHttpMethod	string	`json:"integration_http_method"`
-	RequestParameters	map[string]???	`json:"request_parameters"`
-	RequestParametersInJson	string	`json:"request_parameters_in_json"`
+	ConnectionId	string	`json:"connection_id"`
+	Credentials	string	`json:"credentials"`
+	RequestTemplates	map[string]string	`json:"request_templates"`
 	CacheKeyParameters	string	`json:"cache_key_parameters"`
+	ConnectionType	string	`json:"connection_type"`
+	Uri	string	`json:"uri"`
+	IntegrationHttpMethod	string	`json:"integration_http_method"`
+	RequestParameters	map[string]string	`json:"request_parameters"`
+	ContentHandling	string	`json:"content_handling"`
 	RestApiId	string	`json:"rest_api_id"`
 	ResourceId	string	`json:"resource_id"`
-	Uri	string	`json:"uri"`
-	Credentials	string	`json:"credentials"`
-	RequestTemplates	map[string]???	`json:"request_templates"`
-	ContentHandling	string	`json:"content_handling"`
-	ConnectionType	string	`json:"connection_type"`
-	ConnectionId	string	`json:"connection_id"`
+	HttpMethod	string	`json:"http_method"`
+	Type	string	`json:"type"`
+	RequestParametersInJson	string	`json:"request_parameters_in_json"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

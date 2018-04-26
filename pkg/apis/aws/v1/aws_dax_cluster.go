@@ -21,14 +21,14 @@ type AwsDaxCluster struct {
 
 // AwsDaxClusterSpec is the spec for a AwsDaxCluster Resource
 type AwsDaxClusterSpec struct {
-	IamRoleArn	string	`json:"iam_role_arn"`
-	NodeType	string	`json:"node_type"`
-	Tags	map[string]???	`json:"tags"`
-	ClusterName	string	`json:"cluster_name"`
-	AvailabilityZones	string	`json:"availability_zones"`
+	ReplicationFactor	int	`json:"replication_factor"`
 	Description	string	`json:"description"`
 	NotificationTopicArn	string	`json:"notification_topic_arn"`
-	ReplicationFactor	int	`json:"replication_factor"`
+	Tags	map[string]string	`json:"tags"`
+	ClusterName	string	`json:"cluster_name"`
+	NodeType	string	`json:"node_type"`
+	AvailabilityZones	string	`json:"availability_zones"`
+	IamRoleArn	string	`json:"iam_role_arn"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -42,6 +42,6 @@ type AwsDaxClusterList struct {
 }
 
 
-// RVdrSfOW is a RVdrSfOW
-type RVdrSfOW struct {
+// Nodes is a Nodes
+type Nodes struct {
 }

@@ -21,7 +21,7 @@ type AwsApiGatewayMethodSettings struct {
 
 // AwsApiGatewayMethodSettingsSpec is the spec for a AwsApiGatewayMethodSettings Resource
 type AwsApiGatewayMethodSettingsSpec struct {
-	Settings	[]sdjSGpng	`json:"settings"`
+	Settings	[]Settings	`json:"settings"`
 	RestApiId	string	`json:"rest_api_id"`
 	StageName	string	`json:"stage_name"`
 	MethodPath	string	`json:"method_path"`
@@ -38,16 +38,16 @@ type AwsApiGatewayMethodSettingsList struct {
 }
 
 
-// sdjSGpng is a sdjSGpng
-type sdjSGpng struct {
-	ThrottlingRateLimit	float64	`json:"throttling_rate_limit"`
-	CachingEnabled	bool	`json:"caching_enabled"`
-	RequireAuthorizationForCacheControl	bool	`json:"require_authorization_for_cache_control"`
+// Settings is a Settings
+type Settings struct {
+	MetricsEnabled	bool	`json:"metrics_enabled"`
 	LoggingLevel	string	`json:"logging_level"`
-	DataTraceEnabled	bool	`json:"data_trace_enabled"`
 	ThrottlingBurstLimit	int	`json:"throttling_burst_limit"`
+	ThrottlingRateLimit	float64	`json:"throttling_rate_limit"`
 	CacheTtlInSeconds	int	`json:"cache_ttl_in_seconds"`
 	CacheDataEncrypted	bool	`json:"cache_data_encrypted"`
 	UnauthorizedCacheControlHeaderStrategy	string	`json:"unauthorized_cache_control_header_strategy"`
-	MetricsEnabled	bool	`json:"metrics_enabled"`
+	DataTraceEnabled	bool	`json:"data_trace_enabled"`
+	CachingEnabled	bool	`json:"caching_enabled"`
+	RequireAuthorizationForCacheControl	bool	`json:"require_authorization_for_cache_control"`
 }

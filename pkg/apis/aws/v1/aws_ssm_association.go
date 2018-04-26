@@ -21,11 +21,11 @@ type AwsSsmAssociation struct {
 
 // AwsSsmAssociationSpec is the spec for a AwsSsmAssociation Resource
 type AwsSsmAssociationSpec struct {
-	Name	string	`json:"name"`
-	ScheduleExpression	string	`json:"schedule_expression"`
-	OutputLocation	[]vATdjZyE	`json:"output_location"`
-	AssociationName	string	`json:"association_name"`
 	InstanceId	string	`json:"instance_id"`
+	ScheduleExpression	string	`json:"schedule_expression"`
+	AssociationName	string	`json:"association_name"`
+	Name	string	`json:"name"`
+	OutputLocation	[]OutputLocation	`json:"output_location"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -39,14 +39,14 @@ type AwsSsmAssociationList struct {
 }
 
 
-// iJiWmAPK is a iJiWmAPK
-type iJiWmAPK struct {
+// Targets is a Targets
+type Targets struct {
 	Key	string	`json:"key"`
 	Values	[]string	`json:"values"`
 }
 
-// vATdjZyE is a vATdjZyE
-type vATdjZyE struct {
+// OutputLocation is a OutputLocation
+type OutputLocation struct {
 	S3BucketName	string	`json:"s3_bucket_name"`
 	S3KeyPrefix	string	`json:"s3_key_prefix"`
 }

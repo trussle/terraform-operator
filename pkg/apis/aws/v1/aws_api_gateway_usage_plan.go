@@ -21,12 +21,12 @@ type AwsApiGatewayUsagePlan struct {
 
 // AwsApiGatewayUsagePlanSpec is the spec for a AwsApiGatewayUsagePlan Resource
 type AwsApiGatewayUsagePlanSpec struct {
-	Description	string	`json:"description"`
-	ApiStages	[]wQpOQgNc	`json:"api_stages"`
-	QuotaSettings	string	`json:"quota_settings"`
-	ThrottleSettings	string	`json:"throttle_settings"`
+	ThrottleSettings	ThrottleSettings	`json:"throttle_settings"`
 	ProductCode	string	`json:"product_code"`
 	Name	string	`json:"name"`
+	Description	string	`json:"description"`
+	ApiStages	[]ApiStages	`json:"api_stages"`
+	QuotaSettings	QuotaSettings	`json:"quota_settings"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -40,8 +40,21 @@ type AwsApiGatewayUsagePlanList struct {
 }
 
 
-// wQpOQgNc is a wQpOQgNc
-type wQpOQgNc struct {
+// ThrottleSettings is a ThrottleSettings
+type ThrottleSettings struct {
+	BurstLimit	int	`json:"burst_limit"`
+	RateLimit	float64	`json:"rate_limit"`
+}
+
+// ApiStages is a ApiStages
+type ApiStages struct {
 	ApiId	string	`json:"api_id"`
 	Stage	string	`json:"stage"`
+}
+
+// QuotaSettings is a QuotaSettings
+type QuotaSettings struct {
+	Limit	int	`json:"limit"`
+	Offset	int	`json:"offset"`
+	Period	string	`json:"period"`
 }

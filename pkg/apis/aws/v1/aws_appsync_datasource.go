@@ -22,13 +22,13 @@ type AwsAppsyncDatasource struct {
 // AwsAppsyncDatasourceSpec is the spec for a AwsAppsyncDatasource Resource
 type AwsAppsyncDatasourceSpec struct {
 	ApiId	string	`json:"api_id"`
-	Type	string	`json:"type"`
-	ElasticsearchConfig	[]FpLSjFbc	`json:"elasticsearch_config"`
-	LambdaConfig	[]XoEFfRsW	`json:"lambda_config"`
 	Name	string	`json:"name"`
-	Description	string	`json:"description"`
-	DynamodbConfig	[]xPLDnJOb	`json:"dynamodb_config"`
 	ServiceRoleArn	string	`json:"service_role_arn"`
+	ElasticsearchConfig	[]ElasticsearchConfig	`json:"elasticsearch_config"`
+	LambdaConfig	[]LambdaConfig	`json:"lambda_config"`
+	Type	string	`json:"type"`
+	Description	string	`json:"description"`
+	DynamodbConfig	[]DynamodbConfig	`json:"dynamodb_config"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -42,20 +42,20 @@ type AwsAppsyncDatasourceList struct {
 }
 
 
-// FpLSjFbc is a FpLSjFbc
-type FpLSjFbc struct {
+// ElasticsearchConfig is a ElasticsearchConfig
+type ElasticsearchConfig struct {
 	Region	string	`json:"region"`
 	Endpoint	string	`json:"endpoint"`
 }
 
-// XoEFfRsW is a XoEFfRsW
-type XoEFfRsW struct {
+// LambdaConfig is a LambdaConfig
+type LambdaConfig struct {
 	FunctionArn	string	`json:"function_arn"`
 }
 
-// xPLDnJOb is a xPLDnJOb
-type xPLDnJOb struct {
-	UseCallerCredentials	bool	`json:"use_caller_credentials"`
+// DynamodbConfig is a DynamodbConfig
+type DynamodbConfig struct {
 	Region	string	`json:"region"`
 	TableName	string	`json:"table_name"`
+	UseCallerCredentials	bool	`json:"use_caller_credentials"`
 }

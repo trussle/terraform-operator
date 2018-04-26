@@ -21,10 +21,10 @@ type AwsOrganizationsAccount struct {
 
 // AwsOrganizationsAccountSpec is the spec for a AwsOrganizationsAccount Resource
 type AwsOrganizationsAccountSpec struct {
-	IamUserAccessToBilling	string	`json:"iam_user_access_to_billing"`
-	RoleName	string	`json:"role_name"`
 	Name	string	`json:"name"`
 	Email	string	`json:"email"`
+	IamUserAccessToBilling	string	`json:"iam_user_access_to_billing"`
+	RoleName	string	`json:"role_name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

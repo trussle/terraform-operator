@@ -21,15 +21,15 @@ type AwsEcsTaskDefinition struct {
 
 // AwsEcsTaskDefinitionSpec is the spec for a AwsEcsTaskDefinition Resource
 type AwsEcsTaskDefinitionSpec struct {
-	Volume	string	`json:"volume"`
-	Cpu	string	`json:"cpu"`
 	ContainerDefinitions	string	`json:"container_definitions"`
-	TaskRoleArn	string	`json:"task_role_arn"`
 	ExecutionRoleArn	string	`json:"execution_role_arn"`
-	Memory	string	`json:"memory"`
-	RequiresCompatibilities	string	`json:"requires_compatibilities"`
+	Volume	Volume	`json:"volume"`
+	PlacementConstraints	PlacementConstraints	`json:"placement_constraints"`
+	Cpu	string	`json:"cpu"`
 	Family	string	`json:"family"`
-	PlacementConstraints	string	`json:"placement_constraints"`
+	RequiresCompatibilities	string	`json:"requires_compatibilities"`
+	TaskRoleArn	string	`json:"task_role_arn"`
+	Memory	string	`json:"memory"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -42,3 +42,15 @@ type AwsEcsTaskDefinitionList struct {
 	Items	[]AwsEcsTaskDefinition	`json:"items"`
 }
 
+
+// Volume is a Volume
+type Volume struct {
+	Name	string	`json:"name"`
+	HostPath	string	`json:"host_path"`
+}
+
+// PlacementConstraints is a PlacementConstraints
+type PlacementConstraints struct {
+	Type	string	`json:"type"`
+	Expression	string	`json:"expression"`
+}

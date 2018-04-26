@@ -21,9 +21,9 @@ type AwsDefaultVpcDhcpOptions struct {
 
 // AwsDefaultVpcDhcpOptionsSpec is the spec for a AwsDefaultVpcDhcpOptions Resource
 type AwsDefaultVpcDhcpOptionsSpec struct {
-	Tags	map[string]???	`json:"tags"`
 	NetbiosNodeType	string	`json:"netbios_node_type"`
 	NetbiosNameServers	[]string	`json:"netbios_name_servers"`
+	Tags	map[string]string	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

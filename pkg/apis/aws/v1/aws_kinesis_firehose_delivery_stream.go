@@ -21,14 +21,14 @@ type AwsKinesisFirehoseDeliveryStream struct {
 
 // AwsKinesisFirehoseDeliveryStreamSpec is the spec for a AwsKinesisFirehoseDeliveryStream Resource
 type AwsKinesisFirehoseDeliveryStreamSpec struct {
-	RedshiftConfiguration	[]CsNVlgTe	`json:"redshift_configuration"`
-	SplunkConfiguration	[]etHsbZRj	`json:"splunk_configuration"`
-	KinesisSourceConfiguration	[]ZLCtTMtT	`json:"kinesis_source_configuration"`
-	S3Configuration	[]CoaNatyy	`json:"s3_configuration"`
-	ExtendedS3Configuration	[]iNKAReKJ	`json:"extended_s3_configuration"`
+	S3Configuration	[]S3Configuration	`json:"s3_configuration"`
+	ExtendedS3Configuration	[]ExtendedS3Configuration	`json:"extended_s3_configuration"`
+	RedshiftConfiguration	[]RedshiftConfiguration	`json:"redshift_configuration"`
+	SplunkConfiguration	[]SplunkConfiguration	`json:"splunk_configuration"`
 	Name	string	`json:"name"`
+	KinesisSourceConfiguration	[]KinesisSourceConfiguration	`json:"kinesis_source_configuration"`
 	Destination	string	`json:"destination"`
-	ElasticsearchConfiguration	[]iFQGZsnw	`json:"elasticsearch_configuration"`
+	ElasticsearchConfiguration	[]ElasticsearchConfiguration	`json:"elasticsearch_configuration"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -42,167 +42,109 @@ type AwsKinesisFirehoseDeliveryStreamList struct {
 }
 
 
-// JjPjzpfR is a JjPjzpfR
-type JjPjzpfR struct {
+// Parameters is a Parameters
+type Parameters struct {
 	ParameterName	string	`json:"parameter_name"`
 	ParameterValue	string	`json:"parameter_value"`
 }
 
-// QYhYzRyW is a QYhYzRyW
-type QYhYzRyW struct {
-	Parameters	[]JjPjzpfR	`json:"parameters"`
-	Type	string	`json:"type"`
-}
-
-// MaPEZQle is a MaPEZQle
-type MaPEZQle struct {
-	Enabled	bool	`json:"enabled"`
-	Processors	[]QYhYzRyW	`json:"processors"`
-}
-
-// FEgmotaF is a FEgmotaF
-type FEgmotaF struct {
-	BufferSize	int	`json:"buffer_size"`
+// ExtendedS3Configuration is a ExtendedS3Configuration
+type ExtendedS3Configuration struct {
 	BufferInterval	int	`json:"buffer_interval"`
 	CompressionFormat	string	`json:"compression_format"`
+	Prefix	string	`json:"prefix"`
+	S3BackupMode	string	`json:"s3_backup_mode"`
+	S3BackupConfiguration	[]S3BackupConfiguration	`json:"s3_backup_configuration"`
+	BucketArn	string	`json:"bucket_arn"`
+	BufferSize	int	`json:"buffer_size"`
 	KmsKeyArn	string	`json:"kms_key_arn"`
 	RoleArn	string	`json:"role_arn"`
-	Prefix	string	`json:"prefix"`
-	BucketArn	string	`json:"bucket_arn"`
+	ProcessingConfiguration	[]ProcessingConfiguration	`json:"processing_configuration"`
 }
 
-// CsNVlgTe is a CsNVlgTe
-type CsNVlgTe struct {
-	Username	string	`json:"username"`
-	ProcessingConfiguration	[]MaPEZQle	`json:"processing_configuration"`
-	S3BackupConfiguration	[]FEgmotaF	`json:"s3_backup_configuration"`
-	DataTableColumns	string	`json:"data_table_columns"`
-	DataTableName	string	`json:"data_table_name"`
-	CopyOptions	string	`json:"copy_options"`
-	ClusterJdbcurl	string	`json:"cluster_jdbcurl"`
-	Password	string	`json:"password"`
-	RoleArn	string	`json:"role_arn"`
-	S3BackupMode	string	`json:"s3_backup_mode"`
-	RetryDuration	int	`json:"retry_duration"`
-}
-
-// EkXBAkjQ is a EkXBAkjQ
-type EkXBAkjQ struct {
-	ParameterName	string	`json:"parameter_name"`
-	ParameterValue	string	`json:"parameter_value"`
-}
-
-// BEmfdzdc is a BEmfdzdc
-type BEmfdzdc struct {
-	Type	string	`json:"type"`
-	Parameters	[]EkXBAkjQ	`json:"parameters"`
-}
-
-// xAwnwekr is a xAwnwekr
-type xAwnwekr struct {
-	Enabled	bool	`json:"enabled"`
-	Processors	[]BEmfdzdc	`json:"processors"`
-}
-
-// etHsbZRj is a etHsbZRj
-type etHsbZRj struct {
-	RetryDuration	int	`json:"retry_duration"`
-	ProcessingConfiguration	[]xAwnwekr	`json:"processing_configuration"`
+// SplunkConfiguration is a SplunkConfiguration
+type SplunkConfiguration struct {
+	ProcessingConfiguration	[]ProcessingConfiguration	`json:"processing_configuration"`
 	HecAcknowledgmentTimeout	int	`json:"hec_acknowledgment_timeout"`
 	HecEndpoint	string	`json:"hec_endpoint"`
 	HecEndpointType	string	`json:"hec_endpoint_type"`
 	HecToken	string	`json:"hec_token"`
 	S3BackupMode	string	`json:"s3_backup_mode"`
+	RetryDuration	int	`json:"retry_duration"`
 }
 
-// ZLCtTMtT is a ZLCtTMtT
-type ZLCtTMtT struct {
+// ElasticsearchConfiguration is a ElasticsearchConfiguration
+type ElasticsearchConfiguration struct {
+	DomainArn	string	`json:"domain_arn"`
+	IndexName	string	`json:"index_name"`
+	IndexRotationPeriod	string	`json:"index_rotation_period"`
+	S3BackupMode	string	`json:"s3_backup_mode"`
+	TypeName	string	`json:"type_name"`
+	BufferingInterval	int	`json:"buffering_interval"`
+	BufferingSize	int	`json:"buffering_size"`
+	RetryDuration	int	`json:"retry_duration"`
+	RoleArn	string	`json:"role_arn"`
+	ProcessingConfiguration	[]ProcessingConfiguration	`json:"processing_configuration"`
+}
+
+// KinesisSourceConfiguration is a KinesisSourceConfiguration
+type KinesisSourceConfiguration struct {
 	KinesisStreamArn	string	`json:"kinesis_stream_arn"`
 	RoleArn	string	`json:"role_arn"`
 }
 
-// CoaNatyy is a CoaNatyy
-type CoaNatyy struct {
-	BufferSize	int	`json:"buffer_size"`
-	BufferInterval	int	`json:"buffer_interval"`
-	CompressionFormat	string	`json:"compression_format"`
-	KmsKeyArn	string	`json:"kms_key_arn"`
-	RoleArn	string	`json:"role_arn"`
-	Prefix	string	`json:"prefix"`
-	BucketArn	string	`json:"bucket_arn"`
-}
-
-// yiXJrscc is a yiXJrscc
-type yiXJrscc struct {
-	KmsKeyArn	string	`json:"kms_key_arn"`
-	RoleArn	string	`json:"role_arn"`
-	Prefix	string	`json:"prefix"`
-	BucketArn	string	`json:"bucket_arn"`
-	BufferSize	int	`json:"buffer_size"`
-	BufferInterval	int	`json:"buffer_interval"`
-	CompressionFormat	string	`json:"compression_format"`
-}
-
-// zFZBsbOJ is a zFZBsbOJ
-type zFZBsbOJ struct {
-	ParameterName	string	`json:"parameter_name"`
-	ParameterValue	string	`json:"parameter_value"`
-}
-
-// RussVmao is a RussVmao
-type RussVmao struct {
-	Parameters	[]zFZBsbOJ	`json:"parameters"`
-	Type	string	`json:"type"`
-}
-
-// tNswYNsG is a tNswYNsG
-type tNswYNsG struct {
+// CloudwatchLoggingOptions is a CloudwatchLoggingOptions
+type CloudwatchLoggingOptions struct {
 	Enabled	bool	`json:"enabled"`
-	Processors	[]RussVmao	`json:"processors"`
+	LogGroupName	string	`json:"log_group_name"`
+	LogStreamName	string	`json:"log_stream_name"`
 }
 
-// iNKAReKJ is a iNKAReKJ
-type iNKAReKJ struct {
-	BufferSize	int	`json:"buffer_size"`
+// S3Configuration is a S3Configuration
+type S3Configuration struct {
+	BufferInterval	int	`json:"buffer_interval"`
+	CompressionFormat	string	`json:"compression_format"`
 	KmsKeyArn	string	`json:"kms_key_arn"`
 	RoleArn	string	`json:"role_arn"`
 	Prefix	string	`json:"prefix"`
-	S3BackupConfiguration	[]yiXJrscc	`json:"s3_backup_configuration"`
-	ProcessingConfiguration	[]tNswYNsG	`json:"processing_configuration"`
 	BucketArn	string	`json:"bucket_arn"`
+	BufferSize	int	`json:"buffer_size"`
+}
+
+// S3BackupConfiguration is a S3BackupConfiguration
+type S3BackupConfiguration struct {
+	KmsKeyArn	string	`json:"kms_key_arn"`
+	RoleArn	string	`json:"role_arn"`
+	Prefix	string	`json:"prefix"`
+	BucketArn	string	`json:"bucket_arn"`
+	BufferSize	int	`json:"buffer_size"`
 	BufferInterval	int	`json:"buffer_interval"`
 	CompressionFormat	string	`json:"compression_format"`
-	S3BackupMode	string	`json:"s3_backup_mode"`
 }
 
-// dKupdOMe is a dKupdOMe
-type dKupdOMe struct {
-	ParameterName	string	`json:"parameter_name"`
-	ParameterValue	string	`json:"parameter_value"`
-}
-
-// LOpbUOpE is a LOpbUOpE
-type LOpbUOpE struct {
-	Parameters	[]dKupdOMe	`json:"parameters"`
+// Processors is a Processors
+type Processors struct {
 	Type	string	`json:"type"`
+	Parameters	[]Parameters	`json:"parameters"`
 }
 
-// TKSmVoiG is a TKSmVoiG
-type TKSmVoiG struct {
+// ProcessingConfiguration is a ProcessingConfiguration
+type ProcessingConfiguration struct {
 	Enabled	bool	`json:"enabled"`
-	Processors	[]LOpbUOpE	`json:"processors"`
+	Processors	[]Processors	`json:"processors"`
 }
 
-// iFQGZsnw is a iFQGZsnw
-type iFQGZsnw struct {
-	DomainArn	string	`json:"domain_arn"`
+// RedshiftConfiguration is a RedshiftConfiguration
+type RedshiftConfiguration struct {
+	Username	string	`json:"username"`
+	Password	string	`json:"password"`
+	S3BackupConfiguration	[]S3BackupConfiguration	`json:"s3_backup_configuration"`
 	RetryDuration	int	`json:"retry_duration"`
-	S3BackupMode	string	`json:"s3_backup_mode"`
-	TypeName	string	`json:"type_name"`
-	ProcessingConfiguration	[]TKSmVoiG	`json:"processing_configuration"`
-	BufferingInterval	int	`json:"buffering_interval"`
-	BufferingSize	int	`json:"buffering_size"`
-	IndexName	string	`json:"index_name"`
-	IndexRotationPeriod	string	`json:"index_rotation_period"`
+	CopyOptions	string	`json:"copy_options"`
+	ClusterJdbcurl	string	`json:"cluster_jdbcurl"`
+	ProcessingConfiguration	[]ProcessingConfiguration	`json:"processing_configuration"`
 	RoleArn	string	`json:"role_arn"`
+	S3BackupMode	string	`json:"s3_backup_mode"`
+	DataTableColumns	string	`json:"data_table_columns"`
+	DataTableName	string	`json:"data_table_name"`
 }

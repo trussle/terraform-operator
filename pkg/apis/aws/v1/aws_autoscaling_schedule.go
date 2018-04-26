@@ -21,8 +21,8 @@ type AwsAutoscalingSchedule struct {
 
 // AwsAutoscalingScheduleSpec is the spec for a AwsAutoscalingSchedule Resource
 type AwsAutoscalingScheduleSpec struct {
-	AutoscalingGroupName	string	`json:"autoscaling_group_name"`
 	ScheduledActionName	string	`json:"scheduled_action_name"`
+	AutoscalingGroupName	string	`json:"autoscaling_group_name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

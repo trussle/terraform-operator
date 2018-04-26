@@ -14,7 +14,7 @@ import (
 
 const apiVersion = "v1"
 
-var extraStructBuffer = []string{}
+var extraStructBuffer = map[string]string{}
 
 func main() {
 	prov := aws.Provider().(*schema.Provider)
@@ -56,7 +56,7 @@ import (
 	for _, v := range extraStructBuffer {
 		fmt.Fprintf(bb, v)
 	}
-	extraStructBuffer = []string{}
+	extraStructBuffer = map[string]string{}
 	w.Flush()
 	err := ioutil.WriteFile(path, bb.Bytes(), 0755)
 	if err != nil {
@@ -123,7 +123,7 @@ type %sSpec struct {
 
 func generateFieldString(k string, v *schema.Schema) string {
 	name := titleStr(k)
-	t := typeSchemaAsString(v)
+	t := typeSchemaAsString(name, v)
 	if v.Computed {
 		return ""
 	}
@@ -136,7 +136,7 @@ func titleStr(s string) string {
 	return strings.Replace(t, " ", "", -1)
 }
 
-func typeSchemaAsString(t *schema.Schema) string {
+func typeSchemaAsString(name string, t *schema.Schema) string {
 	switch t.Type {
 	case schema.TypeString:
 		return "string"
@@ -147,26 +147,27 @@ func typeSchemaAsString(t *schema.Schema) string {
 	case schema.TypeInt:
 		return "int"
 	case schema.TypeList:
-		return "[]" + typeElemAsString(t.Elem)
+		return "[]" + typeElemAsString(name, t.Elem)
 	case schema.TypeMap:
-		return "map[string]" + typeElemAsString(t.Elem)
+		return "map[string]" + typeElemAsString(name, t.Elem)
+	case schema.TypeSet:
+		return typeElemAsString(name, t.Elem)
 	}
 
 	return "string"
 }
 
-func typeElemAsString(i interface{}) string {
+func typeElemAsString(name string, i interface{}) string {
 	switch i.(type) {
 	case *schema.Schema:
-		return typeSchemaAsString(i.(*schema.Schema))
+		return typeSchemaAsString(name, i.(*schema.Schema))
 	case *schema.Resource:
 		// Complex object, shit ourselves.
-		name := RandStringRunes(8)
 		generateInlineStruct(name, i.(*schema.Resource))
 		return name
 	}
 
-	return "???"
+	return "string"
 }
 
 func generateInlineStruct(name string, r *schema.Resource) {
@@ -181,7 +182,7 @@ type %s struct {
 		}
 	}
 	spec = spec + "}\n"
-	extraStructBuffer = append(extraStructBuffer, spec)
+	extraStructBuffer[name] = spec
 }
 
 func generateRegisterFile(path string, m map[string]*schema.Resource) error {
@@ -253,4 +254,17 @@ func RandStringRunes(n int) string {
 		b[i] = letterRunes[rand.Intn(len(letterRunes))]
 	}
 	return string(b)
+}
+
+func SliceUniq(s []string) []string {
+	for i := 0; i < len(s); i++ {
+		for i2 := i + 1; i2 < len(s); i2++ {
+			if s[i] == s[i2] {
+				// delete
+				s = append(s[:i2], s[i2+1:]...)
+				i2--
+			}
+		}
+	}
+	return s
 }

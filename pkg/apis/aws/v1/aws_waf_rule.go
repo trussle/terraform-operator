@@ -23,7 +23,7 @@ type AwsWafRule struct {
 type AwsWafRuleSpec struct {
 	Name	string	`json:"name"`
 	MetricName	string	`json:"metric_name"`
-	Predicates	string	`json:"predicates"`
+	Predicates	Predicates	`json:"predicates"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -36,3 +36,10 @@ type AwsWafRuleList struct {
 	Items	[]AwsWafRule	`json:"items"`
 }
 
+
+// Predicates is a Predicates
+type Predicates struct {
+	DataId	string	`json:"data_id"`
+	Type	string	`json:"type"`
+	Negated	bool	`json:"negated"`
+}

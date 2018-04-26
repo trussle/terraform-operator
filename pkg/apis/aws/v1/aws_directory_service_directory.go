@@ -21,14 +21,14 @@ type AwsDirectoryServiceDirectory struct {
 
 // AwsDirectoryServiceDirectorySpec is the spec for a AwsDirectoryServiceDirectory Resource
 type AwsDirectoryServiceDirectorySpec struct {
-	Description	string	`json:"description"`
-	VpcSettings	[]GZamCToZ	`json:"vpc_settings"`
-	Tags	map[string]???	`json:"tags"`
-	ConnectSettings	[]vPynaEph	`json:"connect_settings"`
-	EnableSso	bool	`json:"enable_sso"`
+	ConnectSettings	[]ConnectSettings	`json:"connect_settings"`
 	Name	string	`json:"name"`
+	Description	string	`json:"description"`
+	Tags	map[string]string	`json:"tags"`
+	VpcSettings	[]VpcSettings	`json:"vpc_settings"`
 	Password	string	`json:"password"`
 	Type	string	`json:"type"`
+	EnableSso	bool	`json:"enable_sso"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -42,16 +42,16 @@ type AwsDirectoryServiceDirectoryList struct {
 }
 
 
-// GZamCToZ is a GZamCToZ
-type GZamCToZ struct {
-	VpcId	string	`json:"vpc_id"`
-	SubnetIds	string	`json:"subnet_ids"`
-}
-
-// vPynaEph is a vPynaEph
-type vPynaEph struct {
+// ConnectSettings is a ConnectSettings
+type ConnectSettings struct {
 	CustomerUsername	string	`json:"customer_username"`
 	CustomerDnsIps	string	`json:"customer_dns_ips"`
+	SubnetIds	string	`json:"subnet_ids"`
+	VpcId	string	`json:"vpc_id"`
+}
+
+// VpcSettings is a VpcSettings
+type VpcSettings struct {
 	SubnetIds	string	`json:"subnet_ids"`
 	VpcId	string	`json:"vpc_id"`
 }

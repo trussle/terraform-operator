@@ -21,8 +21,8 @@ type AwsSnapshotCreateVolumePermission struct {
 
 // AwsSnapshotCreateVolumePermissionSpec is the spec for a AwsSnapshotCreateVolumePermission Resource
 type AwsSnapshotCreateVolumePermissionSpec struct {
-	AccountId	string	`json:"account_id"`
 	SnapshotId	string	`json:"snapshot_id"`
+	AccountId	string	`json:"account_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -22,16 +22,16 @@ type AwsDynamodbTable struct {
 // AwsDynamodbTableSpec is the spec for a AwsDynamodbTable Resource
 type AwsDynamodbTableSpec struct {
 	Name	string	`json:"name"`
-	HashKey	string	`json:"hash_key"`
+	Attribute	Attribute	`json:"attribute"`
 	RangeKey	string	`json:"range_key"`
-	StreamEnabled	bool	`json:"stream_enabled"`
-	WriteCapacity	int	`json:"write_capacity"`
-	Attribute	string	`json:"attribute"`
-	LocalSecondaryIndex	string	`json:"local_secondary_index"`
 	ReadCapacity	int	`json:"read_capacity"`
-	GlobalSecondaryIndex	string	`json:"global_secondary_index"`
-	Tags	map[string]???	`json:"tags"`
-	Ttl	string	`json:"ttl"`
+	LocalSecondaryIndex	LocalSecondaryIndex	`json:"local_secondary_index"`
+	HashKey	string	`json:"hash_key"`
+	Ttl	Ttl	`json:"ttl"`
+	Tags	map[string]string	`json:"tags"`
+	WriteCapacity	int	`json:"write_capacity"`
+	GlobalSecondaryIndex	GlobalSecondaryIndex	`json:"global_secondary_index"`
+	StreamEnabled	bool	`json:"stream_enabled"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -45,7 +45,38 @@ type AwsDynamodbTableList struct {
 }
 
 
-// mHEfnwcN is a mHEfnwcN
-type mHEfnwcN struct {
+// ServerSideEncryption is a ServerSideEncryption
+type ServerSideEncryption struct {
 	Enabled	bool	`json:"enabled"`
+}
+
+// Attribute is a Attribute
+type Attribute struct {
+	Name	string	`json:"name"`
+	Type	string	`json:"type"`
+}
+
+// LocalSecondaryIndex is a LocalSecondaryIndex
+type LocalSecondaryIndex struct {
+	Name	string	`json:"name"`
+	RangeKey	string	`json:"range_key"`
+	ProjectionType	string	`json:"projection_type"`
+	NonKeyAttributes	[]string	`json:"non_key_attributes"`
+}
+
+// Ttl is a Ttl
+type Ttl struct {
+	AttributeName	string	`json:"attribute_name"`
+	Enabled	bool	`json:"enabled"`
+}
+
+// GlobalSecondaryIndex is a GlobalSecondaryIndex
+type GlobalSecondaryIndex struct {
+	HashKey	string	`json:"hash_key"`
+	RangeKey	string	`json:"range_key"`
+	ProjectionType	string	`json:"projection_type"`
+	NonKeyAttributes	[]string	`json:"non_key_attributes"`
+	Name	string	`json:"name"`
+	WriteCapacity	int	`json:"write_capacity"`
+	ReadCapacity	int	`json:"read_capacity"`
 }

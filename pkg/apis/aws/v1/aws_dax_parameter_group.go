@@ -21,8 +21,8 @@ type AwsDaxParameterGroup struct {
 
 // AwsDaxParameterGroupSpec is the spec for a AwsDaxParameterGroup Resource
 type AwsDaxParameterGroupSpec struct {
-	Description	string	`json:"description"`
 	Name	string	`json:"name"`
+	Description	string	`json:"description"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -35,3 +35,9 @@ type AwsDaxParameterGroupList struct {
 	Items	[]AwsDaxParameterGroup	`json:"items"`
 }
 
+
+// Parameters is a Parameters
+type Parameters struct {
+	Name	string	`json:"name"`
+	Value	string	`json:"value"`
+}

@@ -22,7 +22,7 @@ type AwsWafregionalSqlInjectionMatchSet struct {
 // AwsWafregionalSqlInjectionMatchSetSpec is the spec for a AwsWafregionalSqlInjectionMatchSet Resource
 type AwsWafregionalSqlInjectionMatchSetSpec struct {
 	Name	string	`json:"name"`
-	SqlInjectionMatchTuple	string	`json:"sql_injection_match_tuple"`
+	SqlInjectionMatchTuple	SqlInjectionMatchTuple	`json:"sql_injection_match_tuple"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -35,3 +35,15 @@ type AwsWafregionalSqlInjectionMatchSetList struct {
 	Items	[]AwsWafregionalSqlInjectionMatchSet	`json:"items"`
 }
 
+
+// FieldToMatch is a FieldToMatch
+type FieldToMatch struct {
+	Data	string	`json:"data"`
+	Type	string	`json:"type"`
+}
+
+// SqlInjectionMatchTuple is a SqlInjectionMatchTuple
+type SqlInjectionMatchTuple struct {
+	FieldToMatch	[]FieldToMatch	`json:"field_to_match"`
+	TextTransformation	string	`json:"text_transformation"`
+}

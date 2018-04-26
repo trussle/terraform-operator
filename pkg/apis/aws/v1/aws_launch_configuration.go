@@ -23,18 +23,18 @@ type AwsLaunchConfiguration struct {
 type AwsLaunchConfigurationSpec struct {
 	InstanceType	string	`json:"instance_type"`
 	VpcClassicLinkSecurityGroups	string	`json:"vpc_classic_link_security_groups"`
-	PlacementTenancy	string	`json:"placement_tenancy"`
 	ImageId	string	`json:"image_id"`
+	IamInstanceProfile	string	`json:"iam_instance_profile"`
+	SecurityGroups	string	`json:"security_groups"`
+	AssociatePublicIpAddress	bool	`json:"associate_public_ip_address"`
 	NamePrefix	string	`json:"name_prefix"`
-	UserDataBase64	string	`json:"user_data_base64"`
 	VpcClassicLinkId	string	`json:"vpc_classic_link_id"`
 	SpotPrice	string	`json:"spot_price"`
+	PlacementTenancy	string	`json:"placement_tenancy"`
 	EnableMonitoring	bool	`json:"enable_monitoring"`
-	SecurityGroups	string	`json:"security_groups"`
 	UserData	string	`json:"user_data"`
-	AssociatePublicIpAddress	bool	`json:"associate_public_ip_address"`
-	EphemeralBlockDevice	string	`json:"ephemeral_block_device"`
-	IamInstanceProfile	string	`json:"iam_instance_profile"`
+	UserDataBase64	string	`json:"user_data_base64"`
+	EphemeralBlockDevice	EphemeralBlockDevice	`json:"ephemeral_block_device"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -48,7 +48,20 @@ type AwsLaunchConfigurationList struct {
 }
 
 
-// alGqARmn is a alGqARmn
-type alGqARmn struct {
+// EbsBlockDevice is a EbsBlockDevice
+type EbsBlockDevice struct {
+	DeleteOnTermination	bool	`json:"delete_on_termination"`
+	DeviceName	string	`json:"device_name"`
+	NoDevice	bool	`json:"no_device"`
+}
+
+// EphemeralBlockDevice is a EphemeralBlockDevice
+type EphemeralBlockDevice struct {
+	DeviceName	string	`json:"device_name"`
+	VirtualName	string	`json:"virtual_name"`
+}
+
+// RootBlockDevice is a RootBlockDevice
+type RootBlockDevice struct {
 	DeleteOnTermination	bool	`json:"delete_on_termination"`
 }

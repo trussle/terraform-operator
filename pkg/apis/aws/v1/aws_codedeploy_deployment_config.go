@@ -22,7 +22,7 @@ type AwsCodedeployDeploymentConfig struct {
 // AwsCodedeployDeploymentConfigSpec is the spec for a AwsCodedeployDeploymentConfig Resource
 type AwsCodedeployDeploymentConfigSpec struct {
 	DeploymentConfigName	string	`json:"deployment_config_name"`
-	MinimumHealthyHosts	[]EYeqkKHq	`json:"minimum_healthy_hosts"`
+	MinimumHealthyHosts	[]MinimumHealthyHosts	`json:"minimum_healthy_hosts"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -36,8 +36,8 @@ type AwsCodedeployDeploymentConfigList struct {
 }
 
 
-// EYeqkKHq is a EYeqkKHq
-type EYeqkKHq struct {
-	Value	int	`json:"value"`
+// MinimumHealthyHosts is a MinimumHealthyHosts
+type MinimumHealthyHosts struct {
 	Type	string	`json:"type"`
+	Value	int	`json:"value"`
 }

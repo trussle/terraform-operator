@@ -21,9 +21,9 @@ type AwsVpcPeeringConnectionAccepter struct {
 
 // AwsVpcPeeringConnectionAccepterSpec is the spec for a AwsVpcPeeringConnectionAccepter Resource
 type AwsVpcPeeringConnectionAccepterSpec struct {
+	Tags	map[string]string	`json:"tags"`
 	VpcPeeringConnectionId	string	`json:"vpc_peering_connection_id"`
 	AutoAccept	bool	`json:"auto_accept"`
-	Tags	map[string]???	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -36,3 +36,17 @@ type AwsVpcPeeringConnectionAccepterList struct {
 	Items	[]AwsVpcPeeringConnectionAccepter	`json:"items"`
 }
 
+
+// Requester is a Requester
+type Requester struct {
+	AllowRemoteVpcDnsResolution	bool	`json:"allow_remote_vpc_dns_resolution"`
+	AllowClassicLinkToRemoteVpc	bool	`json:"allow_classic_link_to_remote_vpc"`
+	AllowVpcToRemoteClassicLink	bool	`json:"allow_vpc_to_remote_classic_link"`
+}
+
+// Accepter is a Accepter
+type Accepter struct {
+	AllowVpcToRemoteClassicLink	bool	`json:"allow_vpc_to_remote_classic_link"`
+	AllowRemoteVpcDnsResolution	bool	`json:"allow_remote_vpc_dns_resolution"`
+	AllowClassicLinkToRemoteVpc	bool	`json:"allow_classic_link_to_remote_vpc"`
+}

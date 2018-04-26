@@ -22,7 +22,7 @@ type AwsS3BucketMetric struct {
 // AwsS3BucketMetricSpec is the spec for a AwsS3BucketMetric Resource
 type AwsS3BucketMetricSpec struct {
 	Bucket	string	`json:"bucket"`
-	Filter	[]zgaczAIn	`json:"filter"`
+	Filter	[]Filter	`json:"filter"`
 	Name	string	`json:"name"`
 }
 
@@ -37,8 +37,8 @@ type AwsS3BucketMetricList struct {
 }
 
 
-// zgaczAIn is a zgaczAIn
-type zgaczAIn struct {
-	Tags	map[string]???	`json:"tags"`
+// Filter is a Filter
+type Filter struct {
 	Prefix	string	`json:"prefix"`
+	Tags	map[string]string	`json:"tags"`
 }

@@ -21,11 +21,11 @@ type AwsServiceDiscoveryService struct {
 
 // AwsServiceDiscoveryServiceSpec is the spec for a AwsServiceDiscoveryService Resource
 type AwsServiceDiscoveryServiceSpec struct {
-	HealthCheckCustomConfig	[]ERwVhGCM	`json:"health_check_custom_config"`
-	Name	string	`json:"name"`
 	Description	string	`json:"description"`
-	DnsConfig	[]dfLitTqw	`json:"dns_config"`
-	HealthCheckConfig	[]XTbRMGxq	`json:"health_check_config"`
+	DnsConfig	[]DnsConfig	`json:"dns_config"`
+	HealthCheckConfig	[]HealthCheckConfig	`json:"health_check_config"`
+	HealthCheckCustomConfig	[]HealthCheckCustomConfig	`json:"health_check_custom_config"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -39,27 +39,27 @@ type AwsServiceDiscoveryServiceList struct {
 }
 
 
-// ERwVhGCM is a ERwVhGCM
-type ERwVhGCM struct {
-	FailureThreshold	int	`json:"failure_threshold"`
-}
-
-// LUecgOcz is a LUecgOcz
-type LUecgOcz struct {
+// DnsRecords is a DnsRecords
+type DnsRecords struct {
 	Ttl	int	`json:"ttl"`
 	Type	string	`json:"type"`
 }
 
-// dfLitTqw is a dfLitTqw
-type dfLitTqw struct {
-	DnsRecords	[]LUecgOcz	`json:"dns_records"`
-	RoutingPolicy	string	`json:"routing_policy"`
+// DnsConfig is a DnsConfig
+type DnsConfig struct {
 	NamespaceId	string	`json:"namespace_id"`
+	DnsRecords	[]DnsRecords	`json:"dns_records"`
+	RoutingPolicy	string	`json:"routing_policy"`
 }
 
-// XTbRMGxq is a XTbRMGxq
-type XTbRMGxq struct {
+// HealthCheckConfig is a HealthCheckConfig
+type HealthCheckConfig struct {
+	FailureThreshold	int	`json:"failure_threshold"`
 	ResourcePath	string	`json:"resource_path"`
 	Type	string	`json:"type"`
+}
+
+// HealthCheckCustomConfig is a HealthCheckCustomConfig
+type HealthCheckCustomConfig struct {
 	FailureThreshold	int	`json:"failure_threshold"`
 }

@@ -22,8 +22,8 @@ type AwsAlbListenerRule struct {
 // AwsAlbListenerRuleSpec is the spec for a AwsAlbListenerRule Resource
 type AwsAlbListenerRuleSpec struct {
 	ListenerArn	string	`json:"listener_arn"`
-	Action	[]eBZBFelh	`json:"action"`
-	Condition	string	`json:"condition"`
+	Action	[]Action	`json:"action"`
+	Condition	Condition	`json:"condition"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -37,8 +37,14 @@ type AwsAlbListenerRuleList struct {
 }
 
 
-// eBZBFelh is a eBZBFelh
-type eBZBFelh struct {
+// Action is a Action
+type Action struct {
 	TargetGroupArn	string	`json:"target_group_arn"`
 	Type	string	`json:"type"`
+}
+
+// Condition is a Condition
+type Condition struct {
+	Values	[]string	`json:"values"`
+	Field	string	`json:"field"`
 }

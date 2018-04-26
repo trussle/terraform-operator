@@ -21,18 +21,18 @@ type AwsEcsService struct {
 
 // AwsEcsServiceSpec is the spec for a AwsEcsService Resource
 type AwsEcsServiceSpec struct {
-	TaskDefinition	string	`json:"task_definition"`
-	DesiredCount	int	`json:"desired_count"`
-	LoadBalancer	string	`json:"load_balancer"`
-	NetworkConfiguration	[]eKovPdQS	`json:"network_configuration"`
-	ServiceRegistries	string	`json:"service_registries"`
-	Name	string	`json:"name"`
-	LaunchType	string	`json:"launch_type"`
-	DeploymentMaximumPercent	int	`json:"deployment_maximum_percent"`
-	PlacementConstraints	string	`json:"placement_constraints"`
-	HealthCheckGracePeriodSeconds	int	`json:"health_check_grace_period_seconds"`
+	LoadBalancer	LoadBalancer	`json:"load_balancer"`
+	PlacementStrategy	PlacementStrategy	`json:"placement_strategy"`
+	ServiceRegistries	ServiceRegistries	`json:"service_registries"`
 	DeploymentMinimumHealthyPercent	int	`json:"deployment_minimum_healthy_percent"`
-	PlacementStrategy	string	`json:"placement_strategy"`
+	NetworkConfiguration	[]NetworkConfiguration	`json:"network_configuration"`
+	LaunchType	string	`json:"launch_type"`
+	DesiredCount	int	`json:"desired_count"`
+	HealthCheckGracePeriodSeconds	int	`json:"health_check_grace_period_seconds"`
+	PlacementConstraints	PlacementConstraints	`json:"placement_constraints"`
+	Name	string	`json:"name"`
+	DeploymentMaximumPercent	int	`json:"deployment_maximum_percent"`
+	TaskDefinition	string	`json:"task_definition"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -46,8 +46,34 @@ type AwsEcsServiceList struct {
 }
 
 
-// eKovPdQS is a eKovPdQS
-type eKovPdQS struct {
+// PlacementConstraints is a PlacementConstraints
+type PlacementConstraints struct {
+	Type	string	`json:"type"`
+	Expression	string	`json:"expression"`
+}
+
+// LoadBalancer is a LoadBalancer
+type LoadBalancer struct {
+	TargetGroupArn	string	`json:"target_group_arn"`
+	ContainerName	string	`json:"container_name"`
+	ContainerPort	int	`json:"container_port"`
+	ElbName	string	`json:"elb_name"`
+}
+
+// PlacementStrategy is a PlacementStrategy
+type PlacementStrategy struct {
+	Type	string	`json:"type"`
+	Field	string	`json:"field"`
+}
+
+// ServiceRegistries is a ServiceRegistries
+type ServiceRegistries struct {
+	Port	int	`json:"port"`
+	RegistryArn	string	`json:"registry_arn"`
+}
+
+// NetworkConfiguration is a NetworkConfiguration
+type NetworkConfiguration struct {
 	Subnets	string	`json:"subnets"`
 	AssignPublicIp	bool	`json:"assign_public_ip"`
 	SecurityGroups	string	`json:"security_groups"`

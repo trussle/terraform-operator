@@ -25,7 +25,7 @@ type AwsDxLagSpec struct {
 	ConnectionsBandwidth	string	`json:"connections_bandwidth"`
 	Location	string	`json:"location"`
 	ForceDestroy	bool	`json:"force_destroy"`
-	Tags	map[string]???	`json:"tags"`
+	Tags	map[string]string	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -22,7 +22,7 @@ type AwsWafregionalRegexMatchSet struct {
 // AwsWafregionalRegexMatchSetSpec is the spec for a AwsWafregionalRegexMatchSet Resource
 type AwsWafregionalRegexMatchSetSpec struct {
 	Name	string	`json:"name"`
-	RegexMatchTuple	string	`json:"regex_match_tuple"`
+	RegexMatchTuple	RegexMatchTuple	`json:"regex_match_tuple"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -35,3 +35,16 @@ type AwsWafregionalRegexMatchSetList struct {
 	Items	[]AwsWafregionalRegexMatchSet	`json:"items"`
 }
 
+
+// FieldToMatch is a FieldToMatch
+type FieldToMatch struct {
+	Data	string	`json:"data"`
+	Type	string	`json:"type"`
+}
+
+// RegexMatchTuple is a RegexMatchTuple
+type RegexMatchTuple struct {
+	FieldToMatch	[]FieldToMatch	`json:"field_to_match"`
+	RegexPatternSetId	string	`json:"regex_pattern_set_id"`
+	TextTransformation	string	`json:"text_transformation"`
+}

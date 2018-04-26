@@ -21,10 +21,10 @@ type AwsRedshiftParameterGroup struct {
 
 // AwsRedshiftParameterGroupSpec is the spec for a AwsRedshiftParameterGroup Resource
 type AwsRedshiftParameterGroupSpec struct {
-	Name	string	`json:"name"`
 	Family	string	`json:"family"`
 	Description	string	`json:"description"`
-	Parameter	string	`json:"parameter"`
+	Parameter	Parameter	`json:"parameter"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -37,3 +37,9 @@ type AwsRedshiftParameterGroupList struct {
 	Items	[]AwsRedshiftParameterGroup	`json:"items"`
 }
 
+
+// Parameter is a Parameter
+type Parameter struct {
+	Name	string	`json:"name"`
+	Value	string	`json:"value"`
+}

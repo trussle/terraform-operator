@@ -21,15 +21,15 @@ type AwsApiGatewayAuthorizer struct {
 
 // AwsApiGatewayAuthorizerSpec is the spec for a AwsApiGatewayAuthorizer Resource
 type AwsApiGatewayAuthorizerSpec struct {
-	Type	string	`json:"type"`
-	IdentityValidationExpression	string	`json:"identity_validation_expression"`
-	ProviderArns	string	`json:"provider_arns"`
-	IdentitySource	string	`json:"identity_source"`
 	Name	string	`json:"name"`
-	RestApiId	string	`json:"rest_api_id"`
-	AuthorizerUri	string	`json:"authorizer_uri"`
+	Type	string	`json:"type"`
 	AuthorizerCredentials	string	`json:"authorizer_credentials"`
 	AuthorizerResultTtlInSeconds	int	`json:"authorizer_result_ttl_in_seconds"`
+	ProviderArns	string	`json:"provider_arns"`
+	IdentitySource	string	`json:"identity_source"`
+	RestApiId	string	`json:"rest_api_id"`
+	IdentityValidationExpression	string	`json:"identity_validation_expression"`
+	AuthorizerUri	string	`json:"authorizer_uri"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

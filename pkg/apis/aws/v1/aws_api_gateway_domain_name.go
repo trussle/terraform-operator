@@ -21,11 +21,11 @@ type AwsApiGatewayDomainName struct {
 
 // AwsApiGatewayDomainNameSpec is the spec for a AwsApiGatewayDomainName Resource
 type AwsApiGatewayDomainNameSpec struct {
-	CertificateChain	string	`json:"certificate_chain"`
-	CertificatePrivateKey	string	`json:"certificate_private_key"`
 	CertificateArn	string	`json:"certificate_arn"`
 	CertificateBody	string	`json:"certificate_body"`
+	CertificateChain	string	`json:"certificate_chain"`
 	CertificateName	string	`json:"certificate_name"`
+	CertificatePrivateKey	string	`json:"certificate_private_key"`
 	DomainName	string	`json:"domain_name"`
 }
 
