@@ -21,14 +21,14 @@ type AwsGameliftFleet struct {
 
 // AwsGameliftFleetSpec is the spec for a AwsGameliftFleet Resource
 type AwsGameliftFleetSpec struct {
-	BuildId	string	`json:"build_id"`
 	Ec2InstanceType	string	`json:"ec2_instance_type"`
-	Description	string	`json:"description"`
-	Ec2InboundPermission	[]Ec2InboundPermission	`json:"ec2_inbound_permission"`
-	NewGameSessionProtectionPolicy	string	`json:"new_game_session_protection_policy"`
 	Name	string	`json:"name"`
-	ResourceCreationLimitPolicy	[]ResourceCreationLimitPolicy	`json:"resource_creation_limit_policy"`
-	RuntimeConfiguration	[]RuntimeConfiguration	`json:"runtime_configuration"`
+	Description	string	`json:"description"`
+	RuntimeConfiguration	[]AwsGameliftFleetRuntimeConfiguration	`json:"runtime_configuration"`
+	BuildId	string	`json:"build_id"`
+	NewGameSessionProtectionPolicy	string	`json:"new_game_session_protection_policy"`
+	ResourceCreationLimitPolicy	[]AwsGameliftFleetResourceCreationLimitPolicy	`json:"resource_creation_limit_policy"`
+	Ec2InboundPermission	[]AwsGameliftFleetEc2InboundPermission	`json:"ec2_inbound_permission"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -42,30 +42,30 @@ type AwsGameliftFleetList struct {
 }
 
 
-// Ec2InboundPermission is a Ec2InboundPermission
-type Ec2InboundPermission struct {
-	Protocol	string	`json:"protocol"`
-	ToPort	int	`json:"to_port"`
-	FromPort	int	`json:"from_port"`
-	IpRange	string	`json:"ip_range"`
-}
-
-// ResourceCreationLimitPolicy is a ResourceCreationLimitPolicy
-type ResourceCreationLimitPolicy struct {
+// AwsGameliftFleetResourceCreationLimitPolicy is a AwsGameliftFleetResourceCreationLimitPolicy
+type AwsGameliftFleetResourceCreationLimitPolicy struct {
 	NewGameSessionsPerCreator	int	`json:"new_game_sessions_per_creator"`
 	PolicyPeriodInMinutes	int	`json:"policy_period_in_minutes"`
 }
 
-// ServerProcess is a ServerProcess
-type ServerProcess struct {
+// AwsGameliftFleetEc2InboundPermission is a AwsGameliftFleetEc2InboundPermission
+type AwsGameliftFleetEc2InboundPermission struct {
+	FromPort	int	`json:"from_port"`
+	IpRange	string	`json:"ip_range"`
+	Protocol	string	`json:"protocol"`
+	ToPort	int	`json:"to_port"`
+}
+
+// AwsGameliftFleetServerProcess is a AwsGameliftFleetServerProcess
+type AwsGameliftFleetServerProcess struct {
 	ConcurrentExecutions	int	`json:"concurrent_executions"`
 	LaunchPath	string	`json:"launch_path"`
 	Parameters	string	`json:"parameters"`
 }
 
-// RuntimeConfiguration is a RuntimeConfiguration
-type RuntimeConfiguration struct {
-	GameSessionActivationTimeoutSeconds	int	`json:"game_session_activation_timeout_seconds"`
+// AwsGameliftFleetRuntimeConfiguration is a AwsGameliftFleetRuntimeConfiguration
+type AwsGameliftFleetRuntimeConfiguration struct {
 	MaxConcurrentGameSessionActivations	int	`json:"max_concurrent_game_session_activations"`
-	ServerProcess	[]ServerProcess	`json:"server_process"`
+	ServerProcess	[]AwsGameliftFleetServerProcess	`json:"server_process"`
+	GameSessionActivationTimeoutSeconds	int	`json:"game_session_activation_timeout_seconds"`
 }

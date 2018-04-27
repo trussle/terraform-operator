@@ -22,7 +22,7 @@ type AwsRedshiftSecurityGroup struct {
 // AwsRedshiftSecurityGroupSpec is the spec for a AwsRedshiftSecurityGroup Resource
 type AwsRedshiftSecurityGroupSpec struct {
 	Description	string	`json:"description"`
-	Ingress	Ingress	`json:"ingress"`
+	Ingress	AwsRedshiftSecurityGroupIngress	`json:"ingress"`
 	Name	string	`json:"name"`
 }
 
@@ -37,7 +37,7 @@ type AwsRedshiftSecurityGroupList struct {
 }
 
 
-// Ingress is a Ingress
-type Ingress struct {
+// AwsRedshiftSecurityGroupIngress is a AwsRedshiftSecurityGroupIngress
+type AwsRedshiftSecurityGroupIngress struct {
 	Cidr	string	`json:"cidr"`
 }

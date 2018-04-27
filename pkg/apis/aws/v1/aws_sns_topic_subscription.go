@@ -21,14 +21,14 @@ type AwsSnsTopicSubscription struct {
 
 // AwsSnsTopicSubscriptionSpec is the spec for a AwsSnsTopicSubscription Resource
 type AwsSnsTopicSubscriptionSpec struct {
-	RawMessageDelivery	bool	`json:"raw_message_delivery"`
-	Protocol	string	`json:"protocol"`
 	Endpoint	string	`json:"endpoint"`
 	EndpointAutoConfirms	bool	`json:"endpoint_auto_confirms"`
-	FilterPolicy	string	`json:"filter_policy"`
 	ConfirmationTimeoutInMinutes	int	`json:"confirmation_timeout_in_minutes"`
+	FilterPolicy	string	`json:"filter_policy"`
+	Protocol	string	`json:"protocol"`
 	TopicArn	string	`json:"topic_arn"`
 	DeliveryPolicy	string	`json:"delivery_policy"`
+	RawMessageDelivery	bool	`json:"raw_message_delivery"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

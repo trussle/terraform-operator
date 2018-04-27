@@ -940,10 +940,6 @@ func (c *FakeTrussleV1) AwsNetworkInterfaces(namespace string) v1.AwsNetworkInte
 	return &FakeAwsNetworkInterfaces{c, namespace}
 }
 
-func (c *FakeTrussleV1) AwsNetworkInterfaceAttachments(namespace string) v1.AwsNetworkInterfaceAttachmentInterface {
-	return &FakeAwsNetworkInterfaceAttachments{c, namespace}
-}
-
 func (c *FakeTrussleV1) AwsNetworkInterfaceSgAttachments(namespace string) v1.AwsNetworkInterfaceSgAttachmentInterface {
 	return &FakeAwsNetworkInterfaceSgAttachments{c, namespace}
 }
@@ -1338,10 +1334,6 @@ func (c *FakeTrussleV1) AwsVpcEndpointSubnetAssociations(namespace string) v1.Aw
 
 func (c *FakeTrussleV1) AwsVpcPeeringConnections(namespace string) v1.AwsVpcPeeringConnectionInterface {
 	return &FakeAwsVpcPeeringConnections{c, namespace}
-}
-
-func (c *FakeTrussleV1) AwsVpcPeeringConnectionAccepters(namespace string) v1.AwsVpcPeeringConnectionAccepterInterface {
-	return &FakeAwsVpcPeeringConnectionAccepters{c, namespace}
 }
 
 func (c *FakeTrussleV1) AwsVpnConnections(namespace string) v1.AwsVpnConnectionInterface {

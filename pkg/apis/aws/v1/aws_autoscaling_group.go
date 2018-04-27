@@ -21,24 +21,24 @@ type AwsAutoscalingGroup struct {
 
 // AwsAutoscalingGroupSpec is the spec for a AwsAutoscalingGroup Resource
 type AwsAutoscalingGroupSpec struct {
-	SuspendedProcesses	string	`json:"suspended_processes"`
-	ProtectFromScaleIn	bool	`json:"protect_from_scale_in"`
-	MinSize	int	`json:"min_size"`
-	MaxSize	int	`json:"max_size"`
-	Tags	[]map[string]string	`json:"tags"`
-	HealthCheckGracePeriod	int	`json:"health_check_grace_period"`
-	WaitForCapacityTimeout	string	`json:"wait_for_capacity_timeout"`
-	Tag	Tag	`json:"tag"`
-	NamePrefix	string	`json:"name_prefix"`
 	PlacementGroup	string	`json:"placement_group"`
-	EnabledMetrics	string	`json:"enabled_metrics"`
-	InitialLifecycleHook	InitialLifecycleHook	`json:"initial_lifecycle_hook"`
-	LaunchConfiguration	string	`json:"launch_configuration"`
+	WaitForCapacityTimeout	string	`json:"wait_for_capacity_timeout"`
+	ProtectFromScaleIn	bool	`json:"protect_from_scale_in"`
+	NamePrefix	string	`json:"name_prefix"`
 	MinElbCapacity	int	`json:"min_elb_capacity"`
 	WaitForElbCapacity	int	`json:"wait_for_elb_capacity"`
+	MaxSize	int	`json:"max_size"`
+	HealthCheckGracePeriod	int	`json:"health_check_grace_period"`
+	Tags	[]map[string]string	`json:"tags"`
 	TerminationPolicies	[]string	`json:"termination_policies"`
-	MetricsGranularity	string	`json:"metrics_granularity"`
+	InitialLifecycleHook	AwsAutoscalingGroupInitialLifecycleHook	`json:"initial_lifecycle_hook"`
+	MinSize	int	`json:"min_size"`
+	LaunchConfiguration	string	`json:"launch_configuration"`
 	ForceDelete	bool	`json:"force_delete"`
+	EnabledMetrics	string	`json:"enabled_metrics"`
+	SuspendedProcesses	string	`json:"suspended_processes"`
+	Tag	AwsAutoscalingGroupTag	`json:"tag"`
+	MetricsGranularity	string	`json:"metrics_granularity"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -52,19 +52,19 @@ type AwsAutoscalingGroupList struct {
 }
 
 
-// Tag is a Tag
-type Tag struct {
-	Key	string	`json:"key"`
-	Value	string	`json:"value"`
-	PropagateAtLaunch	bool	`json:"propagate_at_launch"`
-}
-
-// InitialLifecycleHook is a InitialLifecycleHook
-type InitialLifecycleHook struct {
+// AwsAutoscalingGroupInitialLifecycleHook is a AwsAutoscalingGroupInitialLifecycleHook
+type AwsAutoscalingGroupInitialLifecycleHook struct {
+	NotificationMetadata	string	`json:"notification_metadata"`
 	NotificationTargetArn	string	`json:"notification_target_arn"`
 	RoleArn	string	`json:"role_arn"`
 	Name	string	`json:"name"`
 	HeartbeatTimeout	int	`json:"heartbeat_timeout"`
 	LifecycleTransition	string	`json:"lifecycle_transition"`
-	NotificationMetadata	string	`json:"notification_metadata"`
+}
+
+// AwsAutoscalingGroupTag is a AwsAutoscalingGroupTag
+type AwsAutoscalingGroupTag struct {
+	PropagateAtLaunch	bool	`json:"propagate_at_launch"`
+	Key	string	`json:"key"`
+	Value	string	`json:"value"`
 }

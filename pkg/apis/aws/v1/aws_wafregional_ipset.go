@@ -22,7 +22,7 @@ type AwsWafregionalIpset struct {
 // AwsWafregionalIpsetSpec is the spec for a AwsWafregionalIpset Resource
 type AwsWafregionalIpsetSpec struct {
 	Name	string	`json:"name"`
-	IpSetDescriptor	IpSetDescriptor	`json:"ip_set_descriptor"`
+	IpSetDescriptor	AwsWafregionalIpsetIpSetDescriptor	`json:"ip_set_descriptor"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -36,8 +36,8 @@ type AwsWafregionalIpsetList struct {
 }
 
 
-// IpSetDescriptor is a IpSetDescriptor
-type IpSetDescriptor struct {
+// AwsWafregionalIpsetIpSetDescriptor is a AwsWafregionalIpsetIpSetDescriptor
+type AwsWafregionalIpsetIpSetDescriptor struct {
 	Type	string	`json:"type"`
 	Value	string	`json:"value"`
 }

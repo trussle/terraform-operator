@@ -21,11 +21,11 @@ type AwsMqConfiguration struct {
 
 // AwsMqConfigurationSpec is the spec for a AwsMqConfiguration Resource
 type AwsMqConfigurationSpec struct {
-	EngineVersion	string	`json:"engine_version"`
-	Name	string	`json:"name"`
 	Data	string	`json:"data"`
 	Description	string	`json:"description"`
 	EngineType	string	`json:"engine_type"`
+	EngineVersion	string	`json:"engine_version"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

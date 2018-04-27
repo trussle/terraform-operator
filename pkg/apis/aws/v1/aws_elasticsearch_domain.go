@@ -21,12 +21,12 @@ type AwsElasticsearchDomain struct {
 
 // AwsElasticsearchDomainSpec is the spec for a AwsElasticsearchDomain Resource
 type AwsElasticsearchDomainSpec struct {
-	Tags	map[string]string	`json:"tags"`
-	LogPublishingOptions	LogPublishingOptions	`json:"log_publishing_options"`
-	SnapshotOptions	[]SnapshotOptions	`json:"snapshot_options"`
+	VpcOptions	[]AwsElasticsearchDomainVpcOptions	`json:"vpc_options"`
+	LogPublishingOptions	AwsElasticsearchDomainLogPublishingOptions	`json:"log_publishing_options"`
 	ElasticsearchVersion	string	`json:"elasticsearch_version"`
 	DomainName	string	`json:"domain_name"`
-	VpcOptions	[]VpcOptions	`json:"vpc_options"`
+	SnapshotOptions	[]AwsElasticsearchDomainSnapshotOptions	`json:"snapshot_options"`
+	Tags	map[string]string	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -40,42 +40,42 @@ type AwsElasticsearchDomainList struct {
 }
 
 
-// ClusterConfig is a ClusterConfig
-type ClusterConfig struct {
-	DedicatedMasterType	string	`json:"dedicated_master_type"`
-	InstanceCount	int	`json:"instance_count"`
+// AwsElasticsearchDomainSnapshotOptions is a AwsElasticsearchDomainSnapshotOptions
+type AwsElasticsearchDomainSnapshotOptions struct {
+	AutomatedSnapshotStartHour	int	`json:"automated_snapshot_start_hour"`
+}
+
+// AwsElasticsearchDomainVpcOptions is a AwsElasticsearchDomainVpcOptions
+type AwsElasticsearchDomainVpcOptions struct {
+	SecurityGroupIds	string	`json:"security_group_ids"`
+	SubnetIds	string	`json:"subnet_ids"`
+}
+
+// AwsElasticsearchDomainLogPublishingOptions is a AwsElasticsearchDomainLogPublishingOptions
+type AwsElasticsearchDomainLogPublishingOptions struct {
+	CloudwatchLogGroupArn	string	`json:"cloudwatch_log_group_arn"`
+	Enabled	bool	`json:"enabled"`
+	LogType	string	`json:"log_type"`
+}
+
+// AwsElasticsearchDomainClusterConfig is a AwsElasticsearchDomainClusterConfig
+type AwsElasticsearchDomainClusterConfig struct {
 	InstanceType	string	`json:"instance_type"`
 	ZoneAwarenessEnabled	bool	`json:"zone_awareness_enabled"`
 	DedicatedMasterCount	int	`json:"dedicated_master_count"`
 	DedicatedMasterEnabled	bool	`json:"dedicated_master_enabled"`
+	DedicatedMasterType	string	`json:"dedicated_master_type"`
+	InstanceCount	int	`json:"instance_count"`
 }
 
-// LogPublishingOptions is a LogPublishingOptions
-type LogPublishingOptions struct {
-	LogType	string	`json:"log_type"`
-	CloudwatchLogGroupArn	string	`json:"cloudwatch_log_group_arn"`
-	Enabled	bool	`json:"enabled"`
-}
-
-// EbsOptions is a EbsOptions
-type EbsOptions struct {
+// AwsElasticsearchDomainEbsOptions is a AwsElasticsearchDomainEbsOptions
+type AwsElasticsearchDomainEbsOptions struct {
 	EbsEnabled	bool	`json:"ebs_enabled"`
 	Iops	int	`json:"iops"`
 	VolumeSize	int	`json:"volume_size"`
 }
 
-// EncryptAtRest is a EncryptAtRest
-type EncryptAtRest struct {
+// AwsElasticsearchDomainEncryptAtRest is a AwsElasticsearchDomainEncryptAtRest
+type AwsElasticsearchDomainEncryptAtRest struct {
 	Enabled	bool	`json:"enabled"`
-}
-
-// SnapshotOptions is a SnapshotOptions
-type SnapshotOptions struct {
-	AutomatedSnapshotStartHour	int	`json:"automated_snapshot_start_hour"`
-}
-
-// VpcOptions is a VpcOptions
-type VpcOptions struct {
-	SecurityGroupIds	string	`json:"security_group_ids"`
-	SubnetIds	string	`json:"subnet_ids"`
 }

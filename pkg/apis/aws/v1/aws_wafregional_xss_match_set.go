@@ -22,7 +22,7 @@ type AwsWafregionalXssMatchSet struct {
 // AwsWafregionalXssMatchSetSpec is the spec for a AwsWafregionalXssMatchSet Resource
 type AwsWafregionalXssMatchSetSpec struct {
 	Name	string	`json:"name"`
-	XssMatchTuple	XssMatchTuple	`json:"xss_match_tuple"`
+	XssMatchTuple	AwsWafregionalXssMatchSetXssMatchTuple	`json:"xss_match_tuple"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -36,14 +36,14 @@ type AwsWafregionalXssMatchSetList struct {
 }
 
 
-// FieldToMatch is a FieldToMatch
-type FieldToMatch struct {
-	Type	string	`json:"type"`
+// AwsWafregionalXssMatchSetFieldToMatch is a AwsWafregionalXssMatchSetFieldToMatch
+type AwsWafregionalXssMatchSetFieldToMatch struct {
 	Data	string	`json:"data"`
+	Type	string	`json:"type"`
 }
 
-// XssMatchTuple is a XssMatchTuple
-type XssMatchTuple struct {
-	FieldToMatch	FieldToMatch	`json:"field_to_match"`
+// AwsWafregionalXssMatchSetXssMatchTuple is a AwsWafregionalXssMatchSetXssMatchTuple
+type AwsWafregionalXssMatchSetXssMatchTuple struct {
+	FieldToMatch	AwsWafregionalXssMatchSetFieldToMatch	`json:"field_to_match"`
 	TextTransformation	string	`json:"text_transformation"`
 }

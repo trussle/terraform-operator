@@ -21,9 +21,9 @@ type AwsKmsAlias struct {
 
 // AwsKmsAliasSpec is the spec for a AwsKmsAlias Resource
 type AwsKmsAliasSpec struct {
-	TargetKeyId	string	`json:"target_key_id"`
 	Name	string	`json:"name"`
 	NamePrefix	string	`json:"name_prefix"`
+	TargetKeyId	string	`json:"target_key_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

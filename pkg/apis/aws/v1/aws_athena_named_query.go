@@ -21,10 +21,10 @@ type AwsAthenaNamedQuery struct {
 
 // AwsAthenaNamedQuerySpec is the spec for a AwsAthenaNamedQuery Resource
 type AwsAthenaNamedQuerySpec struct {
+	Database	string	`json:"database"`
 	Description	string	`json:"description"`
 	Name	string	`json:"name"`
 	Query	string	`json:"query"`
-	Database	string	`json:"database"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

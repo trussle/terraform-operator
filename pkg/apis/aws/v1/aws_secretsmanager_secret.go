@@ -21,13 +21,13 @@ type AwsSecretsmanagerSecret struct {
 
 // AwsSecretsmanagerSecretSpec is the spec for a AwsSecretsmanagerSecret Resource
 type AwsSecretsmanagerSecretSpec struct {
-	KmsKeyId	string	`json:"kms_key_id"`
-	RotationLambdaArn	string	`json:"rotation_lambda_arn"`
-	RotationRules	[]RotationRules	`json:"rotation_rules"`
-	Tags	map[string]string	`json:"tags"`
-	Description	string	`json:"description"`
 	Name	string	`json:"name"`
 	RecoveryWindowInDays	int	`json:"recovery_window_in_days"`
+	RotationLambdaArn	string	`json:"rotation_lambda_arn"`
+	Description	string	`json:"description"`
+	KmsKeyId	string	`json:"kms_key_id"`
+	RotationRules	[]AwsSecretsmanagerSecretRotationRules	`json:"rotation_rules"`
+	Tags	map[string]string	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -41,7 +41,7 @@ type AwsSecretsmanagerSecretList struct {
 }
 
 
-// RotationRules is a RotationRules
-type RotationRules struct {
+// AwsSecretsmanagerSecretRotationRules is a AwsSecretsmanagerSecretRotationRules
+type AwsSecretsmanagerSecretRotationRules struct {
 	AutomaticallyAfterDays	int	`json:"automatically_after_days"`
 }

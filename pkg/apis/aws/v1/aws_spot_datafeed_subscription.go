@@ -21,8 +21,8 @@ type AwsSpotDatafeedSubscription struct {
 
 // AwsSpotDatafeedSubscriptionSpec is the spec for a AwsSpotDatafeedSubscription Resource
 type AwsSpotDatafeedSubscriptionSpec struct {
-	Bucket	string	`json:"bucket"`
 	Prefix	string	`json:"prefix"`
+	Bucket	string	`json:"bucket"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

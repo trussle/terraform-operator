@@ -21,11 +21,11 @@ type AwsWafregionalRateBasedRule struct {
 
 // AwsWafregionalRateBasedRuleSpec is the spec for a AwsWafregionalRateBasedRule Resource
 type AwsWafregionalRateBasedRuleSpec struct {
-	Predicate	Predicate	`json:"predicate"`
-	RateKey	string	`json:"rate_key"`
-	RateLimit	int	`json:"rate_limit"`
 	Name	string	`json:"name"`
 	MetricName	string	`json:"metric_name"`
+	Predicate	AwsWafregionalRateBasedRulePredicate	`json:"predicate"`
+	RateKey	string	`json:"rate_key"`
+	RateLimit	int	`json:"rate_limit"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -39,8 +39,8 @@ type AwsWafregionalRateBasedRuleList struct {
 }
 
 
-// Predicate is a Predicate
-type Predicate struct {
+// AwsWafregionalRateBasedRulePredicate is a AwsWafregionalRateBasedRulePredicate
+type AwsWafregionalRateBasedRulePredicate struct {
 	Negated	bool	`json:"negated"`
 	DataId	string	`json:"data_id"`
 	Type	string	`json:"type"`

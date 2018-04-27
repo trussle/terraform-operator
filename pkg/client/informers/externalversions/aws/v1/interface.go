@@ -480,8 +480,6 @@ type Interface interface {
 	AwsNetworkAclRules() AwsNetworkAclRuleInformer
 	// AwsNetworkInterfaces returns a AwsNetworkInterfaceInformer.
 	AwsNetworkInterfaces() AwsNetworkInterfaceInformer
-	// AwsNetworkInterfaceAttachments returns a AwsNetworkInterfaceAttachmentInformer.
-	AwsNetworkInterfaceAttachments() AwsNetworkInterfaceAttachmentInformer
 	// AwsNetworkInterfaceSgAttachments returns a AwsNetworkInterfaceSgAttachmentInformer.
 	AwsNetworkInterfaceSgAttachments() AwsNetworkInterfaceSgAttachmentInformer
 	// AwsOpsworksApplications returns a AwsOpsworksApplicationInformer.
@@ -680,8 +678,6 @@ type Interface interface {
 	AwsVpcEndpointSubnetAssociations() AwsVpcEndpointSubnetAssociationInformer
 	// AwsVpcPeeringConnections returns a AwsVpcPeeringConnectionInformer.
 	AwsVpcPeeringConnections() AwsVpcPeeringConnectionInformer
-	// AwsVpcPeeringConnectionAccepters returns a AwsVpcPeeringConnectionAccepterInformer.
-	AwsVpcPeeringConnectionAccepters() AwsVpcPeeringConnectionAccepterInformer
 	// AwsVpnConnections returns a AwsVpnConnectionInformer.
 	AwsVpnConnections() AwsVpnConnectionInformer
 	// AwsVpnConnectionRoutes returns a AwsVpnConnectionRouteInformer.
@@ -1895,11 +1891,6 @@ func (v *version) AwsNetworkInterfaces() AwsNetworkInterfaceInformer {
 	return &awsNetworkInterfaceInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
-// AwsNetworkInterfaceAttachments returns a AwsNetworkInterfaceAttachmentInformer.
-func (v *version) AwsNetworkInterfaceAttachments() AwsNetworkInterfaceAttachmentInformer {
-	return &awsNetworkInterfaceAttachmentInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
-}
-
 // AwsNetworkInterfaceSgAttachments returns a AwsNetworkInterfaceSgAttachmentInformer.
 func (v *version) AwsNetworkInterfaceSgAttachments() AwsNetworkInterfaceSgAttachmentInformer {
 	return &awsNetworkInterfaceSgAttachmentInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
@@ -2393,11 +2384,6 @@ func (v *version) AwsVpcEndpointSubnetAssociations() AwsVpcEndpointSubnetAssocia
 // AwsVpcPeeringConnections returns a AwsVpcPeeringConnectionInformer.
 func (v *version) AwsVpcPeeringConnections() AwsVpcPeeringConnectionInformer {
 	return &awsVpcPeeringConnectionInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
-}
-
-// AwsVpcPeeringConnectionAccepters returns a AwsVpcPeeringConnectionAccepterInformer.
-func (v *version) AwsVpcPeeringConnectionAccepters() AwsVpcPeeringConnectionAccepterInformer {
-	return &awsVpcPeeringConnectionAccepterInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
 // AwsVpnConnections returns a AwsVpnConnectionInformer.

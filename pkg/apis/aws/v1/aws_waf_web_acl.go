@@ -21,9 +21,9 @@ type AwsWafWebAcl struct {
 
 // AwsWafWebAclSpec is the spec for a AwsWafWebAcl Resource
 type AwsWafWebAclSpec struct {
-	DefaultAction	DefaultAction	`json:"default_action"`
+	DefaultAction	AwsWafWebAclDefaultAction	`json:"default_action"`
 	MetricName	string	`json:"metric_name"`
-	Rules	Rules	`json:"rules"`
+	Rules	AwsWafWebAclRules	`json:"rules"`
 	Name	string	`json:"name"`
 }
 
@@ -38,20 +38,20 @@ type AwsWafWebAclList struct {
 }
 
 
-// Action is a Action
-type Action struct {
+// AwsWafWebAclDefaultAction is a AwsWafWebAclDefaultAction
+type AwsWafWebAclDefaultAction struct {
 	Type	string	`json:"type"`
 }
 
-// Rules is a Rules
-type Rules struct {
-	Action	Action	`json:"action"`
-	Priority	int	`json:"priority"`
+// AwsWafWebAclAction is a AwsWafWebAclAction
+type AwsWafWebAclAction struct {
 	Type	string	`json:"type"`
+}
+
+// AwsWafWebAclRules is a AwsWafWebAclRules
+type AwsWafWebAclRules struct {
 	RuleId	string	`json:"rule_id"`
-}
-
-// DefaultAction is a DefaultAction
-type DefaultAction struct {
+	Action	AwsWafWebAclAction	`json:"action"`
+	Priority	int	`json:"priority"`
 	Type	string	`json:"type"`
 }

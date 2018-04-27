@@ -37,8 +37,8 @@ type AwsDefaultRouteTableList struct {
 }
 
 
-// Route is a Route
-type Route struct {
+// AwsDefaultRouteTableRoute is a AwsDefaultRouteTableRoute
+type AwsDefaultRouteTableRoute struct {
 	NetworkInterfaceId	string	`json:"network_interface_id"`
 	CidrBlock	string	`json:"cidr_block"`
 	Ipv6CidrBlock	string	`json:"ipv6_cidr_block"`

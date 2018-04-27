@@ -21,10 +21,10 @@ type AwsCloudwatchLogGroup struct {
 
 // AwsCloudwatchLogGroupSpec is the spec for a AwsCloudwatchLogGroup Resource
 type AwsCloudwatchLogGroupSpec struct {
-	NamePrefix	string	`json:"name_prefix"`
-	RetentionInDays	int	`json:"retention_in_days"`
 	KmsKeyId	string	`json:"kms_key_id"`
 	Tags	map[string]string	`json:"tags"`
+	NamePrefix	string	`json:"name_prefix"`
+	RetentionInDays	int	`json:"retention_in_days"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

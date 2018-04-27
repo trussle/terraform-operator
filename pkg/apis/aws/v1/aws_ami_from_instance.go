@@ -23,8 +23,8 @@ type AwsAmiFromInstance struct {
 type AwsAmiFromInstanceSpec struct {
 	Tags	map[string]string	`json:"tags"`
 	SourceInstanceId	string	`json:"source_instance_id"`
-	SnapshotWithoutReboot	bool	`json:"snapshot_without_reboot"`
 	Description	string	`json:"description"`
+	SnapshotWithoutReboot	bool	`json:"snapshot_without_reboot"`
 	Name	string	`json:"name"`
 }
 
@@ -39,10 +39,10 @@ type AwsAmiFromInstanceList struct {
 }
 
 
-// EbsBlockDevice is a EbsBlockDevice
-type EbsBlockDevice struct {
+// AwsAmiFromInstanceEbsBlockDevice is a AwsAmiFromInstanceEbsBlockDevice
+type AwsAmiFromInstanceEbsBlockDevice struct {
 }
 
-// EphemeralBlockDevice is a EphemeralBlockDevice
-type EphemeralBlockDevice struct {
+// AwsAmiFromInstanceEphemeralBlockDevice is a AwsAmiFromInstanceEphemeralBlockDevice
+type AwsAmiFromInstanceEphemeralBlockDevice struct {
 }

@@ -23,7 +23,7 @@ type AwsWafregionalRuleGroup struct {
 type AwsWafregionalRuleGroupSpec struct {
 	Name	string	`json:"name"`
 	MetricName	string	`json:"metric_name"`
-	ActivatedRule	ActivatedRule	`json:"activated_rule"`
+	ActivatedRule	AwsWafregionalRuleGroupActivatedRule	`json:"activated_rule"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -37,15 +37,15 @@ type AwsWafregionalRuleGroupList struct {
 }
 
 
-// Action is a Action
-type Action struct {
+// AwsWafregionalRuleGroupActivatedRule is a AwsWafregionalRuleGroupActivatedRule
+type AwsWafregionalRuleGroupActivatedRule struct {
+	Action	[]AwsWafregionalRuleGroupAction	`json:"action"`
+	Priority	int	`json:"priority"`
+	RuleId	string	`json:"rule_id"`
 	Type	string	`json:"type"`
 }
 
-// ActivatedRule is a ActivatedRule
-type ActivatedRule struct {
-	Action	[]Action	`json:"action"`
-	Priority	int	`json:"priority"`
-	RuleId	string	`json:"rule_id"`
+// AwsWafregionalRuleGroupAction is a AwsWafregionalRuleGroupAction
+type AwsWafregionalRuleGroupAction struct {
 	Type	string	`json:"type"`
 }

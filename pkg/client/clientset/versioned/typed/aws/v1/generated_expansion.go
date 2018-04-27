@@ -474,8 +474,6 @@ type AwsNetworkAclRuleExpansion interface{}
 
 type AwsNetworkInterfaceExpansion interface{}
 
-type AwsNetworkInterfaceAttachmentExpansion interface{}
-
 type AwsNetworkInterfaceSgAttachmentExpansion interface{}
 
 type AwsOpsworksApplicationExpansion interface{}
@@ -673,8 +671,6 @@ type AwsVpcEndpointServiceAllowedPrincipalExpansion interface{}
 type AwsVpcEndpointSubnetAssociationExpansion interface{}
 
 type AwsVpcPeeringConnectionExpansion interface{}
-
-type AwsVpcPeeringConnectionAccepterExpansion interface{}
 
 type AwsVpnConnectionExpansion interface{}
 

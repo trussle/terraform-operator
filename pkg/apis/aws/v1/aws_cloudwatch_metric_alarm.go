@@ -21,24 +21,24 @@ type AwsCloudwatchMetricAlarm struct {
 
 // AwsCloudwatchMetricAlarmSpec is the spec for a AwsCloudwatchMetricAlarm Resource
 type AwsCloudwatchMetricAlarmSpec struct {
-	ComparisonOperator	string	`json:"comparison_operator"`
-	InsufficientDataActions	string	`json:"insufficient_data_actions"`
-	Unit	string	`json:"unit"`
 	AlarmName	string	`json:"alarm_name"`
-	Statistic	string	`json:"statistic"`
-	Threshold	float64	`json:"threshold"`
-	ActionsEnabled	bool	`json:"actions_enabled"`
-	AlarmDescription	string	`json:"alarm_description"`
-	DatapointsToAlarm	int	`json:"datapoints_to_alarm"`
-	AlarmActions	string	`json:"alarm_actions"`
 	EvaluationPeriods	int	`json:"evaluation_periods"`
-	MetricName	string	`json:"metric_name"`
+	Threshold	float64	`json:"threshold"`
+	AlarmActions	string	`json:"alarm_actions"`
+	InsufficientDataActions	string	`json:"insufficient_data_actions"`
 	Namespace	string	`json:"namespace"`
-	Period	int	`json:"period"`
+	AlarmDescription	string	`json:"alarm_description"`
 	Dimensions	map[string]string	`json:"dimensions"`
 	OkActions	string	`json:"ok_actions"`
 	ExtendedStatistic	string	`json:"extended_statistic"`
+	ActionsEnabled	bool	`json:"actions_enabled"`
+	DatapointsToAlarm	int	`json:"datapoints_to_alarm"`
+	Unit	string	`json:"unit"`
 	TreatMissingData	string	`json:"treat_missing_data"`
+	ComparisonOperator	string	`json:"comparison_operator"`
+	MetricName	string	`json:"metric_name"`
+	Period	int	`json:"period"`
+	Statistic	string	`json:"statistic"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

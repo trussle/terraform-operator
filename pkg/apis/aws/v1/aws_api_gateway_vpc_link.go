@@ -21,9 +21,9 @@ type AwsApiGatewayVpcLink struct {
 
 // AwsApiGatewayVpcLinkSpec is the spec for a AwsApiGatewayVpcLink Resource
 type AwsApiGatewayVpcLinkSpec struct {
+	TargetArns	string	`json:"target_arns"`
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
-	TargetArns	string	`json:"target_arns"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

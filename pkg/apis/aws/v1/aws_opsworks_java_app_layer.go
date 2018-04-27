@@ -22,30 +22,30 @@ type AwsOpsworksJavaAppLayer struct {
 // AwsOpsworksJavaAppLayerSpec is the spec for a AwsOpsworksJavaAppLayer Resource
 type AwsOpsworksJavaAppLayerSpec struct {
 	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
-	CustomSetupRecipes	[]string	`json:"custom_setup_recipes"`
-	CustomDeployRecipes	[]string	`json:"custom_deploy_recipes"`
-	CustomUndeployRecipes	[]string	`json:"custom_undeploy_recipes"`
-	CustomJson	string	`json:"custom_json"`
-	SystemPackages	string	`json:"system_packages"`
-	CustomShutdownRecipes	[]string	`json:"custom_shutdown_recipes"`
-	DrainElbOnShutdown	bool	`json:"drain_elb_on_shutdown"`
-	EbsVolume	EbsVolume	`json:"ebs_volume"`
-	JvmVersion	string	`json:"jvm_version"`
-	AppServerVersion	string	`json:"app_server_version"`
-	AutoAssignPublicIps	bool	`json:"auto_assign_public_ips"`
-	ElasticLoadBalancer	string	`json:"elastic_load_balancer"`
-	CustomConfigureRecipes	[]string	`json:"custom_configure_recipes"`
-	CustomSecurityGroupIds	string	`json:"custom_security_group_ids"`
-	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
-	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
-	JvmType	string	`json:"jvm_type"`
-	AutoAssignElasticIps	bool	`json:"auto_assign_elastic_ips"`
-	AutoHealing	bool	`json:"auto_healing"`
 	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
+	DrainElbOnShutdown	bool	`json:"drain_elb_on_shutdown"`
 	StackId	string	`json:"stack_id"`
+	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
 	Name	string	`json:"name"`
 	JvmOptions	string	`json:"jvm_options"`
+	AutoAssignElasticIps	bool	`json:"auto_assign_elastic_ips"`
+	CustomDeployRecipes	[]string	`json:"custom_deploy_recipes"`
+	CustomUndeployRecipes	[]string	`json:"custom_undeploy_recipes"`
+	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
+	SystemPackages	string	`json:"system_packages"`
+	JvmVersion	string	`json:"jvm_version"`
 	AppServer	string	`json:"app_server"`
+	AppServerVersion	string	`json:"app_server_version"`
+	CustomSetupRecipes	[]string	`json:"custom_setup_recipes"`
+	CustomConfigureRecipes	[]string	`json:"custom_configure_recipes"`
+	CustomShutdownRecipes	[]string	`json:"custom_shutdown_recipes"`
+	CustomJson	string	`json:"custom_json"`
+	AutoHealing	bool	`json:"auto_healing"`
+	EbsVolume	AwsOpsworksJavaAppLayerEbsVolume	`json:"ebs_volume"`
+	JvmType	string	`json:"jvm_type"`
+	AutoAssignPublicIps	bool	`json:"auto_assign_public_ips"`
+	ElasticLoadBalancer	string	`json:"elastic_load_balancer"`
+	CustomSecurityGroupIds	string	`json:"custom_security_group_ids"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -59,12 +59,12 @@ type AwsOpsworksJavaAppLayerList struct {
 }
 
 
-// EbsVolume is a EbsVolume
-type EbsVolume struct {
+// AwsOpsworksJavaAppLayerEbsVolume is a AwsOpsworksJavaAppLayerEbsVolume
+type AwsOpsworksJavaAppLayerEbsVolume struct {
+	Size	int	`json:"size"`
+	Type	string	`json:"type"`
 	Iops	int	`json:"iops"`
 	MountPoint	string	`json:"mount_point"`
 	NumberOfDisks	int	`json:"number_of_disks"`
 	RaidLevel	string	`json:"raid_level"`
-	Size	int	`json:"size"`
-	Type	string	`json:"type"`
 }

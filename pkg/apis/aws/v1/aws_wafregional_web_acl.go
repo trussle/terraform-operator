@@ -21,10 +21,10 @@ type AwsWafregionalWebAcl struct {
 
 // AwsWafregionalWebAclSpec is the spec for a AwsWafregionalWebAcl Resource
 type AwsWafregionalWebAclSpec struct {
-	MetricName	string	`json:"metric_name"`
-	Rule	Rule	`json:"rule"`
 	Name	string	`json:"name"`
-	DefaultAction	[]DefaultAction	`json:"default_action"`
+	DefaultAction	[]AwsWafregionalWebAclDefaultAction	`json:"default_action"`
+	MetricName	string	`json:"metric_name"`
+	Rule	AwsWafregionalWebAclRule	`json:"rule"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -38,19 +38,19 @@ type AwsWafregionalWebAclList struct {
 }
 
 
-// Action is a Action
-type Action struct {
+// AwsWafregionalWebAclDefaultAction is a AwsWafregionalWebAclDefaultAction
+type AwsWafregionalWebAclDefaultAction struct {
 	Type	string	`json:"type"`
 }
 
-// Rule is a Rule
-type Rule struct {
-	Action	[]Action	`json:"action"`
+// AwsWafregionalWebAclAction is a AwsWafregionalWebAclAction
+type AwsWafregionalWebAclAction struct {
+	Type	string	`json:"type"`
+}
+
+// AwsWafregionalWebAclRule is a AwsWafregionalWebAclRule
+type AwsWafregionalWebAclRule struct {
+	Action	[]AwsWafregionalWebAclAction	`json:"action"`
 	Priority	int	`json:"priority"`
 	RuleId	string	`json:"rule_id"`
-}
-
-// DefaultAction is a DefaultAction
-type DefaultAction struct {
-	Type	string	`json:"type"`
 }

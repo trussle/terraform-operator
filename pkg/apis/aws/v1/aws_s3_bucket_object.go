@@ -21,19 +21,19 @@ type AwsS3BucketObject struct {
 
 // AwsS3BucketObjectSpec is the spec for a AwsS3BucketObject Resource
 type AwsS3BucketObjectSpec struct {
-	ContentDisposition	string	`json:"content_disposition"`
-	ContentLanguage	string	`json:"content_language"`
-	Source	string	`json:"source"`
-	ContentBase64	string	`json:"content_base64"`
-	Tags	map[string]string	`json:"tags"`
-	CacheControl	string	`json:"cache_control"`
-	KmsKeyId	string	`json:"kms_key_id"`
 	WebsiteRedirect	string	`json:"website_redirect"`
-	Key	string	`json:"key"`
+	ContentDisposition	string	`json:"content_disposition"`
 	ContentEncoding	string	`json:"content_encoding"`
-	Bucket	string	`json:"bucket"`
-	Content	string	`json:"content"`
 	Acl	string	`json:"acl"`
+	ContentLanguage	string	`json:"content_language"`
+	KmsKeyId	string	`json:"kms_key_id"`
+	CacheControl	string	`json:"cache_control"`
+	Source	string	`json:"source"`
+	Content	string	`json:"content"`
+	Tags	map[string]string	`json:"tags"`
+	Bucket	string	`json:"bucket"`
+	Key	string	`json:"key"`
+	ContentBase64	string	`json:"content_base64"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

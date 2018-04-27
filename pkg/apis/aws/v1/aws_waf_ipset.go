@@ -21,8 +21,8 @@ type AwsWafIpset struct {
 
 // AwsWafIpsetSpec is the spec for a AwsWafIpset Resource
 type AwsWafIpsetSpec struct {
-	IpSetDescriptors	IpSetDescriptors	`json:"ip_set_descriptors"`
 	Name	string	`json:"name"`
+	IpSetDescriptors	AwsWafIpsetIpSetDescriptors	`json:"ip_set_descriptors"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -36,8 +36,8 @@ type AwsWafIpsetList struct {
 }
 
 
-// IpSetDescriptors is a IpSetDescriptors
-type IpSetDescriptors struct {
+// AwsWafIpsetIpSetDescriptors is a AwsWafIpsetIpSetDescriptors
+type AwsWafIpsetIpSetDescriptors struct {
 	Type	string	`json:"type"`
 	Value	string	`json:"value"`
 }

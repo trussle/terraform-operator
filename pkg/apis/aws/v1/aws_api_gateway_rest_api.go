@@ -21,12 +21,12 @@ type AwsApiGatewayRestApi struct {
 
 // AwsApiGatewayRestApiSpec is the spec for a AwsApiGatewayRestApi Resource
 type AwsApiGatewayRestApiSpec struct {
+	BinaryMediaTypes	[]string	`json:"binary_media_types"`
+	Body	string	`json:"body"`
 	MinimumCompressionSize	int	`json:"minimum_compression_size"`
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
 	Policy	string	`json:"policy"`
-	BinaryMediaTypes	[]string	`json:"binary_media_types"`
-	Body	string	`json:"body"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

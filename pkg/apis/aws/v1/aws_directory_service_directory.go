@@ -21,14 +21,14 @@ type AwsDirectoryServiceDirectory struct {
 
 // AwsDirectoryServiceDirectorySpec is the spec for a AwsDirectoryServiceDirectory Resource
 type AwsDirectoryServiceDirectorySpec struct {
-	ConnectSettings	[]ConnectSettings	`json:"connect_settings"`
-	Name	string	`json:"name"`
-	Description	string	`json:"description"`
-	Tags	map[string]string	`json:"tags"`
-	VpcSettings	[]VpcSettings	`json:"vpc_settings"`
-	Password	string	`json:"password"`
-	Type	string	`json:"type"`
+	VpcSettings	[]AwsDirectoryServiceDirectoryVpcSettings	`json:"vpc_settings"`
 	EnableSso	bool	`json:"enable_sso"`
+	Type	string	`json:"type"`
+	Password	string	`json:"password"`
+	Description	string	`json:"description"`
+	ConnectSettings	[]AwsDirectoryServiceDirectoryConnectSettings	`json:"connect_settings"`
+	Tags	map[string]string	`json:"tags"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -42,16 +42,16 @@ type AwsDirectoryServiceDirectoryList struct {
 }
 
 
-// ConnectSettings is a ConnectSettings
-type ConnectSettings struct {
-	CustomerUsername	string	`json:"customer_username"`
-	CustomerDnsIps	string	`json:"customer_dns_ips"`
+// AwsDirectoryServiceDirectoryVpcSettings is a AwsDirectoryServiceDirectoryVpcSettings
+type AwsDirectoryServiceDirectoryVpcSettings struct {
 	SubnetIds	string	`json:"subnet_ids"`
 	VpcId	string	`json:"vpc_id"`
 }
 
-// VpcSettings is a VpcSettings
-type VpcSettings struct {
+// AwsDirectoryServiceDirectoryConnectSettings is a AwsDirectoryServiceDirectoryConnectSettings
+type AwsDirectoryServiceDirectoryConnectSettings struct {
+	CustomerUsername	string	`json:"customer_username"`
+	CustomerDnsIps	string	`json:"customer_dns_ips"`
 	SubnetIds	string	`json:"subnet_ids"`
 	VpcId	string	`json:"vpc_id"`
 }

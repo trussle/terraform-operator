@@ -21,8 +21,8 @@ type AwsLightsailStaticIpAttachment struct {
 
 // AwsLightsailStaticIpAttachmentSpec is the spec for a AwsLightsailStaticIpAttachment Resource
 type AwsLightsailStaticIpAttachmentSpec struct {
-	InstanceName	string	`json:"instance_name"`
 	StaticIpName	string	`json:"static_ip_name"`
+	InstanceName	string	`json:"instance_name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -21,7 +21,7 @@ type AwsApiGatewayDocumentationPart struct {
 
 // AwsApiGatewayDocumentationPartSpec is the spec for a AwsApiGatewayDocumentationPart Resource
 type AwsApiGatewayDocumentationPartSpec struct {
-	Location	[]Location	`json:"location"`
+	Location	[]AwsApiGatewayDocumentationPartLocation	`json:"location"`
 	Properties	string	`json:"properties"`
 	RestApiId	string	`json:"rest_api_id"`
 }
@@ -37,8 +37,8 @@ type AwsApiGatewayDocumentationPartList struct {
 }
 
 
-// Location is a Location
-type Location struct {
+// AwsApiGatewayDocumentationPartLocation is a AwsApiGatewayDocumentationPartLocation
+type AwsApiGatewayDocumentationPartLocation struct {
 	Method	string	`json:"method"`
 	Name	string	`json:"name"`
 	Path	string	`json:"path"`

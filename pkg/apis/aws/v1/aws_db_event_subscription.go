@@ -22,12 +22,12 @@ type AwsDbEventSubscription struct {
 // AwsDbEventSubscriptionSpec is the spec for a AwsDbEventSubscription Resource
 type AwsDbEventSubscriptionSpec struct {
 	EventCategories	string	`json:"event_categories"`
-	SourceType	string	`json:"source_type"`
-	Enabled	bool	`json:"enabled"`
-	Name	string	`json:"name"`
 	Tags	map[string]string	`json:"tags"`
+	Name	string	`json:"name"`
 	SnsTopic	string	`json:"sns_topic"`
 	SourceIds	string	`json:"source_ids"`
+	SourceType	string	`json:"source_type"`
+	Enabled	bool	`json:"enabled"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

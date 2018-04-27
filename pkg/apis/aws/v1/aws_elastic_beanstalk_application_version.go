@@ -21,12 +21,12 @@ type AwsElasticBeanstalkApplicationVersion struct {
 
 // AwsElasticBeanstalkApplicationVersionSpec is the spec for a AwsElasticBeanstalkApplicationVersion Resource
 type AwsElasticBeanstalkApplicationVersionSpec struct {
-	Application	string	`json:"application"`
 	Description	string	`json:"description"`
 	Bucket	string	`json:"bucket"`
 	Key	string	`json:"key"`
 	Name	string	`json:"name"`
 	ForceDelete	bool	`json:"force_delete"`
+	Application	string	`json:"application"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

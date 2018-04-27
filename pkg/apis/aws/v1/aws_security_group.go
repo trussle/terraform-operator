@@ -21,10 +21,10 @@ type AwsSecurityGroup struct {
 
 // AwsSecurityGroupSpec is the spec for a AwsSecurityGroup Resource
 type AwsSecurityGroupSpec struct {
-	RevokeRulesOnDelete	bool	`json:"revoke_rules_on_delete"`
-	NamePrefix	string	`json:"name_prefix"`
 	Description	string	`json:"description"`
+	NamePrefix	string	`json:"name_prefix"`
 	Tags	map[string]string	`json:"tags"`
+	RevokeRulesOnDelete	bool	`json:"revoke_rules_on_delete"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -38,27 +38,27 @@ type AwsSecurityGroupList struct {
 }
 
 
-// Ingress is a Ingress
-type Ingress struct {
-	Self	bool	`json:"self"`
-	Description	string	`json:"description"`
-	FromPort	int	`json:"from_port"`
-	ToPort	int	`json:"to_port"`
+// AwsSecurityGroupIngress is a AwsSecurityGroupIngress
+type AwsSecurityGroupIngress struct {
 	Protocol	string	`json:"protocol"`
 	CidrBlocks	[]string	`json:"cidr_blocks"`
 	Ipv6CidrBlocks	[]string	`json:"ipv6_cidr_blocks"`
 	SecurityGroups	string	`json:"security_groups"`
+	Self	bool	`json:"self"`
+	Description	string	`json:"description"`
+	FromPort	int	`json:"from_port"`
+	ToPort	int	`json:"to_port"`
 }
 
-// Egress is a Egress
-type Egress struct {
-	SecurityGroups	string	`json:"security_groups"`
+// AwsSecurityGroupEgress is a AwsSecurityGroupEgress
+type AwsSecurityGroupEgress struct {
 	Self	bool	`json:"self"`
+	ToPort	int	`json:"to_port"`
 	Protocol	string	`json:"protocol"`
 	Ipv6CidrBlocks	[]string	`json:"ipv6_cidr_blocks"`
-	CidrBlocks	[]string	`json:"cidr_blocks"`
-	PrefixListIds	[]string	`json:"prefix_list_ids"`
+	SecurityGroups	string	`json:"security_groups"`
 	Description	string	`json:"description"`
 	FromPort	int	`json:"from_port"`
-	ToPort	int	`json:"to_port"`
+	CidrBlocks	[]string	`json:"cidr_blocks"`
+	PrefixListIds	[]string	`json:"prefix_list_ids"`
 }

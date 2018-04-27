@@ -22,7 +22,7 @@ type AwsWafregionalByteMatchSet struct {
 // AwsWafregionalByteMatchSetSpec is the spec for a AwsWafregionalByteMatchSet Resource
 type AwsWafregionalByteMatchSetSpec struct {
 	Name	string	`json:"name"`
-	ByteMatchTuple	ByteMatchTuple	`json:"byte_match_tuple"`
+	ByteMatchTuple	AwsWafregionalByteMatchSetByteMatchTuple	`json:"byte_match_tuple"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -36,16 +36,16 @@ type AwsWafregionalByteMatchSetList struct {
 }
 
 
-// FieldToMatch is a FieldToMatch
-type FieldToMatch struct {
-	Data	string	`json:"data"`
-	Type	string	`json:"type"`
-}
-
-// ByteMatchTuple is a ByteMatchTuple
-type ByteMatchTuple struct {
-	FieldToMatch	FieldToMatch	`json:"field_to_match"`
-	PositionalConstraint	string	`json:"positional_constraint"`
+// AwsWafregionalByteMatchSetByteMatchTuple is a AwsWafregionalByteMatchSetByteMatchTuple
+type AwsWafregionalByteMatchSetByteMatchTuple struct {
 	TargetString	string	`json:"target_string"`
 	TextTransformation	string	`json:"text_transformation"`
+	FieldToMatch	AwsWafregionalByteMatchSetFieldToMatch	`json:"field_to_match"`
+	PositionalConstraint	string	`json:"positional_constraint"`
+}
+
+// AwsWafregionalByteMatchSetFieldToMatch is a AwsWafregionalByteMatchSetFieldToMatch
+type AwsWafregionalByteMatchSetFieldToMatch struct {
+	Data	string	`json:"data"`
+	Type	string	`json:"type"`
 }

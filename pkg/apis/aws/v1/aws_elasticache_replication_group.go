@@ -21,21 +21,21 @@ type AwsElasticacheReplicationGroup struct {
 
 // AwsElasticacheReplicationGroupSpec is the spec for a AwsElasticacheReplicationGroup Resource
 type AwsElasticacheReplicationGroupSpec struct {
-	SnapshotName	string	`json:"snapshot_name"`
-	Port	int	`json:"port"`
-	Tags	map[string]string	`json:"tags"`
-	AuthToken	string	`json:"auth_token"`
-	AvailabilityZones	string	`json:"availability_zones"`
-	AutomaticFailoverEnabled	bool	`json:"automatic_failover_enabled"`
-	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
-	Engine	string	`json:"engine"`
-	SnapshotArns	string	`json:"snapshot_arns"`
-	ReplicationGroupDescription	string	`json:"replication_group_description"`
 	TransitEncryptionEnabled	bool	`json:"transit_encryption_enabled"`
+	Engine	string	`json:"engine"`
+	SnapshotName	string	`json:"snapshot_name"`
+	Tags	map[string]string	`json:"tags"`
+	SnapshotRetentionLimit	int	`json:"snapshot_retention_limit"`
+	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
+	AtRestEncryptionEnabled	bool	`json:"at_rest_encryption_enabled"`
+	AvailabilityZones	string	`json:"availability_zones"`
+	AuthToken	string	`json:"auth_token"`
+	Port	int	`json:"port"`
 	NotificationTopicArn	string	`json:"notification_topic_arn"`
 	ReplicationGroupId	string	`json:"replication_group_id"`
-	AtRestEncryptionEnabled	bool	`json:"at_rest_encryption_enabled"`
-	SnapshotRetentionLimit	int	`json:"snapshot_retention_limit"`
+	ReplicationGroupDescription	string	`json:"replication_group_description"`
+	SnapshotArns	string	`json:"snapshot_arns"`
+	AutomaticFailoverEnabled	bool	`json:"automatic_failover_enabled"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -49,8 +49,8 @@ type AwsElasticacheReplicationGroupList struct {
 }
 
 
-// ClusterMode is a ClusterMode
-type ClusterMode struct {
+// AwsElasticacheReplicationGroupClusterMode is a AwsElasticacheReplicationGroupClusterMode
+type AwsElasticacheReplicationGroupClusterMode struct {
 	ReplicasPerNodeGroup	int	`json:"replicas_per_node_group"`
 	NumNodeGroups	int	`json:"num_node_groups"`
 }

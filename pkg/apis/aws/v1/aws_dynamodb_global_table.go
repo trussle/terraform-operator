@@ -22,7 +22,7 @@ type AwsDynamodbGlobalTable struct {
 // AwsDynamodbGlobalTableSpec is the spec for a AwsDynamodbGlobalTable Resource
 type AwsDynamodbGlobalTableSpec struct {
 	Name	string	`json:"name"`
-	Replica	Replica	`json:"replica"`
+	Replica	AwsDynamodbGlobalTableReplica	`json:"replica"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -36,7 +36,7 @@ type AwsDynamodbGlobalTableList struct {
 }
 
 
-// Replica is a Replica
-type Replica struct {
+// AwsDynamodbGlobalTableReplica is a AwsDynamodbGlobalTableReplica
+type AwsDynamodbGlobalTableReplica struct {
 	RegionName	string	`json:"region_name"`
 }

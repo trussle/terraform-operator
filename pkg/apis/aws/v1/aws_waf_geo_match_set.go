@@ -22,7 +22,7 @@ type AwsWafGeoMatchSet struct {
 // AwsWafGeoMatchSetSpec is the spec for a AwsWafGeoMatchSet Resource
 type AwsWafGeoMatchSetSpec struct {
 	Name	string	`json:"name"`
-	GeoMatchConstraint	GeoMatchConstraint	`json:"geo_match_constraint"`
+	GeoMatchConstraint	AwsWafGeoMatchSetGeoMatchConstraint	`json:"geo_match_constraint"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -36,8 +36,8 @@ type AwsWafGeoMatchSetList struct {
 }
 
 
-// GeoMatchConstraint is a GeoMatchConstraint
-type GeoMatchConstraint struct {
+// AwsWafGeoMatchSetGeoMatchConstraint is a AwsWafGeoMatchSetGeoMatchConstraint
+type AwsWafGeoMatchSetGeoMatchConstraint struct {
 	Type	string	`json:"type"`
 	Value	string	`json:"value"`
 }

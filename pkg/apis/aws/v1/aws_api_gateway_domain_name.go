@@ -21,12 +21,12 @@ type AwsApiGatewayDomainName struct {
 
 // AwsApiGatewayDomainNameSpec is the spec for a AwsApiGatewayDomainName Resource
 type AwsApiGatewayDomainNameSpec struct {
-	CertificateArn	string	`json:"certificate_arn"`
-	CertificateBody	string	`json:"certificate_body"`
 	CertificateChain	string	`json:"certificate_chain"`
-	CertificateName	string	`json:"certificate_name"`
 	CertificatePrivateKey	string	`json:"certificate_private_key"`
+	CertificateBody	string	`json:"certificate_body"`
+	CertificateName	string	`json:"certificate_name"`
 	DomainName	string	`json:"domain_name"`
+	CertificateArn	string	`json:"certificate_arn"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

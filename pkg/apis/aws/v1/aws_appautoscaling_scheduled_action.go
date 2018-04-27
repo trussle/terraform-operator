@@ -22,12 +22,12 @@ type AwsAppautoscalingScheduledAction struct {
 // AwsAppautoscalingScheduledActionSpec is the spec for a AwsAppautoscalingScheduledAction Resource
 type AwsAppautoscalingScheduledActionSpec struct {
 	ScalableDimension	string	`json:"scalable_dimension"`
+	ScalableTargetAction	[]AwsAppautoscalingScheduledActionScalableTargetAction	`json:"scalable_target_action"`
+	ServiceNamespace	string	`json:"service_namespace"`
+	ResourceId	string	`json:"resource_id"`
 	Schedule	string	`json:"schedule"`
 	StartTime	string	`json:"start_time"`
 	EndTime	string	`json:"end_time"`
-	ServiceNamespace	string	`json:"service_namespace"`
-	ResourceId	string	`json:"resource_id"`
-	ScalableTargetAction	[]ScalableTargetAction	`json:"scalable_target_action"`
 	Name	string	`json:"name"`
 }
 
@@ -42,8 +42,8 @@ type AwsAppautoscalingScheduledActionList struct {
 }
 
 
-// ScalableTargetAction is a ScalableTargetAction
-type ScalableTargetAction struct {
+// AwsAppautoscalingScheduledActionScalableTargetAction is a AwsAppautoscalingScheduledActionScalableTargetAction
+type AwsAppautoscalingScheduledActionScalableTargetAction struct {
 	MaxCapacity	int	`json:"max_capacity"`
 	MinCapacity	int	`json:"min_capacity"`
 }

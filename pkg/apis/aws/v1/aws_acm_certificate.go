@@ -21,10 +21,10 @@ type AwsAcmCertificate struct {
 
 // AwsAcmCertificateSpec is the spec for a AwsAcmCertificate Resource
 type AwsAcmCertificateSpec struct {
+	ValidationMethod	string	`json:"validation_method"`
 	Tags	map[string]string	`json:"tags"`
 	DomainName	string	`json:"domain_name"`
 	SubjectAlternativeNames	[]string	`json:"subject_alternative_names"`
-	ValidationMethod	string	`json:"validation_method"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -38,6 +38,6 @@ type AwsAcmCertificateList struct {
 }
 
 
-// DomainValidationOptions is a DomainValidationOptions
-type DomainValidationOptions struct {
+// AwsAcmCertificateDomainValidationOptions is a AwsAcmCertificateDomainValidationOptions
+type AwsAcmCertificateDomainValidationOptions struct {
 }

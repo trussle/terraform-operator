@@ -23,8 +23,8 @@ type AwsCodepipeline struct {
 type AwsCodepipelineSpec struct {
 	Name	string	`json:"name"`
 	RoleArn	string	`json:"role_arn"`
-	ArtifactStore	[]ArtifactStore	`json:"artifact_store"`
-	Stage	[]Stage	`json:"stage"`
+	ArtifactStore	[]AwsCodepipelineArtifactStore	`json:"artifact_store"`
+	Stage	[]AwsCodepipelineStage	`json:"stage"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -38,34 +38,34 @@ type AwsCodepipelineList struct {
 }
 
 
-// ArtifactStore is a ArtifactStore
-type ArtifactStore struct {
-	Location	string	`json:"location"`
-	Type	string	`json:"type"`
-	EncryptionKey	[]EncryptionKey	`json:"encryption_key"`
-}
-
-// Action is a Action
-type Action struct {
-	Provider	string	`json:"provider"`
-	InputArtifacts	[]string	`json:"input_artifacts"`
-	OutputArtifacts	[]string	`json:"output_artifacts"`
-	Configuration	map[string]string	`json:"configuration"`
-	Category	string	`json:"category"`
-	Owner	string	`json:"owner"`
-	Version	string	`json:"version"`
-	Name	string	`json:"name"`
-	RoleArn	string	`json:"role_arn"`
-}
-
-// Stage is a Stage
-type Stage struct {
-	Name	string	`json:"name"`
-	Action	[]Action	`json:"action"`
-}
-
-// EncryptionKey is a EncryptionKey
-type EncryptionKey struct {
+// AwsCodepipelineEncryptionKey is a AwsCodepipelineEncryptionKey
+type AwsCodepipelineEncryptionKey struct {
 	Id	string	`json:"id"`
 	Type	string	`json:"type"`
+}
+
+// AwsCodepipelineArtifactStore is a AwsCodepipelineArtifactStore
+type AwsCodepipelineArtifactStore struct {
+	Location	string	`json:"location"`
+	Type	string	`json:"type"`
+	EncryptionKey	[]AwsCodepipelineEncryptionKey	`json:"encryption_key"`
+}
+
+// AwsCodepipelineAction is a AwsCodepipelineAction
+type AwsCodepipelineAction struct {
+	InputArtifacts	[]string	`json:"input_artifacts"`
+	OutputArtifacts	[]string	`json:"output_artifacts"`
+	RoleArn	string	`json:"role_arn"`
+	Category	string	`json:"category"`
+	Owner	string	`json:"owner"`
+	Provider	string	`json:"provider"`
+	Version	string	`json:"version"`
+	Configuration	map[string]string	`json:"configuration"`
+	Name	string	`json:"name"`
+}
+
+// AwsCodepipelineStage is a AwsCodepipelineStage
+type AwsCodepipelineStage struct {
+	Name	string	`json:"name"`
+	Action	[]AwsCodepipelineAction	`json:"action"`
 }

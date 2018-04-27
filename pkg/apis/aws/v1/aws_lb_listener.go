@@ -21,11 +21,11 @@ type AwsLbListener struct {
 
 // AwsLbListenerSpec is the spec for a AwsLbListener Resource
 type AwsLbListenerSpec struct {
-	CertificateArn	string	`json:"certificate_arn"`
-	DefaultAction	[]DefaultAction	`json:"default_action"`
 	LoadBalancerArn	string	`json:"load_balancer_arn"`
 	Port	int	`json:"port"`
 	Protocol	string	`json:"protocol"`
+	CertificateArn	string	`json:"certificate_arn"`
+	DefaultAction	[]AwsLbListenerDefaultAction	`json:"default_action"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -39,8 +39,8 @@ type AwsLbListenerList struct {
 }
 
 
-// DefaultAction is a DefaultAction
-type DefaultAction struct {
+// AwsLbListenerDefaultAction is a AwsLbListenerDefaultAction
+type AwsLbListenerDefaultAction struct {
 	TargetGroupArn	string	`json:"target_group_arn"`
 	Type	string	`json:"type"`
 }

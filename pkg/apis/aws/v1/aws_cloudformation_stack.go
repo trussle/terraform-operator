@@ -21,16 +21,16 @@ type AwsCloudformationStack struct {
 
 // AwsCloudformationStackSpec is the spec for a AwsCloudformationStack Resource
 type AwsCloudformationStackSpec struct {
-	TemplateUrl	string	`json:"template_url"`
+	NotificationArns	string	`json:"notification_arns"`
+	Name	string	`json:"name"`
+	DisableRollback	bool	`json:"disable_rollback"`
 	Capabilities	string	`json:"capabilities"`
 	PolicyUrl	string	`json:"policy_url"`
-	Name	string	`json:"name"`
-	NotificationArns	string	`json:"notification_arns"`
-	OnFailure	string	`json:"on_failure"`
 	TimeoutInMinutes	int	`json:"timeout_in_minutes"`
 	Tags	map[string]string	`json:"tags"`
 	IamRoleArn	string	`json:"iam_role_arn"`
-	DisableRollback	bool	`json:"disable_rollback"`
+	TemplateUrl	string	`json:"template_url"`
+	OnFailure	string	`json:"on_failure"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

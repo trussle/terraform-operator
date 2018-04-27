@@ -21,10 +21,10 @@ type AwsDmsReplicationInstance struct {
 
 // AwsDmsReplicationInstanceSpec is the spec for a AwsDmsReplicationInstance Resource
 type AwsDmsReplicationInstanceSpec struct {
-	ReplicationInstanceClass	string	`json:"replication_instance_class"`
 	ApplyImmediately	bool	`json:"apply_immediately"`
-	Tags	map[string]string	`json:"tags"`
 	ReplicationInstanceId	string	`json:"replication_instance_id"`
+	ReplicationInstanceClass	string	`json:"replication_instance_class"`
+	Tags	map[string]string	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -21,8 +21,8 @@ type AwsDbSnapshot struct {
 
 // AwsDbSnapshotSpec is the spec for a AwsDbSnapshot Resource
 type AwsDbSnapshotSpec struct {
-	DbInstanceIdentifier	string	`json:"db_instance_identifier"`
 	DbSnapshotIdentifier	string	`json:"db_snapshot_identifier"`
+	DbInstanceIdentifier	string	`json:"db_instance_identifier"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

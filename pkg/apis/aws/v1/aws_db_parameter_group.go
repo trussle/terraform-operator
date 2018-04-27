@@ -23,7 +23,7 @@ type AwsDbParameterGroup struct {
 type AwsDbParameterGroupSpec struct {
 	Family	string	`json:"family"`
 	Description	string	`json:"description"`
-	Parameter	Parameter	`json:"parameter"`
+	Parameter	AwsDbParameterGroupParameter	`json:"parameter"`
 	Tags	map[string]string	`json:"tags"`
 }
 
@@ -38,8 +38,8 @@ type AwsDbParameterGroupList struct {
 }
 
 
-// Parameter is a Parameter
-type Parameter struct {
+// AwsDbParameterGroupParameter is a AwsDbParameterGroupParameter
+type AwsDbParameterGroupParameter struct {
 	Name	string	`json:"name"`
 	Value	string	`json:"value"`
 	ApplyMethod	string	`json:"apply_method"`

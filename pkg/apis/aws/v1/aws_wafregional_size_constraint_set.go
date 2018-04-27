@@ -21,8 +21,8 @@ type AwsWafregionalSizeConstraintSet struct {
 
 // AwsWafregionalSizeConstraintSetSpec is the spec for a AwsWafregionalSizeConstraintSet Resource
 type AwsWafregionalSizeConstraintSetSpec struct {
+	SizeConstraints	AwsWafregionalSizeConstraintSetSizeConstraints	`json:"size_constraints"`
 	Name	string	`json:"name"`
-	SizeConstraints	SizeConstraints	`json:"size_constraints"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -36,15 +36,15 @@ type AwsWafregionalSizeConstraintSetList struct {
 }
 
 
-// FieldToMatch is a FieldToMatch
-type FieldToMatch struct {
-	Type	string	`json:"type"`
+// AwsWafregionalSizeConstraintSetFieldToMatch is a AwsWafregionalSizeConstraintSetFieldToMatch
+type AwsWafregionalSizeConstraintSetFieldToMatch struct {
 	Data	string	`json:"data"`
+	Type	string	`json:"type"`
 }
 
-// SizeConstraints is a SizeConstraints
-type SizeConstraints struct {
-	FieldToMatch	FieldToMatch	`json:"field_to_match"`
+// AwsWafregionalSizeConstraintSetSizeConstraints is a AwsWafregionalSizeConstraintSetSizeConstraints
+type AwsWafregionalSizeConstraintSetSizeConstraints struct {
+	FieldToMatch	AwsWafregionalSizeConstraintSetFieldToMatch	`json:"field_to_match"`
 	ComparisonOperator	string	`json:"comparison_operator"`
 	Size	int	`json:"size"`
 	TextTransformation	string	`json:"text_transformation"`

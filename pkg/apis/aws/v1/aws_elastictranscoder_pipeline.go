@@ -22,10 +22,10 @@ type AwsElastictranscoderPipeline struct {
 // AwsElastictranscoderPipelineSpec is the spec for a AwsElastictranscoderPipeline Resource
 type AwsElastictranscoderPipelineSpec struct {
 	AwsKmsKeyArn	string	`json:"aws_kms_key_arn"`
-	Notifications	Notifications	`json:"notifications"`
-	ThumbnailConfigPermissions	ThumbnailConfigPermissions	`json:"thumbnail_config_permissions"`
-	ContentConfigPermissions	ContentConfigPermissions	`json:"content_config_permissions"`
 	InputBucket	string	`json:"input_bucket"`
+	ThumbnailConfigPermissions	AwsElastictranscoderPipelineThumbnailConfigPermissions	`json:"thumbnail_config_permissions"`
+	ContentConfigPermissions	AwsElastictranscoderPipelineContentConfigPermissions	`json:"content_config_permissions"`
+	Notifications	AwsElastictranscoderPipelineNotifications	`json:"notifications"`
 	Role	string	`json:"role"`
 }
 
@@ -40,34 +40,34 @@ type AwsElastictranscoderPipelineList struct {
 }
 
 
-// Notifications is a Notifications
-type Notifications struct {
+// AwsElastictranscoderPipelineThumbnailConfig is a AwsElastictranscoderPipelineThumbnailConfig
+type AwsElastictranscoderPipelineThumbnailConfig struct {
+	StorageClass	string	`json:"storage_class"`
+}
+
+// AwsElastictranscoderPipelineThumbnailConfigPermissions is a AwsElastictranscoderPipelineThumbnailConfigPermissions
+type AwsElastictranscoderPipelineThumbnailConfigPermissions struct {
+	Access	[]string	`json:"access"`
+	Grantee	string	`json:"grantee"`
+	GranteeType	string	`json:"grantee_type"`
+}
+
+// AwsElastictranscoderPipelineContentConfig is a AwsElastictranscoderPipelineContentConfig
+type AwsElastictranscoderPipelineContentConfig struct {
+	StorageClass	string	`json:"storage_class"`
+}
+
+// AwsElastictranscoderPipelineContentConfigPermissions is a AwsElastictranscoderPipelineContentConfigPermissions
+type AwsElastictranscoderPipelineContentConfigPermissions struct {
+	Access	[]string	`json:"access"`
+	Grantee	string	`json:"grantee"`
+	GranteeType	string	`json:"grantee_type"`
+}
+
+// AwsElastictranscoderPipelineNotifications is a AwsElastictranscoderPipelineNotifications
+type AwsElastictranscoderPipelineNotifications struct {
+	Warning	string	`json:"warning"`
 	Completed	string	`json:"completed"`
 	Error	string	`json:"error"`
 	Progressing	string	`json:"progressing"`
-	Warning	string	`json:"warning"`
-}
-
-// ThumbnailConfigPermissions is a ThumbnailConfigPermissions
-type ThumbnailConfigPermissions struct {
-	Grantee	string	`json:"grantee"`
-	GranteeType	string	`json:"grantee_type"`
-	Access	[]string	`json:"access"`
-}
-
-// ContentConfigPermissions is a ContentConfigPermissions
-type ContentConfigPermissions struct {
-	GranteeType	string	`json:"grantee_type"`
-	Access	[]string	`json:"access"`
-	Grantee	string	`json:"grantee"`
-}
-
-// ThumbnailConfig is a ThumbnailConfig
-type ThumbnailConfig struct {
-	StorageClass	string	`json:"storage_class"`
-}
-
-// ContentConfig is a ContentConfig
-type ContentConfig struct {
-	StorageClass	string	`json:"storage_class"`
 }

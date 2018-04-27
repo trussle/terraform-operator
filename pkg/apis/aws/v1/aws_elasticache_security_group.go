@@ -21,9 +21,9 @@ type AwsElasticacheSecurityGroup struct {
 
 // AwsElasticacheSecurityGroupSpec is the spec for a AwsElasticacheSecurityGroup Resource
 type AwsElasticacheSecurityGroupSpec struct {
-	Description	string	`json:"description"`
 	Name	string	`json:"name"`
 	SecurityGroupNames	string	`json:"security_group_names"`
+	Description	string	`json:"description"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

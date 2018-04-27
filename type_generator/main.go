@@ -4,7 +4,6 @@ import (
 	"bytes"
 	"fmt"
 	"io/ioutil"
-	"math/rand"
 	"strings"
 	"text/tabwriter"
 
@@ -14,6 +13,7 @@ import (
 
 const apiVersion = "v1"
 
+var antiDuplicateBuffer = []string{}
 var extraStructBuffer = map[string]string{}
 
 func main() {
@@ -23,7 +23,6 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-
 	}
 
 	err := generateRegisterFile("../pkg/apis/aws/v1/register.go", prov.ResourcesMap)
@@ -112,7 +111,7 @@ func generateSpecStructString(n string, m map[string]*schema.Schema) string {
 type %sSpec struct {
 `, n, n, n)
 	for k, v := range m {
-		l := generateFieldString(k, v)
+		l := generateFieldString(n, k, v)
 		if l != "" {
 			spec = spec + l + "\n"
 		}
@@ -121,9 +120,9 @@ type %sSpec struct {
 	return spec
 }
 
-func generateFieldString(k string, v *schema.Schema) string {
+func generateFieldString(globalname, k string, v *schema.Schema) string {
 	name := titleStr(k)
-	t := typeSchemaAsString(name, v)
+	t := typeSchemaAsString(globalname, name, v)
 	if v.Computed {
 		return ""
 	}
@@ -136,7 +135,7 @@ func titleStr(s string) string {
 	return strings.Replace(t, " ", "", -1)
 }
 
-func typeSchemaAsString(name string, t *schema.Schema) string {
+func typeSchemaAsString(globalname, name string, t *schema.Schema) string {
 	switch t.Type {
 	case schema.TypeString:
 		return "string"
@@ -147,42 +146,48 @@ func typeSchemaAsString(name string, t *schema.Schema) string {
 	case schema.TypeInt:
 		return "int"
 	case schema.TypeList:
-		return "[]" + typeElemAsString(name, t.Elem)
+		return "[]" + typeElemAsString(globalname, name, t.Elem)
 	case schema.TypeMap:
-		return "map[string]" + typeElemAsString(name, t.Elem)
+		return "map[string]" + typeElemAsString(globalname, name, t.Elem)
 	case schema.TypeSet:
-		return typeElemAsString(name, t.Elem)
+		return typeElemAsString(globalname, name, t.Elem)
 	}
 
 	return "string"
 }
 
-func typeElemAsString(name string, i interface{}) string {
+func typeElemAsString(globalname, name string, i interface{}) string {
 	switch i.(type) {
 	case *schema.Schema:
-		return typeSchemaAsString(name, i.(*schema.Schema))
+		return typeSchemaAsString(globalname, name, i.(*schema.Schema))
 	case *schema.Resource:
-		// Complex object, shit ourselves.
-		generateInlineStruct(name, i.(*schema.Resource))
-		return name
+		n := globalname + name
+		generateInlineStruct(globalname, n, i.(*schema.Resource))
+		return n
 	}
 
 	return "string"
 }
 
-func generateInlineStruct(name string, r *schema.Resource) {
+func generateInlineStruct(globalname, name string, r *schema.Resource) {
+	for _, v := range antiDuplicateBuffer {
+		if v == name {
+			return
+		}
+	}
 	spec := fmt.Sprintf(`
 // %s is a %s
 type %s struct {
 `, name, name, name)
 	for k, v := range r.Schema {
-		l := generateFieldString(k, v)
+		l := generateFieldString(globalname, k, v)
 		if l != "" {
 			spec = spec + l + "\n"
 		}
 	}
 	spec = spec + "}\n"
 	extraStructBuffer[name] = spec
+	antiDuplicateBuffer = append(antiDuplicateBuffer, name)
 }
 
 func generateRegisterFile(path string, m map[string]*schema.Resource) error {
@@ -237,34 +242,11 @@ func generateKnownTypesString(m map[string]*schema.Resource) string {
 }
 
 func generateAddKnownTypesCallString(m map[string]*schema.Resource) string {
-	o := "schema.AddKnownTypes(\n\t\t\tSchemeGroupVersion,"
+	o := "scheme.AddKnownTypes(\n\t\t\tSchemeGroupVersion,"
 	for k := range m {
 		o = o + fmt.Sprintf("\n\t\t\t&%s{},", titleStr(k))
 		o = o + fmt.Sprintf("\n\t\t\t&%sList{},", titleStr(k))
 	}
 	o = o + "\n)"
 	return o
-}
-
-var letterRunes = []rune("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
-
-func RandStringRunes(n int) string {
-	b := make([]rune, n)
-	for i := range b {
-		b[i] = letterRunes[rand.Intn(len(letterRunes))]
-	}
-	return string(b)
-}
-
-func SliceUniq(s []string) []string {
-	for i := 0; i < len(s); i++ {
-		for i2 := i + 1; i2 < len(s); i2++ {
-			if s[i] == s[i2] {
-				// delete
-				s = append(s[:i2], s[i2+1:]...)
-				i2--
-			}
-		}
-	}
-	return s
 }

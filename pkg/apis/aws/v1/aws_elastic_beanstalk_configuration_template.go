@@ -21,11 +21,11 @@ type AwsElasticBeanstalkConfigurationTemplate struct {
 
 // AwsElasticBeanstalkConfigurationTemplateSpec is the spec for a AwsElasticBeanstalkConfigurationTemplate Resource
 type AwsElasticBeanstalkConfigurationTemplateSpec struct {
-	Name	string	`json:"name"`
-	Application	string	`json:"application"`
 	Description	string	`json:"description"`
 	EnvironmentId	string	`json:"environment_id"`
 	SolutionStackName	string	`json:"solution_stack_name"`
+	Name	string	`json:"name"`
+	Application	string	`json:"application"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -39,8 +39,8 @@ type AwsElasticBeanstalkConfigurationTemplateList struct {
 }
 
 
-// Setting is a Setting
-type Setting struct {
+// AwsElasticBeanstalkConfigurationTemplateSetting is a AwsElasticBeanstalkConfigurationTemplateSetting
+type AwsElasticBeanstalkConfigurationTemplateSetting struct {
 	Namespace	string	`json:"namespace"`
 	Name	string	`json:"name"`
 	Value	string	`json:"value"`

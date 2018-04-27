@@ -21,12 +21,12 @@ type AwsCloudwatchEventRule struct {
 
 // AwsCloudwatchEventRuleSpec is the spec for a AwsCloudwatchEventRule Resource
 type AwsCloudwatchEventRuleSpec struct {
-	Name	string	`json:"name"`
-	ScheduleExpression	string	`json:"schedule_expression"`
-	EventPattern	string	`json:"event_pattern"`
 	Description	string	`json:"description"`
 	RoleArn	string	`json:"role_arn"`
 	IsEnabled	bool	`json:"is_enabled"`
+	Name	string	`json:"name"`
+	ScheduleExpression	string	`json:"schedule_expression"`
+	EventPattern	string	`json:"event_pattern"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -21,13 +21,13 @@ type AwsSesEventDestination struct {
 
 // AwsSesEventDestinationSpec is the spec for a AwsSesEventDestination Resource
 type AwsSesEventDestinationSpec struct {
-	SnsDestination	SnsDestination	`json:"sns_destination"`
+	KinesisDestination	AwsSesEventDestinationKinesisDestination	`json:"kinesis_destination"`
+	SnsDestination	AwsSesEventDestinationSnsDestination	`json:"sns_destination"`
 	Name	string	`json:"name"`
 	ConfigurationSetName	string	`json:"configuration_set_name"`
 	Enabled	bool	`json:"enabled"`
 	MatchingTypes	string	`json:"matching_types"`
-	CloudwatchDestination	CloudwatchDestination	`json:"cloudwatch_destination"`
-	KinesisDestination	KinesisDestination	`json:"kinesis_destination"`
+	CloudwatchDestination	AwsSesEventDestinationCloudwatchDestination	`json:"cloudwatch_destination"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -41,20 +41,20 @@ type AwsSesEventDestinationList struct {
 }
 
 
-// SnsDestination is a SnsDestination
-type SnsDestination struct {
+// AwsSesEventDestinationKinesisDestination is a AwsSesEventDestinationKinesisDestination
+type AwsSesEventDestinationKinesisDestination struct {
+	StreamArn	string	`json:"stream_arn"`
+	RoleArn	string	`json:"role_arn"`
+}
+
+// AwsSesEventDestinationSnsDestination is a AwsSesEventDestinationSnsDestination
+type AwsSesEventDestinationSnsDestination struct {
 	TopicArn	string	`json:"topic_arn"`
 }
 
-// CloudwatchDestination is a CloudwatchDestination
-type CloudwatchDestination struct {
+// AwsSesEventDestinationCloudwatchDestination is a AwsSesEventDestinationCloudwatchDestination
+type AwsSesEventDestinationCloudwatchDestination struct {
+	ValueSource	string	`json:"value_source"`
 	DefaultValue	string	`json:"default_value"`
 	DimensionName	string	`json:"dimension_name"`
-	ValueSource	string	`json:"value_source"`
-}
-
-// KinesisDestination is a KinesisDestination
-type KinesisDestination struct {
-	StreamArn	string	`json:"stream_arn"`
-	RoleArn	string	`json:"role_arn"`
 }

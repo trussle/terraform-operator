@@ -21,11 +21,11 @@ type AwsIamServerCertificate struct {
 
 // AwsIamServerCertificateSpec is the spec for a AwsIamServerCertificate Resource
 type AwsIamServerCertificateSpec struct {
-	CertificateBody	string	`json:"certificate_body"`
 	CertificateChain	string	`json:"certificate_chain"`
 	Path	string	`json:"path"`
 	PrivateKey	string	`json:"private_key"`
 	NamePrefix	string	`json:"name_prefix"`
+	CertificateBody	string	`json:"certificate_body"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

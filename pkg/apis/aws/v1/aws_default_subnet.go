@@ -21,8 +21,8 @@ type AwsDefaultSubnet struct {
 
 // AwsDefaultSubnetSpec is the spec for a AwsDefaultSubnet Resource
 type AwsDefaultSubnetSpec struct {
-	AvailabilityZone	string	`json:"availability_zone"`
 	Tags	map[string]string	`json:"tags"`
+	AvailabilityZone	string	`json:"availability_zone"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

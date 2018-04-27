@@ -21,14 +21,14 @@ type AwsEcsTaskDefinition struct {
 
 // AwsEcsTaskDefinitionSpec is the spec for a AwsEcsTaskDefinition Resource
 type AwsEcsTaskDefinitionSpec struct {
-	ContainerDefinitions	string	`json:"container_definitions"`
-	ExecutionRoleArn	string	`json:"execution_role_arn"`
-	Volume	Volume	`json:"volume"`
-	PlacementConstraints	PlacementConstraints	`json:"placement_constraints"`
+	TaskRoleArn	string	`json:"task_role_arn"`
+	Volume	AwsEcsTaskDefinitionVolume	`json:"volume"`
+	RequiresCompatibilities	string	`json:"requires_compatibilities"`
 	Cpu	string	`json:"cpu"`
 	Family	string	`json:"family"`
-	RequiresCompatibilities	string	`json:"requires_compatibilities"`
-	TaskRoleArn	string	`json:"task_role_arn"`
+	ContainerDefinitions	string	`json:"container_definitions"`
+	PlacementConstraints	AwsEcsTaskDefinitionPlacementConstraints	`json:"placement_constraints"`
+	ExecutionRoleArn	string	`json:"execution_role_arn"`
 	Memory	string	`json:"memory"`
 }
 
@@ -43,14 +43,14 @@ type AwsEcsTaskDefinitionList struct {
 }
 
 
-// Volume is a Volume
-type Volume struct {
+// AwsEcsTaskDefinitionVolume is a AwsEcsTaskDefinitionVolume
+type AwsEcsTaskDefinitionVolume struct {
 	Name	string	`json:"name"`
 	HostPath	string	`json:"host_path"`
 }
 
-// PlacementConstraints is a PlacementConstraints
-type PlacementConstraints struct {
-	Type	string	`json:"type"`
+// AwsEcsTaskDefinitionPlacementConstraints is a AwsEcsTaskDefinitionPlacementConstraints
+type AwsEcsTaskDefinitionPlacementConstraints struct {
 	Expression	string	`json:"expression"`
+	Type	string	`json:"type"`
 }

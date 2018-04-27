@@ -36,8 +36,8 @@ type AwsDaxParameterGroupList struct {
 }
 
 
-// Parameters is a Parameters
-type Parameters struct {
-	Name	string	`json:"name"`
+// AwsDaxParameterGroupParameters is a AwsDaxParameterGroupParameters
+type AwsDaxParameterGroupParameters struct {
 	Value	string	`json:"value"`
+	Name	string	`json:"name"`
 }

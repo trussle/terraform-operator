@@ -255,7 +255,6 @@ type TrussleV1Interface interface {
 	AwsNetworkAclsGetter
 	AwsNetworkAclRulesGetter
 	AwsNetworkInterfacesGetter
-	AwsNetworkInterfaceAttachmentsGetter
 	AwsNetworkInterfaceSgAttachmentsGetter
 	AwsOpsworksApplicationsGetter
 	AwsOpsworksCustomLayersGetter
@@ -355,7 +354,6 @@ type TrussleV1Interface interface {
 	AwsVpcEndpointServiceAllowedPrincipalsGetter
 	AwsVpcEndpointSubnetAssociationsGetter
 	AwsVpcPeeringConnectionsGetter
-	AwsVpcPeeringConnectionAcceptersGetter
 	AwsVpnConnectionsGetter
 	AwsVpnConnectionRoutesGetter
 	AwsVpnGatewaysGetter
@@ -1305,10 +1303,6 @@ func (c *TrussleV1Client) AwsNetworkInterfaces(namespace string) AwsNetworkInter
 	return newAwsNetworkInterfaces(c, namespace)
 }
 
-func (c *TrussleV1Client) AwsNetworkInterfaceAttachments(namespace string) AwsNetworkInterfaceAttachmentInterface {
-	return newAwsNetworkInterfaceAttachments(c, namespace)
-}
-
 func (c *TrussleV1Client) AwsNetworkInterfaceSgAttachments(namespace string) AwsNetworkInterfaceSgAttachmentInterface {
 	return newAwsNetworkInterfaceSgAttachments(c, namespace)
 }
@@ -1703,10 +1697,6 @@ func (c *TrussleV1Client) AwsVpcEndpointSubnetAssociations(namespace string) Aws
 
 func (c *TrussleV1Client) AwsVpcPeeringConnections(namespace string) AwsVpcPeeringConnectionInterface {
 	return newAwsVpcPeeringConnections(c, namespace)
-}
-
-func (c *TrussleV1Client) AwsVpcPeeringConnectionAccepters(namespace string) AwsVpcPeeringConnectionAccepterInterface {
-	return newAwsVpcPeeringConnectionAccepters(c, namespace)
 }
 
 func (c *TrussleV1Client) AwsVpnConnections(namespace string) AwsVpnConnectionInterface {

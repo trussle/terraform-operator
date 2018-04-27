@@ -22,9 +22,9 @@ type AwsVpnConnection struct {
 // AwsVpnConnectionSpec is the spec for a AwsVpnConnection Resource
 type AwsVpnConnectionSpec struct {
 	VpnGatewayId	string	`json:"vpn_gateway_id"`
-	Type	string	`json:"type"`
 	Tags	map[string]string	`json:"tags"`
 	CustomerGatewayId	string	`json:"customer_gateway_id"`
+	Type	string	`json:"type"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -38,10 +38,10 @@ type AwsVpnConnectionList struct {
 }
 
 
-// Routes is a Routes
-type Routes struct {
+// AwsVpnConnectionVgwTelemetry is a AwsVpnConnectionVgwTelemetry
+type AwsVpnConnectionVgwTelemetry struct {
 }
 
-// VgwTelemetry is a VgwTelemetry
-type VgwTelemetry struct {
+// AwsVpnConnectionRoutes is a AwsVpnConnectionRoutes
+type AwsVpnConnectionRoutes struct {
 }

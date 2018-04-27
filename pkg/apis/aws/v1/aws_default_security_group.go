@@ -21,8 +21,8 @@ type AwsDefaultSecurityGroup struct {
 
 // AwsDefaultSecurityGroupSpec is the spec for a AwsDefaultSecurityGroup Resource
 type AwsDefaultSecurityGroupSpec struct {
-	Egress	Egress	`json:"egress"`
-	Ingress	Ingress	`json:"ingress"`
+	Egress	AwsDefaultSecurityGroupEgress	`json:"egress"`
+	Ingress	AwsDefaultSecurityGroupIngress	`json:"ingress"`
 	Tags	map[string]string	`json:"tags"`
 	RevokeRulesOnDelete	bool	`json:"revoke_rules_on_delete"`
 }
@@ -38,27 +38,27 @@ type AwsDefaultSecurityGroupList struct {
 }
 
 
-// Egress is a Egress
-type Egress struct {
+// AwsDefaultSecurityGroupEgress is a AwsDefaultSecurityGroupEgress
+type AwsDefaultSecurityGroupEgress struct {
+	SecurityGroups	string	`json:"security_groups"`
+	Description	string	`json:"description"`
+	ToPort	int	`json:"to_port"`
 	Protocol	string	`json:"protocol"`
 	CidrBlocks	[]string	`json:"cidr_blocks"`
-	Ipv6CidrBlocks	[]string	`json:"ipv6_cidr_blocks"`
-	FromPort	int	`json:"from_port"`
-	ToPort	int	`json:"to_port"`
 	PrefixListIds	[]string	`json:"prefix_list_ids"`
-	SecurityGroups	string	`json:"security_groups"`
+	FromPort	int	`json:"from_port"`
+	Ipv6CidrBlocks	[]string	`json:"ipv6_cidr_blocks"`
 	Self	bool	`json:"self"`
-	Description	string	`json:"description"`
 }
 
-// Ingress is a Ingress
-type Ingress struct {
+// AwsDefaultSecurityGroupIngress is a AwsDefaultSecurityGroupIngress
+type AwsDefaultSecurityGroupIngress struct {
+	Description	string	`json:"description"`
+	FromPort	int	`json:"from_port"`
+	ToPort	int	`json:"to_port"`
 	Protocol	string	`json:"protocol"`
 	CidrBlocks	[]string	`json:"cidr_blocks"`
 	Ipv6CidrBlocks	[]string	`json:"ipv6_cidr_blocks"`
 	SecurityGroups	string	`json:"security_groups"`
 	Self	bool	`json:"self"`
-	Description	string	`json:"description"`
-	FromPort	int	`json:"from_port"`
-	ToPort	int	`json:"to_port"`
 }

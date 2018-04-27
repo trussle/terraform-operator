@@ -21,20 +21,20 @@ type AwsLaunchConfiguration struct {
 
 // AwsLaunchConfigurationSpec is the spec for a AwsLaunchConfiguration Resource
 type AwsLaunchConfigurationSpec struct {
-	InstanceType	string	`json:"instance_type"`
-	VpcClassicLinkSecurityGroups	string	`json:"vpc_classic_link_security_groups"`
-	ImageId	string	`json:"image_id"`
 	IamInstanceProfile	string	`json:"iam_instance_profile"`
-	SecurityGroups	string	`json:"security_groups"`
-	AssociatePublicIpAddress	bool	`json:"associate_public_ip_address"`
-	NamePrefix	string	`json:"name_prefix"`
-	VpcClassicLinkId	string	`json:"vpc_classic_link_id"`
+	UserData	string	`json:"user_data"`
 	SpotPrice	string	`json:"spot_price"`
 	PlacementTenancy	string	`json:"placement_tenancy"`
 	EnableMonitoring	bool	`json:"enable_monitoring"`
-	UserData	string	`json:"user_data"`
+	InstanceType	string	`json:"instance_type"`
 	UserDataBase64	string	`json:"user_data_base64"`
-	EphemeralBlockDevice	EphemeralBlockDevice	`json:"ephemeral_block_device"`
+	SecurityGroups	string	`json:"security_groups"`
+	VpcClassicLinkSecurityGroups	string	`json:"vpc_classic_link_security_groups"`
+	AssociatePublicIpAddress	bool	`json:"associate_public_ip_address"`
+	NamePrefix	string	`json:"name_prefix"`
+	ImageId	string	`json:"image_id"`
+	VpcClassicLinkId	string	`json:"vpc_classic_link_id"`
+	EphemeralBlockDevice	AwsLaunchConfigurationEphemeralBlockDevice	`json:"ephemeral_block_device"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -48,20 +48,20 @@ type AwsLaunchConfigurationList struct {
 }
 
 
-// EbsBlockDevice is a EbsBlockDevice
-type EbsBlockDevice struct {
+// AwsLaunchConfigurationRootBlockDevice is a AwsLaunchConfigurationRootBlockDevice
+type AwsLaunchConfigurationRootBlockDevice struct {
+	DeleteOnTermination	bool	`json:"delete_on_termination"`
+}
+
+// AwsLaunchConfigurationEbsBlockDevice is a AwsLaunchConfigurationEbsBlockDevice
+type AwsLaunchConfigurationEbsBlockDevice struct {
 	DeleteOnTermination	bool	`json:"delete_on_termination"`
 	DeviceName	string	`json:"device_name"`
 	NoDevice	bool	`json:"no_device"`
 }
 
-// EphemeralBlockDevice is a EphemeralBlockDevice
-type EphemeralBlockDevice struct {
+// AwsLaunchConfigurationEphemeralBlockDevice is a AwsLaunchConfigurationEphemeralBlockDevice
+type AwsLaunchConfigurationEphemeralBlockDevice struct {
 	DeviceName	string	`json:"device_name"`
 	VirtualName	string	`json:"virtual_name"`
-}
-
-// RootBlockDevice is a RootBlockDevice
-type RootBlockDevice struct {
-	DeleteOnTermination	bool	`json:"delete_on_termination"`
 }

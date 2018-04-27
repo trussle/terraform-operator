@@ -25,7 +25,7 @@ type AwsConfigDeliveryChannelSpec struct {
 	S3BucketName	string	`json:"s3_bucket_name"`
 	S3KeyPrefix	string	`json:"s3_key_prefix"`
 	SnsTopicArn	string	`json:"sns_topic_arn"`
-	SnapshotDeliveryProperties	[]SnapshotDeliveryProperties	`json:"snapshot_delivery_properties"`
+	SnapshotDeliveryProperties	[]AwsConfigDeliveryChannelSnapshotDeliveryProperties	`json:"snapshot_delivery_properties"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -39,7 +39,7 @@ type AwsConfigDeliveryChannelList struct {
 }
 
 
-// SnapshotDeliveryProperties is a SnapshotDeliveryProperties
-type SnapshotDeliveryProperties struct {
+// AwsConfigDeliveryChannelSnapshotDeliveryProperties is a AwsConfigDeliveryChannelSnapshotDeliveryProperties
+type AwsConfigDeliveryChannelSnapshotDeliveryProperties struct {
 	DeliveryFrequency	string	`json:"delivery_frequency"`
 }

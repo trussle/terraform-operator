@@ -21,7 +21,7 @@ type AwsSsmResourceDataSync struct {
 
 // AwsSsmResourceDataSyncSpec is the spec for a AwsSsmResourceDataSync Resource
 type AwsSsmResourceDataSyncSpec struct {
-	S3Destination	[]S3Destination	`json:"s3_destination"`
+	S3Destination	[]AwsSsmResourceDataSyncS3Destination	`json:"s3_destination"`
 	Name	string	`json:"name"`
 }
 
@@ -36,11 +36,11 @@ type AwsSsmResourceDataSyncList struct {
 }
 
 
-// S3Destination is a S3Destination
-type S3Destination struct {
-	KmsKeyArn	string	`json:"kms_key_arn"`
-	BucketName	string	`json:"bucket_name"`
+// AwsSsmResourceDataSyncS3Destination is a AwsSsmResourceDataSyncS3Destination
+type AwsSsmResourceDataSyncS3Destination struct {
 	Prefix	string	`json:"prefix"`
 	Region	string	`json:"region"`
 	SyncFormat	string	`json:"sync_format"`
+	KmsKeyArn	string	`json:"kms_key_arn"`
+	BucketName	string	`json:"bucket_name"`
 }

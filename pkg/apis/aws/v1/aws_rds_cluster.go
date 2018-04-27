@@ -21,17 +21,17 @@ type AwsRdsCluster struct {
 
 // AwsRdsClusterSpec is the spec for a AwsRdsCluster Resource
 type AwsRdsClusterSpec struct {
-	IamRoles	string	`json:"iam_roles"`
+	BackupRetentionPeriod	int	`json:"backup_retention_period"`
 	ReplicationSourceIdentifier	string	`json:"replication_source_identifier"`
 	Engine	string	`json:"engine"`
-	SkipFinalSnapshot	bool	`json:"skip_final_snapshot"`
-	Tags	map[string]string	`json:"tags"`
-	FinalSnapshotIdentifier	string	`json:"final_snapshot_identifier"`
-	IamDatabaseAuthenticationEnabled	bool	`json:"iam_database_authentication_enabled"`
-	SnapshotIdentifier	string	`json:"snapshot_identifier"`
-	StorageEncrypted	bool	`json:"storage_encrypted"`
 	MasterPassword	string	`json:"master_password"`
-	BackupRetentionPeriod	int	`json:"backup_retention_period"`
+	IamRoles	string	`json:"iam_roles"`
+	FinalSnapshotIdentifier	string	`json:"final_snapshot_identifier"`
+	SnapshotIdentifier	string	`json:"snapshot_identifier"`
+	SkipFinalSnapshot	bool	`json:"skip_final_snapshot"`
+	IamDatabaseAuthenticationEnabled	bool	`json:"iam_database_authentication_enabled"`
+	Tags	map[string]string	`json:"tags"`
+	StorageEncrypted	bool	`json:"storage_encrypted"`
 	SourceRegion	string	`json:"source_region"`
 }
 

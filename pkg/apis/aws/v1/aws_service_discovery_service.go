@@ -21,11 +21,11 @@ type AwsServiceDiscoveryService struct {
 
 // AwsServiceDiscoveryServiceSpec is the spec for a AwsServiceDiscoveryService Resource
 type AwsServiceDiscoveryServiceSpec struct {
-	Description	string	`json:"description"`
-	DnsConfig	[]DnsConfig	`json:"dns_config"`
-	HealthCheckConfig	[]HealthCheckConfig	`json:"health_check_config"`
-	HealthCheckCustomConfig	[]HealthCheckCustomConfig	`json:"health_check_custom_config"`
 	Name	string	`json:"name"`
+	Description	string	`json:"description"`
+	DnsConfig	[]AwsServiceDiscoveryServiceDnsConfig	`json:"dns_config"`
+	HealthCheckConfig	[]AwsServiceDiscoveryServiceHealthCheckConfig	`json:"health_check_config"`
+	HealthCheckCustomConfig	[]AwsServiceDiscoveryServiceHealthCheckCustomConfig	`json:"health_check_custom_config"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -39,27 +39,27 @@ type AwsServiceDiscoveryServiceList struct {
 }
 
 
-// DnsRecords is a DnsRecords
-type DnsRecords struct {
+// AwsServiceDiscoveryServiceDnsRecords is a AwsServiceDiscoveryServiceDnsRecords
+type AwsServiceDiscoveryServiceDnsRecords struct {
 	Ttl	int	`json:"ttl"`
 	Type	string	`json:"type"`
 }
 
-// DnsConfig is a DnsConfig
-type DnsConfig struct {
+// AwsServiceDiscoveryServiceDnsConfig is a AwsServiceDiscoveryServiceDnsConfig
+type AwsServiceDiscoveryServiceDnsConfig struct {
 	NamespaceId	string	`json:"namespace_id"`
-	DnsRecords	[]DnsRecords	`json:"dns_records"`
+	DnsRecords	[]AwsServiceDiscoveryServiceDnsRecords	`json:"dns_records"`
 	RoutingPolicy	string	`json:"routing_policy"`
 }
 
-// HealthCheckConfig is a HealthCheckConfig
-type HealthCheckConfig struct {
+// AwsServiceDiscoveryServiceHealthCheckConfig is a AwsServiceDiscoveryServiceHealthCheckConfig
+type AwsServiceDiscoveryServiceHealthCheckConfig struct {
+	Type	string	`json:"type"`
 	FailureThreshold	int	`json:"failure_threshold"`
 	ResourcePath	string	`json:"resource_path"`
-	Type	string	`json:"type"`
 }
 
-// HealthCheckCustomConfig is a HealthCheckCustomConfig
-type HealthCheckCustomConfig struct {
+// AwsServiceDiscoveryServiceHealthCheckCustomConfig is a AwsServiceDiscoveryServiceHealthCheckCustomConfig
+type AwsServiceDiscoveryServiceHealthCheckCustomConfig struct {
 	FailureThreshold	int	`json:"failure_threshold"`
 }

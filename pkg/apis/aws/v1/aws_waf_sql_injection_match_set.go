@@ -21,8 +21,8 @@ type AwsWafSqlInjectionMatchSet struct {
 
 // AwsWafSqlInjectionMatchSetSpec is the spec for a AwsWafSqlInjectionMatchSet Resource
 type AwsWafSqlInjectionMatchSetSpec struct {
+	SqlInjectionMatchTuples	AwsWafSqlInjectionMatchSetSqlInjectionMatchTuples	`json:"sql_injection_match_tuples"`
 	Name	string	`json:"name"`
-	SqlInjectionMatchTuples	SqlInjectionMatchTuples	`json:"sql_injection_match_tuples"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -36,14 +36,14 @@ type AwsWafSqlInjectionMatchSetList struct {
 }
 
 
-// FieldToMatch is a FieldToMatch
-type FieldToMatch struct {
+// AwsWafSqlInjectionMatchSetFieldToMatch is a AwsWafSqlInjectionMatchSetFieldToMatch
+type AwsWafSqlInjectionMatchSetFieldToMatch struct {
 	Data	string	`json:"data"`
 	Type	string	`json:"type"`
 }
 
-// SqlInjectionMatchTuples is a SqlInjectionMatchTuples
-type SqlInjectionMatchTuples struct {
-	FieldToMatch	FieldToMatch	`json:"field_to_match"`
+// AwsWafSqlInjectionMatchSetSqlInjectionMatchTuples is a AwsWafSqlInjectionMatchSetSqlInjectionMatchTuples
+type AwsWafSqlInjectionMatchSetSqlInjectionMatchTuples struct {
+	FieldToMatch	AwsWafSqlInjectionMatchSetFieldToMatch	`json:"field_to_match"`
 	TextTransformation	string	`json:"text_transformation"`
 }

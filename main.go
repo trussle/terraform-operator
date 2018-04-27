@@ -101,6 +101,6 @@ func main() {
 
 	sigTerm := make(chan os.Signal, 1)
 	signal.Notify(sigTerm, syscall.SIGTERM)
-	signal.Notify(sigterm, syscall.SIGINT)
+	signal.Notify(sigTerm, syscall.SIGINT)
 	<-sigTerm
 }

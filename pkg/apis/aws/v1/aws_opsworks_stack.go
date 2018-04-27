@@ -21,23 +21,23 @@ type AwsOpsworksStack struct {
 
 // AwsOpsworksStackSpec is the spec for a AwsOpsworksStack Resource
 type AwsOpsworksStackSpec struct {
-	Tags	map[string]string	`json:"tags"`
+	Name	string	`json:"name"`
+	ServiceRoleArn	string	`json:"service_role_arn"`
+	HostnameTheme	string	`json:"hostname_theme"`
+	DefaultOs	string	`json:"default_os"`
 	UseCustomCookbooks	bool	`json:"use_custom_cookbooks"`
-	UseOpsworksSecurityGroups	bool	`json:"use_opsworks_security_groups"`
+	CustomJson	string	`json:"custom_json"`
+	DefaultRootDeviceType	string	`json:"default_root_device_type"`
+	DefaultSshKeyName	string	`json:"default_ssh_key_name"`
 	Region	string	`json:"region"`
 	ManageBerkshelf	bool	`json:"manage_berkshelf"`
 	BerkshelfVersion	string	`json:"berkshelf_version"`
-	HostnameTheme	string	`json:"hostname_theme"`
-	Name	string	`json:"name"`
+	UseOpsworksSecurityGroups	bool	`json:"use_opsworks_security_groups"`
+	ConfigurationManagerVersion	string	`json:"configuration_manager_version"`
+	Tags	map[string]string	`json:"tags"`
 	DefaultInstanceProfileArn	string	`json:"default_instance_profile_arn"`
-	DefaultSshKeyName	string	`json:"default_ssh_key_name"`
-	CustomJson	string	`json:"custom_json"`
-	DefaultRootDeviceType	string	`json:"default_root_device_type"`
-	ServiceRoleArn	string	`json:"service_role_arn"`
 	Color	string	`json:"color"`
 	ConfigurationManagerName	string	`json:"configuration_manager_name"`
-	ConfigurationManagerVersion	string	`json:"configuration_manager_version"`
-	DefaultOs	string	`json:"default_os"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -51,12 +51,12 @@ type AwsOpsworksStackList struct {
 }
 
 
-// CustomCookbooksSource is a CustomCookbooksSource
-type CustomCookbooksSource struct {
-	Type	string	`json:"type"`
+// AwsOpsworksStackCustomCookbooksSource is a AwsOpsworksStackCustomCookbooksSource
+type AwsOpsworksStackCustomCookbooksSource struct {
 	Url	string	`json:"url"`
 	Username	string	`json:"username"`
 	Password	string	`json:"password"`
 	Revision	string	`json:"revision"`
 	SshKey	string	`json:"ssh_key"`
+	Type	string	`json:"type"`
 }

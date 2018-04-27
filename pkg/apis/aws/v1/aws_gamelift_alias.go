@@ -21,9 +21,9 @@ type AwsGameliftAlias struct {
 
 // AwsGameliftAliasSpec is the spec for a AwsGameliftAlias Resource
 type AwsGameliftAliasSpec struct {
+	RoutingStrategy	[]AwsGameliftAliasRoutingStrategy	`json:"routing_strategy"`
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
-	RoutingStrategy	[]RoutingStrategy	`json:"routing_strategy"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -37,8 +37,8 @@ type AwsGameliftAliasList struct {
 }
 
 
-// RoutingStrategy is a RoutingStrategy
-type RoutingStrategy struct {
+// AwsGameliftAliasRoutingStrategy is a AwsGameliftAliasRoutingStrategy
+type AwsGameliftAliasRoutingStrategy struct {
 	FleetId	string	`json:"fleet_id"`
 	Message	string	`json:"message"`
 	Type	string	`json:"type"`

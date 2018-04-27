@@ -22,10 +22,10 @@ type AwsRoute53Zone struct {
 // AwsRoute53ZoneSpec is the spec for a AwsRoute53Zone Resource
 type AwsRoute53ZoneSpec struct {
 	Name	string	`json:"name"`
-	Comment	string	`json:"comment"`
-	ForceDestroy	bool	`json:"force_destroy"`
-	VpcId	string	`json:"vpc_id"`
 	DelegationSetId	string	`json:"delegation_set_id"`
+	ForceDestroy	bool	`json:"force_destroy"`
+	Comment	string	`json:"comment"`
+	VpcId	string	`json:"vpc_id"`
 	Tags	map[string]string	`json:"tags"`
 }
 

@@ -21,24 +21,24 @@ type AwsDbInstance struct {
 
 // AwsDbInstanceSpec is the spec for a AwsDbInstance Resource
 type AwsDbInstanceSpec struct {
-	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
+	SnapshotIdentifier	string	`json:"snapshot_identifier"`
+	EnabledCloudwatchLogsExports	[]string	`json:"enabled_cloudwatch_logs_exports"`
+	StorageEncrypted	bool	`json:"storage_encrypted"`
+	IamDatabaseAuthenticationEnabled	bool	`json:"iam_database_authentication_enabled"`
+	InstanceClass	string	`json:"instance_class"`
+	Iops	int	`json:"iops"`
+	ReplicateSourceDb	string	`json:"replicate_source_db"`
 	MonitoringInterval	int	`json:"monitoring_interval"`
 	Password	string	`json:"password"`
-	PubliclyAccessible	bool	`json:"publicly_accessible"`
-	EnabledCloudwatchLogsExports	[]string	`json:"enabled_cloudwatch_logs_exports"`
-	S3Import	[]S3Import	`json:"s3_import"`
-	SecurityGroupNames	string	`json:"security_group_names"`
-	SkipFinalSnapshot	bool	`json:"skip_final_snapshot"`
-	Iops	int	`json:"iops"`
-	InstanceClass	string	`json:"instance_class"`
-	FinalSnapshotIdentifier	string	`json:"final_snapshot_identifier"`
-	StorageEncrypted	bool	`json:"storage_encrypted"`
-	CopyTagsToSnapshot	bool	`json:"copy_tags_to_snapshot"`
-	ReplicateSourceDb	string	`json:"replicate_source_db"`
-	AllowMajorVersionUpgrade	bool	`json:"allow_major_version_upgrade"`
-	IamDatabaseAuthenticationEnabled	bool	`json:"iam_database_authentication_enabled"`
+	S3Import	[]AwsDbInstanceS3Import	`json:"s3_import"`
 	Tags	map[string]string	`json:"tags"`
-	SnapshotIdentifier	string	`json:"snapshot_identifier"`
+	SecurityGroupNames	string	`json:"security_group_names"`
+	FinalSnapshotIdentifier	string	`json:"final_snapshot_identifier"`
+	SkipFinalSnapshot	bool	`json:"skip_final_snapshot"`
+	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
+	CopyTagsToSnapshot	bool	`json:"copy_tags_to_snapshot"`
+	AllowMajorVersionUpgrade	bool	`json:"allow_major_version_upgrade"`
+	PubliclyAccessible	bool	`json:"publicly_accessible"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -52,11 +52,11 @@ type AwsDbInstanceList struct {
 }
 
 
-// S3Import is a S3Import
-type S3Import struct {
+// AwsDbInstanceS3Import is a AwsDbInstanceS3Import
+type AwsDbInstanceS3Import struct {
+	BucketName	string	`json:"bucket_name"`
 	BucketPrefix	string	`json:"bucket_prefix"`
 	IngestionRole	string	`json:"ingestion_role"`
 	SourceEngine	string	`json:"source_engine"`
 	SourceEngineVersion	string	`json:"source_engine_version"`
-	BucketName	string	`json:"bucket_name"`
 }

@@ -21,10 +21,10 @@ type AwsOpsworksRdsDbInstance struct {
 
 // AwsOpsworksRdsDbInstanceSpec is the spec for a AwsOpsworksRdsDbInstance Resource
 type AwsOpsworksRdsDbInstanceSpec struct {
-	DbPassword	string	`json:"db_password"`
-	DbUser	string	`json:"db_user"`
 	StackId	string	`json:"stack_id"`
 	RdsDbInstanceArn	string	`json:"rds_db_instance_arn"`
+	DbPassword	string	`json:"db_password"`
+	DbUser	string	`json:"db_user"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

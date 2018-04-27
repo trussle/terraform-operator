@@ -21,8 +21,8 @@ type AwsVpcEndpointSubnetAssociation struct {
 
 // AwsVpcEndpointSubnetAssociationSpec is the spec for a AwsVpcEndpointSubnetAssociation Resource
 type AwsVpcEndpointSubnetAssociationSpec struct {
-	SubnetId	string	`json:"subnet_id"`
 	VpcEndpointId	string	`json:"vpc_endpoint_id"`
+	SubnetId	string	`json:"subnet_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

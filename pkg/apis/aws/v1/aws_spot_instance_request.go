@@ -21,27 +21,27 @@ type AwsSpotInstanceRequest struct {
 
 // AwsSpotInstanceRequestSpec is the spec for a AwsSpotInstanceRequest Resource
 type AwsSpotInstanceRequestSpec struct {
-	Tags	map[string]string	`json:"tags"`
-	BlockDevice	map[string]string	`json:"block_device"`
-	InstanceType	string	`json:"instance_type"`
-	InstanceInitiatedShutdownBehavior	string	`json:"instance_initiated_shutdown_behavior"`
-	SpotType	string	`json:"spot_type"`
-	LaunchGroup	string	`json:"launch_group"`
-	CreditSpecification	[]CreditSpecification	`json:"credit_specification"`
-	SpotPrice	string	`json:"spot_price"`
 	DisableApiTermination	bool	`json:"disable_api_termination"`
 	Monitoring	bool	`json:"monitoring"`
-	InstanceInterruptionBehaviour	string	`json:"instance_interruption_behaviour"`
-	Ami	string	`json:"ami"`
+	IamInstanceProfile	string	`json:"iam_instance_profile"`
+	Tags	map[string]string	`json:"tags"`
+	BlockDevice	map[string]string	`json:"block_device"`
+	SpotType	string	`json:"spot_type"`
+	GetPasswordData	bool	`json:"get_password_data"`
+	SourceDestCheck	bool	`json:"source_dest_check"`
 	UserDataBase64	string	`json:"user_data_base64"`
 	WaitForFulfillment	bool	`json:"wait_for_fulfillment"`
-	IamInstanceProfile	string	`json:"iam_instance_profile"`
-	BlockDurationMinutes	int	`json:"block_duration_minutes"`
-	SourceDestCheck	bool	`json:"source_dest_check"`
-	UserData	string	`json:"user_data"`
+	LaunchGroup	string	`json:"launch_group"`
 	VolumeTags	map[string]string	`json:"volume_tags"`
-	GetPasswordData	bool	`json:"get_password_data"`
+	InstanceType	string	`json:"instance_type"`
+	UserData	string	`json:"user_data"`
+	Ami	string	`json:"ami"`
+	CreditSpecification	[]AwsSpotInstanceRequestCreditSpecification	`json:"credit_specification"`
+	InstanceInterruptionBehaviour	string	`json:"instance_interruption_behaviour"`
 	EbsOptimized	bool	`json:"ebs_optimized"`
+	SpotPrice	string	`json:"spot_price"`
+	InstanceInitiatedShutdownBehavior	string	`json:"instance_initiated_shutdown_behavior"`
+	BlockDurationMinutes	int	`json:"block_duration_minutes"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -55,32 +55,32 @@ type AwsSpotInstanceRequestList struct {
 }
 
 
-// EbsBlockDevice is a EbsBlockDevice
-type EbsBlockDevice struct {
-	DeleteOnTermination	bool	`json:"delete_on_termination"`
-	DeviceName	string	`json:"device_name"`
+// AwsSpotInstanceRequestCreditSpecification is a AwsSpotInstanceRequestCreditSpecification
+type AwsSpotInstanceRequestCreditSpecification struct {
+	CpuCredits	string	`json:"cpu_credits"`
 }
 
-// EphemeralBlockDevice is a EphemeralBlockDevice
-type EphemeralBlockDevice struct {
+// AwsSpotInstanceRequestEphemeralBlockDevice is a AwsSpotInstanceRequestEphemeralBlockDevice
+type AwsSpotInstanceRequestEphemeralBlockDevice struct {
 	DeviceName	string	`json:"device_name"`
 	VirtualName	string	`json:"virtual_name"`
 	NoDevice	bool	`json:"no_device"`
 }
 
-// CreditSpecification is a CreditSpecification
-type CreditSpecification struct {
-	CpuCredits	string	`json:"cpu_credits"`
-}
-
-// NetworkInterface is a NetworkInterface
-type NetworkInterface struct {
+// AwsSpotInstanceRequestNetworkInterface is a AwsSpotInstanceRequestNetworkInterface
+type AwsSpotInstanceRequestNetworkInterface struct {
 	DeleteOnTermination	bool	`json:"delete_on_termination"`
 	NetworkInterfaceId	string	`json:"network_interface_id"`
 	DeviceIndex	int	`json:"device_index"`
 }
 
-// RootBlockDevice is a RootBlockDevice
-type RootBlockDevice struct {
+// AwsSpotInstanceRequestRootBlockDevice is a AwsSpotInstanceRequestRootBlockDevice
+type AwsSpotInstanceRequestRootBlockDevice struct {
 	DeleteOnTermination	bool	`json:"delete_on_termination"`
+}
+
+// AwsSpotInstanceRequestEbsBlockDevice is a AwsSpotInstanceRequestEbsBlockDevice
+type AwsSpotInstanceRequestEbsBlockDevice struct {
+	DeleteOnTermination	bool	`json:"delete_on_termination"`
+	DeviceName	string	`json:"device_name"`
 }

@@ -21,16 +21,16 @@ type AwsMqBroker struct {
 
 // AwsMqBrokerSpec is the spec for a AwsMqBroker Resource
 type AwsMqBrokerSpec struct {
-	ApplyImmediately	bool	`json:"apply_immediately"`
-	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
 	DeploymentMode	string	`json:"deployment_mode"`
 	HostInstanceType	string	`json:"host_instance_type"`
 	BrokerName	string	`json:"broker_name"`
-	EngineType	string	`json:"engine_type"`
 	EngineVersion	string	`json:"engine_version"`
+	User	AwsMqBrokerUser	`json:"user"`
+	ApplyImmediately	bool	`json:"apply_immediately"`
+	AutoMinorVersionUpgrade	bool	`json:"auto_minor_version_upgrade"`
 	PubliclyAccessible	bool	`json:"publicly_accessible"`
+	EngineType	string	`json:"engine_type"`
 	SecurityGroups	string	`json:"security_groups"`
-	User	User	`json:"user"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -44,25 +44,25 @@ type AwsMqBrokerList struct {
 }
 
 
-// MaintenanceWindowStartTime is a MaintenanceWindowStartTime
-type MaintenanceWindowStartTime struct {
-	TimeOfDay	string	`json:"time_of_day"`
-	TimeZone	string	`json:"time_zone"`
-	DayOfWeek	string	`json:"day_of_week"`
+// AwsMqBrokerConfiguration is a AwsMqBrokerConfiguration
+type AwsMqBrokerConfiguration struct {
 }
 
-// Instances is a Instances
-type Instances struct {
-}
-
-// User is a User
-type User struct {
+// AwsMqBrokerUser is a AwsMqBrokerUser
+type AwsMqBrokerUser struct {
+	ConsoleAccess	bool	`json:"console_access"`
 	Groups	string	`json:"groups"`
 	Password	string	`json:"password"`
 	Username	string	`json:"username"`
-	ConsoleAccess	bool	`json:"console_access"`
 }
 
-// Configuration is a Configuration
-type Configuration struct {
+// AwsMqBrokerMaintenanceWindowStartTime is a AwsMqBrokerMaintenanceWindowStartTime
+type AwsMqBrokerMaintenanceWindowStartTime struct {
+	DayOfWeek	string	`json:"day_of_week"`
+	TimeOfDay	string	`json:"time_of_day"`
+	TimeZone	string	`json:"time_zone"`
+}
+
+// AwsMqBrokerInstances is a AwsMqBrokerInstances
+type AwsMqBrokerInstances struct {
 }

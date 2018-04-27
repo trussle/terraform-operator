@@ -21,11 +21,11 @@ type AwsApiGatewayModel struct {
 
 // AwsApiGatewayModelSpec is the spec for a AwsApiGatewayModel Resource
 type AwsApiGatewayModelSpec struct {
+	Schema	string	`json:"schema"`
+	ContentType	string	`json:"content_type"`
 	RestApiId	string	`json:"rest_api_id"`
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
-	Schema	string	`json:"schema"`
-	ContentType	string	`json:"content_type"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

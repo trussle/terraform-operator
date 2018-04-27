@@ -21,11 +21,11 @@ type AwsDxLag struct {
 
 // AwsDxLagSpec is the spec for a AwsDxLag Resource
 type AwsDxLagSpec struct {
-	Name	string	`json:"name"`
-	ConnectionsBandwidth	string	`json:"connections_bandwidth"`
 	Location	string	`json:"location"`
 	ForceDestroy	bool	`json:"force_destroy"`
 	Tags	map[string]string	`json:"tags"`
+	Name	string	`json:"name"`
+	ConnectionsBandwidth	string	`json:"connections_bandwidth"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

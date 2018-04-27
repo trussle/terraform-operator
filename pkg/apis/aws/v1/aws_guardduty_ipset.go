@@ -21,11 +21,11 @@ type AwsGuarddutyIpset struct {
 
 // AwsGuarddutyIpsetSpec is the spec for a AwsGuarddutyIpset Resource
 type AwsGuarddutyIpsetSpec struct {
-	Activate	bool	`json:"activate"`
 	DetectorId	string	`json:"detector_id"`
 	Name	string	`json:"name"`
 	Format	string	`json:"format"`
 	Location	string	`json:"location"`
+	Activate	bool	`json:"activate"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

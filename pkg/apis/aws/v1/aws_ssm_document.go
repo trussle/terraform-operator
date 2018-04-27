@@ -21,11 +21,11 @@ type AwsSsmDocument struct {
 
 // AwsSsmDocumentSpec is the spec for a AwsSsmDocument Resource
 type AwsSsmDocumentSpec struct {
-	DocumentFormat	string	`json:"document_format"`
-	DocumentType	string	`json:"document_type"`
 	Content	string	`json:"content"`
+	DocumentFormat	string	`json:"document_format"`
 	Name	string	`json:"name"`
-	Permissions	map[string]Permissions	`json:"permissions"`
+	DocumentType	string	`json:"document_type"`
+	Permissions	map[string]AwsSsmDocumentPermissions	`json:"permissions"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -39,16 +39,16 @@ type AwsSsmDocumentList struct {
 }
 
 
-// Parameter is a Parameter
-type Parameter struct {
-	Name	string	`json:"name"`
+// AwsSsmDocumentPermissions is a AwsSsmDocumentPermissions
+type AwsSsmDocumentPermissions struct {
+	Type	string	`json:"type"`
+	AccountIds	string	`json:"account_ids"`
+}
+
+// AwsSsmDocumentParameter is a AwsSsmDocumentParameter
+type AwsSsmDocumentParameter struct {
 	DefaultValue	string	`json:"default_value"`
 	Description	string	`json:"description"`
 	Type	string	`json:"type"`
-}
-
-// Permissions is a Permissions
-type Permissions struct {
-	Type	string	`json:"type"`
-	AccountIds	string	`json:"account_ids"`
+	Name	string	`json:"name"`
 }

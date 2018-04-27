@@ -21,17 +21,17 @@ type AwsAutoscalingPolicy struct {
 
 // AwsAutoscalingPolicySpec is the spec for a AwsAutoscalingPolicy Resource
 type AwsAutoscalingPolicySpec struct {
+	EstimatedInstanceWarmup	int	`json:"estimated_instance_warmup"`
+	ScalingAdjustment	int	`json:"scaling_adjustment"`
+	StepAdjustment	AwsAutoscalingPolicyStepAdjustment	`json:"step_adjustment"`
+	TargetTrackingConfiguration	[]AwsAutoscalingPolicyTargetTrackingConfiguration	`json:"target_tracking_configuration"`
 	AdjustmentType	string	`json:"adjustment_type"`
 	PolicyType	string	`json:"policy_type"`
-	ScalingAdjustment	int	`json:"scaling_adjustment"`
-	TargetTrackingConfiguration	[]TargetTrackingConfiguration	`json:"target_tracking_configuration"`
+	MinAdjustmentMagnitude	int	`json:"min_adjustment_magnitude"`
 	MinAdjustmentStep	int	`json:"min_adjustment_step"`
-	StepAdjustment	StepAdjustment	`json:"step_adjustment"`
 	Name	string	`json:"name"`
 	AutoscalingGroupName	string	`json:"autoscaling_group_name"`
 	Cooldown	int	`json:"cooldown"`
-	EstimatedInstanceWarmup	int	`json:"estimated_instance_warmup"`
-	MinAdjustmentMagnitude	int	`json:"min_adjustment_magnitude"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -45,38 +45,38 @@ type AwsAutoscalingPolicyList struct {
 }
 
 
-// StepAdjustment is a StepAdjustment
-type StepAdjustment struct {
+// AwsAutoscalingPolicyStepAdjustment is a AwsAutoscalingPolicyStepAdjustment
+type AwsAutoscalingPolicyStepAdjustment struct {
 	MetricIntervalLowerBound	string	`json:"metric_interval_lower_bound"`
 	MetricIntervalUpperBound	string	`json:"metric_interval_upper_bound"`
 	ScalingAdjustment	int	`json:"scaling_adjustment"`
 }
 
-// PredefinedMetricSpecification is a PredefinedMetricSpecification
-type PredefinedMetricSpecification struct {
-	ResourceLabel	string	`json:"resource_label"`
+// AwsAutoscalingPolicyPredefinedMetricSpecification is a AwsAutoscalingPolicyPredefinedMetricSpecification
+type AwsAutoscalingPolicyPredefinedMetricSpecification struct {
 	PredefinedMetricType	string	`json:"predefined_metric_type"`
+	ResourceLabel	string	`json:"resource_label"`
 }
 
-// MetricDimension is a MetricDimension
-type MetricDimension struct {
-	Value	string	`json:"value"`
+// AwsAutoscalingPolicyMetricDimension is a AwsAutoscalingPolicyMetricDimension
+type AwsAutoscalingPolicyMetricDimension struct {
 	Name	string	`json:"name"`
+	Value	string	`json:"value"`
 }
 
-// CustomizedMetricSpecification is a CustomizedMetricSpecification
-type CustomizedMetricSpecification struct {
-	MetricDimension	[]MetricDimension	`json:"metric_dimension"`
+// AwsAutoscalingPolicyCustomizedMetricSpecification is a AwsAutoscalingPolicyCustomizedMetricSpecification
+type AwsAutoscalingPolicyCustomizedMetricSpecification struct {
+	MetricDimension	[]AwsAutoscalingPolicyMetricDimension	`json:"metric_dimension"`
 	MetricName	string	`json:"metric_name"`
 	Namespace	string	`json:"namespace"`
 	Statistic	string	`json:"statistic"`
 	Unit	string	`json:"unit"`
 }
 
-// TargetTrackingConfiguration is a TargetTrackingConfiguration
-type TargetTrackingConfiguration struct {
-	PredefinedMetricSpecification	[]PredefinedMetricSpecification	`json:"predefined_metric_specification"`
-	CustomizedMetricSpecification	[]CustomizedMetricSpecification	`json:"customized_metric_specification"`
+// AwsAutoscalingPolicyTargetTrackingConfiguration is a AwsAutoscalingPolicyTargetTrackingConfiguration
+type AwsAutoscalingPolicyTargetTrackingConfiguration struct {
+	PredefinedMetricSpecification	[]AwsAutoscalingPolicyPredefinedMetricSpecification	`json:"predefined_metric_specification"`
+	CustomizedMetricSpecification	[]AwsAutoscalingPolicyCustomizedMetricSpecification	`json:"customized_metric_specification"`
 	TargetValue	float64	`json:"target_value"`
 	DisableScaleIn	bool	`json:"disable_scale_in"`
 }

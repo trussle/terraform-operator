@@ -21,16 +21,16 @@ type AwsDmsEndpoint struct {
 
 // AwsDmsEndpointSpec is the spec for a AwsDmsEndpoint Resource
 type AwsDmsEndpointSpec struct {
-	EndpointId	string	`json:"endpoint_id"`
-	EngineName	string	`json:"engine_name"`
-	Password	string	`json:"password"`
 	ServiceAccessRole	string	`json:"service_access_role"`
-	Tags	map[string]string	`json:"tags"`
-	Username	string	`json:"username"`
 	EndpointType	string	`json:"endpoint_type"`
-	Port	int	`json:"port"`
+	Password	string	`json:"password"`
 	ServerName	string	`json:"server_name"`
 	DatabaseName	string	`json:"database_name"`
+	Username	string	`json:"username"`
+	EndpointId	string	`json:"endpoint_id"`
+	EngineName	string	`json:"engine_name"`
+	Port	int	`json:"port"`
+	Tags	map[string]string	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

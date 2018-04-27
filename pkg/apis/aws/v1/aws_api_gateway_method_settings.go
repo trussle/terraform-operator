@@ -21,10 +21,10 @@ type AwsApiGatewayMethodSettings struct {
 
 // AwsApiGatewayMethodSettingsSpec is the spec for a AwsApiGatewayMethodSettings Resource
 type AwsApiGatewayMethodSettingsSpec struct {
-	Settings	[]Settings	`json:"settings"`
 	RestApiId	string	`json:"rest_api_id"`
 	StageName	string	`json:"stage_name"`
 	MethodPath	string	`json:"method_path"`
+	Settings	[]AwsApiGatewayMethodSettingsSettings	`json:"settings"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -38,16 +38,16 @@ type AwsApiGatewayMethodSettingsList struct {
 }
 
 
-// Settings is a Settings
-type Settings struct {
+// AwsApiGatewayMethodSettingsSettings is a AwsApiGatewayMethodSettingsSettings
+type AwsApiGatewayMethodSettingsSettings struct {
+	ThrottlingRateLimit	float64	`json:"throttling_rate_limit"`
+	CachingEnabled	bool	`json:"caching_enabled"`
+	CacheDataEncrypted	bool	`json:"cache_data_encrypted"`
+	RequireAuthorizationForCacheControl	bool	`json:"require_authorization_for_cache_control"`
 	MetricsEnabled	bool	`json:"metrics_enabled"`
 	LoggingLevel	string	`json:"logging_level"`
-	ThrottlingBurstLimit	int	`json:"throttling_burst_limit"`
-	ThrottlingRateLimit	float64	`json:"throttling_rate_limit"`
-	CacheTtlInSeconds	int	`json:"cache_ttl_in_seconds"`
-	CacheDataEncrypted	bool	`json:"cache_data_encrypted"`
-	UnauthorizedCacheControlHeaderStrategy	string	`json:"unauthorized_cache_control_header_strategy"`
 	DataTraceEnabled	bool	`json:"data_trace_enabled"`
-	CachingEnabled	bool	`json:"caching_enabled"`
-	RequireAuthorizationForCacheControl	bool	`json:"require_authorization_for_cache_control"`
+	ThrottlingBurstLimit	int	`json:"throttling_burst_limit"`
+	CacheTtlInSeconds	int	`json:"cache_ttl_in_seconds"`
+	UnauthorizedCacheControlHeaderStrategy	string	`json:"unauthorized_cache_control_header_strategy"`
 }

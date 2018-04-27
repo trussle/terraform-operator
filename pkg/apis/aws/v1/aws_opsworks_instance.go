@@ -21,17 +21,17 @@ type AwsOpsworksInstance struct {
 
 // AwsOpsworksInstanceSpec is the spec for a AwsOpsworksInstance Resource
 type AwsOpsworksInstanceSpec struct {
-	Architecture	string	`json:"architecture"`
 	State	string	`json:"state"`
-	EbsOptimized	bool	`json:"ebs_optimized"`
-	DeleteEbs	bool	`json:"delete_ebs"`
-	AutoScalingType	string	`json:"auto_scaling_type"`
 	InstanceType	string	`json:"instance_type"`
-	StackId	string	`json:"stack_id"`
-	AgentVersion	string	`json:"agent_version"`
-	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
-	LayerIds	[]string	`json:"layer_ids"`
 	DeleteEip	bool	`json:"delete_eip"`
+	EbsOptimized	bool	`json:"ebs_optimized"`
+	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
+	AutoScalingType	string	`json:"auto_scaling_type"`
+	DeleteEbs	bool	`json:"delete_ebs"`
+	LayerIds	[]string	`json:"layer_ids"`
+	AgentVersion	string	`json:"agent_version"`
+	Architecture	string	`json:"architecture"`
+	StackId	string	`json:"stack_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -45,19 +45,19 @@ type AwsOpsworksInstanceList struct {
 }
 
 
-// EphemeralBlockDevice is a EphemeralBlockDevice
-type EphemeralBlockDevice struct {
+// AwsOpsworksInstanceEbsBlockDevice is a AwsOpsworksInstanceEbsBlockDevice
+type AwsOpsworksInstanceEbsBlockDevice struct {
+	DeleteOnTermination	bool	`json:"delete_on_termination"`
+	DeviceName	string	`json:"device_name"`
+}
+
+// AwsOpsworksInstanceRootBlockDevice is a AwsOpsworksInstanceRootBlockDevice
+type AwsOpsworksInstanceRootBlockDevice struct {
+	DeleteOnTermination	bool	`json:"delete_on_termination"`
+}
+
+// AwsOpsworksInstanceEphemeralBlockDevice is a AwsOpsworksInstanceEphemeralBlockDevice
+type AwsOpsworksInstanceEphemeralBlockDevice struct {
 	DeviceName	string	`json:"device_name"`
 	VirtualName	string	`json:"virtual_name"`
-}
-
-// RootBlockDevice is a RootBlockDevice
-type RootBlockDevice struct {
-	DeleteOnTermination	bool	`json:"delete_on_termination"`
-}
-
-// EbsBlockDevice is a EbsBlockDevice
-type EbsBlockDevice struct {
-	DeleteOnTermination	bool	`json:"delete_on_termination"`
-	DeviceName	string	`json:"device_name"`
 }

@@ -24,7 +24,7 @@ type AwsLoadBalancerPolicySpec struct {
 	LoadBalancerName	string	`json:"load_balancer_name"`
 	PolicyName	string	`json:"policy_name"`
 	PolicyTypeName	string	`json:"policy_type_name"`
-	PolicyAttribute	PolicyAttribute	`json:"policy_attribute"`
+	PolicyAttribute	AwsLoadBalancerPolicyPolicyAttribute	`json:"policy_attribute"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -38,8 +38,8 @@ type AwsLoadBalancerPolicyList struct {
 }
 
 
-// PolicyAttribute is a PolicyAttribute
-type PolicyAttribute struct {
+// AwsLoadBalancerPolicyPolicyAttribute is a AwsLoadBalancerPolicyPolicyAttribute
+type AwsLoadBalancerPolicyPolicyAttribute struct {
 	Name	string	`json:"name"`
 	Value	string	`json:"value"`
 }

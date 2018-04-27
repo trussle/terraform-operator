@@ -21,21 +21,21 @@ type AwsOpsworksApplication struct {
 
 // AwsOpsworksApplicationSpec is the spec for a AwsOpsworksApplication Resource
 type AwsOpsworksApplicationSpec struct {
-	DataSourceArn	string	`json:"data_source_arn"`
-	SslConfiguration	[]SslConfiguration	`json:"ssl_configuration"`
+	StackId	string	`json:"stack_id"`
 	RailsEnv	string	`json:"rails_env"`
 	AutoBundleOnDeploy	string	`json:"auto_bundle_on_deploy"`
-	DataSourceType	string	`json:"data_source_type"`
-	Type	string	`json:"type"`
+	DataSourceDatabaseName	string	`json:"data_source_database_name"`
 	Domains	[]string	`json:"domains"`
-	Description	string	`json:"description"`
-	Environment	Environment	`json:"environment"`
 	EnableSsl	bool	`json:"enable_ssl"`
+	Environment	AwsOpsworksApplicationEnvironment	`json:"environment"`
 	Name	string	`json:"name"`
-	StackId	string	`json:"stack_id"`
+	Type	string	`json:"type"`
 	DocumentRoot	string	`json:"document_root"`
 	AwsFlowRubySettings	string	`json:"aws_flow_ruby_settings"`
-	DataSourceDatabaseName	string	`json:"data_source_database_name"`
+	DataSourceArn	string	`json:"data_source_arn"`
+	Description	string	`json:"description"`
+	DataSourceType	string	`json:"data_source_type"`
+	SslConfiguration	[]AwsOpsworksApplicationSslConfiguration	`json:"ssl_configuration"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -49,15 +49,15 @@ type AwsOpsworksApplicationList struct {
 }
 
 
-// SslConfiguration is a SslConfiguration
-type SslConfiguration struct {
-	Certificate	string	`json:"certificate"`
-	PrivateKey	string	`json:"private_key"`
-	Chain	string	`json:"chain"`
+// AwsOpsworksApplicationEnvironment is a AwsOpsworksApplicationEnvironment
+type AwsOpsworksApplicationEnvironment struct {
+	Key	string	`json:"key"`
+	Value	string	`json:"value"`
+	Secure	bool	`json:"secure"`
 }
 
-// AppSource is a AppSource
-type AppSource struct {
+// AwsOpsworksApplicationAppSource is a AwsOpsworksApplicationAppSource
+type AwsOpsworksApplicationAppSource struct {
 	Type	string	`json:"type"`
 	Url	string	`json:"url"`
 	Username	string	`json:"username"`
@@ -66,9 +66,9 @@ type AppSource struct {
 	SshKey	string	`json:"ssh_key"`
 }
 
-// Environment is a Environment
-type Environment struct {
-	Key	string	`json:"key"`
-	Value	string	`json:"value"`
-	Secure	bool	`json:"secure"`
+// AwsOpsworksApplicationSslConfiguration is a AwsOpsworksApplicationSslConfiguration
+type AwsOpsworksApplicationSslConfiguration struct {
+	Certificate	string	`json:"certificate"`
+	PrivateKey	string	`json:"private_key"`
+	Chain	string	`json:"chain"`
 }

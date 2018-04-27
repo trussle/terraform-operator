@@ -21,9 +21,9 @@ type AwsIamServiceLinkedRole struct {
 
 // AwsIamServiceLinkedRoleSpec is the spec for a AwsIamServiceLinkedRole Resource
 type AwsIamServiceLinkedRoleSpec struct {
-	AwsServiceName	string	`json:"aws_service_name"`
 	CustomSuffix	string	`json:"custom_suffix"`
 	Description	string	`json:"description"`
+	AwsServiceName	string	`json:"aws_service_name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

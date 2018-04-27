@@ -21,12 +21,12 @@ type AwsFlowLog struct {
 
 // AwsFlowLogSpec is the spec for a AwsFlowLog Resource
 type AwsFlowLogSpec struct {
-	EniId	string	`json:"eni_id"`
-	TrafficType	string	`json:"traffic_type"`
 	IamRoleArn	string	`json:"iam_role_arn"`
 	LogGroupName	string	`json:"log_group_name"`
 	VpcId	string	`json:"vpc_id"`
 	SubnetId	string	`json:"subnet_id"`
+	EniId	string	`json:"eni_id"`
+	TrafficType	string	`json:"traffic_type"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -21,10 +21,10 @@ type AwsRdsClusterParameterGroup struct {
 
 // AwsRdsClusterParameterGroupSpec is the spec for a AwsRdsClusterParameterGroup Resource
 type AwsRdsClusterParameterGroupSpec struct {
-	Description	string	`json:"description"`
-	Parameter	Parameter	`json:"parameter"`
-	Tags	map[string]string	`json:"tags"`
 	Family	string	`json:"family"`
+	Description	string	`json:"description"`
+	Parameter	AwsRdsClusterParameterGroupParameter	`json:"parameter"`
+	Tags	map[string]string	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -38,9 +38,9 @@ type AwsRdsClusterParameterGroupList struct {
 }
 
 
-// Parameter is a Parameter
-type Parameter struct {
-	Name	string	`json:"name"`
+// AwsRdsClusterParameterGroupParameter is a AwsRdsClusterParameterGroupParameter
+type AwsRdsClusterParameterGroupParameter struct {
 	Value	string	`json:"value"`
 	ApplyMethod	string	`json:"apply_method"`
+	Name	string	`json:"name"`
 }

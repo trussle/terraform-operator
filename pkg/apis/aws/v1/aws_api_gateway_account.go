@@ -35,6 +35,6 @@ type AwsApiGatewayAccountList struct {
 }
 
 
-// ThrottleSettings is a ThrottleSettings
-type ThrottleSettings struct {
+// AwsApiGatewayAccountThrottleSettings is a AwsApiGatewayAccountThrottleSettings
+type AwsApiGatewayAccountThrottleSettings struct {
 }

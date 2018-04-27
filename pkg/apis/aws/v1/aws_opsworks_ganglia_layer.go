@@ -21,29 +21,29 @@ type AwsOpsworksGangliaLayer struct {
 
 // AwsOpsworksGangliaLayerSpec is the spec for a AwsOpsworksGangliaLayer Resource
 type AwsOpsworksGangliaLayerSpec struct {
-	CustomSetupRecipes	[]string	`json:"custom_setup_recipes"`
-	CustomDeployRecipes	[]string	`json:"custom_deploy_recipes"`
-	CustomUndeployRecipes	[]string	`json:"custom_undeploy_recipes"`
-	CustomSecurityGroupIds	string	`json:"custom_security_group_ids"`
-	CustomJson	string	`json:"custom_json"`
 	AutoHealing	bool	`json:"auto_healing"`
-	SystemPackages	string	`json:"system_packages"`
-	Password	string	`json:"password"`
-	ElasticLoadBalancer	string	`json:"elastic_load_balancer"`
-	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
 	DrainElbOnShutdown	bool	`json:"drain_elb_on_shutdown"`
-	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
-	Name	string	`json:"name"`
+	Password	string	`json:"password"`
 	Url	string	`json:"url"`
 	Username	string	`json:"username"`
 	AutoAssignPublicIps	bool	`json:"auto_assign_public_ips"`
-	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
-	EbsVolume	EbsVolume	`json:"ebs_volume"`
-	AutoAssignElasticIps	bool	`json:"auto_assign_elastic_ips"`
-	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
-	CustomConfigureRecipes	[]string	`json:"custom_configure_recipes"`
 	CustomShutdownRecipes	[]string	`json:"custom_shutdown_recipes"`
+	CustomSecurityGroupIds	string	`json:"custom_security_group_ids"`
+	CustomConfigureRecipes	[]string	`json:"custom_configure_recipes"`
+	CustomDeployRecipes	[]string	`json:"custom_deploy_recipes"`
+	CustomUndeployRecipes	[]string	`json:"custom_undeploy_recipes"`
+	CustomJson	string	`json:"custom_json"`
+	InstallUpdatesOnBoot	bool	`json:"install_updates_on_boot"`
+	AutoAssignElasticIps	bool	`json:"auto_assign_elastic_ips"`
+	ElasticLoadBalancer	string	`json:"elastic_load_balancer"`
+	CustomSetupRecipes	[]string	`json:"custom_setup_recipes"`
+	EbsVolume	AwsOpsworksGangliaLayerEbsVolume	`json:"ebs_volume"`
 	StackId	string	`json:"stack_id"`
+	UseEbsOptimizedInstances	bool	`json:"use_ebs_optimized_instances"`
+	Name	string	`json:"name"`
+	CustomInstanceProfileArn	string	`json:"custom_instance_profile_arn"`
+	InstanceShutdownTimeout	int	`json:"instance_shutdown_timeout"`
+	SystemPackages	string	`json:"system_packages"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -57,8 +57,8 @@ type AwsOpsworksGangliaLayerList struct {
 }
 
 
-// EbsVolume is a EbsVolume
-type EbsVolume struct {
+// AwsOpsworksGangliaLayerEbsVolume is a AwsOpsworksGangliaLayerEbsVolume
+type AwsOpsworksGangliaLayerEbsVolume struct {
 	Iops	int	`json:"iops"`
 	MountPoint	string	`json:"mount_point"`
 	NumberOfDisks	int	`json:"number_of_disks"`

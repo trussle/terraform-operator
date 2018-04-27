@@ -21,13 +21,13 @@ type AwsElasticBeanstalkEnvironment struct {
 
 // AwsElasticBeanstalkEnvironmentSpec is the spec for a AwsElasticBeanstalkEnvironment Resource
 type AwsElasticBeanstalkEnvironmentSpec struct {
+	Setting	AwsElasticBeanstalkEnvironmentSetting	`json:"setting"`
 	Name	string	`json:"name"`
-	Application	string	`json:"application"`
-	Description	string	`json:"description"`
-	Tier	string	`json:"tier"`
 	PollInterval	string	`json:"poll_interval"`
 	Tags	map[string]string	`json:"tags"`
-	Setting	Setting	`json:"setting"`
+	Tier	string	`json:"tier"`
+	Application	string	`json:"application"`
+	Description	string	`json:"description"`
 	TemplateName	string	`json:"template_name"`
 	WaitForReadyTimeout	string	`json:"wait_for_ready_timeout"`
 }
@@ -43,18 +43,18 @@ type AwsElasticBeanstalkEnvironmentList struct {
 }
 
 
-// Setting is a Setting
-type Setting struct {
-	Namespace	string	`json:"namespace"`
-	Name	string	`json:"name"`
+// AwsElasticBeanstalkEnvironmentSetting is a AwsElasticBeanstalkEnvironmentSetting
+type AwsElasticBeanstalkEnvironmentSetting struct {
 	Value	string	`json:"value"`
 	Resource	string	`json:"resource"`
+	Namespace	string	`json:"namespace"`
+	Name	string	`json:"name"`
 }
 
-// AllSettings is a AllSettings
-type AllSettings struct {
+// AwsElasticBeanstalkEnvironmentAllSettings is a AwsElasticBeanstalkEnvironmentAllSettings
+type AwsElasticBeanstalkEnvironmentAllSettings struct {
+	Resource	string	`json:"resource"`
 	Namespace	string	`json:"namespace"`
 	Name	string	`json:"name"`
 	Value	string	`json:"value"`
-	Resource	string	`json:"resource"`
 }

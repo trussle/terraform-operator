@@ -21,24 +21,24 @@ type AwsLambdaFunction struct {
 
 // AwsLambdaFunctionSpec is the spec for a AwsLambdaFunction Resource
 type AwsLambdaFunctionSpec struct {
-	Runtime	string	`json:"runtime"`
-	S3ObjectVersion	string	`json:"s3_object_version"`
-	FunctionName	string	`json:"function_name"`
-	Handler	string	`json:"handler"`
-	ReservedConcurrentExecutions	int	`json:"reserved_concurrent_executions"`
-	Tags	map[string]string	`json:"tags"`
-	S3Bucket	string	`json:"s3_bucket"`
-	S3Key	string	`json:"s3_key"`
-	Role	string	`json:"role"`
-	Timeout	int	`json:"timeout"`
+	Environment	[]AwsLambdaFunctionEnvironment	`json:"environment"`
 	KmsKeyArn	string	`json:"kms_key_arn"`
-	Environment	[]Environment	`json:"environment"`
-	Description	string	`json:"description"`
-	DeadLetterConfig	[]DeadLetterConfig	`json:"dead_letter_config"`
-	Publish	bool	`json:"publish"`
-	VpcConfig	[]VpcConfig	`json:"vpc_config"`
 	Filename	string	`json:"filename"`
+	S3ObjectVersion	string	`json:"s3_object_version"`
+	Description	string	`json:"description"`
+	Runtime	string	`json:"runtime"`
+	Tags	map[string]string	`json:"tags"`
+	ReservedConcurrentExecutions	int	`json:"reserved_concurrent_executions"`
+	Role	string	`json:"role"`
+	Publish	bool	`json:"publish"`
+	S3Bucket	string	`json:"s3_bucket"`
+	DeadLetterConfig	[]AwsLambdaFunctionDeadLetterConfig	`json:"dead_letter_config"`
+	Handler	string	`json:"handler"`
 	MemorySize	int	`json:"memory_size"`
+	FunctionName	string	`json:"function_name"`
+	S3Key	string	`json:"s3_key"`
+	Timeout	int	`json:"timeout"`
+	VpcConfig	[]AwsLambdaFunctionVpcConfig	`json:"vpc_config"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -52,23 +52,23 @@ type AwsLambdaFunctionList struct {
 }
 
 
-// Environment is a Environment
-type Environment struct {
+// AwsLambdaFunctionEnvironment is a AwsLambdaFunctionEnvironment
+type AwsLambdaFunctionEnvironment struct {
 	Variables	map[string]string	`json:"variables"`
 }
 
-// DeadLetterConfig is a DeadLetterConfig
-type DeadLetterConfig struct {
+// AwsLambdaFunctionDeadLetterConfig is a AwsLambdaFunctionDeadLetterConfig
+type AwsLambdaFunctionDeadLetterConfig struct {
 	TargetArn	string	`json:"target_arn"`
 }
 
-// VpcConfig is a VpcConfig
-type VpcConfig struct {
-	SubnetIds	string	`json:"subnet_ids"`
-	SecurityGroupIds	string	`json:"security_group_ids"`
+// AwsLambdaFunctionTracingConfig is a AwsLambdaFunctionTracingConfig
+type AwsLambdaFunctionTracingConfig struct {
+	Mode	string	`json:"mode"`
 }
 
-// TracingConfig is a TracingConfig
-type TracingConfig struct {
-	Mode	string	`json:"mode"`
+// AwsLambdaFunctionVpcConfig is a AwsLambdaFunctionVpcConfig
+type AwsLambdaFunctionVpcConfig struct {
+	SubnetIds	string	`json:"subnet_ids"`
+	SecurityGroupIds	string	`json:"security_group_ids"`
 }

@@ -21,14 +21,14 @@ type AwsElb struct {
 
 // AwsElbSpec is the spec for a AwsElb Resource
 type AwsElbSpec struct {
-	ConnectionDrainingTimeout	int	`json:"connection_draining_timeout"`
-	ConnectionDraining	bool	`json:"connection_draining"`
-	AccessLogs	[]AccessLogs	`json:"access_logs"`
-	Listener	Listener	`json:"listener"`
-	NamePrefix	string	`json:"name_prefix"`
 	CrossZoneLoadBalancing	bool	`json:"cross_zone_load_balancing"`
+	ConnectionDrainingTimeout	int	`json:"connection_draining_timeout"`
 	IdleTimeout	int	`json:"idle_timeout"`
+	ConnectionDraining	bool	`json:"connection_draining"`
+	Listener	AwsElbListener	`json:"listener"`
 	Tags	map[string]string	`json:"tags"`
+	AccessLogs	[]AwsElbAccessLogs	`json:"access_logs"`
+	NamePrefix	string	`json:"name_prefix"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -42,16 +42,16 @@ type AwsElbList struct {
 }
 
 
-// AccessLogs is a AccessLogs
-type AccessLogs struct {
+// AwsElbAccessLogs is a AwsElbAccessLogs
+type AwsElbAccessLogs struct {
 	Interval	int	`json:"interval"`
 	Bucket	string	`json:"bucket"`
 	BucketPrefix	string	`json:"bucket_prefix"`
 	Enabled	bool	`json:"enabled"`
 }
 
-// Listener is a Listener
-type Listener struct {
+// AwsElbListener is a AwsElbListener
+type AwsElbListener struct {
 	InstancePort	int	`json:"instance_port"`
 	InstanceProtocol	string	`json:"instance_protocol"`
 	LbPort	int	`json:"lb_port"`
@@ -59,8 +59,8 @@ type Listener struct {
 	SslCertificateId	string	`json:"ssl_certificate_id"`
 }
 
-// HealthCheck is a HealthCheck
-type HealthCheck struct {
+// AwsElbHealthCheck is a AwsElbHealthCheck
+type AwsElbHealthCheck struct {
 	HealthyThreshold	int	`json:"healthy_threshold"`
 	UnhealthyThreshold	int	`json:"unhealthy_threshold"`
 	Target	string	`json:"target"`

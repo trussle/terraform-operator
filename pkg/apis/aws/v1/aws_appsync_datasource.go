@@ -22,13 +22,13 @@ type AwsAppsyncDatasource struct {
 // AwsAppsyncDatasourceSpec is the spec for a AwsAppsyncDatasource Resource
 type AwsAppsyncDatasourceSpec struct {
 	ApiId	string	`json:"api_id"`
-	Name	string	`json:"name"`
 	ServiceRoleArn	string	`json:"service_role_arn"`
-	ElasticsearchConfig	[]ElasticsearchConfig	`json:"elasticsearch_config"`
-	LambdaConfig	[]LambdaConfig	`json:"lambda_config"`
+	DynamodbConfig	[]AwsAppsyncDatasourceDynamodbConfig	`json:"dynamodb_config"`
+	ElasticsearchConfig	[]AwsAppsyncDatasourceElasticsearchConfig	`json:"elasticsearch_config"`
+	LambdaConfig	[]AwsAppsyncDatasourceLambdaConfig	`json:"lambda_config"`
+	Name	string	`json:"name"`
 	Type	string	`json:"type"`
 	Description	string	`json:"description"`
-	DynamodbConfig	[]DynamodbConfig	`json:"dynamodb_config"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -42,20 +42,20 @@ type AwsAppsyncDatasourceList struct {
 }
 
 
-// ElasticsearchConfig is a ElasticsearchConfig
-type ElasticsearchConfig struct {
+// AwsAppsyncDatasourceDynamodbConfig is a AwsAppsyncDatasourceDynamodbConfig
+type AwsAppsyncDatasourceDynamodbConfig struct {
+	Region	string	`json:"region"`
+	TableName	string	`json:"table_name"`
+	UseCallerCredentials	bool	`json:"use_caller_credentials"`
+}
+
+// AwsAppsyncDatasourceElasticsearchConfig is a AwsAppsyncDatasourceElasticsearchConfig
+type AwsAppsyncDatasourceElasticsearchConfig struct {
 	Region	string	`json:"region"`
 	Endpoint	string	`json:"endpoint"`
 }
 
-// LambdaConfig is a LambdaConfig
-type LambdaConfig struct {
+// AwsAppsyncDatasourceLambdaConfig is a AwsAppsyncDatasourceLambdaConfig
+type AwsAppsyncDatasourceLambdaConfig struct {
 	FunctionArn	string	`json:"function_arn"`
-}
-
-// DynamodbConfig is a DynamodbConfig
-type DynamodbConfig struct {
-	Region	string	`json:"region"`
-	TableName	string	`json:"table_name"`
-	UseCallerCredentials	bool	`json:"use_caller_credentials"`
 }

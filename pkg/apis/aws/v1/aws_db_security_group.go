@@ -21,10 +21,10 @@ type AwsDbSecurityGroup struct {
 
 // AwsDbSecurityGroupSpec is the spec for a AwsDbSecurityGroup Resource
 type AwsDbSecurityGroupSpec struct {
-	Ingress	Ingress	`json:"ingress"`
 	Tags	map[string]string	`json:"tags"`
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
+	Ingress	AwsDbSecurityGroupIngress	`json:"ingress"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -38,7 +38,7 @@ type AwsDbSecurityGroupList struct {
 }
 
 
-// Ingress is a Ingress
-type Ingress struct {
+// AwsDbSecurityGroupIngress is a AwsDbSecurityGroupIngress
+type AwsDbSecurityGroupIngress struct {
 	Cidr	string	`json:"cidr"`
 }

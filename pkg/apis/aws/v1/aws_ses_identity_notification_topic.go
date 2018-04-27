@@ -21,9 +21,9 @@ type AwsSesIdentityNotificationTopic struct {
 
 // AwsSesIdentityNotificationTopicSpec is the spec for a AwsSesIdentityNotificationTopic Resource
 type AwsSesIdentityNotificationTopicSpec struct {
-	Identity	string	`json:"identity"`
 	TopicArn	string	`json:"topic_arn"`
 	NotificationType	string	`json:"notification_type"`
+	Identity	string	`json:"identity"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

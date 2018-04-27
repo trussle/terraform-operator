@@ -21,10 +21,10 @@ type AwsSesTemplate struct {
 
 // AwsSesTemplateSpec is the spec for a AwsSesTemplate Resource
 type AwsSesTemplateSpec struct {
+	Subject	string	`json:"subject"`
 	Text	string	`json:"text"`
 	Name	string	`json:"name"`
 	Html	string	`json:"html"`
-	Subject	string	`json:"subject"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

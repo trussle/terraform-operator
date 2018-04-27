@@ -7,7 +7,7 @@ CUSTOM_RESOURCE_NAME="aws"
 CUSTOM_RESOURCE_VERSION="v1"
 
 # retrieve the code-generator scripts and bins
-#go get -u k8s.io/code-generator/...
+go get -u k8s.io/code-generator/...
 cd $GOPATH/src/k8s.io/code-generator
 
 # run the code-generator entrypoint script

@@ -21,14 +21,14 @@ type AwsSsmPatchBaseline struct {
 
 // AwsSsmPatchBaselineSpec is the spec for a AwsSsmPatchBaseline Resource
 type AwsSsmPatchBaselineSpec struct {
-	Name	string	`json:"name"`
 	Description	string	`json:"description"`
-	GlobalFilter	[]GlobalFilter	`json:"global_filter"`
-	ApprovalRule	[]ApprovalRule	`json:"approval_rule"`
+	GlobalFilter	[]AwsSsmPatchBaselineGlobalFilter	`json:"global_filter"`
+	ApprovalRule	[]AwsSsmPatchBaselineApprovalRule	`json:"approval_rule"`
 	ApprovedPatches	string	`json:"approved_patches"`
 	RejectedPatches	string	`json:"rejected_patches"`
 	OperatingSystem	string	`json:"operating_system"`
 	ApprovedPatchesComplianceLevel	string	`json:"approved_patches_compliance_level"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -42,21 +42,21 @@ type AwsSsmPatchBaselineList struct {
 }
 
 
-// GlobalFilter is a GlobalFilter
-type GlobalFilter struct {
-	Values	[]string	`json:"values"`
-	Key	string	`json:"key"`
-}
-
-// PatchFilter is a PatchFilter
-type PatchFilter struct {
+// AwsSsmPatchBaselineGlobalFilter is a AwsSsmPatchBaselineGlobalFilter
+type AwsSsmPatchBaselineGlobalFilter struct {
 	Key	string	`json:"key"`
 	Values	[]string	`json:"values"`
 }
 
-// ApprovalRule is a ApprovalRule
-type ApprovalRule struct {
+// AwsSsmPatchBaselinePatchFilter is a AwsSsmPatchBaselinePatchFilter
+type AwsSsmPatchBaselinePatchFilter struct {
+	Key	string	`json:"key"`
+	Values	[]string	`json:"values"`
+}
+
+// AwsSsmPatchBaselineApprovalRule is a AwsSsmPatchBaselineApprovalRule
+type AwsSsmPatchBaselineApprovalRule struct {
 	ApproveAfterDays	int	`json:"approve_after_days"`
 	ComplianceLevel	string	`json:"compliance_level"`
-	PatchFilter	[]PatchFilter	`json:"patch_filter"`
+	PatchFilter	[]AwsSsmPatchBaselinePatchFilter	`json:"patch_filter"`
 }

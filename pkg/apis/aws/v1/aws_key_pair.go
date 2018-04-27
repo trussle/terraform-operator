@@ -21,8 +21,8 @@ type AwsKeyPair struct {
 
 // AwsKeyPairSpec is the spec for a AwsKeyPair Resource
 type AwsKeyPairSpec struct {
-	PublicKey	string	`json:"public_key"`
 	KeyNamePrefix	string	`json:"key_name_prefix"`
+	PublicKey	string	`json:"public_key"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

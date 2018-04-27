@@ -24,7 +24,7 @@ type AwsAlbListenerSpec struct {
 	Port	int	`json:"port"`
 	Protocol	string	`json:"protocol"`
 	CertificateArn	string	`json:"certificate_arn"`
-	DefaultAction	[]DefaultAction	`json:"default_action"`
+	DefaultAction	[]AwsAlbListenerDefaultAction	`json:"default_action"`
 	LoadBalancerArn	string	`json:"load_balancer_arn"`
 }
 
@@ -39,8 +39,8 @@ type AwsAlbListenerList struct {
 }
 
 
-// DefaultAction is a DefaultAction
-type DefaultAction struct {
+// AwsAlbListenerDefaultAction is a AwsAlbListenerDefaultAction
+type AwsAlbListenerDefaultAction struct {
 	TargetGroupArn	string	`json:"target_group_arn"`
 	Type	string	`json:"type"`
 }

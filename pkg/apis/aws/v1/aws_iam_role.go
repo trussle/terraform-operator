@@ -21,12 +21,12 @@ type AwsIamRole struct {
 
 // AwsIamRoleSpec is the spec for a AwsIamRole Resource
 type AwsIamRoleSpec struct {
-	Description	string	`json:"description"`
-	ForceDetachPolicies	bool	`json:"force_detach_policies"`
 	MaxSessionDuration	int	`json:"max_session_duration"`
-	NamePrefix	string	`json:"name_prefix"`
 	Path	string	`json:"path"`
 	AssumeRolePolicy	string	`json:"assume_role_policy"`
+	Description	string	`json:"description"`
+	ForceDetachPolicies	bool	`json:"force_detach_policies"`
+	NamePrefix	string	`json:"name_prefix"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

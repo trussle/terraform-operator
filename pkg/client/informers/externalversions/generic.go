@@ -509,8 +509,6 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsNetworkAclRules().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("awsnetworkinterfaces"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsNetworkInterfaces().Informer()}, nil
-	case v1.SchemeGroupVersion.WithResource("awsnetworkinterfaceattachments"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsNetworkInterfaceAttachments().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("awsnetworkinterfacesgattachments"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsNetworkInterfaceSgAttachments().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("awsopsworksapplications"):
@@ -709,8 +707,6 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsVpcEndpointSubnetAssociations().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("awsvpcpeeringconnections"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsVpcPeeringConnections().Informer()}, nil
-	case v1.SchemeGroupVersion.WithResource("awsvpcpeeringconnectionaccepters"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsVpcPeeringConnectionAccepters().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("awsvpnconnections"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Trussle().V1().AwsVpnConnections().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("awsvpnconnectionroutes"):

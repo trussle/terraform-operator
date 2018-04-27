@@ -36,8 +36,8 @@ type AwsConfigConfigurationRecorderList struct {
 }
 
 
-// RecordingGroup is a RecordingGroup
-type RecordingGroup struct {
+// AwsConfigConfigurationRecorderRecordingGroup is a AwsConfigConfigurationRecorderRecordingGroup
+type AwsConfigConfigurationRecorderRecordingGroup struct {
 	AllSupported	bool	`json:"all_supported"`
 	IncludeGlobalResourceTypes	bool	`json:"include_global_resource_types"`
 	ResourceTypes	string	`json:"resource_types"`

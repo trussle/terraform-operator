@@ -22,7 +22,7 @@ type AwsCognitoIdentityPool struct {
 // AwsCognitoIdentityPoolSpec is the spec for a AwsCognitoIdentityPool Resource
 type AwsCognitoIdentityPoolSpec struct {
 	IdentityPoolName	string	`json:"identity_pool_name"`
-	CognitoIdentityProviders	CognitoIdentityProviders	`json:"cognito_identity_providers"`
+	CognitoIdentityProviders	AwsCognitoIdentityPoolCognitoIdentityProviders	`json:"cognito_identity_providers"`
 	DeveloperProviderName	string	`json:"developer_provider_name"`
 	AllowUnauthenticatedIdentities	bool	`json:"allow_unauthenticated_identities"`
 	OpenidConnectProviderArns	[]string	`json:"openid_connect_provider_arns"`
@@ -41,8 +41,8 @@ type AwsCognitoIdentityPoolList struct {
 }
 
 
-// CognitoIdentityProviders is a CognitoIdentityProviders
-type CognitoIdentityProviders struct {
+// AwsCognitoIdentityPoolCognitoIdentityProviders is a AwsCognitoIdentityPoolCognitoIdentityProviders
+type AwsCognitoIdentityPoolCognitoIdentityProviders struct {
 	ClientId	string	`json:"client_id"`
 	ProviderName	string	`json:"provider_name"`
 	ServerSideTokenCheck	bool	`json:"server_side_token_check"`

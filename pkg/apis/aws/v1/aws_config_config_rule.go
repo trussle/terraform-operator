@@ -21,12 +21,12 @@ type AwsConfigConfigRule struct {
 
 // AwsConfigConfigRuleSpec is the spec for a AwsConfigConfigRule Resource
 type AwsConfigConfigRuleSpec struct {
-	Source	[]Source	`json:"source"`
 	Name	string	`json:"name"`
 	Description	string	`json:"description"`
 	InputParameters	string	`json:"input_parameters"`
 	MaximumExecutionFrequency	string	`json:"maximum_execution_frequency"`
-	Scope	[]Scope	`json:"scope"`
+	Scope	[]AwsConfigConfigRuleScope	`json:"scope"`
+	Source	[]AwsConfigConfigRuleSource	`json:"source"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -40,24 +40,24 @@ type AwsConfigConfigRuleList struct {
 }
 
 
-// SourceDetail is a SourceDetail
-type SourceDetail struct {
-	MaximumExecutionFrequency	string	`json:"maximum_execution_frequency"`
-	MessageType	string	`json:"message_type"`
-	EventSource	string	`json:"event_source"`
-}
-
-// Source is a Source
-type Source struct {
-	Owner	string	`json:"owner"`
-	SourceDetail	SourceDetail	`json:"source_detail"`
+// AwsConfigConfigRuleSource is a AwsConfigConfigRuleSource
+type AwsConfigConfigRuleSource struct {
 	SourceIdentifier	string	`json:"source_identifier"`
+	Owner	string	`json:"owner"`
+	SourceDetail	AwsConfigConfigRuleSourceDetail	`json:"source_detail"`
 }
 
-// Scope is a Scope
-type Scope struct {
-	TagKey	string	`json:"tag_key"`
-	TagValue	string	`json:"tag_value"`
+// AwsConfigConfigRuleScope is a AwsConfigConfigRuleScope
+type AwsConfigConfigRuleScope struct {
 	ComplianceResourceId	string	`json:"compliance_resource_id"`
 	ComplianceResourceTypes	string	`json:"compliance_resource_types"`
+	TagKey	string	`json:"tag_key"`
+	TagValue	string	`json:"tag_value"`
+}
+
+// AwsConfigConfigRuleSourceDetail is a AwsConfigConfigRuleSourceDetail
+type AwsConfigConfigRuleSourceDetail struct {
+	EventSource	string	`json:"event_source"`
+	MaximumExecutionFrequency	string	`json:"maximum_execution_frequency"`
+	MessageType	string	`json:"message_type"`
 }

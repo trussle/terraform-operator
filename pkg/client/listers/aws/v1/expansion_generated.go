@@ -1842,14 +1842,6 @@ type AwsNetworkInterfaceListerExpansion interface{}
 // AwsNetworkInterfaceNamespaceLister.
 type AwsNetworkInterfaceNamespaceListerExpansion interface{}
 
-// AwsNetworkInterfaceAttachmentListerExpansion allows custom methods to be added to
-// AwsNetworkInterfaceAttachmentLister.
-type AwsNetworkInterfaceAttachmentListerExpansion interface{}
-
-// AwsNetworkInterfaceAttachmentNamespaceListerExpansion allows custom methods to be added to
-// AwsNetworkInterfaceAttachmentNamespaceLister.
-type AwsNetworkInterfaceAttachmentNamespaceListerExpansion interface{}
-
 // AwsNetworkInterfaceSgAttachmentListerExpansion allows custom methods to be added to
 // AwsNetworkInterfaceSgAttachmentLister.
 type AwsNetworkInterfaceSgAttachmentListerExpansion interface{}
@@ -2641,14 +2633,6 @@ type AwsVpcPeeringConnectionListerExpansion interface{}
 // AwsVpcPeeringConnectionNamespaceListerExpansion allows custom methods to be added to
 // AwsVpcPeeringConnectionNamespaceLister.
 type AwsVpcPeeringConnectionNamespaceListerExpansion interface{}
-
-// AwsVpcPeeringConnectionAccepterListerExpansion allows custom methods to be added to
-// AwsVpcPeeringConnectionAccepterLister.
-type AwsVpcPeeringConnectionAccepterListerExpansion interface{}
-
-// AwsVpcPeeringConnectionAccepterNamespaceListerExpansion allows custom methods to be added to
-// AwsVpcPeeringConnectionAccepterNamespaceLister.
-type AwsVpcPeeringConnectionAccepterNamespaceListerExpansion interface{}
 
 // AwsVpnConnectionListerExpansion allows custom methods to be added to
 // AwsVpnConnectionLister.

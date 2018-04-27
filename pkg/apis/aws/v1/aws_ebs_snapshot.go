@@ -21,8 +21,8 @@ type AwsEbsSnapshot struct {
 
 // AwsEbsSnapshotSpec is the spec for a AwsEbsSnapshot Resource
 type AwsEbsSnapshotSpec struct {
-	VolumeId	string	`json:"volume_id"`
 	Description	string	`json:"description"`
+	VolumeId	string	`json:"volume_id"`
 	Tags	map[string]string	`json:"tags"`
 }
 

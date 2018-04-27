@@ -23,7 +23,7 @@ type AwsGameliftBuild struct {
 type AwsGameliftBuildSpec struct {
 	Name	string	`json:"name"`
 	OperatingSystem	string	`json:"operating_system"`
-	StorageLocation	[]StorageLocation	`json:"storage_location"`
+	StorageLocation	[]AwsGameliftBuildStorageLocation	`json:"storage_location"`
 	Version	string	`json:"version"`
 }
 
@@ -38,8 +38,8 @@ type AwsGameliftBuildList struct {
 }
 
 
-// StorageLocation is a StorageLocation
-type StorageLocation struct {
+// AwsGameliftBuildStorageLocation is a AwsGameliftBuildStorageLocation
+type AwsGameliftBuildStorageLocation struct {
 	Bucket	string	`json:"bucket"`
 	Key	string	`json:"key"`
 	RoleArn	string	`json:"role_arn"`

@@ -21,9 +21,9 @@ type AwsDaxSubnetGroup struct {
 
 // AwsDaxSubnetGroupSpec is the spec for a AwsDaxSubnetGroup Resource
 type AwsDaxSubnetGroupSpec struct {
-	Name	string	`json:"name"`
 	Description	string	`json:"description"`
 	SubnetIds	string	`json:"subnet_ids"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

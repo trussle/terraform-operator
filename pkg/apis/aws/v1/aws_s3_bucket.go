@@ -21,17 +21,17 @@ type AwsS3Bucket struct {
 
 // AwsS3BucketSpec is the spec for a AwsS3Bucket Resource
 type AwsS3BucketSpec struct {
-	Tags	map[string]string	`json:"tags"`
+	Policy	string	`json:"policy"`
+	LifecycleRule	[]AwsS3BucketLifecycleRule	`json:"lifecycle_rule"`
+	Website	[]AwsS3BucketWebsite	`json:"website"`
+	Logging	AwsS3BucketLogging	`json:"logging"`
+	ForceDestroy	bool	`json:"force_destroy"`
+	ReplicationConfiguration	[]AwsS3BucketReplicationConfiguration	`json:"replication_configuration"`
 	BucketPrefix	string	`json:"bucket_prefix"`
 	Acl	string	`json:"acl"`
-	Website	[]Website	`json:"website"`
-	ForceDestroy	bool	`json:"force_destroy"`
-	CorsRule	[]CorsRule	`json:"cors_rule"`
-	Logging	Logging	`json:"logging"`
-	LifecycleRule	[]LifecycleRule	`json:"lifecycle_rule"`
-	Policy	string	`json:"policy"`
-	ReplicationConfiguration	[]ReplicationConfiguration	`json:"replication_configuration"`
-	ServerSideEncryptionConfiguration	[]ServerSideEncryptionConfiguration	`json:"server_side_encryption_configuration"`
+	CorsRule	[]AwsS3BucketCorsRule	`json:"cors_rule"`
+	ServerSideEncryptionConfiguration	[]AwsS3BucketServerSideEncryptionConfiguration	`json:"server_side_encryption_configuration"`
+	Tags	map[string]string	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -45,8 +45,13 @@ type AwsS3BucketList struct {
 }
 
 
-// CorsRule is a CorsRule
-type CorsRule struct {
+// AwsS3BucketSourceSelectionCriteria is a AwsS3BucketSourceSelectionCriteria
+type AwsS3BucketSourceSelectionCriteria struct {
+	SseKmsEncryptedObjects	AwsS3BucketSseKmsEncryptedObjects	`json:"sse_kms_encrypted_objects"`
+}
+
+// AwsS3BucketCorsRule is a AwsS3BucketCorsRule
+type AwsS3BucketCorsRule struct {
 	AllowedMethods	[]string	`json:"allowed_methods"`
 	AllowedOrigins	[]string	`json:"allowed_origins"`
 	ExposeHeaders	[]string	`json:"expose_headers"`
@@ -54,107 +59,102 @@ type CorsRule struct {
 	AllowedHeaders	[]string	`json:"allowed_headers"`
 }
 
-// NoncurrentVersionExpiration is a NoncurrentVersionExpiration
-type NoncurrentVersionExpiration struct {
-	Days	int	`json:"days"`
+// AwsS3BucketRule is a AwsS3BucketRule
+type AwsS3BucketRule struct {
+	ApplyServerSideEncryptionByDefault	[]AwsS3BucketApplyServerSideEncryptionByDefault	`json:"apply_server_side_encryption_by_default"`
 }
 
-// NoncurrentVersionTransition is a NoncurrentVersionTransition
-type NoncurrentVersionTransition struct {
-	Days	int	`json:"days"`
-	StorageClass	string	`json:"storage_class"`
-}
-
-// Website is a Website
-type Website struct {
-	RoutingRules	string	`json:"routing_rules"`
-	IndexDocument	string	`json:"index_document"`
-	ErrorDocument	string	`json:"error_document"`
-	RedirectAllRequestsTo	string	`json:"redirect_all_requests_to"`
-}
-
-// Transition is a Transition
-type Transition struct {
-	Days	int	`json:"days"`
-	StorageClass	string	`json:"storage_class"`
-	Date	string	`json:"date"`
-}
-
-// SseKmsEncryptedObjects is a SseKmsEncryptedObjects
-type SseKmsEncryptedObjects struct {
-	Enabled	bool	`json:"enabled"`
-}
-
-// SourceSelectionCriteria is a SourceSelectionCriteria
-type SourceSelectionCriteria struct {
-	SseKmsEncryptedObjects	SseKmsEncryptedObjects	`json:"sse_kms_encrypted_objects"`
-}
-
-// ApplyServerSideEncryptionByDefault is a ApplyServerSideEncryptionByDefault
-type ApplyServerSideEncryptionByDefault struct {
-	KmsMasterKeyId	string	`json:"kms_master_key_id"`
-	SseAlgorithm	string	`json:"sse_algorithm"`
-}
-
-// Versioning is a Versioning
-type Versioning struct {
-	Enabled	bool	`json:"enabled"`
-	MfaDelete	bool	`json:"mfa_delete"`
-}
-
-// Logging is a Logging
-type Logging struct {
-	TargetPrefix	string	`json:"target_prefix"`
-	TargetBucket	string	`json:"target_bucket"`
-}
-
-// Expiration is a Expiration
-type Expiration struct {
+// AwsS3BucketExpiration is a AwsS3BucketExpiration
+type AwsS3BucketExpiration struct {
 	Date	string	`json:"date"`
 	Days	int	`json:"days"`
 	ExpiredObjectDeleteMarker	bool	`json:"expired_object_delete_marker"`
 }
 
-// LifecycleRule is a LifecycleRule
-type LifecycleRule struct {
-	Tags	map[string]string	`json:"tags"`
-	AbortIncompleteMultipartUploadDays	int	`json:"abort_incomplete_multipart_upload_days"`
-	Expiration	Expiration	`json:"expiration"`
-	NoncurrentVersionExpiration	NoncurrentVersionExpiration	`json:"noncurrent_version_expiration"`
-	Transition	Transition	`json:"transition"`
-	NoncurrentVersionTransition	NoncurrentVersionTransition	`json:"noncurrent_version_transition"`
-	Prefix	string	`json:"prefix"`
-	Enabled	bool	`json:"enabled"`
+// AwsS3BucketNoncurrentVersionTransition is a AwsS3BucketNoncurrentVersionTransition
+type AwsS3BucketNoncurrentVersionTransition struct {
+	Days	int	`json:"days"`
+	StorageClass	string	`json:"storage_class"`
 }
 
-// Destination is a Destination
-type Destination struct {
+// AwsS3BucketReplicationConfiguration is a AwsS3BucketReplicationConfiguration
+type AwsS3BucketReplicationConfiguration struct {
+	Role	string	`json:"role"`
+	Rules	AwsS3BucketRules	`json:"rules"`
+}
+
+// AwsS3BucketVersioning is a AwsS3BucketVersioning
+type AwsS3BucketVersioning struct {
+	Enabled	bool	`json:"enabled"`
+	MfaDelete	bool	`json:"mfa_delete"`
+}
+
+// AwsS3BucketRules is a AwsS3BucketRules
+type AwsS3BucketRules struct {
+	Id	string	`json:"id"`
+	Destination	AwsS3BucketDestination	`json:"destination"`
+	SourceSelectionCriteria	AwsS3BucketSourceSelectionCriteria	`json:"source_selection_criteria"`
+	Prefix	string	`json:"prefix"`
+	Status	string	`json:"status"`
+}
+
+// AwsS3BucketLogging is a AwsS3BucketLogging
+type AwsS3BucketLogging struct {
+	TargetBucket	string	`json:"target_bucket"`
+	TargetPrefix	string	`json:"target_prefix"`
+}
+
+// AwsS3BucketLifecycleRule is a AwsS3BucketLifecycleRule
+type AwsS3BucketLifecycleRule struct {
+	Expiration	AwsS3BucketExpiration	`json:"expiration"`
+	NoncurrentVersionExpiration	AwsS3BucketNoncurrentVersionExpiration	`json:"noncurrent_version_expiration"`
+	Transition	AwsS3BucketTransition	`json:"transition"`
+	Tags	map[string]string	`json:"tags"`
+	Enabled	bool	`json:"enabled"`
+	AbortIncompleteMultipartUploadDays	int	`json:"abort_incomplete_multipart_upload_days"`
+	Prefix	string	`json:"prefix"`
+	NoncurrentVersionTransition	AwsS3BucketNoncurrentVersionTransition	`json:"noncurrent_version_transition"`
+}
+
+// AwsS3BucketWebsite is a AwsS3BucketWebsite
+type AwsS3BucketWebsite struct {
+	IndexDocument	string	`json:"index_document"`
+	ErrorDocument	string	`json:"error_document"`
+	RedirectAllRequestsTo	string	`json:"redirect_all_requests_to"`
+	RoutingRules	string	`json:"routing_rules"`
+}
+
+// AwsS3BucketDestination is a AwsS3BucketDestination
+type AwsS3BucketDestination struct {
 	Bucket	string	`json:"bucket"`
 	StorageClass	string	`json:"storage_class"`
 	ReplicaKmsKeyId	string	`json:"replica_kms_key_id"`
 }
 
-// Rules is a Rules
-type Rules struct {
-	Status	string	`json:"status"`
-	Id	string	`json:"id"`
-	Destination	Destination	`json:"destination"`
-	SourceSelectionCriteria	SourceSelectionCriteria	`json:"source_selection_criteria"`
-	Prefix	string	`json:"prefix"`
+// AwsS3BucketSseKmsEncryptedObjects is a AwsS3BucketSseKmsEncryptedObjects
+type AwsS3BucketSseKmsEncryptedObjects struct {
+	Enabled	bool	`json:"enabled"`
 }
 
-// ReplicationConfiguration is a ReplicationConfiguration
-type ReplicationConfiguration struct {
-	Role	string	`json:"role"`
-	Rules	Rules	`json:"rules"`
+// AwsS3BucketApplyServerSideEncryptionByDefault is a AwsS3BucketApplyServerSideEncryptionByDefault
+type AwsS3BucketApplyServerSideEncryptionByDefault struct {
+	KmsMasterKeyId	string	`json:"kms_master_key_id"`
+	SseAlgorithm	string	`json:"sse_algorithm"`
 }
 
-// Rule is a Rule
-type Rule struct {
-	ApplyServerSideEncryptionByDefault	[]ApplyServerSideEncryptionByDefault	`json:"apply_server_side_encryption_by_default"`
+// AwsS3BucketServerSideEncryptionConfiguration is a AwsS3BucketServerSideEncryptionConfiguration
+type AwsS3BucketServerSideEncryptionConfiguration struct {
+	Rule	[]AwsS3BucketRule	`json:"rule"`
 }
 
-// ServerSideEncryptionConfiguration is a ServerSideEncryptionConfiguration
-type ServerSideEncryptionConfiguration struct {
-	Rule	[]Rule	`json:"rule"`
+// AwsS3BucketNoncurrentVersionExpiration is a AwsS3BucketNoncurrentVersionExpiration
+type AwsS3BucketNoncurrentVersionExpiration struct {
+	Days	int	`json:"days"`
+}
+
+// AwsS3BucketTransition is a AwsS3BucketTransition
+type AwsS3BucketTransition struct {
+	Days	int	`json:"days"`
+	StorageClass	string	`json:"storage_class"`
+	Date	string	`json:"date"`
 }

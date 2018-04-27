@@ -36,14 +36,14 @@ type AwsRouteTableList struct {
 }
 
 
-// Route is a Route
-type Route struct {
-	InstanceId	string	`json:"instance_id"`
-	NatGatewayId	string	`json:"nat_gateway_id"`
-	VpcPeeringConnectionId	string	`json:"vpc_peering_connection_id"`
+// AwsRouteTableRoute is a AwsRouteTableRoute
+type AwsRouteTableRoute struct {
 	NetworkInterfaceId	string	`json:"network_interface_id"`
 	CidrBlock	string	`json:"cidr_block"`
 	Ipv6CidrBlock	string	`json:"ipv6_cidr_block"`
 	EgressOnlyGatewayId	string	`json:"egress_only_gateway_id"`
 	GatewayId	string	`json:"gateway_id"`
+	InstanceId	string	`json:"instance_id"`
+	NatGatewayId	string	`json:"nat_gateway_id"`
+	VpcPeeringConnectionId	string	`json:"vpc_peering_connection_id"`
 }

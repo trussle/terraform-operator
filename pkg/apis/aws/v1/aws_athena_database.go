@@ -21,9 +21,9 @@ type AwsAthenaDatabase struct {
 
 // AwsAthenaDatabaseSpec is the spec for a AwsAthenaDatabase Resource
 type AwsAthenaDatabaseSpec struct {
-	Name	string	`json:"name"`
 	Bucket	string	`json:"bucket"`
 	ForceDestroy	bool	`json:"force_destroy"`
+	Name	string	`json:"name"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -21,10 +21,10 @@ type AwsIamUserLoginProfile struct {
 
 // AwsIamUserLoginProfileSpec is the spec for a AwsIamUserLoginProfile Resource
 type AwsIamUserLoginProfileSpec struct {
-	User	string	`json:"user"`
 	PgpKey	string	`json:"pgp_key"`
 	PasswordResetRequired	bool	`json:"password_reset_required"`
 	PasswordLength	int	`json:"password_length"`
+	User	string	`json:"user"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

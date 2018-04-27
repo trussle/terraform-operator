@@ -21,11 +21,11 @@ type AwsVpcEndpoint struct {
 
 // AwsVpcEndpointSpec is the spec for a AwsVpcEndpoint Resource
 type AwsVpcEndpointSpec struct {
-	AutoAccept	bool	`json:"auto_accept"`
-	ServiceName	string	`json:"service_name"`
 	PrivateDnsEnabled	bool	`json:"private_dns_enabled"`
-	VpcId	string	`json:"vpc_id"`
+	ServiceName	string	`json:"service_name"`
+	AutoAccept	bool	`json:"auto_accept"`
 	VpcEndpointType	string	`json:"vpc_endpoint_type"`
+	VpcId	string	`json:"vpc_id"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -39,6 +39,6 @@ type AwsVpcEndpointList struct {
 }
 
 
-// DnsEntry is a DnsEntry
-type DnsEntry struct {
+// AwsVpcEndpointDnsEntry is a AwsVpcEndpointDnsEntry
+type AwsVpcEndpointDnsEntry struct {
 }

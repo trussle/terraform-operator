@@ -21,16 +21,16 @@ type AwsSsmMaintenanceWindowTask struct {
 
 // AwsSsmMaintenanceWindowTaskSpec is the spec for a AwsSsmMaintenanceWindowTask Resource
 type AwsSsmMaintenanceWindowTaskSpec struct {
+	LoggingInfo	[]AwsSsmMaintenanceWindowTaskLoggingInfo	`json:"logging_info"`
+	TaskParameters	[]AwsSsmMaintenanceWindowTaskTaskParameters	`json:"task_parameters"`
 	WindowId	string	`json:"window_id"`
-	MaxConcurrency	string	`json:"max_concurrency"`
-	Priority	int	`json:"priority"`
-	LoggingInfo	[]LoggingInfo	`json:"logging_info"`
-	TaskParameters	[]TaskParameters	`json:"task_parameters"`
 	MaxErrors	string	`json:"max_errors"`
-	TaskType	string	`json:"task_type"`
 	TaskArn	string	`json:"task_arn"`
+	Priority	int	`json:"priority"`
+	MaxConcurrency	string	`json:"max_concurrency"`
+	TaskType	string	`json:"task_type"`
 	ServiceRoleArn	string	`json:"service_role_arn"`
-	Targets	[]Targets	`json:"targets"`
+	Targets	[]AwsSsmMaintenanceWindowTaskTargets	`json:"targets"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -44,21 +44,21 @@ type AwsSsmMaintenanceWindowTaskList struct {
 }
 
 
-// Targets is a Targets
-type Targets struct {
-	Key	string	`json:"key"`
-	Values	[]string	`json:"values"`
-}
-
-// LoggingInfo is a LoggingInfo
-type LoggingInfo struct {
-	S3BucketPrefix	string	`json:"s3_bucket_prefix"`
+// AwsSsmMaintenanceWindowTaskLoggingInfo is a AwsSsmMaintenanceWindowTaskLoggingInfo
+type AwsSsmMaintenanceWindowTaskLoggingInfo struct {
 	S3BucketName	string	`json:"s3_bucket_name"`
 	S3Region	string	`json:"s3_region"`
+	S3BucketPrefix	string	`json:"s3_bucket_prefix"`
 }
 
-// TaskParameters is a TaskParameters
-type TaskParameters struct {
-	Values	[]string	`json:"values"`
+// AwsSsmMaintenanceWindowTaskTaskParameters is a AwsSsmMaintenanceWindowTaskTaskParameters
+type AwsSsmMaintenanceWindowTaskTaskParameters struct {
 	Name	string	`json:"name"`
+	Values	[]string	`json:"values"`
+}
+
+// AwsSsmMaintenanceWindowTaskTargets is a AwsSsmMaintenanceWindowTaskTargets
+type AwsSsmMaintenanceWindowTaskTargets struct {
+	Key	string	`json:"key"`
+	Values	[]string	`json:"values"`
 }

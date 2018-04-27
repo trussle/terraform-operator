@@ -21,10 +21,10 @@ type AwsCustomerGateway struct {
 
 // AwsCustomerGatewaySpec is the spec for a AwsCustomerGateway Resource
 type AwsCustomerGatewaySpec struct {
-	Type	string	`json:"type"`
-	Tags	map[string]string	`json:"tags"`
 	BgpAsn	int	`json:"bgp_asn"`
 	IpAddress	string	`json:"ip_address"`
+	Type	string	`json:"type"`
+	Tags	map[string]string	`json:"tags"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
